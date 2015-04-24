@@ -30,4 +30,4 @@ distutils.core.setup(name = 'zplib',
         version = '1.0',
         description = 'zplib package',
         ext_modules = ext_processor([sample_texture]),
-        packages = ['zplib.image', 'zplib.curve', 'zplib.scalar_stats'])
+        packages = ['zplib', 'zplib.image', 'zplib.curve', 'zplib.scalar_stats'])
