@@ -3,26 +3,24 @@ import numpy
 def spatial_filter(array, period_range, spacing=1.0, order=2, keep_dc=False):
     """Filter the given array with a butterworth filter of the specified order.
 
-    The 'period_range' parameter is a (min_size, max_size) tuple representing
-    the minimum and maximum spatial size of objects in the filter's pass-band.
-    Objects smaller than min_size and larger than max_size will be filtered
-    out of the image. Either value can be None, indicating that there should be
-    no size limit at that end of the scale.
-
-    The 'spacing' parameter allows the physical spacing between array elements
-    to be specified, so that the size values (above) can be given in physical
-    units. This parameter can either be a scalar or a list of spacings in each
-    dimension.
-
-    The 'order' parameter controls the order of the butterworth filter. Higher
-    order filters remove more of the structure in the stop-bands (specifically,
-    those near the transition between pass-band and stop-band), but may introduce
-    ringing artifacts.
-
-    If the 'keep_dc' parameter is True, then the DC component of the array will
-    not be removed; otherwise it will. (If the DC component is removed, then the
-    average array value will be zero; otherwise the average value will remain
-    unchanged.)
+        Parameters:
+            period_range: (min_size, max_size) tuple representing the minimum
+                and maximum spatial size of objects in the filter's pass-band.
+                Objects smaller than min_size and larger than max_size will be
+                filtered out of the image. Either value can be None, indicating
+                that there should be no size limit at that end of the scale.
+            spacing: allows the physical spacing between array elements to be
+                specified, so that the size values (above) can be given in
+                physical units. This parameter can either be a scalar or a list
+                of spacings in each dimension.
+            order: controls the order of the butterworth filter. Higher order
+                filters remove more of the structure in the stop-bands
+                (specifically, those near the transition between pass-band and
+                stop-band), but may introduce ringing artifacts.
+            keep_dc: if True, then the DC component of the array will not be
+                removed; otherwise it will. (If the DC component is removed,
+                then the average array value will be zero; otherwise the
+                average value will remain unchanged.)
 
     To filter multiple images of the same shape with the same filter parameters,
     it will be faster to construct the filter coefficients once with
