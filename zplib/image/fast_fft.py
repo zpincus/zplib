@@ -71,7 +71,8 @@ class SpatialFilter:
         """
         assert precision in PRECISION.keys()
         n = pyfftw.simd_alignment
-        self.filter_coeffs = fft.make_spatial_filter(shape, period_range, spacing, order, keep_dc)
+        filter_coeffs = fft.make_spatial_filter(shape, period_range, spacing, order, keep_dc)
+        self.filter_coeffs = filter_coeffs.astype(PRECISION[precision], order='F')
         self.image_arr = pyfftw.n_byte_align_empty(shape, n, dtype=PRECISION[precision], order='F')
         self.fft_arr = pyfftw.n_byte_align_empty(self.filter_coeffs.shape, n, dtype=PRECISION_FFT[precision], order='F')
         effort = 'FFTW_PATIENT' if better_plan else 'FFTW_MEASURE'
@@ -89,8 +90,8 @@ class SpatialFilter:
             calls, a copy must be made.
         """
         assert image.shape == self.image_arr.shape
-        self.image_arr[:] =  image
+        self.image_arr[:] = image
         self.fft()
-        self.fft_arr *= self.filter_coeffs
+        self.fft_arr.real *= self.filter_coeffs
         self.ifft()
         return self.image_arr
