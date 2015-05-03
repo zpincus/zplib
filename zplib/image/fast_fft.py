@@ -36,8 +36,33 @@ def load_plan_hints(filename):
     with open(filename, 'rb') as f:
         pyfftw.import_wisdom(pickle.load(f))
 
+class FilterBase:
+    def __init__(self, shape, precision=32, threads=4, better_plan=False):
+        """Base class for FFT filtering.
 
-class SpatialFilter:
+        Constructor parameters:
+            shape: shape of the images to be filtered (must be 2d)
+            precision: 32 or 64. Refers to the floating-point precision with
+                which the FFT used for filtering is to be calculated.
+            threads: number of threads to use for FFT computation.
+            better_plan: if True, spend time (possibly minutes) identifying the
+                best FFT plan. This can dramatically speed future FFTs. The
+                functions 'store_plan_hints()' and 'load_plan_hints()' can be
+                used to store the planning data so that this time-cost need only
+                be paid once.
+        """
+        assert precision in PRECISION.keys()
+        n = pyfftw.simd_alignment
+        self.image_arr = pyfftw.n_byte_align_empty(shape, n, dtype=PRECISION[precision], order='F')
+        fft_shape = list(shape)
+        fft_shape[1] = fft_shape[1] // 2 + 1
+        self.fft_arr = pyfftw.n_byte_align_empty(fft_shape, n, dtype=PRECISION_FFT[precision], order='F')
+        effort = 'FFTW_PATIENT' if better_plan else 'FFTW_MEASURE'
+        flags = (effort, 'FFTW_DESTROY_INPUT')
+        self.fft = pyfftw.FFTW(self.image_arr, self.fft_arr, axes=(0,1), direction='FFTW_FORWARD', flags=flags, threads=threads)
+        self.ifft = pyfftw.FFTW(self.fft_arr, self.image_arr, axes=(0,1), direction='FFTW_BACKWARD', flags=flags, threads=threads)
+
+class SpatialFilter(FilterBase):
     def __init__(self, shape, period_range, spacing=1.0, order=2, keep_dc=False, precision=32, threads=4, better_plan=False):
         """Class to apply the same filter over a multiple images.
 
@@ -69,16 +94,9 @@ class SpatialFilter:
                 used to store the planning data so that this time-cost need only
                 be paid once.
         """
-        assert precision in PRECISION.keys()
-        n = pyfftw.simd_alignment
+        super.__init__(shape, precision, threads, better_plan)
         filter_coeffs = fft.make_spatial_filter(shape, period_range, spacing, order, keep_dc)
         self.filter_coeffs = filter_coeffs.astype(PRECISION[precision], order='F')
-        self.image_arr = pyfftw.n_byte_align_empty(shape, n, dtype=PRECISION[precision], order='F')
-        self.fft_arr = pyfftw.n_byte_align_empty(self.filter_coeffs.shape, n, dtype=PRECISION_FFT[precision], order='F')
-        effort = 'FFTW_PATIENT' if better_plan else 'FFTW_MEASURE'
-        flags = (effort, 'FFTW_DESTROY_INPUT')
-        self.fft = pyfftw.FFTW(self.image_arr, self.fft_arr, axes=(0,1), direction='FFTW_FORWARD', flags=flags, threads=threads)
-        self.ifft = pyfftw.FFTW(self.fft_arr, self.image_arr, axes=(0,1), direction='FFTW_BACKWARD', flags=flags, threads=threads)
 
     def filter(self, image):
         """Filter a given image as specified in the SpatialFilter constructor.
@@ -95,3 +113,39 @@ class SpatialFilter:
         self.fft_arr.real *= self.filter_coeffs
         self.ifft()
         return self.image_arr
+
+class MultiFilter(FilterBase):
+    def __init__(self, shape, filters, precision=32, threads=4, better_plan=False):
+        """Class to efficiently apply multiple FFT filters to each of many images.
+
+        Constructor parameters:
+            shape: shape of the images to be filtered (must be 2d)
+            filters: list of filter coefficients generated with, e.g.
+                fft.make_spatial_filter()
+            precision: 32 or 64. Refers to the floating-point precision with
+                which the FFT used for filtering is to be calculated.
+            threads: number of threads to use for FFT computation.
+            better_plan: if True, spend time (possibly minutes) identifying the
+                best FFT plan. This can dramatically speed future FFTs. The
+                functions 'store_plan_hints()' and 'load_plan_hints()' can be
+                used to store the planning data so that this time-cost need only
+                be paid once.
+        """
+        super.__init__(shape, precision, threads, better_plan)
+        self.filters = [fc.astype(PRECISION[precision], order='F') for fc in filters]
+
+    def filter(self, image):
+        """Filter a given image with each of the FFT filters, and return a list
+        of the filtered images.
+        """
+        assert image.shape == self.image_arr.shape
+        self.image_arr[:] = image
+        self.fft()
+        fft_vals = self.fft_arr.real.copy()
+        images_out = []
+        for filter_coeffs in self.filters:
+            self.fft_arr.real = fft_vals * filter_coeffs
+            self.ifft()
+            images_out.append(self.image_arr.copy())
+        return images_out
+
