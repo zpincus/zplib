@@ -94,7 +94,7 @@ class SpatialFilter(FilterBase):
                 used to store the planning data so that this time-cost need only
                 be paid once.
         """
-        super.__init__(shape, precision, threads, better_plan)
+        super().__init__(shape, precision, threads, better_plan)
         filter_coeffs = fft.make_spatial_filter(shape, period_range, spacing, order, keep_dc)
         self.filter_coeffs = filter_coeffs.astype(PRECISION[precision], order='F')
 
@@ -131,7 +131,7 @@ class MultiFilter(FilterBase):
                 used to store the planning data so that this time-cost need only
                 be paid once.
         """
-        super.__init__(shape, precision, threads, better_plan)
+        super().__init__(shape, precision, threads, better_plan)
         self.filters = [fc.astype(PRECISION[precision], order='F') for fc in filters]
 
     def filter(self, image):
