@@ -6,7 +6,7 @@ def sample_image_along_spline(image, tck, width, length=None, width_distance=Non
     """Return an image "swath" of a given length and width in pixels,
     centered along a parametric spline.
 
-    Arguments:
+    Parameters:
     image: the image to sample from.
     tck: a parametric spline giving x, y coordinates to sample the image along.
     width: number of image samples to take perpendicular to the spline.
@@ -40,7 +40,7 @@ def sample_image_rect(image, size, center, rotation=0, order=3, **kwargs):
     """Return an image "swath" of a given (w, h) size, centered at a given (x, y)
     position and rotated by the specified degrees.
 
-    Arguments:
+    Parameters:
     image: the image to sample from.
     size: (w, h) in pixels of the output image
     center: (x, y) position in the input image that the sampling region is

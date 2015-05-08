@@ -3,7 +3,7 @@ import numpy
 def cumulative_distances(points, unit=True):
     """Return cumulative distances along a polyline.
 
-    Arguments:
+    Parameters:
     points: array of shape (n,m) consisting of n points in m dimensions
     unit: if True, return distances divided by total length of the curve,
           if False, return actual arc lengths."""
@@ -63,7 +63,7 @@ def angle_between_vectors(v_from, v_to):
 def find_perp(p0, p1, unit=True):
     """Return a perpendicular to line p0-p1, optionally of unit-length.
 
-    Arguments:
+    Parameters:
     p0 and p1 can be arrays of shape (m) each representing a single point in m dimensions,
     or of (n,m) containing n points in m dimensions. The returned array is either a
     array of shape (m) containing one or of shape (n,m) contaning n perpendiculars."""

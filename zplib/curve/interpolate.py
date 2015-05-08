@@ -7,7 +7,7 @@ def linear_resample_polyline(points, num_points):
     """Resample a piecewise linear curve to contain a given number of
     equally-spaced points, using linear interpolation.
 
-    Arguments:
+    Parameters:
     points: array of n points x,y; shape=(n,2)
     num_points: number of output points in array.
 
@@ -25,7 +25,7 @@ def spline_resample_polyline(points, num_points):
     equally-spaced points, using spline interpolation with automatically calculated
     smoothing.
 
-    Arguments:
+    Parameters:
     points: array of n points x,y; shape=(n,2)
     num_points: number of output points in array.
 
@@ -45,7 +45,7 @@ def spline_arc_length(tck, num_points=100):
 def fit_spline(points, smoothing=None, order=None):
     """Fit a parametric smoothing spline to a given set of x,y points.
 
-    Arguments:
+    Parameters:
     points: array of n points x,y; shape=(n,2)
     smoothing: smoothing factor: 0 requires perfect interpolation of the
         input points, at the cost of potentially high noise. Very large values
@@ -103,7 +103,7 @@ def insert_control_points(tck, num_points):
     """Return an equivalent spline with additional control points added for
     improved editability.
 
-    Arguments:
+    Parameters:
     tck: spline tuple
     num_points: total number of spline knots in returned spline tuple
 
@@ -205,7 +205,7 @@ def splrep(x, y, s, k):
 def splprep(u, x, s, k):
     """Return spline representation (t,c,k) of parametric curve x(u), with smoothing parameter s.
 
-    Arguments:
+    Parameters:
     u: array of shape (n) containing parametric positions
     x: array of shape (n, m) containing n points in m dimensions, which are the positions of the
        curve x(u) at each parametric value in the array u.
