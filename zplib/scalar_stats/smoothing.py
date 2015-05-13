@@ -3,20 +3,32 @@ import numpy
 def weighted_mean_and_std(x, w):
     """Return the mean and standard deviation of the data points x, weighted by
     the weights in w (which do not need to sum to 1)."""
-    w = numpy.asarray(w, dtype=float)
+    w = numpy.array(w, dtype=float)
+    w /= w.sum()
     x = numpy.asarray(x)
-    total_weight = w.sum()
-    weighted_mean = (w*x).sum()/total_weight
+    weighted_mean = (w*x).sum()
     squared_diff = (x - weighted_mean)**2
-    weighted_var = (w * squared_diff).sum() / total_weight
+    weighted_var = (w * squared_diff).sum()
     return weighted_mean, numpy.sqrt(weighted_var)
 
 def weighted_mean(x, w):
-    """Return the mean of the data points x, weighted by
-    the weights in w (which do not need to sum to 1)."""
-    w = numpy.asarray(w, dtype=float)
+    """Return the mean of the data points x, weighted by the weights in w
+    (which do not need to sum to 1)."""
+    w = numpy.array(w, dtype=float)
+    w /= w.sum()
     x = numpy.asarray(x)
-    return (w*x).sum()/w.sum()
+    return (w*x).sum()
+
+def _gaussian(x, mu=0, sigma=1):
+  return ( (1/numpy.sqrt(2 * numpy.pi * sigma**2) * numpy.exp(-0.5 * ((numpy.asarray(x)-mu)/sigma)**2)) )
+
+def gaussian_mean(x, y, p, std=1):
+    """Given a set of positions x where values y were observed, calculate
+    the gaussian-weighted mean of those values at a set of new positions p,
+    where the gaussian has a specied standard deviation.
+    """
+  return numpy.array([weighted_mean(y, _gaussian(x, mu=pp, sigma=std)) for pp in p])
+
 
 def savitzky_golay(data, kernel=11, order=4):
     """Apply Savitzky-Golay smoothing to the input data.
