@@ -27,7 +27,7 @@ def gaussian_mean(x, y, p, std=1):
     the gaussian-weighted mean of those values at a set of new positions p,
     where the gaussian has a specied standard deviation.
     """
-  return numpy.array([weighted_mean(y, _gaussian(x, mu=pp, sigma=std)) for pp in p])
+    return numpy.array([weighted_mean(y, _gaussian(x, mu=pp, sigma=std)) for pp in p])
 
 
 def savitzky_golay(data, kernel=11, order=4):
