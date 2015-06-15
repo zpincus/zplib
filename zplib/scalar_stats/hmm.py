@@ -93,7 +93,7 @@ def viterbi(p_observations_given_state, p_transition, p_initial):
         path = [path[s_from]+[s_to] for s_to, s_from in enumerate(best_from)]
         lp_state = lp_transition_t[best_from, states]
     last_state = numpy.argmax(lp_state)
-    return path[last_state]
+    return numpy.array(path[last_state])
 
 class ObservationProbabilityEstimator:
     def __init__(self, state_observations, continuous=True, pseudocount=1):
