@@ -48,3 +48,52 @@ def kd_distribution(data, x_min=None, x_max=None, num_points=200, survival=False
         ys = kd_estimator(xs)
     numpy.seterr(**err)
     return xs, ys, kd_estimator
+
+
+class FixedBandwidthKDE(kde.gaussian_kde):
+    """Gaussian KDE class that allows for a specified, data-independent bandwidth.
+
+    Provided a shape (d, n) array of n data points in d dimensions, or a shape
+    (n,) array of n 1-d data points, use Gaussian Kernel Density Estimation to
+    calculate the approximate probability distribution of those points.
+
+    scipy.stats.kde.gaussian_kde always defines the bandwidth (e.g. standard
+    deviation of the Gaussian, for the 1D case) as a scalar multiple of the data's
+    variance or covariance in the d-dimensional case. This is not always useful,
+    so this class allows for a fixed bandwidth to be specified in advance.
+
+    The bandwidth may be either a scalar, which will isotropically set the
+    covariance of the Gaussian to that value in all d dimensions, or a vector
+    of length d, which will provide the bandwidth in each dimension separately.
+
+    Alternately, a full covariance matrix may be specified via set_covariance()
+
+    """
+    def __init__(self, dataset, bandwidth=1):
+        self.dataset = numpy.atleast_2d(dataset)
+        if not self.dataset.size > 1:
+            raise ValueError("`dataset` input should have multiple elements.")
+        self.d, self.n = self.dataset.shape
+        self.set_bandwidth(bandwidth)
+
+    def set_bandwidth(self, bandwidth):
+        """Set the bandwidth to a scalar value or to a vector with one bandwidth
+        parameter per dimension."""
+        if numpy.isscalar(bandwidth):
+            covariance = numpy.eye(self.d) * bandwidth**2
+        else:
+            bandwidth = numpy.asarray(bandwidth)
+            if bandwidth.shape == (self.d,): # bandwidth is 1-d array of len self.d
+                covariance = numpy.diag(bandwidth**2)
+            else:
+                raise ValueError("'bandwidth' should be a scalar, a 1-d array of length d.")
+        self.set_covariance(covariance)
+
+    def set_covariance(self, covariance):
+        """Set a full covariance matrix for the Gaussian KDE."""
+        self.covariance = numpy.asarray(covariance)
+        if covariance.shape != (self.d, self.d):
+            raise ValueError("'covariance' must be a square 2d array of shape (d, d).")
+        self.inv_cov = numpy.linalg.inv(self.covariance)
+        self._norm_factor = numpy.sqrt(numpy.linalg.det(2*numpy.pi*self.covariance)) * self.n
+

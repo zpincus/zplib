@@ -89,14 +89,18 @@ def fit_spline(points, smoothing=None, order=None):
 
 
 def spline_interpolate(tck, num_points, derivative=0):
-    """Return num_points equally spaced along the given parametric spline.
+    """Return num_points equally spaced along the given spline.
 
     If derivative=0, then the points themselves will be given; if derivative>0
     then the derivatives at those points will be returned."""
     t, c, k = tck
     # t[-1] gives the maximum parameter value for the parametric curve
     output_positions = numpy.linspace(0, t[-1], num_points)
-    points = splpev(output_positions, t, c, k, der=derivative)
+    if c.ndim == 1:
+        evaluate = splev # non-parametric
+    else:
+        evaluate = splpev # parametric
+    points = evaluate(output_positions, t, c, k, der=derivative)
     return points
 
 def insert_control_points(tck, num_points):
