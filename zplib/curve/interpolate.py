@@ -35,12 +35,6 @@ def spline_resample_polyline(points, num_points):
     points_out = spline_interpolate(tck, num_points)
     return points_out, tck
 
-def spline_arc_length(tck, num_points=100):
-    """Approximate the arc-length of spline (t,c,k) by evaluating it at num_points
-    positions and calculating the length of the resulting polyline."""
-    points = spline_interpolate(tck, num_points)
-    distances = geometry.cumulative_distances(points, unit=False)
-    return distances[-1]
 
 def fit_spline(points, smoothing=None, order=None):
     """Fit a parametric smoothing spline to a given set of x,y points.
@@ -103,6 +97,7 @@ def spline_interpolate(tck, num_points, derivative=0):
     points = evaluate(output_positions, t, c, k, der=derivative)
     return points
 
+
 def insert_control_points(tck, num_points):
     """Return an equivalent spline with additional control points added for
     improved editability.
@@ -164,7 +159,6 @@ def spline_to_bezier(tck):
     return numpy.split(bezier_points, len(bezier_points) / desired_multiplicity, axis=0)
 
 
-
 def pinsert(t, c, k, u, m=1):
     """Insert m control points in spline (t,c,k) at parametric position u."""
     c = c.T
@@ -177,6 +171,7 @@ def pinsert(t, c, k, u, m=1):
         if ier: raise TypeError("An error occurred")
     return tt, out, k
 
+
 def insert(t, c, k, x, m=1):
     """Insert m control points in spline (t,c,k) at parametric position x."""
     per=False
@@ -184,6 +179,7 @@ def insert(t, c, k, x, m=1):
     if ier==10: raise ValueError("Invalid input data")
     if ier: raise TypeError("An error occurred")
     return t, c, k
+
 
 def splrep(x, y, s, k):
     """Return degree-k spline representation (t,c,k) of x,y points, with smoothing parameter s.
