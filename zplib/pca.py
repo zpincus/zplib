@@ -122,9 +122,9 @@ def _pca_eig(data):
     variances = values / len(data)
     stds = numpy.sqrt(variances)
     positions = numpy.dot(data, vectors)
-    with numpy.errstate(divide='ignore', invalid='ignore')
+    with numpy.errstate(divide='ignore', invalid='ignore'):
         norm_positions = positions / stds
-    norm_positions[!numpy.isfinite(norm_positions)] = 0
+    norm_positions[~numpy.isfinite(norm_positions)] = 0
     return pcs, variances, stds, positions, norm_positions
 
 def _symm_eig(a):
@@ -156,7 +156,7 @@ def _symm_eig(a):
         # main diagonal of s_hat
         with numpy.errstate(divide='ignore', invalid='ignore'):
             s_hat_diag = 1/numpy.sqrt(sst_diag)
-        s_hat_diag[!numpy.isfinite(s_hat_diag)] = 0
+        s_hat_diag[~numpy.isfinite(s_hat_diag)] = 0
         # s_hat_diag is a list of length m, a'u is shape (n, m), so we can just use
         # numpy's broadcasting instead of matrix multiplication, and only create
         # the upper m x m block of a'u, since that's all we'll use anyway...
