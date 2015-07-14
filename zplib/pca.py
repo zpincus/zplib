@@ -131,8 +131,8 @@ def _symm_eig(a):
     """Return the eigenvectors and eigenvalues of the symmetric matrix a'a. If
     a has more columns than rows, then that matrix will be rank-deficient,
     and the non-zero eigenvalues and eigenvectors can be more easily extracted
-    from the matrix aa', from the properties of the SVD:
-        if a of shape (m,n) has SVD u*s*v', then:
+    from the matrix aa'. From the properties of the SVD:
+        if matrix a of shape (m,n) has SVD u*s*v', then:
             a'a = v*s's*v'
             aa' = u*ss'*u'
         let s_hat, an array of shape (m,n), be such that s * s_hat = I(m,m)
@@ -165,9 +165,9 @@ def _symm_eig(a):
 
 def _eigh(m):
     """Return eigenvalues and eigenvectors of hermetian matrix m, sorted in
-    ascending order by eigenvalue."""
+    by largest eigenvalue first."""
     values, vectors = numpy.linalg.eigh(m)
-    order = numpy.flipud(values.argsort())
+    order = values.argsort()[::-1]
     return values[order], vectors[:,order]
 
 def _pca_svd(data):
