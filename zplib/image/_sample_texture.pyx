@@ -40,7 +40,7 @@ def sample_texture(ARR[:,:] image, mask=None, int size=1):
         ARR[:,:] textures_cy
         unsigned int stop_x, stop_y, skip_mask
         unsigned int i, j, ti, tj
-        char ii, jj
+        short ii, jj
         int io, jo
     image_py = numpy.asarray(image)
     stop_x, stop_y = image_py.shape
@@ -111,7 +111,7 @@ def sample_ar_texture(ARR[:,:] image, mask=None, int size=4):
         ARR[:,:] textures_cy
         unsigned int stop_x, stop_y, skip_mask
         unsigned int i, j, ti, tj
-        char ii, jj
+        short ii, jj
         int io, jo
     image_py = numpy.asarray(image)
     stop_x, stop_y = image_py.shape
