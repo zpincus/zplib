@@ -36,8 +36,9 @@ def spline_resample_polyline(points, num_points):
     return points_out, tck
 
 
-def fit_spline(points, smoothing=None, order=None):
-    """Fit a parametric smoothing spline to a given set of x,y points.
+def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
+    """Fit a parametric smoothing spline to a given set of x,y points. (Fits
+    x(p) and y(p) as functions for some parameter p.)
 
     Parameters:
     points: array of n points x,y; shape=(n,2)
@@ -47,13 +48,15 @@ def fit_spline(points, smoothing=None, order=None):
         appropriate value based on the scale of the points will be selected.
     order: The desired order of the spline. If None, will be 1 if there are
         three or fewer input points, and otherwise 3.
+    force_endpoints: if True (default), the endpoints of the spline will be set
+        to match the positions of the input data, regardless of smoothing.
 
     Returns a spline tuple (t,c,k) consisting of:
         t: the knots of the spline curve
         c: the x and y b-spline coefficients for each knot
         k: the order of the spline.
 
-    Note: smoothing factor "s" is an upper bound on the sum of all the distances
+    Note: the smoothing factor is an upper bound on the sum of all the distances
     between the original x,y points and the matching points on the smoothed
     spline representation."""
     points = numpy.asarray(points)
@@ -78,7 +81,53 @@ def fit_spline(points, smoothing=None, order=None):
     t, c, ier, msg = splprep(distances, points, s=smoothing, k=k)
     if ier > 3:
         raise RuntimeError(msg)
-    c[[0,-1]] = points[[0,-1]]
+    if force_endpoints:
+        c[[0,-1]] = points[[0,-1]]
+    return t,c,k
+
+def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=True):
+    """Fit a non-parametric smoothing spline to x,y points. (Fits a function
+    f(x) = y, or approximately so.)
+
+    Parameters:
+    x: array of shape=(n,). Must be monotonic
+    y: array of shape=(n,)
+    smoothing: smoothing factor: 0 requires perfect interpolation of the
+        input points, at the cost of potentially high noise. Very large values
+        will result in a low-order polynomial fit to the points. If None, an
+        appropriate value based on the scale of the points will be selected.
+    order: The desired order of the spline. If None, will be 1 if there are
+        three or fewer input points, and otherwise 3.
+    force_endpoints: if True (default), the endpoints of the spline will be set
+        to match the positions of the input data, regardless of smoothing.
+
+    Returns a spline tuple (t,c,k) consisting of:
+        t: the knots of the spline curve
+        c: the b-spline coefficient for each knot
+        k: the order of the spline.
+
+    Note: the smoothing factor is an upper bound on the sum of all the distances
+    between the original y values and the matching points on the smoothed
+    spline representation."""
+
+    points = numpy.asarray(points)
+    l = len(points)
+    if order is None:
+        if l < 4:
+            k = 1
+        else:
+            k = 3
+    else:
+        k = order
+
+    if smoothing is None:
+        smoothing = l * abs(x[0] - x[-1]) / 600.
+
+    t, c, ier, msg = splrep(x, y, s=smoothing, k=k)
+    if ier > 3:
+        raise RuntimeError(msg)
+    if force_endpoints:
+        c[[0,-1]] = y[[0,-1]]
     return t,c,k
 
 
