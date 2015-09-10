@@ -23,7 +23,7 @@ def remove_edge_objects(mask):
     Returns a new mask with the edge objects removed."""
     edge_objects = ndimage.binary_dilation(numpy.zeros_like(mask), mask=mask,
         border_value=1, iterations=-1)
-    return binary_mask & ~edge_objects
+    return mask & ~edge_objects
 
 def fill_small_radius_holes(mask, max_radius):
     """Fill holes in the mask that are up to max_radius (in terms of the number
