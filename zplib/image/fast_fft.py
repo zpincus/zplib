@@ -1,6 +1,7 @@
 import numpy
 import pyfftw
 import pickle
+import pathlib
 
 from . import fft
 
@@ -14,16 +15,40 @@ PRECISION_FFT = {
     64: numpy.complex128
 }
 
-def store_plan_hints(filename):
+def store_plan_hints(filename, locking=True, reload_first=True):
     """Store data about the best FFT plans for this computer.
 
     FFT planning can take quite a while. After planning, the knowledge about
     the best plan for a given computer and given transform parameters can be
     written to disk so that the next time, planning can make use of that
     knowledge.
+
+    Parameters:
+        filename: file to write hints to.
+        locking: if True, attempt to acquire an exclusive lock before writing
+            which can otherwise cause problems if multiple processes are
+            attempting to write to the same plan hints file.
+        reload_first: if True, if the file exists, load the plan hints before
+            storing them back. Safer in a multi-process setting where the hints
+            may be written by a different process.
+
     """
-    with open(filename, 'wb') as f:
+    filename = pathlib.Path(filename)
+    if not filename.exists():
+        filename.touch() # can't open a file for read/write updating if it doesn't exist...
+    with filename.open('r+b') as f:
+        if locking:
+            import fcntl
+            fcntl.flock(f, fcntl.LOCK_EX)
+        if reload_first:
+            try:
+                pyfftw.import_wisdom(pickle.load(f))
+            except:
+                pass
+            f.seek(0)
         pickle.dump(pyfftw.export_wisdom(), f)
+        if locking:
+            fcntl.flock(f, fcntl.LOCK_UN)
 
 def load_plan_hints(filename):
     """Load data about the best FFT plans for this computer.
