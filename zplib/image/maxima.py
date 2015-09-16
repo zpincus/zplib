@@ -32,4 +32,4 @@ def find_local_maxima(image, min_distance):
     label_indices = numpy.arange(1, num_regions+1)
     centroids = ndimage.center_of_mass(peak_mask, labeled_image, label_indices)
     values = ndimage.mean(image, labeled_image, label_indices)
-    return centroids, values
+    return numpy.array(centroids), values
