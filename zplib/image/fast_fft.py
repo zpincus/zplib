@@ -50,16 +50,29 @@ def store_plan_hints(filename, locking=True, reload_first=True):
         if locking:
             fcntl.flock(f, fcntl.LOCK_UN)
 
-def load_plan_hints(filename):
+def load_plan_hints(filename, locking=True):
     """Load data about the best FFT plans for this computer.
 
     FFT planning can take quite a while. After planning, the knowledge about
     the best plan for a given computer and given transform parameters can be
     written to disk so that the next time, planning can make use of that
     knowledge.
+
+    Parameters:
+        filename: file to read hints from.
+        locking: if True, attempt to acquire an exclusive lock before reading
+            which can otherwise cause problems if multiple processes are
+            attempting to write to the same plan hints file.
+
     """
     with open(filename, 'rb') as f:
+        if locking:
+            import fcntl
+            fcntl.flock(f, fcntl.LOCK_EX)
         pyfftw.import_wisdom(pickle.load(f))
+        if locking:
+            fcntl.flock(f, fcntl.LOCK_UN)
+
 
 class FilterBase:
     def __init__(self, shape, precision=32, threads=4, better_plan=False):
