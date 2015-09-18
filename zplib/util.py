@@ -31,7 +31,7 @@ def dump_csv(data, path):
     with path.open('w') as f:
         f.write('\n'.join(','.join(row) for row in data))
 
-def load_csv(csv):
+def load_csv(path):
     """Load a csv file to a list of lists."""
     path = pathlib.Path(path)
     data = []
