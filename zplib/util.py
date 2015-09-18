@@ -35,7 +35,7 @@ def load_csv(path):
     """Load a csv file to a list of lists."""
     path = pathlib.Path(path)
     data = []
-    with path.open('w') as f:
+    with path.open('r') as f:
         for line in f:
             data.append(line.split(','))
     return data
