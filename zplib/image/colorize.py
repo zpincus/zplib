@@ -9,9 +9,6 @@ def scale(array, min=None, max=None, gamma=1, output_max=255):
 
     If gamma is specified, a gamma-transform will be applied to the final array.
     """
-    if range is None:
-        range = None, None
-    min, max = range
     if min is None:
         min = array.min()
     if max is None:
