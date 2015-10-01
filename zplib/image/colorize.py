@@ -65,7 +65,7 @@ def multi_screen(arrays, max_possible=255):
     """Screen a list of arrays together. See 'screen()' for an explanation of the
     parameters"""
     b = arrays[0]
-    for a in images[1:]:
+    for a in arrays[1:]:
         b = screen(a, b, max_possible)
     return b
 
@@ -81,7 +81,7 @@ def composite(bf, fl_images, fl_colors, bf_color=(255,255,255)):
     Output: RGB image.
     """
     bf = color_tint(bf, bf_color).astype(numpy.uint8)
-    fl_images = (color_tint(fl, cl).astype(numpy.uint8) for fl, cl in zip(fl_images, fl_colors))
+    fl_images = [color_tint(fl, cl).astype(numpy.uint8) for fl, cl in zip(fl_images, fl_colors)]
     return multi_screen([bf] + fl_images)
 
 def interpolate_color(array, zero_color, one_color):
