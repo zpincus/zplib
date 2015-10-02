@@ -148,7 +148,7 @@ class SpatialFilter(FilterBase):
         assert image.shape == self.image_arr.shape
         self.image_arr[:] = image
         self.fft()
-        self.fft_arr.real *= self.filter_coeffs
+        self.fft_arr *= self.filter_coeffs
         self.ifft()
         return self.image_arr
 
