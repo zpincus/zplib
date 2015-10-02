@@ -36,7 +36,7 @@ def viterbi(p_observations_given_state, p_transition, p_initial):
     N, S = p_observations_given_state.shape
     assert p_transition.shape in {(S, S), (N-1, S, S)}
     if p_transition.shape == (S, S):
-        p_transition = numpy.array([p_transition for i in range(n-1)])
+        p_transition = numpy.array([p_transition for i in range(N-1)])
     assert numpy.allclose(numpy.sum(p_transition, axis=2), 1)
     assert p_initial.shape == (S,)
     assert numpy.allclose(numpy.sum(p_initial), 1)
