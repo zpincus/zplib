@@ -1,8 +1,8 @@
 import numpy
 from scipy.stats import kde
 
-def kd_distribution(data, x_min=None, x_max=None, num_points=200, survival=False):
-    """Use Kernel Density Estimation to estimate a density or survival function from data.
+def kd_distribution(data, x_min=None, x_max=None, num_points=200, CDF=False):
+    """Use Kernel Density Estimation to estimate a density or CDF from data.
 
     Parameters:
         data: 1-dimensional list or array of data points
@@ -12,8 +12,8 @@ def kd_distribution(data, x_min=None, x_max=None, num_points=200, survival=False
         num_points: number of points to evaluate the density along. These will NOT
             be evenly-spaced, but will be more dense in regions where the density
             function is larger.
-        survival: if True, return the survival function of the data. Otherwise return
-            the estimated density function.
+        CDF: if True, return the cumulative distribution function of the data.
+            Otherwise return the estimated density function.
 
     Returns: xs, ys, kd_estimator
         xs, ys are 1-d arrays containing the x and y values of the estimated density.
@@ -33,22 +33,20 @@ def kd_distribution(data, x_min=None, x_max=None, num_points=200, survival=False
         if x_max is None:
             x_max = data_max
     # ignore underflow -- KDE can underflow when estimating regions of very low density
-    err = numpy.seterr(under='ignore')
-    # use a two-tier approach to generating points along which to evaluate the density function
-    # (1) take linearly spaced samples between min and max. However, this fails for very
-    # narrow distributions that might not be adequately sampled so also,
-    # (2) generate sample points from the distribution itself.
-    linear_xs = numpy.linspace(x_min, x_max, num_points//2)
-    data_samples = kd_estimator.resample(num_points//2)[0]
-    data_samples = data_samples[(data_samples >= x_min) & (data_samples <= x_max)]
-    xs = numpy.sort(numpy.concatenate([linear_xs, data_samples]))
-    if survival:
-        ys = [1 - kd_estimator.integrate_box_1d(-numpy.inf, x) for x in xs]
-    else:
-        ys = kd_estimator(xs)
-    numpy.seterr(**err)
+    with numpy.errstate(under='ignore'):
+        # use a two-tier approach to generating points along which to evaluate the density function
+        # (1) take linearly spaced samples between min and max. However, this fails for very
+        # narrow distributions that might not be adequately sampled so also,
+        # (2) generate sample points from the distribution itself.
+        data_samples = kd_estimator.resample(num_points//2)[0]
+        linear_xs = numpy.linspace(x_min, x_max, num_points//2)
+        data_samples = data_samples[(data_samples >= x_min) & (data_samples <= x_max)]
+        xs = numpy.sort(numpy.concatenate([linear_xs, data_samples]))
+        if CDF:
+            ys = numpy.array([kd_estimator.integrate_box_1d(-numpy.inf, x) for x in xs])
+        else:
+            ys = kd_estimator(xs)
     return xs, ys, kd_estimator
-
 
 class FixedBandwidthKDE(kde.gaussian_kde):
     """Gaussian KDE class that allows for a specified, data-independent bandwidth.

@@ -15,8 +15,12 @@ def get_dir(path):
 def dump(path, **data_dict):
     """Dump the keyword arguments into a dictionary in a pickle file."""
     path = pathlib.Path(path)
-    with path.open('wb') as f:
-        pickle.dump(data_dict, f)
+    try:
+        with path.open('wb') as f:
+            pickle.dump(data_dict, f)
+    except:
+        if path.exists():
+            path.remove()
 
 def load(path):
     """Load a dictionary from a pickle file into a Data object for
@@ -28,8 +32,12 @@ def load(path):
 def dump_csv(data, path):
     """Write a list of lists to a csv file."""
     path = pathlib.Path(path)
-    with path.open('w') as f:
-        f.write('\n'.join(','.join(row) for row in data))
+    try:
+        with path.open('w') as f:
+            f.write('\n'.join(','.join(row) for row in data))
+    except:
+        if path.exists():
+            path.remove()
 
 def load_csv(path):
     """Load a csv file to a list of lists."""
