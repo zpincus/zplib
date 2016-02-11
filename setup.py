@@ -26,8 +26,8 @@ sample_texture = distutils.core.Extension('zplib.image._sample_texture',
     include_dirs = [numpy.get_include()]
 )
 
-distutils.core.setup(name = 'zplib',
-        version = '1.0',
-        description = 'zplib package',
-        ext_modules = ext_processor([sample_texture]),
-        packages = ['zplib', 'zplib.image', 'zplib.curve', 'zplib.scalar_stats'])
+distutils.core.setup(name='zplib',
+    version='1.0',
+    description='zplib package',
+    ext_modules=ext_processor([sample_texture]),
+    packages=['zplib', 'zplib.image', 'zplib.curve', 'zplib.scalar_stats'])

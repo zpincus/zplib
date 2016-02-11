@@ -24,10 +24,11 @@ def dump(path, **data_dict):
 
 def load(path):
     """Load a dictionary from a pickle file into a Data object for
-    attribute-style value lookup."""
+    attribute-style value lookup. The path to the original file
+    from which the data was loaded is stored in the '_path' attribute."""
     path = pathlib.Path(path)
     with path.open('rb') as f:
-        return Data(**pickle.load(f))
+        return Data(_path=path, **pickle.load(f))
 
 def dump_csv(data, path):
     """Write a list of lists to a csv file."""
@@ -45,7 +46,7 @@ def load_csv(path):
     data = []
     with path.open('r') as f:
         for line in f:
-            data.append(line.split(','))
+            data.append(line.strip().split(','))
     return data
 
 class Data:

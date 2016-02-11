@@ -34,6 +34,8 @@ def make_spatial_filter(shape, period_range, spacing=1.0, order=2, keep_dc=False
     images with. See documentation for 'spatial_filter()' for parameter definitions."""
     low_cutoff_period, high_cutoff_period = period_range
     nyquist = 2*spacing
+    if high_cutoff_period is not None and low_cutoff_period is not None and high_cutoff_period <= low_cutoff_period:
+        raise ValueError('the high cutoff period for a bandpass filter must be larger than the low cutoff period')
     if (high_cutoff_period is not None and high_cutoff_period < nyquist) or (low_cutoff_period is not None and low_cutoff_period < nyquist):
         raise ValueError('Period cutoffs must be either None, or values greater than {} (the Nyquist period).'.format(nyquist))
     if low_cutoff_period is None and high_cutoff_period is None:
@@ -73,6 +75,8 @@ def bandpass_butterworth_nd(low_cutoff, high_cutoff, shape, d=1.0, order=2):
     n-dimensional shape. The 'd' parameter is a scalar or list giving the sample
     spacing in all/each dimension, and the 'order' parameter controls the order
     of the butterworth filter."""
+    if low_cutoff >= high_cutoff:
+        raise ValueError('Low frequency cutoff must be < high frequency cutoff')
     return lowpass_butterworth_nd(high_cutoff, shape, d, order) * highpass_butterworth_nd(low_cutoff, shape, d, order)
 
 def filter_nd(array, filter_coeffs):
