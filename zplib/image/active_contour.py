@@ -74,8 +74,8 @@ class MaskNarrowBand:
         self.mask_neighborhood = make_neighborhood_view(mask > 0, pad_mode='constant', constant_values=0) # shape = image.shape + (3, 3)
         # make self.mask identical to mask, but be a view on the center pixels of mask_neighborhood
         self.mask = self.mask_neighborhood[:,:,1,1]
-        indices = numpy.dstack(numpy.indices(mask.shape)) # shape = mask.shape + (2,)
-        self.index_neighborhood = make_neighborhood_view(indices, pad_mode='edge') # shape = mask.shape + (3, 3, 2)
+        indices = numpy.dstack(numpy.indices(mask.shape)).astype(numpy.int32) # shape = mask.shape + (2,)
+        self.index_neighborhood = make_neighborhood_view(indices, pad_mode='constant', constant_values=-1) # shape = mask.shape + (3, 3, 2)
         inside_border_mask = mask ^ ndimage.binary_erosion(mask, self.S) # all True pixels with a False neighbor
         outside_border_mask = mask ^ ndimage.binary_dilation(mask, self.S) # all False pixels with a True neighbor
         self.inside_border_indices = indices[inside_border_mask] # shape = (inside_border_mask.sum(), 2)
@@ -119,8 +119,8 @@ class MaskNarrowBand:
         return changed_idx
 
     def _change_pixels(self, to_change, old_border_indices, new_value, new_border_indices, some_match_old_value):
-        # (1) Update changed pixels in the mask, and remove them from old_border_indices.
         change_indices = old_border_indices[to_change]
+        # prevent changes outside of the max_region_mask
         if new_value == True and self.max_region_mask is not None:
             in_region_mask = self.max_region_mask[tuple(change_indices.T)]
             change_indices = change_indices[in_region_mask]
@@ -135,6 +135,8 @@ class MaskNarrowBand:
             new_valued_neighbors = self.mask_neighborhood[change_idx]
         else:
             new_valued_neighbors = ~self.mask_neighborhood[change_idx]
+        # Now, update the mask and border indices
+        # (1) Update changed pixels in the mask, and remove them from old_border_indices.
         self.mask[change_idx] = new_value
         old_border_indices = old_border_indices[~to_change]
 
@@ -153,10 +155,18 @@ class MaskNarrowBand:
         else:
             old_valued_neighbors = changed_neighborhood
         old_valued_neighbor_indices = changed_neighborhood_indices[old_valued_neighbors]
+        if new_value == True:
+            # Exclude neighbors that are actually out-of-bounds "padding" pixels.
+            # Only relevant for changing values to True (i.e. moving pixels inside)
+            # because the out-of-bounds mask area is "False" and will thus otherwise
+            # get picked up.
+            # Out of bounds indices are -1 in the index_neighborhood array.
+            good_indices = ~(old_valued_neighbor_indices == -1).any(axis=1)
+            old_valued_neighbor_indices = old_valued_neighbor_indices[good_indices]
         # NB: many of the old_valued_neighbors are already in the old_border_indices...
         # If we kept a mask of the old_border pixels, we could look these up and
         # exclude them, which would make unique_indices() below a bit faster. However,
-        # that's a lot of bookkeeping, and doesn't always speed things up.
+        # that requires a lot of bookkeeping, so it doesn't speed things up in every case.
         old_border_indices = numpy.concatenate([old_border_indices, old_valued_neighbor_indices])
         old_border_indices = unique_indices(old_border_indices)
 
@@ -270,8 +280,8 @@ class BalloonForceMorphology(CurvatureMorphology):
                 to_dilate = self.balloon_direction[tuple(self.outside_border_indices.T)] >  0
                 self.dilate(border_mask=to_dilate)
 
-class ACWEMorphology(BalloonForceMorphology):
-    def __init__(self, mask, image, lambda_in=1, lambda_out=1, balloon_direction=0, max_region_mask=None):
+class ACWE(BalloonForceMorphology):
+    def __init__(self, mask, image, acwe_mask=None, lambda_in=1, lambda_out=1, balloon_direction=0, max_region_mask=None):
         """Class for Active Contours Without Edges region-growing.
 
         Relevant methods for region-growing are smooth(), balloon_force(),
@@ -282,6 +292,8 @@ class ACWEMorphology(BalloonForceMorphology):
             image: ndarray of same shape as mask containing image values. The
                 difference in mean image value inside and outside the region will
                 be maximized by acwe_step()
+            acwe_mask: region where ACWE updates will be applied. (Inside /
+                outside values will still be computed outside this region.)
             lambda_in, lambda_out: weights for comparing means of inside vs.
                 outside pixels. Generally 1 works properly.
             balloon_direction: scalar balloon force direction (-1, 0, 1) or
@@ -293,11 +305,14 @@ class ACWEMorphology(BalloonForceMorphology):
         # do work in _setup rather than __init__ to allow for complex multiple
         # inheritance from this class that super() alone can't handle. See
         # ActiveContour class.
-        self._setup(image, lambda_in, lambda_out)
+        self._setup(image, acwe_mask, lambda_in, lambda_out)
 
-    def _setup(self, image, lambda_in, lambda_out):
+    def _setup(self, image, acwe_mask, lambda_in, lambda_out):
         self.image = image
         assert self.image.shape == self.mask.shape
+        self.acwe_mask = acwe_mask
+        if acwe_mask is not None:
+            assert self.image.shape == self.acwe_mask.shape
         self.lambda_in = lambda_in
         self.lambda_out = lambda_out
         # note: self.mask is clipped to self.max_region_mask so the below works.
@@ -316,7 +331,7 @@ class ACWEMorphology(BalloonForceMorphology):
         if self.max_region_mask is None:
             assert numpy.allclose(self.outside_sum/self.outside_count, self.image[~self.mask].mean())
         else:
-            assert numpy.allclose(self.outside_sum/self.outside_count, self.image[(~self.mask) & self.max_region_mask].mean())
+            assert numpy.allclose(self.outside_sum/self.outside_count, self.image[self.max_region_mask & ~self.mask].mean())
 
     def _image_sum_count(self, changed_idx):
         count = len(changed_idx[0])
@@ -350,16 +365,135 @@ class ACWEMorphology(BalloonForceMorphology):
         for _ in range(iters):
             inside_mean = self.inside_sum / self.inside_count
             outside_mean = self.outside_sum / self.outside_count
-            inside_border_values = self.image[tuple(self.inside_border_indices.T)]
-            closer_to_outside = (self.lambda_in*(inside_border_values - inside_mean)**2 >
-                self.lambda_out*(inside_border_values - outside_mean)**2)
-            self.move_to_outside(closer_to_outside)
-            outside_border_values = self.image[tuple(self.outside_border_indices.T)]
-            closer_to_inside = (self.lambda_in*(outside_border_values - inside_mean)**2 <
-                self.lambda_out*(outside_border_values - outside_mean)**2)
-            self.move_to_inside(closer_to_inside)
+            self._acwe_step(outside_histogram > inside_histogram, self.inside_border_indices,
+                self.move_to_outside)
+            self._acwe_step(inside_histogram > outside_histogram, self.outside_border_indices,
+                self.move_to_inside)
 
-class GACMorphology(BalloonForceMorphology):
+    def acwe_step(self, iters=1):
+        """Apply 'iters' iterations of the Active Contours Without Edges step,
+        wherein the region inside the mask is made to have a mean value as different
+        from the region outside the mask as possible."""
+        for _ in range(iters):
+            if self.inside_count == 0 or self.outside_count == 0:
+                return
+            inside_mean = self.inside_sum / self.inside_count
+            outside_mean = self.outside_sum / self.outside_count
+            _acwe_step(inside_mean, outside_mean, lambda_in, lambda_out,
+                self.inside_border_indices, self.move_to_outside)
+            _acwe_step(outside_mean, inside_mean, lambda_out, lambda_in,
+                self.outside_border_indices, self.move_to_inside)
+
+    def _acwe_step(self, mean_from, mean_to, lambda_from, lambda_to, border_indices, move_operation):
+        idx, idx_mask = masked_idx(self.acwe_mask, border_indices)
+        border_values = self.image[idx]
+        to_move = (lambda_from*(border_values - mean_from)**2 >
+            lambda_to*(border_values - mean_to)**2)
+        move_operation(unmask_idx(idx_mask, to_move))
+
+class HistogramACWE(BalloonForceMorphology):
+    def __init__(self, mask, image, n_bins, acwe_mask=None, lambda_in=1, lambda_out=1,
+        balloon_direction=0, max_region_mask=None):
+        """Class for Active Contours Without Edges region-growing, using image
+        histograms rather than simply means.
+
+        Relevant methods for region-growing are smooth(), balloon_force(),
+        and acwe_step().
+
+        Parameters:
+            mask: mask containing the initial state of the region to evolve
+            image: ndarray of same shape as mask containing image values. The
+                difference in image histograms inside and outside the region will
+                be maximized by acwe_step()
+            n_bins: number of bins in the histograms
+            acwe_mask: region where ACWE updates will be applied. (Inside /
+                outside values will still be computed outside this region.)
+            balloon_direction: scalar balloon force direction (-1, 0, 1) or
+                image map of same values. Generally no balloon forces are needed
+                for ACWE.
+            max_region_mask: mask beyond which the region may not grow.
+        """
+        super().__init__(mask, balloon_direction, max_region_mask)
+        # do work in _setup rather than __init__ to allow for complex multiple
+        # inheritance from this class that super() alone can't handle. See
+        # ActiveContour class.
+        self._setup(image, n_bins, acwe_mask)
+
+    def _setup(self, image, n_bins, acwe_mask):
+        self.image = image
+        assert self.image.shape == self.mask.shape
+        self.acwe_mask = acwe_mask
+        if acwe_mask is not None:
+            assert self.image.shape == self.acwe_mask.shape
+        # note: self.mask is clipped to self.max_region_mask so the below works.
+        self.inside_count = self.mask.sum()
+        self.outside_count = numpy.product(self.mask[self.max_region_mask].shape) - self.inside_count
+        histogram, self.bins = numpy.histogram(self.image[self.max_region_mask], bins=n_bins)
+        self.inside_histogram = self._hist(self.mask)
+        self.outside_histogram = histogram - self.inside_histogram
+
+    def _hist(self, index_exp):
+        return numpy.histogram(self.image[index_exp], bins=self.bins)[0]
+
+    def _assert_invariants(self):
+        super()._assert_invariants()
+        assert self.inside_count == self.mask.sum()
+        assert self.outside_count == numpy.product(self.mask[self.max_region_mask].shape) - self.inside_count
+        assert (self.inside_histogram == self._hist(self.mask)).all()
+        assert (self.outside_histogram == self._hist(self.max_region_mask) - self.inside_histogram).all()
+        if self.max_region_mask is not None:
+            assert (self.outside_histogram == self._hist(self.max_region_mask & ~self.mask)).all()
+
+    def _image_histogram_count(self, changed_idx):
+        count = len(changed_idx[0])
+        hist = self._hist(changed_idx)
+        return count, hist
+
+    def move_to_outside(self, to_outside):
+        """to_outside must be a boolean mask on the inside border pixels
+        (in the order defined by inside_border_indices)."""
+        changed_idx = super().move_to_outside(to_outside)
+        count, hist = self._image_histogram_count(changed_idx)
+        self.inside_count -= count
+        self.outside_count += count
+        self.inside_histogram -= hist
+        self.outside_histogram += hist
+
+    def move_to_inside(self, to_inside):
+        """to_inside must be a boolean mask on the outside border pixels
+        (in the order defined by outside_border_indices)."""
+        changed_idx = super().move_to_inside(to_inside)
+        count, hist = self._image_histogram_count(changed_idx)
+        self.outside_count -= count
+        self.inside_count += count
+        self.outside_histogram -= hist
+        self.inside_histogram += hist
+
+    def acwe_step(self, iters=1):
+        """Apply 'iters' iterations of the Active Contours Without Edges step,
+        wherein the region inside the mask is made to have a mean value as different
+        from the region outside the mask as possible."""
+        for _ in range(iters):
+            if self.inside_count == 0 or self.outside_count == 0:
+                return
+            inside_histogram = self.inside_histogram / self.inside_count
+            outside_histogram = self.outside_histogram / self.outside_count
+            self._acwe_step(outside_histogram > inside_histogram, self.inside_border_indices,
+                self.move_to_outside)
+            self._acwe_step(inside_histogram > outside_histogram, self.outside_border_indices,
+                self.move_to_inside)
+
+    def _acwe_step(self, move_bins, border_indices, move_operation):
+        idx, idx_mask = masked_idx(self.acwe_mask, border_indices)
+        border_values = self.image[idx]
+        # NB: digitize and histogram treat last bin a bit differently...
+        border_value_bins = numpy.digitize(border_values, self.bins[:-1])-1
+        # move pixels if they map to bins that are better represented in hist1.
+        to_move = move_bins[border_value_bins]
+        move_operation(unmask_idx(idx_mask, to_move))
+
+
+class GAC(BalloonForceMorphology):
     def __init__(self, mask, advection_direction, advection_mask=None, balloon_direction=0, max_region_mask=None):
         """Class for Geodesic Active Contours region-growing.
 
@@ -404,11 +538,17 @@ class GACMorphology(BalloonForceMorphology):
             if self.balloon_direction is not None:
                 self.balloon_direction[advection_mask] = 0
 
+    def advect(self, iters=1):
+        """Apply 'iters' iterations of edge advection, whereby the region edges
+        are moved in the direction specified by advection_direction."""
+        for _ in range(iters):
+            # Move pixels on the inside border to the outside if advection*gradient sum > 0 (see _advect for interpretation of sum)
+            self._advect(self.inside_border_indices, numpy.greater, self.move_to_outside)
+            # Move pixels on the outside border to the inside if advection*gradient sum < 0
+            self._advect(self.outside_border_indices, numpy.less, self.move_to_inside)
+
     def _advect(self, border_indices, criterion, move_operation):
-        if self.advection_mask is not None:
-            mask = self.advection_mask[(tuple(border_indices.T))]
-            border_indices = border_indices[mask]
-        idx = tuple(border_indices.T)
+        idx, idx_mask = masked_idx(self.advection_mask, border_indices)
         neighbors = self.mask_neighborhood[idx].astype(numpy.int8)
         dx = neighbors[:,2,1] - neighbors[:,0,1]
         dy = neighbors[:,1,2] - neighbors[:,1,0]
@@ -422,27 +562,25 @@ class GACMorphology(BalloonForceMorphology):
         # To find this, see if sum of advection and gradient in each direction is > 0
         # (move pixels outside) or > 0 (move pixels inside).
         to_move = criterion(dx * adv_dx + dy * adv_dy, 0)
-        if self.advection_mask is not None:
-            mask[mask] = to_move
-            to_move = mask
-        move_operation(to_move)
+        move_operation(unmask_idx(idx_mask, to_move))
 
-    def advect(self, iters=1):
-        """Apply 'iters' iterations of edge advection, whereby the region edges
-        are moved in the direction specified by advection_direction."""
-        for _ in range(iters):
-            # Move pixels on the inside border to the outside if advection*gradient sum > 0 (see above for interpretation of sum)
-            self._advect(self.inside_border_indices, numpy.greater, self.move_to_outside)
-            # Move pixels on the outside border to the inside if advection*gradient sum < 0
-            self._advect(self.outside_border_indices, numpy.less, self.move_to_inside)
-
-class ActiveContour(GACMorphology, ACWEMorphology):
-    def __init__(self, mask, image, advection_direction, advection_mask=None,
-            lambda_in=1, lambda_out=1, balloon_direction=0, max_region_mask=None):
+class ActiveContour(GAC, ACWE):
+    def __init__(self, mask, image, advection_direction, acwe_mask=None,
+            advection_mask=None,lambda_in=1, lambda_out=1, balloon_direction=0,
+            max_region_mask=None):
         """See documentation for GACMorphology and ACWEMorphology for parameters."""
-        BalloonForceMorphology.__init__(self, balloon_direction, max_region_mask)
-        GACMorphology._setup(self, advection_direction, advection_mask)
-        ACWEMorphology._setup(self, image, lambda_in, lambda_out)
+        BalloonForceMorphology.__init__(self, mask, balloon_direction, max_region_mask)
+        GAC._setup(self, advection_direction, advection_mask)
+        ACWE._setup(self, image, acew_mask, lambda_in, lambda_out)
+
+class HistogramActiveContour(GAC, HistogramACWE):
+    def __init__(self, mask, image, n_bins, advection_direction, acwe_mask=None,
+            advection_mask=None, balloon_direction=0,
+            max_region_mask=None):
+        """See documentation for GACMorphology and ACWEMorphology for parameters."""
+        BalloonForceMorphology.__init__(self, mask, balloon_direction, max_region_mask)
+        GAC._setup(self, advection_direction, advection_mask)
+        HistogramACWE._setup(self, image, n_bins, acwe_mask)
 
 def diff_indices(indices, to_remove):
     assert indices.flags.c_contiguous
@@ -467,3 +605,37 @@ def make_neighborhood_view(image, pad_mode='edge', **pad_kws):
     shape = image.shape[:2] + (3,3) + image.shape[2:]
     strides = padded.strides[:2]*2 + padded.strides[2:]
     return numpy.ndarray(shape, padded.dtype, buffer=padded, strides=strides)
+
+def masked_idx(mask, indices):
+    """Return index expression for given indices, only if mask is also true there.
+
+    Parameters:
+        mask: True/False mask
+        indices: indices into array, of shape (n, mask.ndim)
+    Returns:
+        idx: numpy index expression for selected indices
+        idx_mask: mask of same length as indices, indicating which indices had true
+            values in the mask
+    """
+    if mask is None:
+        idx_mask = None
+    else:
+        idx_mask = mask[tuple(indices.T)]
+        indices = indices[idx_mask]
+    idx = tuple(indices.T)
+    return idx, idx_mask
+
+def unmask_idx(idx_mask, to_change):
+    """Return mask over all indices originally passed to masked_idx, marked
+    False where indices were originally masked out or where to_change parameter
+    is False.
+
+    Parameters:
+        idx_mask: as returned by masked_idx
+        to_change: mask over True values in idx_mask
+    """
+    if idx_mask is None:
+        return to_change
+    else:
+        idx_mask[idx_mask] = to_change
+        return idx_mask

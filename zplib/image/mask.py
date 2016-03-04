@@ -69,6 +69,9 @@ def get_areas(mask):
 def get_largest_object(mask):
     """Return a mask containing the single largest region in the input mask."""
     labels, region_indices, areas = get_areas(mask)
+    if len(region_indices) == 0:
+        # no regions in the first place...
+        return numpy.zeros(mask.shape, dtype=bool)
     largest = region_indices[areas.argmax()]
     return labels == largest
 
