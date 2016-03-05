@@ -7,7 +7,7 @@ def hysteresis_threshold(array, low_threshold, high_threshold):
     larger than high_threshold."""
     high_mask = array > high_threshold
     low_mask = array > low_threshold
-    return ndimage.binary_dilation(high_mask, mask=low_mask, iterations=-1)
+    return ndimage.binary_propagation(high_mask, mask=low_mask)
 
 def remove_small_radius_objects(mask, max_radius):
     """Remove objects from the mask up to max_radius (in terms of number of erosion
@@ -15,14 +15,14 @@ def remove_small_radius_objects(mask, max_radius):
 
     Returns a new mask with the small objects removed."""
     eroded = ndimage.binary_erosion(mask, iterations=max_radius)
-    return ndimage.binary_dilation(eroded, mask=mask, iterations=-1)
+    return ndimage.binary_propagation(eroded, mask=mask)
 
 def remove_edge_objects(mask):
     """Remove objects from the mask that are in contact with the edge.
 
     Returns a new mask with the edge objects removed."""
-    edge_objects = ndimage.binary_dilation(numpy.zeros_like(mask), mask=mask,
-        border_value=1, iterations=-1)
+    edge_objects = ndimage.binary_propagation(numpy.zeros_like(mask), mask=mask,
+        border_value=1)
     return mask & ~edge_objects
 
 def fill_small_radius_holes(mask, max_radius):
@@ -30,10 +30,10 @@ def fill_small_radius_holes(mask, max_radius):
     of dilation iterations required to fill them).
 
     Returns a new mask with the small holes filled."""
-    outside = ndimage.binary_dilation(numpy.zeros_like(mask), mask=~mask, iterations=-1, border_value=1)
+    outside = ndimage.binary_propagation(numpy.zeros_like(mask), mask=~mask, border_value=1)
     holes = ~(mask | outside)
     large_hole_centers = ndimage.binary_erosion(holes, iterations=max_radius+1)
-    large_holes = ndimage.binary_dilation(large_hole_centers, mask=holes, iterations=-1)
+    large_holes = ndimage.binary_propagation(large_hole_centers, mask=holes)
     small_holes = holes ^ large_holes
     return mask | small_holes
 
@@ -90,7 +90,7 @@ def fill_small_area_holes(mask, max_area):
     area).
 
     Returns a new mask with the small holes filled."""
-    outside = ndimage.binary_dilation(numpy.zeros_like(mask), mask=~mask, iterations=-1, border_value=1)
+    outside = ndimage.binary_propagation(numpy.zeros_like(mask), mask=~mask, border_value=1)
     holes = ~(mask | outside)
     labels, region_indices, areas = get_areas(holes)
     kill_labels = areas <= max_area
