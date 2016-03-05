@@ -377,9 +377,9 @@ class ACWE(BalloonForceMorphology):
                 return
             inside_mean = self.inside_sum / self.inside_count
             outside_mean = self.outside_sum / self.outside_count
-            _acwe_step(inside_mean, outside_mean, lambda_in, lambda_out,
+            self._acwe_step(inside_mean, outside_mean, self.lambda_in, self.lambda_out,
                 self.inside_border_indices, self.move_to_outside)
-            _acwe_step(outside_mean, inside_mean, lambda_out, lambda_in,
+            self._acwe_step(outside_mean, inside_mean, self.lambda_out, self.lambda_in,
                 self.outside_border_indices, self.move_to_inside)
 
     def _acwe_step(self, mean_from, mean_to, lambda_from, lambda_to, border_indices, move_operation):
