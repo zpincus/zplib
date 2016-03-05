@@ -572,7 +572,7 @@ class ActiveContour(GAC, ACWE):
         """See documentation for GACMorphology and ACWEMorphology for parameters."""
         BalloonForceMorphology.__init__(self, mask, balloon_direction, smooth_mask, max_region_mask)
         GAC._setup(self, advection_direction, advection_mask)
-        ACWE._setup(self, image, acew_mask, lambda_in, lambda_out)
+        ACWE._setup(self, image, acwe_mask, lambda_in, lambda_out)
 
 class HistogramActiveContour(GAC, HistogramACWE):
     def __init__(self, mask, image, n_bins, advection_direction, acwe_mask=None,

@@ -29,8 +29,7 @@ def canny(magnitude, sobel, low_threshold, high_threshold):
     horizontal = (abs_xsobel >= abs_ysobel) & has_grad
     vertical = (abs_xsobel <= abs_ysobel) & has_grad
 
-    magnitude_neighborhood = neighborhood.make_neighborhood_view(magnitude,
-        pad_mode='constant', constant_values=0)
+    magnitude_neighborhood = neighborhood.make_neighborhood_view(magnitude)
 
     #--------- Find local maxima --------------
     #
