@@ -58,6 +58,8 @@ import numpy
 import itertools
 from scipy import ndimage
 
+from . import neighborhood
+
 class MaskNarrowBand:
     """Track the inside and outside edge of a masked region, while allowing
     pixels from the inside edge to be moved outside and vice-versa.
@@ -71,11 +73,13 @@ class MaskNarrowBand:
         if max_region_mask is not None:
             mask = mask & max_region_mask
         self.max_region_mask = max_region_mask
-        self.mask_neighborhood = make_neighborhood_view(mask > 0, pad_mode='constant', constant_values=0) # shape = image.shape + (3, 3)
+        self.mask_neighborhood = neighborhood.make_neighborhood_view(mask > 0,
+            pad_mode='constant', constant_values=0) # shape = image.shape + (3, 3)
         # make self.mask identical to mask, but be a view on the center pixels of mask_neighborhood
         self.mask = self.mask_neighborhood[:,:,1,1]
         indices = numpy.dstack(numpy.indices(mask.shape)).astype(numpy.int32) # shape = mask.shape + (2,)
-        self.index_neighborhood = make_neighborhood_view(indices, pad_mode='constant', constant_values=-1) # shape = mask.shape + (3, 3, 2)
+        self.index_neighborhood = neighborhood.make_neighborhood_view(indices,
+            pad_mode='constant', constant_values=-1) # shape = mask.shape + (3, 3, 2)
         inside_border_mask = mask ^ ndimage.binary_erosion(mask, self.S) # all True pixels with a False neighbor
         outside_border_mask = mask ^ ndimage.binary_dilation(mask, self.S) # all False pixels with a True neighbor
         self.inside_border_indices = indices[inside_border_mask] # shape = (inside_border_mask.sum(), 2)
@@ -194,9 +198,12 @@ class CurvatureMorphology(MaskNarrowBand):
     steps (the latter from Marquez-Neila et al.) using a fast narrow-band approach.
     Base class for more sophisticated region-modifying steps: main function of interest
     is smooth().
+
+    smooth_mask, if not None, is region where smoothing may be applied.
     """
-    def __init__(self, mask, max_region_mask=None):
+    def __init__(self, mask, smooth_mask=None, max_region_mask=None):
         super().__init__(mask, max_region_mask)
+        self.smooth_mask = smooth_mask
         self._reset_smoothing()
 
     def _reset_smoothing(self):
@@ -224,21 +231,22 @@ class CurvatureMorphology(MaskNarrowBand):
             smoother(depth)
 
     def _SI(self):
-        inside_border = self.mask_neighborhood[tuple(self.inside_border_indices.T)]
+        idx, idx_mask = masked_idx(self.smooth_mask, self.inside_border_indices)
+        inside_border = self.mask_neighborhood[idx]
         on_a_line = ((inside_border[:,0,0] & inside_border[:,2,2]) |
                      (inside_border[:,1,0] & inside_border[:,1,2]) |
                      (inside_border[:,0,1] & inside_border[:,2,1]) |
                      (inside_border[:,2,0] & inside_border[:,0,2]))
-        self.move_to_outside(~on_a_line)
-
+        self.move_to_outside(unmask_idx(idx_mask, ~on_a_line))
 
     def _IS(self):
-        outside_border = ~self.mask_neighborhood[tuple(self.outside_border_indices.T)]
+        idx, idx_mask = masked_idx(self.smooth_mask, self.outside_border_indices)
+        outside_border = ~self.mask_neighborhood[idx]
         on_a_line = ((outside_border[:,0,0] & outside_border[:,2,2]) |
                      (outside_border[:,1,0] & outside_border[:,1,2]) |
                      (outside_border[:,0,1] & outside_border[:,2,1]) |
                      (outside_border[:,2,0] & outside_border[:,0,2]))
-        self.move_to_inside(~on_a_line)
+        self.move_to_inside(unmask_idx(idx_mask, ~on_a_line))
 
     def _SIoIS(self, depth=1):
         for i in range(depth):
@@ -257,10 +265,10 @@ class BalloonForceMorphology(CurvatureMorphology):
     Base-class to add balloon forces to more complex region-growing steps;
     rarely useful directly.
     """
-    def __init__(self, mask, balloon_direction, max_region_mask=None):
+    def __init__(self, mask, balloon_direction, smooth_mask=None, max_region_mask=None):
         """balloon_direction: (-1, 0, 1), or ndarray with same shape as 'mask'
         containing those values."""
-        super().__init__(mask, max_region_mask)
+        super().__init__(mask, smooth_mask, max_region_mask)
         if numpy.isscalar(balloon_direction):
             if balloon_direction == 0:
                 self.balloon_direction = None
@@ -281,7 +289,8 @@ class BalloonForceMorphology(CurvatureMorphology):
                 self.dilate(border_mask=to_dilate)
 
 class ACWE(BalloonForceMorphology):
-    def __init__(self, mask, image, acwe_mask=None, lambda_in=1, lambda_out=1, balloon_direction=0, max_region_mask=None):
+    def __init__(self, mask, image, acwe_mask=None, lambda_in=1, lambda_out=1,
+        balloon_direction=0, smooth_mask=None, max_region_mask=None):
         """Class for Active Contours Without Edges region-growing.
 
         Relevant methods for region-growing are smooth(), balloon_force(),
@@ -299,9 +308,10 @@ class ACWE(BalloonForceMorphology):
             balloon_direction: scalar balloon force direction (-1, 0, 1) or
                 image map of same values. Generally no balloon forces are needed
                 for ACWE.
+            smooth_mask: region in which smoothing may be applied.
             max_region_mask: mask beyond which the region may not grow.
         """
-        super().__init__(mask, balloon_direction, max_region_mask)
+        super().__init__(mask, balloon_direction, smooth_mask, max_region_mask)
         # do work in _setup rather than __init__ to allow for complex multiple
         # inheritance from this class that super() alone can't handle. See
         # ActiveContour class.
@@ -363,18 +373,6 @@ class ACWE(BalloonForceMorphology):
         wherein the region inside the mask is made to have a mean value as different
         from the region outside the mask as possible."""
         for _ in range(iters):
-            inside_mean = self.inside_sum / self.inside_count
-            outside_mean = self.outside_sum / self.outside_count
-            self._acwe_step(outside_histogram > inside_histogram, self.inside_border_indices,
-                self.move_to_outside)
-            self._acwe_step(inside_histogram > outside_histogram, self.outside_border_indices,
-                self.move_to_inside)
-
-    def acwe_step(self, iters=1):
-        """Apply 'iters' iterations of the Active Contours Without Edges step,
-        wherein the region inside the mask is made to have a mean value as different
-        from the region outside the mask as possible."""
-        for _ in range(iters):
             if self.inside_count == 0 or self.outside_count == 0:
                 return
             inside_mean = self.inside_sum / self.inside_count
@@ -393,7 +391,7 @@ class ACWE(BalloonForceMorphology):
 
 class HistogramACWE(BalloonForceMorphology):
     def __init__(self, mask, image, n_bins, acwe_mask=None, lambda_in=1, lambda_out=1,
-        balloon_direction=0, max_region_mask=None):
+        balloon_direction=0, smooth_mask=None, max_region_mask=None):
         """Class for Active Contours Without Edges region-growing, using image
         histograms rather than simply means.
 
@@ -411,9 +409,10 @@ class HistogramACWE(BalloonForceMorphology):
             balloon_direction: scalar balloon force direction (-1, 0, 1) or
                 image map of same values. Generally no balloon forces are needed
                 for ACWE.
+            smooth_mask: region in which smoothing may be applied.
             max_region_mask: mask beyond which the region may not grow.
         """
-        super().__init__(mask, balloon_direction, max_region_mask)
+        super().__init__(mask, balloon_direction, smooth_mask, max_region_mask)
         # do work in _setup rather than __init__ to allow for complex multiple
         # inheritance from this class that super() alone can't handle. See
         # ActiveContour class.
@@ -494,7 +493,8 @@ class HistogramACWE(BalloonForceMorphology):
 
 
 class GAC(BalloonForceMorphology):
-    def __init__(self, mask, advection_direction, advection_mask=None, balloon_direction=0, max_region_mask=None):
+    def __init__(self, mask, advection_direction, advection_mask=None,
+        balloon_direction=0, smooth_mask=None, max_region_mask=None):
         """Class for Geodesic Active Contours region-growing.
 
         Relevant methods for region-growing are smooth(), balloon_force(),
@@ -517,9 +517,10 @@ class GAC(BalloonForceMorphology):
                 image map of same values. If advection_mask is provided,
                 balloon_direction will be zeroed out in regions of where
                 advection is allowed.
+            smooth_mask: region in which smoothing may be applied.
             max_region_mask: mask beyond which the region may not grow.
         """
-        super().__init__(mask, balloon_direction, max_region_mask)
+        super().__init__(mask, balloon_direction, smooth_mask, max_region_mask)
         # do work in _setup rather than __init__ to allow for complex multiple
         # inheritance from this class that super() alone can't handle. See
         # ActiveContour class.
@@ -567,18 +568,18 @@ class GAC(BalloonForceMorphology):
 class ActiveContour(GAC, ACWE):
     def __init__(self, mask, image, advection_direction, acwe_mask=None,
             advection_mask=None,lambda_in=1, lambda_out=1, balloon_direction=0,
-            max_region_mask=None):
+            smooth_mask=None, max_region_mask=None):
         """See documentation for GACMorphology and ACWEMorphology for parameters."""
-        BalloonForceMorphology.__init__(self, mask, balloon_direction, max_region_mask)
+        BalloonForceMorphology.__init__(self, mask, balloon_direction, smooth_mask, max_region_mask)
         GAC._setup(self, advection_direction, advection_mask)
         ACWE._setup(self, image, acew_mask, lambda_in, lambda_out)
 
 class HistogramActiveContour(GAC, HistogramACWE):
     def __init__(self, mask, image, n_bins, advection_direction, acwe_mask=None,
             advection_mask=None, balloon_direction=0,
-            max_region_mask=None):
+            smooth_mask=None, max_region_mask=None):
         """See documentation for GACMorphology and ACWEMorphology for parameters."""
-        BalloonForceMorphology.__init__(self, mask, balloon_direction, max_region_mask)
+        BalloonForceMorphology.__init__(self, mask, balloon_direction, smooth_mask, max_region_mask)
         GAC._setup(self, advection_direction, advection_mask)
         HistogramACWE._setup(self, image, n_bins, acwe_mask)
 
@@ -598,13 +599,6 @@ def unique_indices(indices):
 
 def not_all(array, axis):
     return ~numpy.all(array, axis)
-
-def make_neighborhood_view(image, pad_mode='edge', **pad_kws):
-    padding = [(1, 1), (1, 1)] + [(0,0) for _ in range(image.ndim - 2)]
-    padded = numpy.pad(image, padding, mode=pad_mode, **pad_kws)
-    shape = image.shape[:2] + (3,3) + image.shape[2:]
-    strides = padded.strides[:2]*2 + padded.strides[2:]
-    return numpy.ndarray(shape, padded.dtype, buffer=padded, strides=strides)
 
 def masked_idx(mask, indices):
     """Return index expression for given indices, only if mask is also true there.
