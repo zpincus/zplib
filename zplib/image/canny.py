@@ -3,6 +3,11 @@ from scipy import ndimage
 
 from . import neighborhood
 
+def canny(image, sigma, low_threshold, high_threshold):
+    smoothed, magnitude, sobel = prepare_canny(image, sigma)
+    local_maxima = canny_local_maxima(magnitude, sobel)
+    return canny_hysteresis(local_maxima, magnitude, low_threshold, high_threshold)
+
 def prepare_canny(image, sigma):
     if sigma > 0:
         smoothed = ndimage.gaussian_filter(image.astype(numpy.float32), sigma)
@@ -13,7 +18,14 @@ def prepare_canny(image, sigma):
     magnitude = numpy.hypot(xsobel, ysobel)
     return smoothed, magnitude, (xsobel, ysobel)
 
-def canny(magnitude, sobel, low_threshold, high_threshold):
+def canny_hysteresis(local_maxima, magnitude, low_threshold, high_threshold):
+    # Hysteresis threshold
+    high_mask = local_maxima & (magnitude >= high_threshold)
+    low_mask = local_maxima & (magnitude >= low_threshold)
+    s = numpy.ones((3,3), dtype=bool)
+    return ndimage.binary_propagation(high_mask, mask=low_mask, structure=s)
+
+def canny_local_maxima(magnitude, sobel):
     # code taken and cleaned up from skimage
     xsobel, ysobel = sobel
     abs_xsobel = numpy.abs(xsobel)
@@ -61,11 +73,7 @@ def canny(magnitude, sobel, low_threshold, high_threshold):
     _interp_maxima(pts, (-1, 0), (-1, 1), magnitude_neighborhood, magnitude, local_maxima,
         abs_xsobel, abs_ysobel)
 
-    # Hysteresis threshold
-    high_mask = local_maxima & (magnitude >= high_threshold)
-    low_mask = local_maxima & (magnitude >= low_threshold)
-    s = numpy.ones((3,3), dtype=bool)
-    return ndimage.binary_propagation(high_mask, mask=low_mask, structure=s)
+    return local_maxima
 
 def _interp_maxima(pts, offset1, offset2, magnitude_neighborhood, magnitude, local_maxima,
     abs_xsobel, abs_ysobel):

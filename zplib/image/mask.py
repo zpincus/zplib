@@ -1,13 +1,13 @@
 import numpy
 from scipy import ndimage
 
-def hysteresis_threshold(array, low_threshold, high_threshold):
+def hysteresis_threshold(array, low_threshold, high_threshold, structure=None):
     """Create a mask that is True for regions in the input array which are
     entirely larger than low_threshold and which contain at least one element
     larger than high_threshold."""
     high_mask = array > high_threshold
     low_mask = array > low_threshold
-    return ndimage.binary_propagation(high_mask, mask=low_mask)
+    return ndimage.binary_propagation(high_mask, mask=low_mask, structure=structure)
 
 def remove_small_radius_objects(mask, max_radius):
     """Remove objects from the mask up to max_radius (in terms of number of erosion
@@ -51,7 +51,7 @@ def get_background(mask, offset_radius, background_radius):
     background = ndimage.binary_dilation(offset, iterations=background_radius)
     return background ^ offset
 
-def get_areas(mask):
+def get_areas(mask, structure=None):
     """Find the areas of the specific regions in a mask.
 
     Returns labels, region_indices, areas
@@ -61,29 +61,29 @@ def get_areas(mask):
         areas: number of pixels in each region, in the order specified by
             'region_indices'.
     """
-    labels, num_regions = ndimage.label(mask)
+    labels, num_regions = ndimage.label(mask, structure=structure)
     region_indices = numpy.arange(1, num_regions + 1)
     areas = ndimage.sum(numpy.ones_like(mask), labels=labels, index=region_indices)
     return labels, region_indices, areas
 
-def get_largest_object(mask):
+def get_largest_object(mask, structure=None):
     """Return a mask containing the single largest region in the input mask."""
-    labels, region_indices, areas = get_areas(mask)
+    labels, region_indices, areas = get_areas(mask, structure)
     if len(region_indices) == 0:
         # no regions in the first place...
         return numpy.zeros(mask.shape, dtype=bool)
     largest = region_indices[areas.argmax()]
     return labels == largest
 
-def remove_small_area_objects(mask, max_area):
+def remove_small_area_objects(mask, max_area, structure=None):
     """Remove objects from the mask that are smaller than 'max_area' (in terms of
     pixel-wise area).
 
     Returns a new mask with the small objects removed."""
-    labels, region_indices, areas = get_areas(mask)
+    labels, region_indices, areas = get_areas(mask, structure)
     keep_labels = areas > max_area
     keep_labels = numpy.concatenate(([0], keep_labels))
-    return keep_labels[labels]
+    return keep_labels[labels].astype(bool)
 
 def fill_small_area_holes(mask, max_area):
     """Fill holes in the mask that are up to 'max area' (in terms of pixel-wise

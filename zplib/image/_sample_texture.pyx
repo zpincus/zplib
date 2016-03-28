@@ -3,7 +3,6 @@ cimport numpy
 import numpy
 import random
 
-# determine datatypes for mcp
 ctypedef fused ARR:
     numpy.float32_t
     numpy.uint16_t

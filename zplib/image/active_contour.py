@@ -70,6 +70,7 @@ class MaskNarrowBand:
     S = ndimage.generate_binary_structure(2, 2)
 
     def __init__(self, mask, max_region_mask=None):
+        mask = mask.astype(bool)
         if max_region_mask is not None:
             mask = mask & max_region_mask
         self.max_region_mask = max_region_mask
@@ -87,6 +88,7 @@ class MaskNarrowBand:
         # NB: to index a numpy array with these indices, must turn shape(num_indices, 2) array
         # into tuple of two num_indices-length arrays, a la:
         # self.mask[tuple(self.outside_border_indices.T)]
+        self.changed = 0
 
     def _assert_invariants(self):
         """Test whether the border masks and indices are in sync, and whether the
@@ -132,6 +134,7 @@ class MaskNarrowBand:
         change_idx = tuple(change_indices.T)
         if len(change_indices) == 0:
             return old_border_indices, new_border_indices, change_idx
+        self.changed += len(change_indices)
         # Find out which neighbors of changing pixels have the new value.
         # If we did the below after changing the mask, we would also pick up the
         # center pixels, which have the new value.
@@ -389,8 +392,8 @@ class ACWE(BalloonForceMorphology):
             lambda_to*(border_values - mean_to)**2)
         move_operation(unmask_idx(idx_mask, to_move))
 
-class HistogramACWE(BalloonForceMorphology):
-    def __init__(self, mask, image, n_bins, acwe_mask=None, lambda_in=1, lambda_out=1,
+class BinnedACWE(BalloonForceMorphology):
+    def __init__(self, mask, image, acwe_mask=None, lambda_in=1, lambda_out=1,
         balloon_direction=0, smooth_mask=None, max_region_mask=None):
         """Class for Active Contours Without Edges region-growing, using image
         histograms rather than simply means.
@@ -403,7 +406,6 @@ class HistogramACWE(BalloonForceMorphology):
             image: ndarray of same shape as mask containing image values. The
                 difference in image histograms inside and outside the region will
                 be maximized by acwe_step()
-            n_bins: number of bins in the histograms
             acwe_mask: region where ACWE updates will be applied. (Inside /
                 outside values will still be computed outside this region.)
             balloon_direction: scalar balloon force direction (-1, 0, 1) or
@@ -416,9 +418,11 @@ class HistogramACWE(BalloonForceMorphology):
         # do work in _setup rather than __init__ to allow for complex multiple
         # inheritance from this class that super() alone can't handle. See
         # ActiveContour class.
-        self._setup(image, n_bins, acwe_mask)
+        self._setup(image, acwe_mask)
 
-    def _setup(self, image, n_bins, acwe_mask):
+    def _setup(self, image, acwe_mask):
+        if image.dtype == bool:
+            image = image.astype(numpy.uint8)
         self.image = image
         assert self.image.shape == self.mask.shape
         self.acwe_mask = acwe_mask
@@ -427,46 +431,47 @@ class HistogramACWE(BalloonForceMorphology):
         # note: self.mask is clipped to self.max_region_mask so the below works.
         self.inside_count = self.mask.sum()
         self.outside_count = numpy.product(self.mask[self.max_region_mask].shape) - self.inside_count
-        histogram, self.bins = numpy.histogram(self.image[self.max_region_mask], bins=n_bins)
-        self.inside_histogram = self._hist(self.mask)
-        self.outside_histogram = histogram - self.inside_histogram
+        bincounts = numpy.bincount(self.image[self.max_region_mask].flat)
+        self.bins = len(bincounts)
+        self.inside_bincounts = self._bincount(self.mask)
+        self.outside_bincounts = bincounts - self.inside_bincounts
 
-    def _hist(self, index_exp):
-        return numpy.histogram(self.image[index_exp], bins=self.bins)[0]
+    def _bincount(self, index_exp):
+        return numpy.bincount(self.image[index_exp], minlength=self.bins)
 
     def _assert_invariants(self):
         super()._assert_invariants()
         assert self.inside_count == self.mask.sum()
         assert self.outside_count == numpy.product(self.mask[self.max_region_mask].shape) - self.inside_count
-        assert (self.inside_histogram == self._hist(self.mask)).all()
-        assert (self.outside_histogram == self._hist(self.max_region_mask) - self.inside_histogram).all()
+        assert (self.inside_bincounts == self._bincount(self.mask)).all()
+        assert (self.outside_bincounts == self._bincount(self.max_region_mask) - self.inside_bincounts).all()
         if self.max_region_mask is not None:
-            assert (self.outside_histogram == self._hist(self.max_region_mask & ~self.mask)).all()
+            assert (self.outside_histogram == self._bincount(self.max_region_mask & ~self.mask)).all()
 
-    def _image_histogram_count(self, changed_idx):
+    def _image_bincount_count(self, changed_idx):
         count = len(changed_idx[0])
-        hist = self._hist(changed_idx)
-        return count, hist
+        bincounts = self._bincount(changed_idx)
+        return count, bincounts
 
     def move_to_outside(self, to_outside):
         """to_outside must be a boolean mask on the inside border pixels
         (in the order defined by inside_border_indices)."""
         changed_idx = super().move_to_outside(to_outside)
-        count, hist = self._image_histogram_count(changed_idx)
+        count, bincounts = self._image_bincount_count(changed_idx)
         self.inside_count -= count
         self.outside_count += count
-        self.inside_histogram -= hist
-        self.outside_histogram += hist
+        self.inside_bincounts -= bincounts
+        self.outside_bincounts += bincounts
 
     def move_to_inside(self, to_inside):
         """to_inside must be a boolean mask on the outside border pixels
         (in the order defined by outside_border_indices)."""
         changed_idx = super().move_to_inside(to_inside)
-        count, hist = self._image_histogram_count(changed_idx)
+        count, bincounts = self._image_bincount_count(changed_idx)
         self.outside_count -= count
         self.inside_count += count
-        self.outside_histogram -= hist
-        self.inside_histogram += hist
+        self.outside_bincounts -= bincounts
+        self.inside_bincounts += bincounts
 
     def acwe_step(self, iters=1):
         """Apply 'iters' iterations of the Active Contours Without Edges step,
@@ -475,20 +480,17 @@ class HistogramACWE(BalloonForceMorphology):
         for _ in range(iters):
             if self.inside_count == 0 or self.outside_count == 0:
                 return
-            inside_histogram = self.inside_histogram / self.inside_count
-            outside_histogram = self.outside_histogram / self.outside_count
-            self._acwe_step(outside_histogram > inside_histogram, self.inside_border_indices,
+            inside_rate = self.inside_bincounts / self.inside_count
+            outside_rate = self.outside_bincounts / self.outside_count
+            self._acwe_step(outside_rate > inside_rate, self.inside_border_indices,
                 self.move_to_outside)
-            self._acwe_step(inside_histogram > outside_histogram, self.outside_border_indices,
+            self._acwe_step(inside_rate > outside_rate, self.outside_border_indices,
                 self.move_to_inside)
 
     def _acwe_step(self, move_bins, border_indices, move_operation):
         idx, idx_mask = masked_idx(self.acwe_mask, border_indices)
         border_values = self.image[idx]
-        # NB: digitize and histogram treat last bin a bit differently...
-        border_value_bins = numpy.digitize(border_values, self.bins[:-1])-1
-        # move pixels if they map to bins that are better represented in hist1.
-        to_move = move_bins[border_value_bins]
+        to_move = move_bins[border_values]
         move_operation(unmask_idx(idx_mask, to_move))
 
 
@@ -531,7 +533,7 @@ class GAC(BalloonForceMorphology):
         # None balloon direction means no balloon force was asked for.
         if advection_mask is None:
             if self.balloon_direction is not None:
-                self.advection_mask = self.balloon_direction != 0
+                self.advection_mask = self.balloon_direction == 0
             else:
                 self.advection_mask = None
         else:
@@ -574,14 +576,20 @@ class ActiveContour(GAC, ACWE):
         GAC._setup(self, advection_direction, advection_mask)
         ACWE._setup(self, image, acwe_mask, lambda_in, lambda_out)
 
-class HistogramActiveContour(GAC, HistogramACWE):
-    def __init__(self, mask, image, n_bins, advection_direction, acwe_mask=None,
+class BinnedActiveContour(GAC, BinnedACWE):
+    def __init__(self, mask, image, advection_direction, acwe_mask=None,
             advection_mask=None, balloon_direction=0,
             smooth_mask=None, max_region_mask=None):
         """See documentation for GACMorphology and ACWEMorphology for parameters."""
         BalloonForceMorphology.__init__(self, mask, balloon_direction, smooth_mask, max_region_mask)
         GAC._setup(self, advection_direction, advection_mask)
-        HistogramACWE._setup(self, image, n_bins, acwe_mask)
+        BinnedACWE._setup(self, image, acwe_mask)
+
+def discretize_image(image, n_bins):
+    max = image.max()
+    min = image.min()
+    left_edges = numpy.linspace(min, max, n_bins)
+    return numpy.digitize(image, left_edges) - 1
 
 def diff_indices(indices, to_remove):
     assert indices.flags.c_contiguous

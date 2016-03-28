@@ -2125,7 +2125,7 @@ static PyObject *__pyx_tuple__42;
 static PyObject *__pyx_codeobj__35;
 static PyObject *__pyx_codeobj__37;
 
-/* "zplib/image/_sample_texture.pyx":14
+/* "zplib/image/_sample_texture.pyx":13
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_texture(ARR[:,:] image, mask=None, int size=1):             # <<<<<<<<<<<<<<
@@ -2182,11 +2182,11 @@ static PyObject *__pyx_pw_5zplib_5image_15_sample_texture_1sample_texture(PyObje
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_defaults)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__pyx_fused_cpdef") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__pyx_fused_cpdef") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -2203,7 +2203,7 @@ static PyObject *__pyx_pw_5zplib_5image_15_sample_texture_1sample_texture(PyObje
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("zplib.image._sample_texture.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2261,7 +2261,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("sample_texture", 0);
   __Pyx_INCREF(__pyx_v_kwargs);
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(Py_None);
   __Pyx_GIVEREF(Py_None);
@@ -2271,7 +2271,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
   __pyx_t_2 = (__pyx_v_kwargs == Py_None);
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_kwargs, __pyx_t_1);
     __pyx_t_1 = 0;
@@ -2282,13 +2282,13 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
     __Pyx_XGOTREF(__pyx_t_5);
     __Pyx_XGOTREF(__pyx_t_6);
     /*try:*/ {
-      __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+      __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_v_numpy = __pyx_t_1;
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_numpy, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_numpy, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      if (!(likely(PyType_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "type", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+      if (!(likely(PyType_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "type", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
       __pyx_v_ndarray = ((PyTypeObject*)__pyx_t_1);
       __pyx_t_1 = 0;
     }
@@ -2301,7 +2301,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
     __pyx_t_7 = PyErr_ExceptionMatches(__pyx_builtin_ImportError) || PyErr_ExceptionMatches(__pyx_builtin_AttributeError) || PyErr_ExceptionMatches(__pyx_builtin_TypeError);
     if (__pyx_t_7) {
       __Pyx_AddTraceback("zplib.image._sample_texture.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_8, &__pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_8, &__pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GOTREF(__pyx_t_9);
@@ -2331,14 +2331,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
   __pyx_v____pyx_uint8_t_is_signed = (((__pyx_t_5numpy_uint8_t)-1L) < 0);
   if (unlikely(__pyx_v_args == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_10 = PyTuple_GET_SIZE(((PyObject*)__pyx_v_args)); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_10 = PyTuple_GET_SIZE(((PyObject*)__pyx_v_args)); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_3 = ((0 < __pyx_t_10) != 0);
   if (__pyx_t_3) {
     if (unlikely(__pyx_v_args == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __pyx_t_9 = PyTuple_GET_ITEM(((PyObject*)__pyx_v_args), 0);
     __Pyx_INCREF(__pyx_t_9);
@@ -2348,16 +2348,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
   }
   if (unlikely(__pyx_v_kwargs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_3 = (__Pyx_PyDict_ContainsTF(__pyx_n_s_image, ((PyObject*)__pyx_v_kwargs), Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyDict_ContainsTF(__pyx_n_s_image, ((PyObject*)__pyx_v_kwargs), Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
     if (unlikely(__pyx_v_kwargs == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_9 = __Pyx_PyDict_GetItem(((PyObject*)__pyx_v_kwargs), __pyx_n_s_image); if (unlikely(__pyx_t_9 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_9 = __Pyx_PyDict_GetItem(((PyObject*)__pyx_v_kwargs), __pyx_n_s_image); if (unlikely(__pyx_t_9 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_v_arg = __pyx_t_9;
     __pyx_t_9 = 0;
@@ -2366,25 +2366,25 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
   /*else*/ {
     if (unlikely(__pyx_v_args == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_10 = PyTuple_GET_SIZE(((PyObject*)__pyx_v_args)); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_9 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_10 = PyTuple_GET_SIZE(((PyObject*)__pyx_v_args)); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = __Pyx_PyString_Format(__pyx_kp_s_Expected_at_least_d_arguments, __pyx_t_9); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyString_Format(__pyx_kp_s_Expected_at_least_d_arguments, __pyx_t_9); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_8);
     PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8);
     __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_Raise(__pyx_t_8, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_L14:;
   while (1) {
@@ -2394,7 +2394,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
       __pyx_t_3 = __Pyx_TypeCheck(__pyx_v_arg, __pyx_v_ndarray); 
       __pyx_t_2 = (__pyx_t_3 != 0);
       if (__pyx_t_2) {
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_dtype); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_dtype); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
         __pyx_v_dtype = __pyx_t_8;
         __pyx_t_8 = 0;
@@ -2402,14 +2402,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
       }
       __pyx_t_2 = (__pyx_memoryview_check(__pyx_v_arg) != 0);
       if (__pyx_t_2) {
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_base); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_base); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
         __pyx_v_arg_base = __pyx_t_8;
         __pyx_t_8 = 0;
         __pyx_t_2 = __Pyx_TypeCheck(__pyx_v_arg_base, __pyx_v_ndarray); 
         __pyx_t_3 = (__pyx_t_2 != 0);
         if (__pyx_t_3) {
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg_base, __pyx_n_s_dtype); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg_base, __pyx_n_s_dtype); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_8);
           __pyx_v_dtype = __pyx_t_8;
           __pyx_t_8 = 0;
@@ -2431,14 +2431,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
       __pyx_t_3 = (__pyx_v_dtype != Py_None);
       __pyx_t_2 = (__pyx_t_3 != 0);
       if (__pyx_t_2) {
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_dtype, __pyx_n_s_itemsize); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_dtype, __pyx_n_s_itemsize); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_v_itemsize = __pyx_t_10;
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_dtype, __pyx_n_s_kind); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_dtype, __pyx_n_s_kind); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_11 = __Pyx_PyObject_Ord(__pyx_t_8); if (unlikely(__pyx_t_11 == (long)(Py_UCS4)-1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_11 = __Pyx_PyObject_Ord(__pyx_t_8); if (unlikely(__pyx_t_11 == (long)(Py_UCS4)-1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_v_kind = __pyx_t_11;
         __pyx_v_dtype_signed = (__pyx_v_kind == 'i');
@@ -2451,9 +2451,9 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
             __pyx_t_2 = __pyx_t_3;
             goto __pyx_L22_bool_binop_done;
           }
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_3 = ((((Py_ssize_t)__pyx_t_10) == 2) != 0);
           if (__pyx_t_3) {
@@ -2465,7 +2465,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
           __pyx_t_2 = __pyx_t_3;
           __pyx_L22_bool_binop_done:;
           if (__pyx_t_2) {
-            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint16_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint16_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             goto __pyx_L16_break;
           }
           __pyx_t_3 = (((sizeof(__pyx_t_5numpy_uint8_t)) == __pyx_v_itemsize) != 0);
@@ -2474,9 +2474,9 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
             __pyx_t_2 = __pyx_t_3;
             goto __pyx_L26_bool_binop_done;
           }
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_3 = ((((Py_ssize_t)__pyx_t_10) == 2) != 0);
           if (__pyx_t_3) {
@@ -2488,7 +2488,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
           __pyx_t_2 = __pyx_t_3;
           __pyx_L26_bool_binop_done:;
           if (__pyx_t_2) {
-            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint8_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint8_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             goto __pyx_L16_break;
           }
           break;
@@ -2499,15 +2499,15 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
             __pyx_t_2 = __pyx_t_3;
             goto __pyx_L30_bool_binop_done;
           }
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_3 = ((((Py_ssize_t)__pyx_t_10) == 2) != 0);
           __pyx_t_2 = __pyx_t_3;
           __pyx_L30_bool_binop_done:;
           if (__pyx_t_2) {
-            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_float32_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_float32_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             goto __pyx_L16_break;
           }
           break;
@@ -2533,7 +2533,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
       __pyx_t_2 = (__pyx_v_memslice.memview != 0);
       if (__pyx_t_2) {
         __PYX_XDEC_MEMVIEW((&__pyx_v_memslice), 1);
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_float32_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_float32_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         goto __pyx_L16_break;
       }
       /*else*/ {
@@ -2554,7 +2554,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
       __pyx_t_2 = (__pyx_v_memslice.memview != 0);
       if (__pyx_t_2) {
         __PYX_XDEC_MEMVIEW((&__pyx_v_memslice), 1);
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint16_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint16_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         goto __pyx_L16_break;
       }
       /*else*/ {
@@ -2575,27 +2575,27 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
       __pyx_t_2 = (__pyx_v_memslice.memview != 0);
       if (__pyx_t_2) {
         __PYX_XDEC_MEMVIEW((&__pyx_v_memslice), 1);
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint8_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint8_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         goto __pyx_L16_break;
       }
       /*else*/ {
         PyErr_Clear();
       }
     }
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, Py_None, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, Py_None, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     goto __pyx_L16_break;
   }
   __pyx_L16_break:;
-  __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_v_candidates = ((PyObject*)__pyx_t_8);
   __pyx_t_8 = 0;
   __pyx_t_10 = 0;
   if (unlikely(__pyx_v_signatures == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_9 = __Pyx_dict_iterator(((PyObject*)__pyx_v_signatures), 1, ((PyObject *)NULL), (&__pyx_t_12), (&__pyx_t_7)); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_9 = __Pyx_dict_iterator(((PyObject*)__pyx_v_signatures), 1, ((PyObject *)NULL), (&__pyx_t_12), (&__pyx_t_7)); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_8);
   __pyx_t_8 = __pyx_t_9;
@@ -2603,23 +2603,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
   while (1) {
     __pyx_t_13 = __Pyx_dict_iter_next(__pyx_t_8, __pyx_t_12, &__pyx_t_10, &__pyx_t_9, NULL, NULL, __pyx_t_7);
     if (unlikely(__pyx_t_13 == 0)) break;
-    if (unlikely(__pyx_t_13 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__pyx_t_13 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_XDECREF_SET(__pyx_v_sig, __pyx_t_9);
     __pyx_t_9 = 0;
     __pyx_v_match_found = 0;
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_sig, __pyx_n_s_strip); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_sig, __pyx_n_s_strip); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_split); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_split); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_1);
@@ -2627,16 +2627,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
     __Pyx_GIVEREF(__pyx_v_dest_sig);
     PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_v_dest_sig);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
       __pyx_t_9 = __pyx_t_1; __Pyx_INCREF(__pyx_t_9); __pyx_t_14 = 0;
       __pyx_t_15 = NULL;
     } else {
-      __pyx_t_14 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_14 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_15 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_15 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     for (;;) {
@@ -2644,17 +2644,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
         if (likely(PyList_CheckExact(__pyx_t_9))) {
           if (__pyx_t_14 >= PyList_GET_SIZE(__pyx_t_9)) break;
           #if CYTHON_COMPILING_IN_CPYTHON
-          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_14); __Pyx_INCREF(__pyx_t_1); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_14); __Pyx_INCREF(__pyx_t_1); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           #else
-          __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         } else {
           if (__pyx_t_14 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
           #if CYTHON_COMPILING_IN_CPYTHON
-          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_14); __Pyx_INCREF(__pyx_t_1); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_14); __Pyx_INCREF(__pyx_t_1); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           #else
-          __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         }
@@ -2664,7 +2664,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           break;
         }
@@ -2680,7 +2680,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         #if CYTHON_COMPILING_IN_CPYTHON
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -2693,15 +2693,15 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
         __Pyx_INCREF(__pyx_t_16);
         __Pyx_INCREF(__pyx_t_17);
         #else
-        __pyx_t_16 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_16 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_16);
-        __pyx_t_17 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_17 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_17);
         #endif
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_18 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_18)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_18 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_18)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_18);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_19 = Py_TYPE(__pyx_t_18)->tp_iternext;
@@ -2709,7 +2709,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
         __Pyx_GOTREF(__pyx_t_16);
         index = 1; __pyx_t_17 = __pyx_t_19(__pyx_t_18); if (unlikely(!__pyx_t_17)) goto __pyx_L48_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_17);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_19(__pyx_t_18), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_19(__pyx_t_18), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __pyx_t_19 = NULL;
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
         goto __pyx_L49_unpacking_done;
@@ -2717,7 +2717,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
         __pyx_t_19 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __pyx_L49_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_v_src_type, __pyx_t_16);
@@ -2727,8 +2727,8 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
       __pyx_t_2 = (__pyx_v_dst_type != Py_None);
       __pyx_t_3 = (__pyx_t_2 != 0);
       if (__pyx_t_3) {
-        __pyx_t_1 = PyObject_RichCompare(__pyx_v_src_type, __pyx_v_dst_type, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = PyObject_RichCompare(__pyx_v_src_type, __pyx_v_dst_type, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (__pyx_t_3) {
           __pyx_v_match_found = 1;
@@ -2745,35 +2745,35 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_sample_texture(CYTHON_
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __pyx_t_3 = (__pyx_v_match_found != 0);
     if (__pyx_t_3) {
-      __pyx_t_20 = __Pyx_PyList_Append(__pyx_v_candidates, __pyx_v_sig); if (unlikely(__pyx_t_20 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_20 = __Pyx_PyList_Append(__pyx_v_candidates, __pyx_v_sig); if (unlikely(__pyx_t_20 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_3 = (__pyx_v_candidates != Py_None) && (PyList_GET_SIZE(__pyx_v_candidates) != 0);
   __pyx_t_2 = ((!__pyx_t_3) != 0);
   if (__pyx_t_2) {
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_Raise(__pyx_t_8, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_12 = PyList_GET_SIZE(__pyx_v_candidates); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_12 = PyList_GET_SIZE(__pyx_v_candidates); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = ((__pyx_t_12 > 1) != 0);
   if (__pyx_t_2) {
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_Raise(__pyx_t_8, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
     if (unlikely(__pyx_v_signatures == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_8 = __Pyx_PyDict_GetItem(((PyObject*)__pyx_v_signatures), PyList_GET_ITEM(__pyx_v_candidates, 0)); if (unlikely(__pyx_t_8 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_8 = __Pyx_PyDict_GetItem(((PyObject*)__pyx_v_signatures), PyList_GET_ITEM(__pyx_v_candidates, 0)); if (unlikely(__pyx_t_8 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_r = __pyx_t_8;
     __pyx_t_8 = 0;
@@ -2817,9 +2817,9 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_26__defaults__(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__defaults__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults3, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults3, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__Pyx_CyFunction_Defaults(__pyx_defaults3, __pyx_self)->__pyx_arg_mask);
   __Pyx_GIVEREF(__Pyx_CyFunction_Defaults(__pyx_defaults3, __pyx_self)->__pyx_arg_mask);
@@ -2827,7 +2827,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_26__defaults__(CYTHON_
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -2896,7 +2896,7 @@ static PyObject *__pyx_fuse_0__pyx_pw_5zplib_5image_15_sample_texture_5sample_te
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2907,17 +2907,17 @@ static PyObject *__pyx_fuse_0__pyx_pw_5zplib_5image_15_sample_texture_5sample_te
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_float32_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_float32_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     __pyx_v_mask = values[1];
     if (values[2]) {
-      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_size = __pyx_dynamic_args->__pyx_arg_size;
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sample_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("sample_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("zplib.image._sample_texture.sample_texture", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2980,7 +2980,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__pyx_fuse_0sample_texture", 0);
 
-  /* "zplib/image/_sample_texture.pyx":38
+  /* "zplib/image/_sample_texture.pyx":37
  *     """
  *     cdef:
  *         ARR[:,:] image_cy = image             # <<<<<<<<<<<<<<
@@ -2990,19 +2990,19 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
   __PYX_INC_MEMVIEW(&__pyx_v_image, 0);
   __pyx_v_image_cy = __pyx_v_image;
 
-  /* "zplib/image/_sample_texture.pyx":45
+  /* "zplib/image/_sample_texture.pyx":44
  *         short ii, jj
  *         int io, jo
  *     image_py = numpy.asarray(image)             # <<<<<<<<<<<<<<
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_float32_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_float32_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_float32_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_float32_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -3015,17 +3015,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -3033,14 +3033,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
   __pyx_v_image_py = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":46
+  /* "zplib/image/_sample_texture.pyx":45
  *         int io, jo
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape             # <<<<<<<<<<<<<<
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
     PyObject* sequence = __pyx_t_1;
@@ -3052,7 +3052,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -3065,15 +3065,15 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_5);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_6 = Py_TYPE(__pyx_t_2)->tp_iternext;
@@ -3081,7 +3081,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
     __Pyx_GOTREF(__pyx_t_3);
     index = 1; __pyx_t_5 = __pyx_t_6(__pyx_t_2); if (unlikely(!__pyx_t_5)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = NULL;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L4_unpacking_done;
@@ -3089,17 +3089,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_6 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_L4_unpacking_done:;
   }
-  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_stop_x = __pyx_t_7;
   __pyx_v_stop_y = __pyx_t_8;
 
-  /* "zplib/image/_sample_texture.pyx":47
+  /* "zplib/image/_sample_texture.pyx":46
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -3110,16 +3110,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
   __pyx_t_10 = (__pyx_t_9 != 0);
   if (__pyx_t_10) {
 
-    /* "zplib/image/_sample_texture.pyx":48
+    /* "zplib/image/_sample_texture.pyx":47
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)             # <<<<<<<<<<<<<<
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -3133,28 +3133,28 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
       }
     }
     if (!__pyx_t_3) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
     } else {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_mask);
       __Pyx_GIVEREF(__pyx_v_mask);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_mask);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -3168,23 +3168,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_1);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __PYX_INC_MEMVIEW(&__pyx_t_11, 0);
     __pyx_v_mask_cy = __pyx_t_11;
     __Pyx_INCREF(__pyx_t_1);
@@ -3192,7 +3192,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
     __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":49
+    /* "zplib/image/_sample_texture.pyx":48
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape             # <<<<<<<<<<<<<<
@@ -3201,23 +3201,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
  */
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (unlikely(!__pyx_t_10)) {
         PyErr_SetNone(PyExc_AssertionError);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
     }
     #endif
 
-    /* "zplib/image/_sample_texture.pyx":50
+    /* "zplib/image/_sample_texture.pyx":49
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0             # <<<<<<<<<<<<<<
@@ -3226,14 +3226,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
  */
     __pyx_v_skip_mask = 0;
 
-    /* "zplib/image/_sample_texture.pyx":51
+    /* "zplib/image/_sample_texture.pyx":50
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  *         tex_size = mask_py.sum()             # <<<<<<<<<<<<<<
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_1 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -3246,17 +3246,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
       }
     }
     if (__pyx_t_1) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_tex_size = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":47
+    /* "zplib/image/_sample_texture.pyx":46
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -3266,7 +3266,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
     goto __pyx_L5;
   }
 
-  /* "zplib/image/_sample_texture.pyx":53
+  /* "zplib/image/_sample_texture.pyx":52
  *         tex_size = mask_py.sum()
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this             # <<<<<<<<<<<<<<
@@ -3274,48 +3274,48 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
  *         tex_size = image_py.size
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
     PyList_SET_ITEM(__pyx_t_3, 0, __pyx_int_0);
-    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_3);
     PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_2);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_mask_cy = __pyx_t_11;
     __pyx_t_11.memview = NULL;
     __pyx_t_11.data = NULL;
 
-    /* "zplib/image/_sample_texture.pyx":54
+    /* "zplib/image/_sample_texture.pyx":53
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1             # <<<<<<<<<<<<<<
@@ -3324,35 +3324,35 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
  */
     __pyx_v_skip_mask = 1;
 
-    /* "zplib/image/_sample_texture.pyx":55
+    /* "zplib/image/_sample_texture.pyx":54
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1
  *         tex_size = image_py.size             # <<<<<<<<<<<<<<
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)
  *     ti = 0
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_tex_size = __pyx_t_2;
     __pyx_t_2 = 0;
   }
   __pyx_L5:;
 
-  /* "zplib/image/_sample_texture.pyx":56
+  /* "zplib/image/_sample_texture.pyx":55
  *         skip_mask = 1
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)             # <<<<<<<<<<<<<<
  *     ti = 0
  *     for i in range(stop_x):
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_long(__Pyx_pow_long(((2 * __pyx_v_size) + 1), 2)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_long(__Pyx_pow_long(((2 * __pyx_v_size) + 1), 2)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_tex_size);
   __Pyx_GIVEREF(__pyx_v_tex_size);
@@ -3360,24 +3360,24 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_float32_t(__pyx_t_5);
-  if (unlikely(!__pyx_t_12.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_12.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_INC_MEMVIEW(&__pyx_t_12, 0);
   __pyx_v_textures_cy = __pyx_t_12;
   __Pyx_INCREF(__pyx_t_5);
@@ -3385,7 +3385,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
   __PYX_XDEC_MEMVIEW(&__pyx_t_12, 1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":57
+  /* "zplib/image/_sample_texture.pyx":56
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)
  *     ti = 0             # <<<<<<<<<<<<<<
@@ -3394,7 +3394,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
  */
   __pyx_v_ti = 0;
 
-  /* "zplib/image/_sample_texture.pyx":58
+  /* "zplib/image/_sample_texture.pyx":57
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)
  *     ti = 0
  *     for i in range(stop_x):             # <<<<<<<<<<<<<<
@@ -3405,7 +3405,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_8; __pyx_t_7+=1) {
     __pyx_v_i = __pyx_t_7;
 
-    /* "zplib/image/_sample_texture.pyx":59
+    /* "zplib/image/_sample_texture.pyx":58
  *     ti = 0
  *     for i in range(stop_x):
  *         for j in range(stop_y):             # <<<<<<<<<<<<<<
@@ -3416,7 +3416,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
       __pyx_v_j = __pyx_t_14;
 
-      /* "zplib/image/_sample_texture.pyx":60
+      /* "zplib/image/_sample_texture.pyx":59
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask_cy[i, j]:             # <<<<<<<<<<<<<<
@@ -3436,7 +3436,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
       __pyx_L11_bool_binop_done:;
       if (__pyx_t_10) {
 
-        /* "zplib/image/_sample_texture.pyx":61
+        /* "zplib/image/_sample_texture.pyx":60
  *         for j in range(stop_y):
  *             if skip_mask or mask_cy[i, j]:
  *                 tj = 0             # <<<<<<<<<<<<<<
@@ -3445,7 +3445,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
  */
         __pyx_v_tj = 0;
 
-        /* "zplib/image/_sample_texture.pyx":62
+        /* "zplib/image/_sample_texture.pyx":61
  *             if skip_mask or mask_cy[i, j]:
  *                 tj = 0
  *                 for ii in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -3456,7 +3456,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
         for (__pyx_t_18 = (-__pyx_v_size); __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
           __pyx_v_ii = __pyx_t_18;
 
-          /* "zplib/image/_sample_texture.pyx":63
+          /* "zplib/image/_sample_texture.pyx":62
  *                 tj = 0
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -3467,7 +3467,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
           for (__pyx_t_20 = (-__pyx_v_size); __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
             __pyx_v_jj = __pyx_t_20;
 
-            /* "zplib/image/_sample_texture.pyx":64
+            /* "zplib/image/_sample_texture.pyx":63
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):
  *                         io = i+ii             # <<<<<<<<<<<<<<
@@ -3476,7 +3476,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
  */
             __pyx_v_io = (__pyx_v_i + __pyx_v_ii);
 
-            /* "zplib/image/_sample_texture.pyx":65
+            /* "zplib/image/_sample_texture.pyx":64
  *                     for jj in range(-size,size+1):
  *                         io = i+ii
  *                         jo = j+jj             # <<<<<<<<<<<<<<
@@ -3485,7 +3485,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
  */
             __pyx_v_jo = (__pyx_v_j + __pyx_v_jj);
 
-            /* "zplib/image/_sample_texture.pyx":66
+            /* "zplib/image/_sample_texture.pyx":65
  *                         io = i+ii
  *                         jo = j+jj
  *                         if io < 0: io = 0             # <<<<<<<<<<<<<<
@@ -3497,7 +3497,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
               __pyx_v_io = 0;
             }
 
-            /* "zplib/image/_sample_texture.pyx":67
+            /* "zplib/image/_sample_texture.pyx":66
  *                         jo = j+jj
  *                         if io < 0: io = 0
  *                         if io >= stop_x: io = stop_x-1             # <<<<<<<<<<<<<<
@@ -3509,7 +3509,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
               __pyx_v_io = (__pyx_v_stop_x - 1);
             }
 
-            /* "zplib/image/_sample_texture.pyx":68
+            /* "zplib/image/_sample_texture.pyx":67
  *                         if io < 0: io = 0
  *                         if io >= stop_x: io = stop_x-1
  *                         if jo < 0: jo = 0             # <<<<<<<<<<<<<<
@@ -3521,7 +3521,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
               __pyx_v_jo = 0;
             }
 
-            /* "zplib/image/_sample_texture.pyx":69
+            /* "zplib/image/_sample_texture.pyx":68
  *                         if io >= stop_x: io = stop_x-1
  *                         if jo < 0: jo = 0
  *                         if jo >= stop_y: jo = stop_y-1             # <<<<<<<<<<<<<<
@@ -3533,7 +3533,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
               __pyx_v_jo = (__pyx_v_stop_y - 1);
             }
 
-            /* "zplib/image/_sample_texture.pyx":70
+            /* "zplib/image/_sample_texture.pyx":69
  *                         if jo < 0: jo = 0
  *                         if jo >= stop_y: jo = stop_y-1
  *                         textures_cy[ti, tj] = image_cy[io, jo]             # <<<<<<<<<<<<<<
@@ -3546,7 +3546,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
             __pyx_t_24 = __pyx_v_tj;
             *((__pyx_t_5numpy_float32_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_textures_cy.data + __pyx_t_23 * __pyx_v_textures_cy.strides[0]) ) + __pyx_t_24 * __pyx_v_textures_cy.strides[1]) )) = (*((__pyx_t_5numpy_float32_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_image_cy.data + __pyx_t_21 * __pyx_v_image_cy.strides[0]) ) + __pyx_t_22 * __pyx_v_image_cy.strides[1]) )));
 
-            /* "zplib/image/_sample_texture.pyx":71
+            /* "zplib/image/_sample_texture.pyx":70
  *                         if jo >= stop_y: jo = stop_y-1
  *                         textures_cy[ti, tj] = image_cy[io, jo]
  *                         tj += 1             # <<<<<<<<<<<<<<
@@ -3557,7 +3557,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
           }
         }
 
-        /* "zplib/image/_sample_texture.pyx":72
+        /* "zplib/image/_sample_texture.pyx":71
  *                         textures_cy[ti, tj] = image_cy[io, jo]
  *                         tj += 1
  *                 ti += 1             # <<<<<<<<<<<<<<
@@ -3566,7 +3566,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
  */
         __pyx_v_ti = (__pyx_v_ti + 1);
 
-        /* "zplib/image/_sample_texture.pyx":60
+        /* "zplib/image/_sample_texture.pyx":59
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask_cy[i, j]:             # <<<<<<<<<<<<<<
@@ -3577,7 +3577,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
     }
   }
 
-  /* "zplib/image/_sample_texture.pyx":73
+  /* "zplib/image/_sample_texture.pyx":72
  *                         tj += 1
  *                 ti += 1
  *     return textures_py             # <<<<<<<<<<<<<<
@@ -3589,7 +3589,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_4sample_texture(CYTHON
   __pyx_r = __pyx_v_textures_py;
   goto __pyx_L0;
 
-  /* "zplib/image/_sample_texture.pyx":14
+  /* "zplib/image/_sample_texture.pyx":13
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_texture(ARR[:,:] image, mask=None, int size=1):             # <<<<<<<<<<<<<<
@@ -3632,9 +3632,9 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_28__defaults__(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__defaults__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults4, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults4, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__Pyx_CyFunction_Defaults(__pyx_defaults4, __pyx_self)->__pyx_arg_mask);
   __Pyx_GIVEREF(__Pyx_CyFunction_Defaults(__pyx_defaults4, __pyx_self)->__pyx_arg_mask);
@@ -3642,7 +3642,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_28__defaults__(CYTHON_
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -3711,7 +3711,7 @@ static PyObject *__pyx_fuse_1__pyx_pw_5zplib_5image_15_sample_texture_7sample_te
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3722,17 +3722,17 @@ static PyObject *__pyx_fuse_1__pyx_pw_5zplib_5image_15_sample_texture_7sample_te
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint16_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint16_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     __pyx_v_mask = values[1];
     if (values[2]) {
-      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_size = __pyx_dynamic_args->__pyx_arg_size;
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sample_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("sample_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("zplib.image._sample_texture.sample_texture", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3795,7 +3795,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__pyx_fuse_1sample_texture", 0);
 
-  /* "zplib/image/_sample_texture.pyx":38
+  /* "zplib/image/_sample_texture.pyx":37
  *     """
  *     cdef:
  *         ARR[:,:] image_cy = image             # <<<<<<<<<<<<<<
@@ -3805,19 +3805,19 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
   __PYX_INC_MEMVIEW(&__pyx_v_image, 0);
   __pyx_v_image_cy = __pyx_v_image;
 
-  /* "zplib/image/_sample_texture.pyx":45
+  /* "zplib/image/_sample_texture.pyx":44
  *         short ii, jj
  *         int io, jo
  *     image_py = numpy.asarray(image)             # <<<<<<<<<<<<<<
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_uint16_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_uint16_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_uint16_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_uint16_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -3830,17 +3830,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -3848,14 +3848,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
   __pyx_v_image_py = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":46
+  /* "zplib/image/_sample_texture.pyx":45
  *         int io, jo
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape             # <<<<<<<<<<<<<<
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
     PyObject* sequence = __pyx_t_1;
@@ -3867,7 +3867,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -3880,15 +3880,15 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_5);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_6 = Py_TYPE(__pyx_t_2)->tp_iternext;
@@ -3896,7 +3896,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
     __Pyx_GOTREF(__pyx_t_3);
     index = 1; __pyx_t_5 = __pyx_t_6(__pyx_t_2); if (unlikely(!__pyx_t_5)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = NULL;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L4_unpacking_done;
@@ -3904,17 +3904,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_6 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_L4_unpacking_done:;
   }
-  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_stop_x = __pyx_t_7;
   __pyx_v_stop_y = __pyx_t_8;
 
-  /* "zplib/image/_sample_texture.pyx":47
+  /* "zplib/image/_sample_texture.pyx":46
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -3925,16 +3925,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
   __pyx_t_10 = (__pyx_t_9 != 0);
   if (__pyx_t_10) {
 
-    /* "zplib/image/_sample_texture.pyx":48
+    /* "zplib/image/_sample_texture.pyx":47
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)             # <<<<<<<<<<<<<<
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -3948,28 +3948,28 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
       }
     }
     if (!__pyx_t_3) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
     } else {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_mask);
       __Pyx_GIVEREF(__pyx_v_mask);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_mask);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -3983,23 +3983,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_1);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __PYX_INC_MEMVIEW(&__pyx_t_11, 0);
     __pyx_v_mask_cy = __pyx_t_11;
     __Pyx_INCREF(__pyx_t_1);
@@ -4007,7 +4007,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
     __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":49
+    /* "zplib/image/_sample_texture.pyx":48
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape             # <<<<<<<<<<<<<<
@@ -4016,23 +4016,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
  */
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (unlikely(!__pyx_t_10)) {
         PyErr_SetNone(PyExc_AssertionError);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
     }
     #endif
 
-    /* "zplib/image/_sample_texture.pyx":50
+    /* "zplib/image/_sample_texture.pyx":49
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0             # <<<<<<<<<<<<<<
@@ -4041,14 +4041,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
  */
     __pyx_v_skip_mask = 0;
 
-    /* "zplib/image/_sample_texture.pyx":51
+    /* "zplib/image/_sample_texture.pyx":50
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  *         tex_size = mask_py.sum()             # <<<<<<<<<<<<<<
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_1 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -4061,17 +4061,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
       }
     }
     if (__pyx_t_1) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_tex_size = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":47
+    /* "zplib/image/_sample_texture.pyx":46
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -4081,7 +4081,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
     goto __pyx_L5;
   }
 
-  /* "zplib/image/_sample_texture.pyx":53
+  /* "zplib/image/_sample_texture.pyx":52
  *         tex_size = mask_py.sum()
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this             # <<<<<<<<<<<<<<
@@ -4089,48 +4089,48 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
  *         tex_size = image_py.size
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
     PyList_SET_ITEM(__pyx_t_3, 0, __pyx_int_0);
-    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_3);
     PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_2);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_mask_cy = __pyx_t_11;
     __pyx_t_11.memview = NULL;
     __pyx_t_11.data = NULL;
 
-    /* "zplib/image/_sample_texture.pyx":54
+    /* "zplib/image/_sample_texture.pyx":53
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1             # <<<<<<<<<<<<<<
@@ -4139,35 +4139,35 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
  */
     __pyx_v_skip_mask = 1;
 
-    /* "zplib/image/_sample_texture.pyx":55
+    /* "zplib/image/_sample_texture.pyx":54
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1
  *         tex_size = image_py.size             # <<<<<<<<<<<<<<
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)
  *     ti = 0
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_tex_size = __pyx_t_2;
     __pyx_t_2 = 0;
   }
   __pyx_L5:;
 
-  /* "zplib/image/_sample_texture.pyx":56
+  /* "zplib/image/_sample_texture.pyx":55
  *         skip_mask = 1
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)             # <<<<<<<<<<<<<<
  *     ti = 0
  *     for i in range(stop_x):
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_long(__Pyx_pow_long(((2 * __pyx_v_size) + 1), 2)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_long(__Pyx_pow_long(((2 * __pyx_v_size) + 1), 2)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_tex_size);
   __Pyx_GIVEREF(__pyx_v_tex_size);
@@ -4175,24 +4175,24 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint16_t(__pyx_t_5);
-  if (unlikely(!__pyx_t_12.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_12.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_INC_MEMVIEW(&__pyx_t_12, 0);
   __pyx_v_textures_cy = __pyx_t_12;
   __Pyx_INCREF(__pyx_t_5);
@@ -4200,7 +4200,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
   __PYX_XDEC_MEMVIEW(&__pyx_t_12, 1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":57
+  /* "zplib/image/_sample_texture.pyx":56
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)
  *     ti = 0             # <<<<<<<<<<<<<<
@@ -4209,7 +4209,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
  */
   __pyx_v_ti = 0;
 
-  /* "zplib/image/_sample_texture.pyx":58
+  /* "zplib/image/_sample_texture.pyx":57
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)
  *     ti = 0
  *     for i in range(stop_x):             # <<<<<<<<<<<<<<
@@ -4220,7 +4220,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_8; __pyx_t_7+=1) {
     __pyx_v_i = __pyx_t_7;
 
-    /* "zplib/image/_sample_texture.pyx":59
+    /* "zplib/image/_sample_texture.pyx":58
  *     ti = 0
  *     for i in range(stop_x):
  *         for j in range(stop_y):             # <<<<<<<<<<<<<<
@@ -4231,7 +4231,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
       __pyx_v_j = __pyx_t_14;
 
-      /* "zplib/image/_sample_texture.pyx":60
+      /* "zplib/image/_sample_texture.pyx":59
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask_cy[i, j]:             # <<<<<<<<<<<<<<
@@ -4251,7 +4251,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
       __pyx_L11_bool_binop_done:;
       if (__pyx_t_10) {
 
-        /* "zplib/image/_sample_texture.pyx":61
+        /* "zplib/image/_sample_texture.pyx":60
  *         for j in range(stop_y):
  *             if skip_mask or mask_cy[i, j]:
  *                 tj = 0             # <<<<<<<<<<<<<<
@@ -4260,7 +4260,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
  */
         __pyx_v_tj = 0;
 
-        /* "zplib/image/_sample_texture.pyx":62
+        /* "zplib/image/_sample_texture.pyx":61
  *             if skip_mask or mask_cy[i, j]:
  *                 tj = 0
  *                 for ii in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -4271,7 +4271,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
         for (__pyx_t_18 = (-__pyx_v_size); __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
           __pyx_v_ii = __pyx_t_18;
 
-          /* "zplib/image/_sample_texture.pyx":63
+          /* "zplib/image/_sample_texture.pyx":62
  *                 tj = 0
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -4282,7 +4282,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
           for (__pyx_t_20 = (-__pyx_v_size); __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
             __pyx_v_jj = __pyx_t_20;
 
-            /* "zplib/image/_sample_texture.pyx":64
+            /* "zplib/image/_sample_texture.pyx":63
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):
  *                         io = i+ii             # <<<<<<<<<<<<<<
@@ -4291,7 +4291,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
  */
             __pyx_v_io = (__pyx_v_i + __pyx_v_ii);
 
-            /* "zplib/image/_sample_texture.pyx":65
+            /* "zplib/image/_sample_texture.pyx":64
  *                     for jj in range(-size,size+1):
  *                         io = i+ii
  *                         jo = j+jj             # <<<<<<<<<<<<<<
@@ -4300,7 +4300,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
  */
             __pyx_v_jo = (__pyx_v_j + __pyx_v_jj);
 
-            /* "zplib/image/_sample_texture.pyx":66
+            /* "zplib/image/_sample_texture.pyx":65
  *                         io = i+ii
  *                         jo = j+jj
  *                         if io < 0: io = 0             # <<<<<<<<<<<<<<
@@ -4312,7 +4312,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
               __pyx_v_io = 0;
             }
 
-            /* "zplib/image/_sample_texture.pyx":67
+            /* "zplib/image/_sample_texture.pyx":66
  *                         jo = j+jj
  *                         if io < 0: io = 0
  *                         if io >= stop_x: io = stop_x-1             # <<<<<<<<<<<<<<
@@ -4324,7 +4324,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
               __pyx_v_io = (__pyx_v_stop_x - 1);
             }
 
-            /* "zplib/image/_sample_texture.pyx":68
+            /* "zplib/image/_sample_texture.pyx":67
  *                         if io < 0: io = 0
  *                         if io >= stop_x: io = stop_x-1
  *                         if jo < 0: jo = 0             # <<<<<<<<<<<<<<
@@ -4336,7 +4336,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
               __pyx_v_jo = 0;
             }
 
-            /* "zplib/image/_sample_texture.pyx":69
+            /* "zplib/image/_sample_texture.pyx":68
  *                         if io >= stop_x: io = stop_x-1
  *                         if jo < 0: jo = 0
  *                         if jo >= stop_y: jo = stop_y-1             # <<<<<<<<<<<<<<
@@ -4348,7 +4348,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
               __pyx_v_jo = (__pyx_v_stop_y - 1);
             }
 
-            /* "zplib/image/_sample_texture.pyx":70
+            /* "zplib/image/_sample_texture.pyx":69
  *                         if jo < 0: jo = 0
  *                         if jo >= stop_y: jo = stop_y-1
  *                         textures_cy[ti, tj] = image_cy[io, jo]             # <<<<<<<<<<<<<<
@@ -4361,7 +4361,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
             __pyx_t_24 = __pyx_v_tj;
             *((__pyx_t_5numpy_uint16_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_textures_cy.data + __pyx_t_23 * __pyx_v_textures_cy.strides[0]) ) + __pyx_t_24 * __pyx_v_textures_cy.strides[1]) )) = (*((__pyx_t_5numpy_uint16_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_image_cy.data + __pyx_t_21 * __pyx_v_image_cy.strides[0]) ) + __pyx_t_22 * __pyx_v_image_cy.strides[1]) )));
 
-            /* "zplib/image/_sample_texture.pyx":71
+            /* "zplib/image/_sample_texture.pyx":70
  *                         if jo >= stop_y: jo = stop_y-1
  *                         textures_cy[ti, tj] = image_cy[io, jo]
  *                         tj += 1             # <<<<<<<<<<<<<<
@@ -4372,7 +4372,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
           }
         }
 
-        /* "zplib/image/_sample_texture.pyx":72
+        /* "zplib/image/_sample_texture.pyx":71
  *                         textures_cy[ti, tj] = image_cy[io, jo]
  *                         tj += 1
  *                 ti += 1             # <<<<<<<<<<<<<<
@@ -4381,7 +4381,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
  */
         __pyx_v_ti = (__pyx_v_ti + 1);
 
-        /* "zplib/image/_sample_texture.pyx":60
+        /* "zplib/image/_sample_texture.pyx":59
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask_cy[i, j]:             # <<<<<<<<<<<<<<
@@ -4392,7 +4392,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
     }
   }
 
-  /* "zplib/image/_sample_texture.pyx":73
+  /* "zplib/image/_sample_texture.pyx":72
  *                         tj += 1
  *                 ti += 1
  *     return textures_py             # <<<<<<<<<<<<<<
@@ -4404,7 +4404,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_6sample_texture(CYTHON
   __pyx_r = __pyx_v_textures_py;
   goto __pyx_L0;
 
-  /* "zplib/image/_sample_texture.pyx":14
+  /* "zplib/image/_sample_texture.pyx":13
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_texture(ARR[:,:] image, mask=None, int size=1):             # <<<<<<<<<<<<<<
@@ -4447,9 +4447,9 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_30__defaults__(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__defaults__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults5, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults5, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__Pyx_CyFunction_Defaults(__pyx_defaults5, __pyx_self)->__pyx_arg_mask);
   __Pyx_GIVEREF(__Pyx_CyFunction_Defaults(__pyx_defaults5, __pyx_self)->__pyx_arg_mask);
@@ -4457,7 +4457,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_30__defaults__(CYTHON_
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -4526,7 +4526,7 @@ static PyObject *__pyx_fuse_2__pyx_pw_5zplib_5image_15_sample_texture_9sample_te
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -4537,17 +4537,17 @@ static PyObject *__pyx_fuse_2__pyx_pw_5zplib_5image_15_sample_texture_9sample_te
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     __pyx_v_mask = values[1];
     if (values[2]) {
-      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_size = __pyx_dynamic_args->__pyx_arg_size;
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sample_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("sample_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("zplib.image._sample_texture.sample_texture", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4609,7 +4609,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__pyx_fuse_2sample_texture", 0);
 
-  /* "zplib/image/_sample_texture.pyx":38
+  /* "zplib/image/_sample_texture.pyx":37
  *     """
  *     cdef:
  *         ARR[:,:] image_cy = image             # <<<<<<<<<<<<<<
@@ -4619,19 +4619,19 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
   __PYX_INC_MEMVIEW(&__pyx_v_image, 0);
   __pyx_v_image_cy = __pyx_v_image;
 
-  /* "zplib/image/_sample_texture.pyx":45
+  /* "zplib/image/_sample_texture.pyx":44
  *         short ii, jj
  *         int io, jo
  *     image_py = numpy.asarray(image)             # <<<<<<<<<<<<<<
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_uint8_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_uint8_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_uint8_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_uint8_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -4644,17 +4644,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -4662,14 +4662,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
   __pyx_v_image_py = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":46
+  /* "zplib/image/_sample_texture.pyx":45
  *         int io, jo
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape             # <<<<<<<<<<<<<<
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
     PyObject* sequence = __pyx_t_1;
@@ -4681,7 +4681,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -4694,15 +4694,15 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_5);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_6 = Py_TYPE(__pyx_t_2)->tp_iternext;
@@ -4710,7 +4710,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
     __Pyx_GOTREF(__pyx_t_3);
     index = 1; __pyx_t_5 = __pyx_t_6(__pyx_t_2); if (unlikely(!__pyx_t_5)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = NULL;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L4_unpacking_done;
@@ -4718,17 +4718,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_6 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_L4_unpacking_done:;
   }
-  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_stop_x = __pyx_t_7;
   __pyx_v_stop_y = __pyx_t_8;
 
-  /* "zplib/image/_sample_texture.pyx":47
+  /* "zplib/image/_sample_texture.pyx":46
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -4739,16 +4739,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
   __pyx_t_10 = (__pyx_t_9 != 0);
   if (__pyx_t_10) {
 
-    /* "zplib/image/_sample_texture.pyx":48
+    /* "zplib/image/_sample_texture.pyx":47
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)             # <<<<<<<<<<<<<<
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -4762,28 +4762,28 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
       }
     }
     if (!__pyx_t_3) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
     } else {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_mask);
       __Pyx_GIVEREF(__pyx_v_mask);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_mask);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -4797,23 +4797,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_1);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __PYX_INC_MEMVIEW(&__pyx_t_11, 0);
     __pyx_v_mask_cy = __pyx_t_11;
     __Pyx_INCREF(__pyx_t_1);
@@ -4821,7 +4821,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
     __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":49
+    /* "zplib/image/_sample_texture.pyx":48
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape             # <<<<<<<<<<<<<<
@@ -4830,23 +4830,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
  */
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (unlikely(!__pyx_t_10)) {
         PyErr_SetNone(PyExc_AssertionError);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
     }
     #endif
 
-    /* "zplib/image/_sample_texture.pyx":50
+    /* "zplib/image/_sample_texture.pyx":49
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0             # <<<<<<<<<<<<<<
@@ -4855,14 +4855,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
  */
     __pyx_v_skip_mask = 0;
 
-    /* "zplib/image/_sample_texture.pyx":51
+    /* "zplib/image/_sample_texture.pyx":50
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  *         tex_size = mask_py.sum()             # <<<<<<<<<<<<<<
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_1 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -4875,17 +4875,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
       }
     }
     if (__pyx_t_1) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_tex_size = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":47
+    /* "zplib/image/_sample_texture.pyx":46
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -4895,7 +4895,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
     goto __pyx_L5;
   }
 
-  /* "zplib/image/_sample_texture.pyx":53
+  /* "zplib/image/_sample_texture.pyx":52
  *         tex_size = mask_py.sum()
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this             # <<<<<<<<<<<<<<
@@ -4903,48 +4903,48 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
  *         tex_size = image_py.size
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
     PyList_SET_ITEM(__pyx_t_3, 0, __pyx_int_0);
-    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_3);
     PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_2);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_mask_cy = __pyx_t_11;
     __pyx_t_11.memview = NULL;
     __pyx_t_11.data = NULL;
 
-    /* "zplib/image/_sample_texture.pyx":54
+    /* "zplib/image/_sample_texture.pyx":53
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1             # <<<<<<<<<<<<<<
@@ -4953,35 +4953,35 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
  */
     __pyx_v_skip_mask = 1;
 
-    /* "zplib/image/_sample_texture.pyx":55
+    /* "zplib/image/_sample_texture.pyx":54
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1
  *         tex_size = image_py.size             # <<<<<<<<<<<<<<
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)
  *     ti = 0
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_tex_size = __pyx_t_2;
     __pyx_t_2 = 0;
   }
   __pyx_L5:;
 
-  /* "zplib/image/_sample_texture.pyx":56
+  /* "zplib/image/_sample_texture.pyx":55
  *         skip_mask = 1
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)             # <<<<<<<<<<<<<<
  *     ti = 0
  *     for i in range(stop_x):
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_long(__Pyx_pow_long(((2 * __pyx_v_size) + 1), 2)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_long(__Pyx_pow_long(((2 * __pyx_v_size) + 1), 2)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_tex_size);
   __Pyx_GIVEREF(__pyx_v_tex_size);
@@ -4989,24 +4989,24 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_5);
-  if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_INC_MEMVIEW(&__pyx_t_11, 0);
   __pyx_v_textures_cy = __pyx_t_11;
   __Pyx_INCREF(__pyx_t_5);
@@ -5014,7 +5014,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
   __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":57
+  /* "zplib/image/_sample_texture.pyx":56
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)
  *     ti = 0             # <<<<<<<<<<<<<<
@@ -5023,7 +5023,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
  */
   __pyx_v_ti = 0;
 
-  /* "zplib/image/_sample_texture.pyx":58
+  /* "zplib/image/_sample_texture.pyx":57
  *     textures_cy = textures_py = numpy.empty((tex_size, (2*size+1)**2), dtype=image_py.dtype)
  *     ti = 0
  *     for i in range(stop_x):             # <<<<<<<<<<<<<<
@@ -5034,7 +5034,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_8; __pyx_t_7+=1) {
     __pyx_v_i = __pyx_t_7;
 
-    /* "zplib/image/_sample_texture.pyx":59
+    /* "zplib/image/_sample_texture.pyx":58
  *     ti = 0
  *     for i in range(stop_x):
  *         for j in range(stop_y):             # <<<<<<<<<<<<<<
@@ -5045,7 +5045,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_j = __pyx_t_13;
 
-      /* "zplib/image/_sample_texture.pyx":60
+      /* "zplib/image/_sample_texture.pyx":59
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask_cy[i, j]:             # <<<<<<<<<<<<<<
@@ -5065,7 +5065,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
       __pyx_L11_bool_binop_done:;
       if (__pyx_t_10) {
 
-        /* "zplib/image/_sample_texture.pyx":61
+        /* "zplib/image/_sample_texture.pyx":60
  *         for j in range(stop_y):
  *             if skip_mask or mask_cy[i, j]:
  *                 tj = 0             # <<<<<<<<<<<<<<
@@ -5074,7 +5074,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
  */
         __pyx_v_tj = 0;
 
-        /* "zplib/image/_sample_texture.pyx":62
+        /* "zplib/image/_sample_texture.pyx":61
  *             if skip_mask or mask_cy[i, j]:
  *                 tj = 0
  *                 for ii in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -5085,7 +5085,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
         for (__pyx_t_17 = (-__pyx_v_size); __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
           __pyx_v_ii = __pyx_t_17;
 
-          /* "zplib/image/_sample_texture.pyx":63
+          /* "zplib/image/_sample_texture.pyx":62
  *                 tj = 0
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -5096,7 +5096,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
           for (__pyx_t_19 = (-__pyx_v_size); __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
             __pyx_v_jj = __pyx_t_19;
 
-            /* "zplib/image/_sample_texture.pyx":64
+            /* "zplib/image/_sample_texture.pyx":63
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):
  *                         io = i+ii             # <<<<<<<<<<<<<<
@@ -5105,7 +5105,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
  */
             __pyx_v_io = (__pyx_v_i + __pyx_v_ii);
 
-            /* "zplib/image/_sample_texture.pyx":65
+            /* "zplib/image/_sample_texture.pyx":64
  *                     for jj in range(-size,size+1):
  *                         io = i+ii
  *                         jo = j+jj             # <<<<<<<<<<<<<<
@@ -5114,7 +5114,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
  */
             __pyx_v_jo = (__pyx_v_j + __pyx_v_jj);
 
-            /* "zplib/image/_sample_texture.pyx":66
+            /* "zplib/image/_sample_texture.pyx":65
  *                         io = i+ii
  *                         jo = j+jj
  *                         if io < 0: io = 0             # <<<<<<<<<<<<<<
@@ -5126,7 +5126,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
               __pyx_v_io = 0;
             }
 
-            /* "zplib/image/_sample_texture.pyx":67
+            /* "zplib/image/_sample_texture.pyx":66
  *                         jo = j+jj
  *                         if io < 0: io = 0
  *                         if io >= stop_x: io = stop_x-1             # <<<<<<<<<<<<<<
@@ -5138,7 +5138,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
               __pyx_v_io = (__pyx_v_stop_x - 1);
             }
 
-            /* "zplib/image/_sample_texture.pyx":68
+            /* "zplib/image/_sample_texture.pyx":67
  *                         if io < 0: io = 0
  *                         if io >= stop_x: io = stop_x-1
  *                         if jo < 0: jo = 0             # <<<<<<<<<<<<<<
@@ -5150,7 +5150,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
               __pyx_v_jo = 0;
             }
 
-            /* "zplib/image/_sample_texture.pyx":69
+            /* "zplib/image/_sample_texture.pyx":68
  *                         if io >= stop_x: io = stop_x-1
  *                         if jo < 0: jo = 0
  *                         if jo >= stop_y: jo = stop_y-1             # <<<<<<<<<<<<<<
@@ -5162,7 +5162,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
               __pyx_v_jo = (__pyx_v_stop_y - 1);
             }
 
-            /* "zplib/image/_sample_texture.pyx":70
+            /* "zplib/image/_sample_texture.pyx":69
  *                         if jo < 0: jo = 0
  *                         if jo >= stop_y: jo = stop_y-1
  *                         textures_cy[ti, tj] = image_cy[io, jo]             # <<<<<<<<<<<<<<
@@ -5175,7 +5175,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
             __pyx_t_23 = __pyx_v_tj;
             *((__pyx_t_5numpy_uint8_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_textures_cy.data + __pyx_t_22 * __pyx_v_textures_cy.strides[0]) ) + __pyx_t_23 * __pyx_v_textures_cy.strides[1]) )) = (*((__pyx_t_5numpy_uint8_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_image_cy.data + __pyx_t_20 * __pyx_v_image_cy.strides[0]) ) + __pyx_t_21 * __pyx_v_image_cy.strides[1]) )));
 
-            /* "zplib/image/_sample_texture.pyx":71
+            /* "zplib/image/_sample_texture.pyx":70
  *                         if jo >= stop_y: jo = stop_y-1
  *                         textures_cy[ti, tj] = image_cy[io, jo]
  *                         tj += 1             # <<<<<<<<<<<<<<
@@ -5186,7 +5186,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
           }
         }
 
-        /* "zplib/image/_sample_texture.pyx":72
+        /* "zplib/image/_sample_texture.pyx":71
  *                         textures_cy[ti, tj] = image_cy[io, jo]
  *                         tj += 1
  *                 ti += 1             # <<<<<<<<<<<<<<
@@ -5195,7 +5195,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
  */
         __pyx_v_ti = (__pyx_v_ti + 1);
 
-        /* "zplib/image/_sample_texture.pyx":60
+        /* "zplib/image/_sample_texture.pyx":59
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask_cy[i, j]:             # <<<<<<<<<<<<<<
@@ -5206,7 +5206,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
     }
   }
 
-  /* "zplib/image/_sample_texture.pyx":73
+  /* "zplib/image/_sample_texture.pyx":72
  *                         tj += 1
  *                 ti += 1
  *     return textures_py             # <<<<<<<<<<<<<<
@@ -5218,7 +5218,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
   __pyx_r = __pyx_v_textures_py;
   goto __pyx_L0;
 
-  /* "zplib/image/_sample_texture.pyx":14
+  /* "zplib/image/_sample_texture.pyx":13
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_texture(ARR[:,:] image, mask=None, int size=1):             # <<<<<<<<<<<<<<
@@ -5250,7 +5250,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_8sample_texture(CYTHON
   return __pyx_r;
 }
 
-/* "zplib/image/_sample_texture.pyx":77
+/* "zplib/image/_sample_texture.pyx":76
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_ar_texture(ARR[:,:] image, mask=None, int size=4):             # <<<<<<<<<<<<<<
@@ -5307,11 +5307,11 @@ static PyObject *__pyx_pw_5zplib_5image_15_sample_texture_3sample_ar_texture(PyO
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_defaults)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__pyx_fused_cpdef") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__pyx_fused_cpdef") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -5328,7 +5328,7 @@ static PyObject *__pyx_pw_5zplib_5image_15_sample_texture_3sample_ar_texture(PyO
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("zplib.image._sample_texture.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5386,7 +5386,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("sample_ar_texture", 0);
   __Pyx_INCREF(__pyx_v_kwargs);
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(Py_None);
   __Pyx_GIVEREF(Py_None);
@@ -5396,7 +5396,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
   __pyx_t_2 = (__pyx_v_kwargs == Py_None);
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_kwargs, __pyx_t_1);
     __pyx_t_1 = 0;
@@ -5407,13 +5407,13 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
     __Pyx_XGOTREF(__pyx_t_5);
     __Pyx_XGOTREF(__pyx_t_6);
     /*try:*/ {
-      __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+      __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_v_numpy = __pyx_t_1;
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_numpy, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_numpy, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      if (!(likely(PyType_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "type", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+      if (!(likely(PyType_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "type", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
       __pyx_v_ndarray = ((PyTypeObject*)__pyx_t_1);
       __pyx_t_1 = 0;
     }
@@ -5426,7 +5426,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
     __pyx_t_7 = PyErr_ExceptionMatches(__pyx_builtin_ImportError) || PyErr_ExceptionMatches(__pyx_builtin_AttributeError) || PyErr_ExceptionMatches(__pyx_builtin_TypeError);
     if (__pyx_t_7) {
       __Pyx_AddTraceback("zplib.image._sample_texture.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_8, &__pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_8, &__pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GOTREF(__pyx_t_9);
@@ -5456,14 +5456,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
   __pyx_v____pyx_uint8_t_is_signed = (((__pyx_t_5numpy_uint8_t)-1L) < 0);
   if (unlikely(__pyx_v_args == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_10 = PyTuple_GET_SIZE(((PyObject*)__pyx_v_args)); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_10 = PyTuple_GET_SIZE(((PyObject*)__pyx_v_args)); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_3 = ((0 < __pyx_t_10) != 0);
   if (__pyx_t_3) {
     if (unlikely(__pyx_v_args == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __pyx_t_9 = PyTuple_GET_ITEM(((PyObject*)__pyx_v_args), 0);
     __Pyx_INCREF(__pyx_t_9);
@@ -5473,16 +5473,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
   }
   if (unlikely(__pyx_v_kwargs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_3 = (__Pyx_PyDict_ContainsTF(__pyx_n_s_image, ((PyObject*)__pyx_v_kwargs), Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyDict_ContainsTF(__pyx_n_s_image, ((PyObject*)__pyx_v_kwargs), Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
     if (unlikely(__pyx_v_kwargs == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_9 = __Pyx_PyDict_GetItem(((PyObject*)__pyx_v_kwargs), __pyx_n_s_image); if (unlikely(__pyx_t_9 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_9 = __Pyx_PyDict_GetItem(((PyObject*)__pyx_v_kwargs), __pyx_n_s_image); if (unlikely(__pyx_t_9 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_v_arg = __pyx_t_9;
     __pyx_t_9 = 0;
@@ -5491,25 +5491,25 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
   /*else*/ {
     if (unlikely(__pyx_v_args == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_10 = PyTuple_GET_SIZE(((PyObject*)__pyx_v_args)); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_9 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_10 = PyTuple_GET_SIZE(((PyObject*)__pyx_v_args)); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = __Pyx_PyString_Format(__pyx_kp_s_Expected_at_least_d_arguments, __pyx_t_9); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyString_Format(__pyx_kp_s_Expected_at_least_d_arguments, __pyx_t_9); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_8);
     PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8);
     __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_Raise(__pyx_t_8, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_L14:;
   while (1) {
@@ -5519,7 +5519,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
       __pyx_t_3 = __Pyx_TypeCheck(__pyx_v_arg, __pyx_v_ndarray); 
       __pyx_t_2 = (__pyx_t_3 != 0);
       if (__pyx_t_2) {
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_dtype); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_dtype); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
         __pyx_v_dtype = __pyx_t_8;
         __pyx_t_8 = 0;
@@ -5527,14 +5527,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
       }
       __pyx_t_2 = (__pyx_memoryview_check(__pyx_v_arg) != 0);
       if (__pyx_t_2) {
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_base); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_base); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
         __pyx_v_arg_base = __pyx_t_8;
         __pyx_t_8 = 0;
         __pyx_t_2 = __Pyx_TypeCheck(__pyx_v_arg_base, __pyx_v_ndarray); 
         __pyx_t_3 = (__pyx_t_2 != 0);
         if (__pyx_t_3) {
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg_base, __pyx_n_s_dtype); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg_base, __pyx_n_s_dtype); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_8);
           __pyx_v_dtype = __pyx_t_8;
           __pyx_t_8 = 0;
@@ -5556,14 +5556,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
       __pyx_t_3 = (__pyx_v_dtype != Py_None);
       __pyx_t_2 = (__pyx_t_3 != 0);
       if (__pyx_t_2) {
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_dtype, __pyx_n_s_itemsize); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_dtype, __pyx_n_s_itemsize); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_v_itemsize = __pyx_t_10;
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_dtype, __pyx_n_s_kind); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_dtype, __pyx_n_s_kind); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_11 = __Pyx_PyObject_Ord(__pyx_t_8); if (unlikely(__pyx_t_11 == (long)(Py_UCS4)-1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_11 = __Pyx_PyObject_Ord(__pyx_t_8); if (unlikely(__pyx_t_11 == (long)(Py_UCS4)-1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_v_kind = __pyx_t_11;
         __pyx_v_dtype_signed = (__pyx_v_kind == 'i');
@@ -5576,9 +5576,9 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
             __pyx_t_2 = __pyx_t_3;
             goto __pyx_L22_bool_binop_done;
           }
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_3 = ((((Py_ssize_t)__pyx_t_10) == 2) != 0);
           if (__pyx_t_3) {
@@ -5590,7 +5590,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
           __pyx_t_2 = __pyx_t_3;
           __pyx_L22_bool_binop_done:;
           if (__pyx_t_2) {
-            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint16_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint16_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             goto __pyx_L16_break;
           }
           __pyx_t_3 = (((sizeof(__pyx_t_5numpy_uint8_t)) == __pyx_v_itemsize) != 0);
@@ -5599,9 +5599,9 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
             __pyx_t_2 = __pyx_t_3;
             goto __pyx_L26_bool_binop_done;
           }
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_3 = ((((Py_ssize_t)__pyx_t_10) == 2) != 0);
           if (__pyx_t_3) {
@@ -5613,7 +5613,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
           __pyx_t_2 = __pyx_t_3;
           __pyx_L26_bool_binop_done:;
           if (__pyx_t_2) {
-            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint8_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint8_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             goto __pyx_L16_break;
           }
           break;
@@ -5624,15 +5624,15 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
             __pyx_t_2 = __pyx_t_3;
             goto __pyx_L30_bool_binop_done;
           }
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_arg, __pyx_n_s_ndim); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_3 = ((((Py_ssize_t)__pyx_t_10) == 2) != 0);
           __pyx_t_2 = __pyx_t_3;
           __pyx_L30_bool_binop_done:;
           if (__pyx_t_2) {
-            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_float32_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_float32_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             goto __pyx_L16_break;
           }
           break;
@@ -5658,7 +5658,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
       __pyx_t_2 = (__pyx_v_memslice.memview != 0);
       if (__pyx_t_2) {
         __PYX_XDEC_MEMVIEW((&__pyx_v_memslice), 1);
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_float32_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_float32_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         goto __pyx_L16_break;
       }
       /*else*/ {
@@ -5679,7 +5679,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
       __pyx_t_2 = (__pyx_v_memslice.memview != 0);
       if (__pyx_t_2) {
         __PYX_XDEC_MEMVIEW((&__pyx_v_memslice), 1);
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint16_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint16_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         goto __pyx_L16_break;
       }
       /*else*/ {
@@ -5700,27 +5700,27 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
       __pyx_t_2 = (__pyx_v_memslice.memview != 0);
       if (__pyx_t_2) {
         __PYX_XDEC_MEMVIEW((&__pyx_v_memslice), 1);
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint8_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, __pyx_n_s_uint8_t, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         goto __pyx_L16_break;
       }
       /*else*/ {
         PyErr_Clear();
       }
     }
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, Py_None, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_dest_sig, 0, Py_None, long, 1, __Pyx_PyInt_From_long, 1, 0, 0) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     goto __pyx_L16_break;
   }
   __pyx_L16_break:;
-  __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_v_candidates = ((PyObject*)__pyx_t_8);
   __pyx_t_8 = 0;
   __pyx_t_10 = 0;
   if (unlikely(__pyx_v_signatures == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_9 = __Pyx_dict_iterator(((PyObject*)__pyx_v_signatures), 1, ((PyObject *)NULL), (&__pyx_t_12), (&__pyx_t_7)); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_9 = __Pyx_dict_iterator(((PyObject*)__pyx_v_signatures), 1, ((PyObject *)NULL), (&__pyx_t_12), (&__pyx_t_7)); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_8);
   __pyx_t_8 = __pyx_t_9;
@@ -5728,23 +5728,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
   while (1) {
     __pyx_t_13 = __Pyx_dict_iter_next(__pyx_t_8, __pyx_t_12, &__pyx_t_10, &__pyx_t_9, NULL, NULL, __pyx_t_7);
     if (unlikely(__pyx_t_13 == 0)) break;
-    if (unlikely(__pyx_t_13 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__pyx_t_13 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_XDECREF_SET(__pyx_v_sig, __pyx_t_9);
     __pyx_t_9 = 0;
     __pyx_v_match_found = 0;
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_sig, __pyx_n_s_strip); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_sig, __pyx_n_s_strip); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_split); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_split); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_1);
@@ -5752,16 +5752,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
     __Pyx_GIVEREF(__pyx_v_dest_sig);
     PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_v_dest_sig);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
       __pyx_t_9 = __pyx_t_1; __Pyx_INCREF(__pyx_t_9); __pyx_t_14 = 0;
       __pyx_t_15 = NULL;
     } else {
-      __pyx_t_14 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_14 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_15 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_15 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     for (;;) {
@@ -5769,17 +5769,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
         if (likely(PyList_CheckExact(__pyx_t_9))) {
           if (__pyx_t_14 >= PyList_GET_SIZE(__pyx_t_9)) break;
           #if CYTHON_COMPILING_IN_CPYTHON
-          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_14); __Pyx_INCREF(__pyx_t_1); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_14); __Pyx_INCREF(__pyx_t_1); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           #else
-          __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         } else {
           if (__pyx_t_14 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
           #if CYTHON_COMPILING_IN_CPYTHON
-          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_14); __Pyx_INCREF(__pyx_t_1); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_14); __Pyx_INCREF(__pyx_t_1); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           #else
-          __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         }
@@ -5789,7 +5789,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           break;
         }
@@ -5805,7 +5805,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         #if CYTHON_COMPILING_IN_CPYTHON
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -5818,15 +5818,15 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
         __Pyx_INCREF(__pyx_t_16);
         __Pyx_INCREF(__pyx_t_17);
         #else
-        __pyx_t_16 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_16 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_16);
-        __pyx_t_17 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_17 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_17);
         #endif
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_18 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_18)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_18 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_18)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_18);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_19 = Py_TYPE(__pyx_t_18)->tp_iternext;
@@ -5834,7 +5834,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
         __Pyx_GOTREF(__pyx_t_16);
         index = 1; __pyx_t_17 = __pyx_t_19(__pyx_t_18); if (unlikely(!__pyx_t_17)) goto __pyx_L48_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_17);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_19(__pyx_t_18), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_19(__pyx_t_18), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __pyx_t_19 = NULL;
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
         goto __pyx_L49_unpacking_done;
@@ -5842,7 +5842,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
         __pyx_t_19 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __pyx_L49_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_v_src_type, __pyx_t_16);
@@ -5852,8 +5852,8 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
       __pyx_t_2 = (__pyx_v_dst_type != Py_None);
       __pyx_t_3 = (__pyx_t_2 != 0);
       if (__pyx_t_3) {
-        __pyx_t_1 = PyObject_RichCompare(__pyx_v_src_type, __pyx_v_dst_type, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = PyObject_RichCompare(__pyx_v_src_type, __pyx_v_dst_type, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (__pyx_t_3) {
           __pyx_v_match_found = 1;
@@ -5870,35 +5870,35 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_2sample_ar_texture(CYT
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __pyx_t_3 = (__pyx_v_match_found != 0);
     if (__pyx_t_3) {
-      __pyx_t_20 = __Pyx_PyList_Append(__pyx_v_candidates, __pyx_v_sig); if (unlikely(__pyx_t_20 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_20 = __Pyx_PyList_Append(__pyx_v_candidates, __pyx_v_sig); if (unlikely(__pyx_t_20 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_3 = (__pyx_v_candidates != Py_None) && (PyList_GET_SIZE(__pyx_v_candidates) != 0);
   __pyx_t_2 = ((!__pyx_t_3) != 0);
   if (__pyx_t_2) {
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_Raise(__pyx_t_8, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_12 = PyList_GET_SIZE(__pyx_v_candidates); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_12 = PyList_GET_SIZE(__pyx_v_candidates); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = ((__pyx_t_12 > 1) != 0);
   if (__pyx_t_2) {
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_Raise(__pyx_t_8, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
     if (unlikely(__pyx_v_signatures == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_8 = __Pyx_PyDict_GetItem(((PyObject*)__pyx_v_signatures), PyList_GET_ITEM(__pyx_v_candidates, 0)); if (unlikely(__pyx_t_8 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_8 = __Pyx_PyDict_GetItem(((PyObject*)__pyx_v_signatures), PyList_GET_ITEM(__pyx_v_candidates, 0)); if (unlikely(__pyx_t_8 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_r = __pyx_t_8;
     __pyx_t_8 = 0;
@@ -5942,9 +5942,9 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_38__defaults__(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__defaults__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults9, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults9, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__Pyx_CyFunction_Defaults(__pyx_defaults9, __pyx_self)->__pyx_arg_mask);
   __Pyx_GIVEREF(__Pyx_CyFunction_Defaults(__pyx_defaults9, __pyx_self)->__pyx_arg_mask);
@@ -5952,7 +5952,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_38__defaults__(CYTHON_
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -6021,7 +6021,7 @@ static PyObject *__pyx_fuse_0__pyx_pw_5zplib_5image_15_sample_texture_13sample_a
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_ar_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_ar_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6032,17 +6032,17 @@ static PyObject *__pyx_fuse_0__pyx_pw_5zplib_5image_15_sample_texture_13sample_a
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_float32_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_float32_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     __pyx_v_mask = values[1];
     if (values[2]) {
-      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_size = __pyx_dynamic_args->__pyx_arg_size;
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sample_ar_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("sample_ar_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("zplib.image._sample_texture.sample_ar_texture", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6103,7 +6103,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__pyx_fuse_0sample_ar_texture", 0);
 
-  /* "zplib/image/_sample_texture.pyx":109
+  /* "zplib/image/_sample_texture.pyx":108
  *     """
  *     cdef:
  *         ARR[:,:] image_cy = image             # <<<<<<<<<<<<<<
@@ -6113,19 +6113,19 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
   __PYX_INC_MEMVIEW(&__pyx_v_image, 0);
   __pyx_v_image_cy = __pyx_v_image;
 
-  /* "zplib/image/_sample_texture.pyx":116
+  /* "zplib/image/_sample_texture.pyx":115
  *         short ii, jj
  *         int io, jo
  *     image_py = numpy.asarray(image)             # <<<<<<<<<<<<<<
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_float32_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_float32_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_float32_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_float32_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -6138,17 +6138,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -6156,14 +6156,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
   __pyx_v_image_py = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":117
+  /* "zplib/image/_sample_texture.pyx":116
  *         int io, jo
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape             # <<<<<<<<<<<<<<
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
     PyObject* sequence = __pyx_t_1;
@@ -6175,7 +6175,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -6188,15 +6188,15 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_5);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_6 = Py_TYPE(__pyx_t_2)->tp_iternext;
@@ -6204,7 +6204,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
     __Pyx_GOTREF(__pyx_t_3);
     index = 1; __pyx_t_5 = __pyx_t_6(__pyx_t_2); if (unlikely(!__pyx_t_5)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = NULL;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L4_unpacking_done;
@@ -6212,17 +6212,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_6 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_L4_unpacking_done:;
   }
-  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_stop_x = __pyx_t_7;
   __pyx_v_stop_y = __pyx_t_8;
 
-  /* "zplib/image/_sample_texture.pyx":118
+  /* "zplib/image/_sample_texture.pyx":117
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -6233,16 +6233,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
   __pyx_t_10 = (__pyx_t_9 != 0);
   if (__pyx_t_10) {
 
-    /* "zplib/image/_sample_texture.pyx":119
+    /* "zplib/image/_sample_texture.pyx":118
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)             # <<<<<<<<<<<<<<
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -6256,28 +6256,28 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
       }
     }
     if (!__pyx_t_3) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
     } else {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_mask);
       __Pyx_GIVEREF(__pyx_v_mask);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_mask);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -6291,23 +6291,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_1);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __PYX_INC_MEMVIEW(&__pyx_t_11, 0);
     __pyx_v_mask_cy = __pyx_t_11;
     __Pyx_INCREF(__pyx_t_1);
@@ -6315,7 +6315,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
     __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":120
+    /* "zplib/image/_sample_texture.pyx":119
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape             # <<<<<<<<<<<<<<
@@ -6324,23 +6324,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
  */
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (unlikely(!__pyx_t_10)) {
         PyErr_SetNone(PyExc_AssertionError);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
     }
     #endif
 
-    /* "zplib/image/_sample_texture.pyx":121
+    /* "zplib/image/_sample_texture.pyx":120
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0             # <<<<<<<<<<<<<<
@@ -6349,14 +6349,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
  */
     __pyx_v_skip_mask = 0;
 
-    /* "zplib/image/_sample_texture.pyx":122
+    /* "zplib/image/_sample_texture.pyx":121
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  *         tex_size = mask_py.sum()             # <<<<<<<<<<<<<<
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_1 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -6369,17 +6369,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
       }
     }
     if (__pyx_t_1) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_tex_size = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":118
+    /* "zplib/image/_sample_texture.pyx":117
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -6389,7 +6389,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
     goto __pyx_L5;
   }
 
-  /* "zplib/image/_sample_texture.pyx":124
+  /* "zplib/image/_sample_texture.pyx":123
  *         tex_size = mask_py.sum()
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this             # <<<<<<<<<<<<<<
@@ -6397,48 +6397,48 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
  *         tex_size = image_py.size
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
     PyList_SET_ITEM(__pyx_t_3, 0, __pyx_int_0);
-    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_3);
     PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_2);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_mask_cy = __pyx_t_11;
     __pyx_t_11.memview = NULL;
     __pyx_t_11.data = NULL;
 
-    /* "zplib/image/_sample_texture.pyx":125
+    /* "zplib/image/_sample_texture.pyx":124
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1             # <<<<<<<<<<<<<<
@@ -6447,35 +6447,35 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
  */
     __pyx_v_skip_mask = 1;
 
-    /* "zplib/image/_sample_texture.pyx":126
+    /* "zplib/image/_sample_texture.pyx":125
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1
  *         tex_size = image_py.size             # <<<<<<<<<<<<<<
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)
  *     ti = 0
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_tex_size = __pyx_t_2;
     __pyx_t_2 = 0;
   }
   __pyx_L5:;
 
-  /* "zplib/image/_sample_texture.pyx":127
+  /* "zplib/image/_sample_texture.pyx":126
  *         skip_mask = 1
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)             # <<<<<<<<<<<<<<
  *     ti = 0
  *     for i in range(stop_x):
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_long(((8 * __pyx_v_size) + 1)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_long(((8 * __pyx_v_size) + 1)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_tex_size);
   __Pyx_GIVEREF(__pyx_v_tex_size);
@@ -6483,24 +6483,24 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_float32_t(__pyx_t_5);
-  if (unlikely(!__pyx_t_12.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_12.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_INC_MEMVIEW(&__pyx_t_12, 0);
   __pyx_v_textures_cy = __pyx_t_12;
   __Pyx_INCREF(__pyx_t_5);
@@ -6508,7 +6508,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
   __PYX_XDEC_MEMVIEW(&__pyx_t_12, 1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":128
+  /* "zplib/image/_sample_texture.pyx":127
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)
  *     ti = 0             # <<<<<<<<<<<<<<
@@ -6517,7 +6517,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
  */
   __pyx_v_ti = 0;
 
-  /* "zplib/image/_sample_texture.pyx":129
+  /* "zplib/image/_sample_texture.pyx":128
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)
  *     ti = 0
  *     for i in range(stop_x):             # <<<<<<<<<<<<<<
@@ -6528,7 +6528,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_8; __pyx_t_7+=1) {
     __pyx_v_i = __pyx_t_7;
 
-    /* "zplib/image/_sample_texture.pyx":130
+    /* "zplib/image/_sample_texture.pyx":129
  *     ti = 0
  *     for i in range(stop_x):
  *         for j in range(stop_y):             # <<<<<<<<<<<<<<
@@ -6539,7 +6539,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
       __pyx_v_j = __pyx_t_14;
 
-      /* "zplib/image/_sample_texture.pyx":131
+      /* "zplib/image/_sample_texture.pyx":130
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask[i, j]:             # <<<<<<<<<<<<<<
@@ -6552,11 +6552,11 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
         __pyx_t_10 = __pyx_t_9;
         goto __pyx_L11_bool_binop_done;
       }
-      __pyx_t_5 = __Pyx_PyInt_From_unsigned_int(__pyx_v_i); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyInt_From_unsigned_int(__pyx_v_i); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_j); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_j); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
@@ -6564,16 +6564,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
       PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
       __pyx_t_5 = 0;
       __pyx_t_3 = 0;
-      __pyx_t_3 = PyObject_GetItem(__pyx_v_mask, __pyx_t_2); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_3 = PyObject_GetItem(__pyx_v_mask, __pyx_t_2); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_9 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_9 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_10 = __pyx_t_9;
       __pyx_L11_bool_binop_done:;
       if (__pyx_t_10) {
 
-        /* "zplib/image/_sample_texture.pyx":132
+        /* "zplib/image/_sample_texture.pyx":131
  *         for j in range(stop_y):
  *             if skip_mask or mask[i, j]:
  *                 tj = 0             # <<<<<<<<<<<<<<
@@ -6582,7 +6582,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
  */
         __pyx_v_tj = 0;
 
-        /* "zplib/image/_sample_texture.pyx":133
+        /* "zplib/image/_sample_texture.pyx":132
  *             if skip_mask or mask[i, j]:
  *                 tj = 0
  *                 for ii in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -6593,7 +6593,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
         for (__pyx_t_16 = (-__pyx_v_size); __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
           __pyx_v_ii = __pyx_t_16;
 
-          /* "zplib/image/_sample_texture.pyx":134
+          /* "zplib/image/_sample_texture.pyx":133
  *                 tj = 0
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -6604,7 +6604,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
           for (__pyx_t_18 = (-__pyx_v_size); __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
             __pyx_v_jj = __pyx_t_18;
 
-            /* "zplib/image/_sample_texture.pyx":135
+            /* "zplib/image/_sample_texture.pyx":134
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :             # <<<<<<<<<<<<<<
@@ -6634,7 +6634,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
             __pyx_L18_bool_binop_done:;
             if (__pyx_t_10) {
 
-              /* "zplib/image/_sample_texture.pyx":136
+              /* "zplib/image/_sample_texture.pyx":135
  *                     for jj in range(-size,size+1):
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :
  *                             io = i+ii             # <<<<<<<<<<<<<<
@@ -6643,7 +6643,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
  */
               __pyx_v_io = (__pyx_v_i + __pyx_v_ii);
 
-              /* "zplib/image/_sample_texture.pyx":137
+              /* "zplib/image/_sample_texture.pyx":136
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :
  *                             io = i+ii
  *                             jo = j+jj             # <<<<<<<<<<<<<<
@@ -6652,7 +6652,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
  */
               __pyx_v_jo = (__pyx_v_j + __pyx_v_jj);
 
-              /* "zplib/image/_sample_texture.pyx":138
+              /* "zplib/image/_sample_texture.pyx":137
  *                             io = i+ii
  *                             jo = j+jj
  *                             if io < 0: io = 0             # <<<<<<<<<<<<<<
@@ -6664,7 +6664,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
                 __pyx_v_io = 0;
               }
 
-              /* "zplib/image/_sample_texture.pyx":139
+              /* "zplib/image/_sample_texture.pyx":138
  *                             jo = j+jj
  *                             if io < 0: io = 0
  *                             if io >= stop_x: io = stop_x-1             # <<<<<<<<<<<<<<
@@ -6676,7 +6676,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
                 __pyx_v_io = (__pyx_v_stop_x - 1);
               }
 
-              /* "zplib/image/_sample_texture.pyx":140
+              /* "zplib/image/_sample_texture.pyx":139
  *                             if io < 0: io = 0
  *                             if io >= stop_x: io = stop_x-1
  *                             if jo < 0: jo = 0             # <<<<<<<<<<<<<<
@@ -6688,7 +6688,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
                 __pyx_v_jo = 0;
               }
 
-              /* "zplib/image/_sample_texture.pyx":141
+              /* "zplib/image/_sample_texture.pyx":140
  *                             if io >= stop_x: io = stop_x-1
  *                             if jo < 0: jo = 0
  *                             if jo >= stop_y: jo = stop_y-1             # <<<<<<<<<<<<<<
@@ -6700,7 +6700,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
                 __pyx_v_jo = (__pyx_v_stop_y - 1);
               }
 
-              /* "zplib/image/_sample_texture.pyx":142
+              /* "zplib/image/_sample_texture.pyx":141
  *                             if jo < 0: jo = 0
  *                             if jo >= stop_y: jo = stop_y-1
  *                             textures_cy[ti, tj] = image_cy[io, jo]             # <<<<<<<<<<<<<<
@@ -6713,7 +6713,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
               __pyx_t_22 = __pyx_v_tj;
               *((__pyx_t_5numpy_float32_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_textures_cy.data + __pyx_t_21 * __pyx_v_textures_cy.strides[0]) ) + __pyx_t_22 * __pyx_v_textures_cy.strides[1]) )) = (*((__pyx_t_5numpy_float32_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_image_cy.data + __pyx_t_19 * __pyx_v_image_cy.strides[0]) ) + __pyx_t_20 * __pyx_v_image_cy.strides[1]) )));
 
-              /* "zplib/image/_sample_texture.pyx":143
+              /* "zplib/image/_sample_texture.pyx":142
  *                             if jo >= stop_y: jo = stop_y-1
  *                             textures_cy[ti, tj] = image_cy[io, jo]
  *                             tj += 1             # <<<<<<<<<<<<<<
@@ -6722,7 +6722,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
  */
               __pyx_v_tj = (__pyx_v_tj + 1);
 
-              /* "zplib/image/_sample_texture.pyx":135
+              /* "zplib/image/_sample_texture.pyx":134
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :             # <<<<<<<<<<<<<<
@@ -6733,7 +6733,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
           }
         }
 
-        /* "zplib/image/_sample_texture.pyx":144
+        /* "zplib/image/_sample_texture.pyx":143
  *                             textures_cy[ti, tj] = image_cy[io, jo]
  *                             tj += 1
  *                 ti += 1             # <<<<<<<<<<<<<<
@@ -6741,7 +6741,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
  */
         __pyx_v_ti = (__pyx_v_ti + 1);
 
-        /* "zplib/image/_sample_texture.pyx":131
+        /* "zplib/image/_sample_texture.pyx":130
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask[i, j]:             # <<<<<<<<<<<<<<
@@ -6752,7 +6752,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
     }
   }
 
-  /* "zplib/image/_sample_texture.pyx":145
+  /* "zplib/image/_sample_texture.pyx":144
  *                             tj += 1
  *                 ti += 1
  *     return textures_py             # <<<<<<<<<<<<<<
@@ -6762,7 +6762,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_12sample_ar_texture(CY
   __pyx_r = __pyx_v_textures_py;
   goto __pyx_L0;
 
-  /* "zplib/image/_sample_texture.pyx":77
+  /* "zplib/image/_sample_texture.pyx":76
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_ar_texture(ARR[:,:] image, mask=None, int size=4):             # <<<<<<<<<<<<<<
@@ -6805,9 +6805,9 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_40__defaults__(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__defaults__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults10, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults10, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__Pyx_CyFunction_Defaults(__pyx_defaults10, __pyx_self)->__pyx_arg_mask);
   __Pyx_GIVEREF(__Pyx_CyFunction_Defaults(__pyx_defaults10, __pyx_self)->__pyx_arg_mask);
@@ -6815,7 +6815,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_40__defaults__(CYTHON_
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -6884,7 +6884,7 @@ static PyObject *__pyx_fuse_1__pyx_pw_5zplib_5image_15_sample_texture_15sample_a
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_ar_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_ar_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6895,17 +6895,17 @@ static PyObject *__pyx_fuse_1__pyx_pw_5zplib_5image_15_sample_texture_15sample_a
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint16_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint16_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     __pyx_v_mask = values[1];
     if (values[2]) {
-      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_size = __pyx_dynamic_args->__pyx_arg_size;
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sample_ar_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("sample_ar_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("zplib.image._sample_texture.sample_ar_texture", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6966,7 +6966,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__pyx_fuse_1sample_ar_texture", 0);
 
-  /* "zplib/image/_sample_texture.pyx":109
+  /* "zplib/image/_sample_texture.pyx":108
  *     """
  *     cdef:
  *         ARR[:,:] image_cy = image             # <<<<<<<<<<<<<<
@@ -6976,19 +6976,19 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
   __PYX_INC_MEMVIEW(&__pyx_v_image, 0);
   __pyx_v_image_cy = __pyx_v_image;
 
-  /* "zplib/image/_sample_texture.pyx":116
+  /* "zplib/image/_sample_texture.pyx":115
  *         short ii, jj
  *         int io, jo
  *     image_py = numpy.asarray(image)             # <<<<<<<<<<<<<<
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_uint16_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_uint16_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_uint16_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_uint16_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -7001,17 +7001,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -7019,14 +7019,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
   __pyx_v_image_py = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":117
+  /* "zplib/image/_sample_texture.pyx":116
  *         int io, jo
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape             # <<<<<<<<<<<<<<
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
     PyObject* sequence = __pyx_t_1;
@@ -7038,7 +7038,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -7051,15 +7051,15 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_5);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_6 = Py_TYPE(__pyx_t_2)->tp_iternext;
@@ -7067,7 +7067,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
     __Pyx_GOTREF(__pyx_t_3);
     index = 1; __pyx_t_5 = __pyx_t_6(__pyx_t_2); if (unlikely(!__pyx_t_5)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = NULL;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L4_unpacking_done;
@@ -7075,17 +7075,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_6 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_L4_unpacking_done:;
   }
-  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_stop_x = __pyx_t_7;
   __pyx_v_stop_y = __pyx_t_8;
 
-  /* "zplib/image/_sample_texture.pyx":118
+  /* "zplib/image/_sample_texture.pyx":117
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -7096,16 +7096,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
   __pyx_t_10 = (__pyx_t_9 != 0);
   if (__pyx_t_10) {
 
-    /* "zplib/image/_sample_texture.pyx":119
+    /* "zplib/image/_sample_texture.pyx":118
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)             # <<<<<<<<<<<<<<
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -7119,28 +7119,28 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
       }
     }
     if (!__pyx_t_3) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
     } else {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_mask);
       __Pyx_GIVEREF(__pyx_v_mask);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_mask);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -7154,23 +7154,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_1);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __PYX_INC_MEMVIEW(&__pyx_t_11, 0);
     __pyx_v_mask_cy = __pyx_t_11;
     __Pyx_INCREF(__pyx_t_1);
@@ -7178,7 +7178,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
     __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":120
+    /* "zplib/image/_sample_texture.pyx":119
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape             # <<<<<<<<<<<<<<
@@ -7187,23 +7187,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
  */
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (unlikely(!__pyx_t_10)) {
         PyErr_SetNone(PyExc_AssertionError);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
     }
     #endif
 
-    /* "zplib/image/_sample_texture.pyx":121
+    /* "zplib/image/_sample_texture.pyx":120
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0             # <<<<<<<<<<<<<<
@@ -7212,14 +7212,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
  */
     __pyx_v_skip_mask = 0;
 
-    /* "zplib/image/_sample_texture.pyx":122
+    /* "zplib/image/_sample_texture.pyx":121
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  *         tex_size = mask_py.sum()             # <<<<<<<<<<<<<<
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_1 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -7232,17 +7232,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
       }
     }
     if (__pyx_t_1) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_tex_size = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":118
+    /* "zplib/image/_sample_texture.pyx":117
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -7252,7 +7252,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
     goto __pyx_L5;
   }
 
-  /* "zplib/image/_sample_texture.pyx":124
+  /* "zplib/image/_sample_texture.pyx":123
  *         tex_size = mask_py.sum()
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this             # <<<<<<<<<<<<<<
@@ -7260,48 +7260,48 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
  *         tex_size = image_py.size
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
     PyList_SET_ITEM(__pyx_t_3, 0, __pyx_int_0);
-    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_3);
     PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_2);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_mask_cy = __pyx_t_11;
     __pyx_t_11.memview = NULL;
     __pyx_t_11.data = NULL;
 
-    /* "zplib/image/_sample_texture.pyx":125
+    /* "zplib/image/_sample_texture.pyx":124
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1             # <<<<<<<<<<<<<<
@@ -7310,35 +7310,35 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
  */
     __pyx_v_skip_mask = 1;
 
-    /* "zplib/image/_sample_texture.pyx":126
+    /* "zplib/image/_sample_texture.pyx":125
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1
  *         tex_size = image_py.size             # <<<<<<<<<<<<<<
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)
  *     ti = 0
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_tex_size = __pyx_t_2;
     __pyx_t_2 = 0;
   }
   __pyx_L5:;
 
-  /* "zplib/image/_sample_texture.pyx":127
+  /* "zplib/image/_sample_texture.pyx":126
  *         skip_mask = 1
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)             # <<<<<<<<<<<<<<
  *     ti = 0
  *     for i in range(stop_x):
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_long(((8 * __pyx_v_size) + 1)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_long(((8 * __pyx_v_size) + 1)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_tex_size);
   __Pyx_GIVEREF(__pyx_v_tex_size);
@@ -7346,24 +7346,24 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint16_t(__pyx_t_5);
-  if (unlikely(!__pyx_t_12.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_12.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_INC_MEMVIEW(&__pyx_t_12, 0);
   __pyx_v_textures_cy = __pyx_t_12;
   __Pyx_INCREF(__pyx_t_5);
@@ -7371,7 +7371,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
   __PYX_XDEC_MEMVIEW(&__pyx_t_12, 1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":128
+  /* "zplib/image/_sample_texture.pyx":127
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)
  *     ti = 0             # <<<<<<<<<<<<<<
@@ -7380,7 +7380,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
  */
   __pyx_v_ti = 0;
 
-  /* "zplib/image/_sample_texture.pyx":129
+  /* "zplib/image/_sample_texture.pyx":128
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)
  *     ti = 0
  *     for i in range(stop_x):             # <<<<<<<<<<<<<<
@@ -7391,7 +7391,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_8; __pyx_t_7+=1) {
     __pyx_v_i = __pyx_t_7;
 
-    /* "zplib/image/_sample_texture.pyx":130
+    /* "zplib/image/_sample_texture.pyx":129
  *     ti = 0
  *     for i in range(stop_x):
  *         for j in range(stop_y):             # <<<<<<<<<<<<<<
@@ -7402,7 +7402,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
       __pyx_v_j = __pyx_t_14;
 
-      /* "zplib/image/_sample_texture.pyx":131
+      /* "zplib/image/_sample_texture.pyx":130
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask[i, j]:             # <<<<<<<<<<<<<<
@@ -7415,11 +7415,11 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
         __pyx_t_10 = __pyx_t_9;
         goto __pyx_L11_bool_binop_done;
       }
-      __pyx_t_5 = __Pyx_PyInt_From_unsigned_int(__pyx_v_i); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyInt_From_unsigned_int(__pyx_v_i); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_j); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_j); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
@@ -7427,16 +7427,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
       PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
       __pyx_t_5 = 0;
       __pyx_t_3 = 0;
-      __pyx_t_3 = PyObject_GetItem(__pyx_v_mask, __pyx_t_2); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_3 = PyObject_GetItem(__pyx_v_mask, __pyx_t_2); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_9 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_9 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_10 = __pyx_t_9;
       __pyx_L11_bool_binop_done:;
       if (__pyx_t_10) {
 
-        /* "zplib/image/_sample_texture.pyx":132
+        /* "zplib/image/_sample_texture.pyx":131
  *         for j in range(stop_y):
  *             if skip_mask or mask[i, j]:
  *                 tj = 0             # <<<<<<<<<<<<<<
@@ -7445,7 +7445,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
  */
         __pyx_v_tj = 0;
 
-        /* "zplib/image/_sample_texture.pyx":133
+        /* "zplib/image/_sample_texture.pyx":132
  *             if skip_mask or mask[i, j]:
  *                 tj = 0
  *                 for ii in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -7456,7 +7456,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
         for (__pyx_t_16 = (-__pyx_v_size); __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
           __pyx_v_ii = __pyx_t_16;
 
-          /* "zplib/image/_sample_texture.pyx":134
+          /* "zplib/image/_sample_texture.pyx":133
  *                 tj = 0
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -7467,7 +7467,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
           for (__pyx_t_18 = (-__pyx_v_size); __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
             __pyx_v_jj = __pyx_t_18;
 
-            /* "zplib/image/_sample_texture.pyx":135
+            /* "zplib/image/_sample_texture.pyx":134
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :             # <<<<<<<<<<<<<<
@@ -7497,7 +7497,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
             __pyx_L18_bool_binop_done:;
             if (__pyx_t_10) {
 
-              /* "zplib/image/_sample_texture.pyx":136
+              /* "zplib/image/_sample_texture.pyx":135
  *                     for jj in range(-size,size+1):
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :
  *                             io = i+ii             # <<<<<<<<<<<<<<
@@ -7506,7 +7506,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
  */
               __pyx_v_io = (__pyx_v_i + __pyx_v_ii);
 
-              /* "zplib/image/_sample_texture.pyx":137
+              /* "zplib/image/_sample_texture.pyx":136
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :
  *                             io = i+ii
  *                             jo = j+jj             # <<<<<<<<<<<<<<
@@ -7515,7 +7515,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
  */
               __pyx_v_jo = (__pyx_v_j + __pyx_v_jj);
 
-              /* "zplib/image/_sample_texture.pyx":138
+              /* "zplib/image/_sample_texture.pyx":137
  *                             io = i+ii
  *                             jo = j+jj
  *                             if io < 0: io = 0             # <<<<<<<<<<<<<<
@@ -7527,7 +7527,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
                 __pyx_v_io = 0;
               }
 
-              /* "zplib/image/_sample_texture.pyx":139
+              /* "zplib/image/_sample_texture.pyx":138
  *                             jo = j+jj
  *                             if io < 0: io = 0
  *                             if io >= stop_x: io = stop_x-1             # <<<<<<<<<<<<<<
@@ -7539,7 +7539,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
                 __pyx_v_io = (__pyx_v_stop_x - 1);
               }
 
-              /* "zplib/image/_sample_texture.pyx":140
+              /* "zplib/image/_sample_texture.pyx":139
  *                             if io < 0: io = 0
  *                             if io >= stop_x: io = stop_x-1
  *                             if jo < 0: jo = 0             # <<<<<<<<<<<<<<
@@ -7551,7 +7551,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
                 __pyx_v_jo = 0;
               }
 
-              /* "zplib/image/_sample_texture.pyx":141
+              /* "zplib/image/_sample_texture.pyx":140
  *                             if io >= stop_x: io = stop_x-1
  *                             if jo < 0: jo = 0
  *                             if jo >= stop_y: jo = stop_y-1             # <<<<<<<<<<<<<<
@@ -7563,7 +7563,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
                 __pyx_v_jo = (__pyx_v_stop_y - 1);
               }
 
-              /* "zplib/image/_sample_texture.pyx":142
+              /* "zplib/image/_sample_texture.pyx":141
  *                             if jo < 0: jo = 0
  *                             if jo >= stop_y: jo = stop_y-1
  *                             textures_cy[ti, tj] = image_cy[io, jo]             # <<<<<<<<<<<<<<
@@ -7576,7 +7576,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
               __pyx_t_22 = __pyx_v_tj;
               *((__pyx_t_5numpy_uint16_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_textures_cy.data + __pyx_t_21 * __pyx_v_textures_cy.strides[0]) ) + __pyx_t_22 * __pyx_v_textures_cy.strides[1]) )) = (*((__pyx_t_5numpy_uint16_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_image_cy.data + __pyx_t_19 * __pyx_v_image_cy.strides[0]) ) + __pyx_t_20 * __pyx_v_image_cy.strides[1]) )));
 
-              /* "zplib/image/_sample_texture.pyx":143
+              /* "zplib/image/_sample_texture.pyx":142
  *                             if jo >= stop_y: jo = stop_y-1
  *                             textures_cy[ti, tj] = image_cy[io, jo]
  *                             tj += 1             # <<<<<<<<<<<<<<
@@ -7585,7 +7585,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
  */
               __pyx_v_tj = (__pyx_v_tj + 1);
 
-              /* "zplib/image/_sample_texture.pyx":135
+              /* "zplib/image/_sample_texture.pyx":134
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :             # <<<<<<<<<<<<<<
@@ -7596,7 +7596,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
           }
         }
 
-        /* "zplib/image/_sample_texture.pyx":144
+        /* "zplib/image/_sample_texture.pyx":143
  *                             textures_cy[ti, tj] = image_cy[io, jo]
  *                             tj += 1
  *                 ti += 1             # <<<<<<<<<<<<<<
@@ -7604,7 +7604,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
  */
         __pyx_v_ti = (__pyx_v_ti + 1);
 
-        /* "zplib/image/_sample_texture.pyx":131
+        /* "zplib/image/_sample_texture.pyx":130
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask[i, j]:             # <<<<<<<<<<<<<<
@@ -7615,7 +7615,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
     }
   }
 
-  /* "zplib/image/_sample_texture.pyx":145
+  /* "zplib/image/_sample_texture.pyx":144
  *                             tj += 1
  *                 ti += 1
  *     return textures_py             # <<<<<<<<<<<<<<
@@ -7625,7 +7625,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_14sample_ar_texture(CY
   __pyx_r = __pyx_v_textures_py;
   goto __pyx_L0;
 
-  /* "zplib/image/_sample_texture.pyx":77
+  /* "zplib/image/_sample_texture.pyx":76
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_ar_texture(ARR[:,:] image, mask=None, int size=4):             # <<<<<<<<<<<<<<
@@ -7668,9 +7668,9 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_42__defaults__(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__defaults__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults11, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_CyFunction_Defaults(__pyx_defaults11, __pyx_self)->__pyx_arg_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__Pyx_CyFunction_Defaults(__pyx_defaults11, __pyx_self)->__pyx_arg_mask);
   __Pyx_GIVEREF(__Pyx_CyFunction_Defaults(__pyx_defaults11, __pyx_self)->__pyx_arg_mask);
@@ -7678,7 +7678,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_42__defaults__(CYTHON_
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -7747,7 +7747,7 @@ static PyObject *__pyx_fuse_2__pyx_pw_5zplib_5image_15_sample_texture_17sample_a
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_ar_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_ar_texture") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7758,17 +7758,17 @@ static PyObject *__pyx_fuse_2__pyx_pw_5zplib_5image_15_sample_texture_17sample_a
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_image = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(values[0]); if (unlikely(!__pyx_v_image.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     __pyx_v_mask = values[1];
     if (values[2]) {
-      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_size = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_size = __pyx_dynamic_args->__pyx_arg_size;
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sample_ar_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("sample_ar_texture", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("zplib.image._sample_texture.sample_ar_texture", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7828,7 +7828,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__pyx_fuse_2sample_ar_texture", 0);
 
-  /* "zplib/image/_sample_texture.pyx":109
+  /* "zplib/image/_sample_texture.pyx":108
  *     """
  *     cdef:
  *         ARR[:,:] image_cy = image             # <<<<<<<<<<<<<<
@@ -7838,19 +7838,19 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
   __PYX_INC_MEMVIEW(&__pyx_v_image, 0);
   __pyx_v_image_cy = __pyx_v_image;
 
-  /* "zplib/image/_sample_texture.pyx":116
+  /* "zplib/image/_sample_texture.pyx":115
  *         short ii, jj
  *         int io, jo
  *     image_py = numpy.asarray(image)             # <<<<<<<<<<<<<<
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_uint8_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_uint8_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_image, 2, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_5numpy_uint8_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_5numpy_uint8_t, 0);; if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -7863,17 +7863,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -7881,14 +7881,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
   __pyx_v_image_py = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":117
+  /* "zplib/image/_sample_texture.pyx":116
  *         int io, jo
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape             # <<<<<<<<<<<<<<
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
     PyObject* sequence = __pyx_t_1;
@@ -7900,7 +7900,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -7913,15 +7913,15 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_5);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_6 = Py_TYPE(__pyx_t_2)->tp_iternext;
@@ -7929,7 +7929,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
     __Pyx_GOTREF(__pyx_t_3);
     index = 1; __pyx_t_5 = __pyx_t_6(__pyx_t_2); if (unlikely(!__pyx_t_5)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = NULL;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L4_unpacking_done;
@@ -7937,17 +7937,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_6 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_L4_unpacking_done:;
   }
-  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_stop_x = __pyx_t_7;
   __pyx_v_stop_y = __pyx_t_8;
 
-  /* "zplib/image/_sample_texture.pyx":118
+  /* "zplib/image/_sample_texture.pyx":117
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -7958,16 +7958,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
   __pyx_t_10 = (__pyx_t_9 != 0);
   if (__pyx_t_10) {
 
-    /* "zplib/image/_sample_texture.pyx":119
+    /* "zplib/image/_sample_texture.pyx":118
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)             # <<<<<<<<<<<<<<
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -7981,28 +7981,28 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
       }
     }
     if (!__pyx_t_3) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mask); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
     } else {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_mask);
       __Pyx_GIVEREF(__pyx_v_mask);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_mask);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_uint8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -8016,23 +8016,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_1);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __PYX_INC_MEMVIEW(&__pyx_t_11, 0);
     __pyx_v_mask_cy = __pyx_t_11;
     __Pyx_INCREF(__pyx_t_1);
@@ -8040,7 +8040,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
     __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":120
+    /* "zplib/image/_sample_texture.pyx":119
  *     if mask is not None:
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape             # <<<<<<<<<<<<<<
@@ -8049,23 +8049,23 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
  */
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (unlikely(!__pyx_t_10)) {
         PyErr_SetNone(PyExc_AssertionError);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
     }
     #endif
 
-    /* "zplib/image/_sample_texture.pyx":121
+    /* "zplib/image/_sample_texture.pyx":120
  *         mask_cy = mask_py = (numpy.asarray(mask) > 0).astype(numpy.uint8)
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0             # <<<<<<<<<<<<<<
@@ -8074,14 +8074,14 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
  */
     __pyx_v_skip_mask = 0;
 
-    /* "zplib/image/_sample_texture.pyx":122
+    /* "zplib/image/_sample_texture.pyx":121
  *         assert mask_py.shape == image_py.shape
  *         skip_mask = 0
  *         tex_size = mask_py.sum()             # <<<<<<<<<<<<<<
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_mask_py, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_1 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -8094,17 +8094,17 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
       }
     }
     if (__pyx_t_1) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_tex_size = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "zplib/image/_sample_texture.pyx":118
+    /* "zplib/image/_sample_texture.pyx":117
  *     image_py = numpy.asarray(image)
  *     stop_x, stop_y = image_py.shape
  *     if mask is not None:             # <<<<<<<<<<<<<<
@@ -8114,7 +8114,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
     goto __pyx_L5;
   }
 
-  /* "zplib/image/_sample_texture.pyx":124
+  /* "zplib/image/_sample_texture.pyx":123
  *         tex_size = mask_py.sum()
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this             # <<<<<<<<<<<<<<
@@ -8122,48 +8122,48 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
  *         tex_size = image_py.size
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
     PyList_SET_ITEM(__pyx_t_3, 0, __pyx_int_0);
-    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_3);
     PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint8); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_2);
-    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_mask_cy = __pyx_t_11;
     __pyx_t_11.memview = NULL;
     __pyx_t_11.data = NULL;
 
-    /* "zplib/image/_sample_texture.pyx":125
+    /* "zplib/image/_sample_texture.pyx":124
  *     else:
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1             # <<<<<<<<<<<<<<
@@ -8172,35 +8172,35 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
  */
     __pyx_v_skip_mask = 1;
 
-    /* "zplib/image/_sample_texture.pyx":126
+    /* "zplib/image/_sample_texture.pyx":125
  *         mask_cy = numpy.array([[0]], dtype=numpy.uint8) # suppress unbound local checking below. Don't worry, we won't ever try to index into this
  *         skip_mask = 1
  *         tex_size = image_py.size             # <<<<<<<<<<<<<<
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)
  *     ti = 0
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_tex_size = __pyx_t_2;
     __pyx_t_2 = 0;
   }
   __pyx_L5:;
 
-  /* "zplib/image/_sample_texture.pyx":127
+  /* "zplib/image/_sample_texture.pyx":126
  *         skip_mask = 1
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)             # <<<<<<<<<<<<<<
  *     ti = 0
  *     for i in range(stop_x):
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_long(((8 * __pyx_v_size) + 1)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_long(((8 * __pyx_v_size) + 1)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_tex_size);
   __Pyx_GIVEREF(__pyx_v_tex_size);
@@ -8208,24 +8208,24 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_image_py, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dsds_nn___pyx_t_5numpy_uint8_t(__pyx_t_5);
-  if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_t_11.memview)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __PYX_INC_MEMVIEW(&__pyx_t_11, 0);
   __pyx_v_textures_cy = __pyx_t_11;
   __Pyx_INCREF(__pyx_t_5);
@@ -8233,7 +8233,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
   __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":128
+  /* "zplib/image/_sample_texture.pyx":127
  *         tex_size = image_py.size
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)
  *     ti = 0             # <<<<<<<<<<<<<<
@@ -8242,7 +8242,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
  */
   __pyx_v_ti = 0;
 
-  /* "zplib/image/_sample_texture.pyx":129
+  /* "zplib/image/_sample_texture.pyx":128
  *     textures_cy = textures_py = numpy.empty((tex_size, 8*size+1), dtype=image_py.dtype)
  *     ti = 0
  *     for i in range(stop_x):             # <<<<<<<<<<<<<<
@@ -8253,7 +8253,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_8; __pyx_t_7+=1) {
     __pyx_v_i = __pyx_t_7;
 
-    /* "zplib/image/_sample_texture.pyx":130
+    /* "zplib/image/_sample_texture.pyx":129
  *     ti = 0
  *     for i in range(stop_x):
  *         for j in range(stop_y):             # <<<<<<<<<<<<<<
@@ -8264,7 +8264,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_j = __pyx_t_13;
 
-      /* "zplib/image/_sample_texture.pyx":131
+      /* "zplib/image/_sample_texture.pyx":130
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask[i, j]:             # <<<<<<<<<<<<<<
@@ -8277,11 +8277,11 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
         __pyx_t_10 = __pyx_t_9;
         goto __pyx_L11_bool_binop_done;
       }
-      __pyx_t_5 = __Pyx_PyInt_From_unsigned_int(__pyx_v_i); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyInt_From_unsigned_int(__pyx_v_i); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_j); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_j); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
@@ -8289,16 +8289,16 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
       PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
       __pyx_t_5 = 0;
       __pyx_t_3 = 0;
-      __pyx_t_3 = PyObject_GetItem(__pyx_v_mask, __pyx_t_2); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_3 = PyObject_GetItem(__pyx_v_mask, __pyx_t_2); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_9 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_9 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_10 = __pyx_t_9;
       __pyx_L11_bool_binop_done:;
       if (__pyx_t_10) {
 
-        /* "zplib/image/_sample_texture.pyx":132
+        /* "zplib/image/_sample_texture.pyx":131
  *         for j in range(stop_y):
  *             if skip_mask or mask[i, j]:
  *                 tj = 0             # <<<<<<<<<<<<<<
@@ -8307,7 +8307,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
  */
         __pyx_v_tj = 0;
 
-        /* "zplib/image/_sample_texture.pyx":133
+        /* "zplib/image/_sample_texture.pyx":132
  *             if skip_mask or mask[i, j]:
  *                 tj = 0
  *                 for ii in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -8318,7 +8318,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
         for (__pyx_t_15 = (-__pyx_v_size); __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
           __pyx_v_ii = __pyx_t_15;
 
-          /* "zplib/image/_sample_texture.pyx":134
+          /* "zplib/image/_sample_texture.pyx":133
  *                 tj = 0
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):             # <<<<<<<<<<<<<<
@@ -8329,7 +8329,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
           for (__pyx_t_17 = (-__pyx_v_size); __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
             __pyx_v_jj = __pyx_t_17;
 
-            /* "zplib/image/_sample_texture.pyx":135
+            /* "zplib/image/_sample_texture.pyx":134
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :             # <<<<<<<<<<<<<<
@@ -8359,7 +8359,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
             __pyx_L18_bool_binop_done:;
             if (__pyx_t_10) {
 
-              /* "zplib/image/_sample_texture.pyx":136
+              /* "zplib/image/_sample_texture.pyx":135
  *                     for jj in range(-size,size+1):
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :
  *                             io = i+ii             # <<<<<<<<<<<<<<
@@ -8368,7 +8368,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
  */
               __pyx_v_io = (__pyx_v_i + __pyx_v_ii);
 
-              /* "zplib/image/_sample_texture.pyx":137
+              /* "zplib/image/_sample_texture.pyx":136
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :
  *                             io = i+ii
  *                             jo = j+jj             # <<<<<<<<<<<<<<
@@ -8377,7 +8377,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
  */
               __pyx_v_jo = (__pyx_v_j + __pyx_v_jj);
 
-              /* "zplib/image/_sample_texture.pyx":138
+              /* "zplib/image/_sample_texture.pyx":137
  *                             io = i+ii
  *                             jo = j+jj
  *                             if io < 0: io = 0             # <<<<<<<<<<<<<<
@@ -8389,7 +8389,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
                 __pyx_v_io = 0;
               }
 
-              /* "zplib/image/_sample_texture.pyx":139
+              /* "zplib/image/_sample_texture.pyx":138
  *                             jo = j+jj
  *                             if io < 0: io = 0
  *                             if io >= stop_x: io = stop_x-1             # <<<<<<<<<<<<<<
@@ -8401,7 +8401,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
                 __pyx_v_io = (__pyx_v_stop_x - 1);
               }
 
-              /* "zplib/image/_sample_texture.pyx":140
+              /* "zplib/image/_sample_texture.pyx":139
  *                             if io < 0: io = 0
  *                             if io >= stop_x: io = stop_x-1
  *                             if jo < 0: jo = 0             # <<<<<<<<<<<<<<
@@ -8413,7 +8413,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
                 __pyx_v_jo = 0;
               }
 
-              /* "zplib/image/_sample_texture.pyx":141
+              /* "zplib/image/_sample_texture.pyx":140
  *                             if io >= stop_x: io = stop_x-1
  *                             if jo < 0: jo = 0
  *                             if jo >= stop_y: jo = stop_y-1             # <<<<<<<<<<<<<<
@@ -8425,7 +8425,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
                 __pyx_v_jo = (__pyx_v_stop_y - 1);
               }
 
-              /* "zplib/image/_sample_texture.pyx":142
+              /* "zplib/image/_sample_texture.pyx":141
  *                             if jo < 0: jo = 0
  *                             if jo >= stop_y: jo = stop_y-1
  *                             textures_cy[ti, tj] = image_cy[io, jo]             # <<<<<<<<<<<<<<
@@ -8438,7 +8438,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
               __pyx_t_21 = __pyx_v_tj;
               *((__pyx_t_5numpy_uint8_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_textures_cy.data + __pyx_t_20 * __pyx_v_textures_cy.strides[0]) ) + __pyx_t_21 * __pyx_v_textures_cy.strides[1]) )) = (*((__pyx_t_5numpy_uint8_t *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_image_cy.data + __pyx_t_18 * __pyx_v_image_cy.strides[0]) ) + __pyx_t_19 * __pyx_v_image_cy.strides[1]) )));
 
-              /* "zplib/image/_sample_texture.pyx":143
+              /* "zplib/image/_sample_texture.pyx":142
  *                             if jo >= stop_y: jo = stop_y-1
  *                             textures_cy[ti, tj] = image_cy[io, jo]
  *                             tj += 1             # <<<<<<<<<<<<<<
@@ -8447,7 +8447,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
  */
               __pyx_v_tj = (__pyx_v_tj + 1);
 
-              /* "zplib/image/_sample_texture.pyx":135
+              /* "zplib/image/_sample_texture.pyx":134
  *                 for ii in range(-size,size+1):
  *                     for jj in range(-size,size+1):
  *                         if ii == jj or ii == -jj or ii == 0 or jj == 0 :             # <<<<<<<<<<<<<<
@@ -8458,7 +8458,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
           }
         }
 
-        /* "zplib/image/_sample_texture.pyx":144
+        /* "zplib/image/_sample_texture.pyx":143
  *                             textures_cy[ti, tj] = image_cy[io, jo]
  *                             tj += 1
  *                 ti += 1             # <<<<<<<<<<<<<<
@@ -8466,7 +8466,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
  */
         __pyx_v_ti = (__pyx_v_ti + 1);
 
-        /* "zplib/image/_sample_texture.pyx":131
+        /* "zplib/image/_sample_texture.pyx":130
  *     for i in range(stop_x):
  *         for j in range(stop_y):
  *             if skip_mask or mask[i, j]:             # <<<<<<<<<<<<<<
@@ -8477,7 +8477,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
     }
   }
 
-  /* "zplib/image/_sample_texture.pyx":145
+  /* "zplib/image/_sample_texture.pyx":144
  *                             tj += 1
  *                 ti += 1
  *     return textures_py             # <<<<<<<<<<<<<<
@@ -8487,7 +8487,7 @@ static PyObject *__pyx_pf_5zplib_5image_15_sample_texture_16sample_ar_texture(CY
   __pyx_r = __pyx_v_textures_py;
   goto __pyx_L0;
 
-  /* "zplib/image/_sample_texture.pyx":77
+  /* "zplib/image/_sample_texture.pyx":76
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_ar_texture(ARR[:,:] image, mask=None, int size=4):             # <<<<<<<<<<<<<<
@@ -22989,11 +22989,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_AttributeError = __Pyx_GetBuiltinName(__pyx_n_s_AttributeError); if (!__pyx_builtin_AttributeError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 58; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_AttributeError = __Pyx_GetBuiltinName(__pyx_n_s_AttributeError); if (!__pyx_builtin_AttributeError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 57; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 799; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -23010,43 +23010,43 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "zplib/image/_sample_texture.pyx":14
+  /* "zplib/image/_sample_texture.pyx":13
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_texture(ARR[:,:] image, mask=None, int size=1):             # <<<<<<<<<<<<<<
  *     """Return texture samples of a given size from an image.
  * 
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s__3); if (unlikely(!__pyx_tuple__4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s__3); if (unlikely(!__pyx_tuple__4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s__5); if (unlikely(!__pyx_tuple__6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s__5); if (unlikely(!__pyx_tuple__6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_s_No_matching_signature_found); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_s_No_matching_signature_found); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_s_Function_call_with_ambiguous_arg); if (unlikely(!__pyx_tuple__8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_s_Function_call_with_ambiguous_arg); if (unlikely(!__pyx_tuple__8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "zplib/image/_sample_texture.pyx":77
+  /* "zplib/image/_sample_texture.pyx":76
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_ar_texture(ARR[:,:] image, mask=None, int size=4):             # <<<<<<<<<<<<<<
  *     """Return autoregressive texture samples of a given size from an image.
  * 
  */
-  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s__3); if (unlikely(!__pyx_tuple__11)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s__3); if (unlikely(!__pyx_tuple__11)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s__5); if (unlikely(!__pyx_tuple__12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s__5); if (unlikely(!__pyx_tuple__12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_No_matching_signature_found); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_No_matching_signature_found); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
-  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_s_Function_call_with_ambiguous_arg); if (unlikely(!__pyx_tuple__14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_s_Function_call_with_ambiguous_arg); if (unlikely(!__pyx_tuple__14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 
@@ -23262,29 +23262,29 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
 
-  /* "zplib/image/_sample_texture.pyx":14
+  /* "zplib/image/_sample_texture.pyx":13
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_texture(ARR[:,:] image, mask=None, int size=1):             # <<<<<<<<<<<<<<
  *     """Return texture samples of a given size from an image.
  * 
  */
-  __pyx_tuple__34 = PyTuple_Pack(21, __pyx_n_s_image, __pyx_n_s_mask, __pyx_n_s_size, __pyx_n_s_image_cy, __pyx_n_s_mask_cy, __pyx_n_s_textures_cy, __pyx_n_s_stop_x, __pyx_n_s_stop_y, __pyx_n_s_skip_mask, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_ti, __pyx_n_s_tj, __pyx_n_s_ii, __pyx_n_s_jj, __pyx_n_s_io, __pyx_n_s_jo, __pyx_n_s_image_py, __pyx_n_s_mask_py, __pyx_n_s_tex_size, __pyx_n_s_textures_py); if (unlikely(!__pyx_tuple__34)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__34 = PyTuple_Pack(21, __pyx_n_s_image, __pyx_n_s_mask, __pyx_n_s_size, __pyx_n_s_image_cy, __pyx_n_s_mask_cy, __pyx_n_s_textures_cy, __pyx_n_s_stop_x, __pyx_n_s_stop_y, __pyx_n_s_skip_mask, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_ti, __pyx_n_s_tj, __pyx_n_s_ii, __pyx_n_s_jj, __pyx_n_s_io, __pyx_n_s_jo, __pyx_n_s_image_py, __pyx_n_s_mask_py, __pyx_n_s_tex_size, __pyx_n_s_textures_py); if (unlikely(!__pyx_tuple__34)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(3, 0, 21, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Users_zpincus_Documents_Researc, __pyx_n_s_sample_texture, 14, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(3, 0, 21, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Users_zpincus_Documents_Researc, __pyx_n_s_sample_texture, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "zplib/image/_sample_texture.pyx":77
+  /* "zplib/image/_sample_texture.pyx":76
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_ar_texture(ARR[:,:] image, mask=None, int size=4):             # <<<<<<<<<<<<<<
  *     """Return autoregressive texture samples of a given size from an image.
  * 
  */
-  __pyx_tuple__36 = PyTuple_Pack(21, __pyx_n_s_image, __pyx_n_s_mask, __pyx_n_s_size, __pyx_n_s_image_cy, __pyx_n_s_mask_cy, __pyx_n_s_textures_cy, __pyx_n_s_stop_x, __pyx_n_s_stop_y, __pyx_n_s_skip_mask, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_ti, __pyx_n_s_tj, __pyx_n_s_ii, __pyx_n_s_jj, __pyx_n_s_io, __pyx_n_s_jo, __pyx_n_s_image_py, __pyx_n_s_mask_py, __pyx_n_s_tex_size, __pyx_n_s_textures_py); if (unlikely(!__pyx_tuple__36)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__36 = PyTuple_Pack(21, __pyx_n_s_image, __pyx_n_s_mask, __pyx_n_s_size, __pyx_n_s_image_cy, __pyx_n_s_mask_cy, __pyx_n_s_textures_cy, __pyx_n_s_stop_x, __pyx_n_s_stop_y, __pyx_n_s_skip_mask, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_ti, __pyx_n_s_tj, __pyx_n_s_ii, __pyx_n_s_jj, __pyx_n_s_io, __pyx_n_s_jo, __pyx_n_s_image_py, __pyx_n_s_mask_py, __pyx_n_s_tex_size, __pyx_n_s_textures_py); if (unlikely(!__pyx_tuple__36)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(3, 0, 21, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Users_zpincus_Documents_Researc, __pyx_n_s_sample_ar_texture, 77, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(3, 0, 21, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Users_zpincus_Documents_Researc, __pyx_n_s_sample_ar_texture, 76, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
   /* "View.MemoryView":278
  *         return self.name
@@ -23518,23 +23518,23 @@ PyMODINIT_FUNC PyInit__sample_texture(void)
  * import numpy
  * import random             # <<<<<<<<<<<<<<
  * 
- * # determine datatypes for mcp
+ * ctypedef fused ARR:
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_random, 0, -1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_random, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":14
+  /* "zplib/image/_sample_texture.pyx":13
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_texture(ARR[:,:] image, mask=None, int size=1):             # <<<<<<<<<<<<<<
  *     """Return texture samples of a given size from an image.
  * 
  */
-  __pyx_t_1 = __Pyx_PyInt_From_long(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_long(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(Py_None);
   __Pyx_GIVEREF(Py_None);
@@ -23545,66 +23545,66 @@ PyMODINIT_FUNC PyInit__sample_texture(void)
   __Pyx_INCREF(Py_None);
   __pyx_k_ = Py_None;
   __Pyx_GIVEREF(Py_None);
-  __pyx_t_1 = __Pyx_PyInt_From_long(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_long(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_k__2 = __pyx_t_1;
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_FusedFunction_NewEx(&__pyx_fuse_0__pyx_mdef_5zplib_5image_15_sample_texture_5sample_texture, 0, __pyx_n_s_sample_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_FusedFunction_NewEx(&__pyx_fuse_0__pyx_mdef_5zplib_5image_15_sample_texture_5sample_texture, 0, __pyx_n_s_sample_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_3, sizeof(__pyx_defaults3), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_3, sizeof(__pyx_defaults3), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_INCREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults3, __pyx_t_3)->__pyx_arg_mask = Py_None;
   __Pyx_GIVEREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults3, __pyx_t_3)->__pyx_arg_size = 1;
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_t_2);
   __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_3, __pyx_pf_5zplib_5image_15_sample_texture_26__defaults__);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_float32_t, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_float32_t, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_FusedFunction_NewEx(&__pyx_fuse_1__pyx_mdef_5zplib_5image_15_sample_texture_7sample_texture, 0, __pyx_n_s_sample_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_FusedFunction_NewEx(&__pyx_fuse_1__pyx_mdef_5zplib_5image_15_sample_texture_7sample_texture, 0, __pyx_n_s_sample_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_3, sizeof(__pyx_defaults4), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_3, sizeof(__pyx_defaults4), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_INCREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults4, __pyx_t_3)->__pyx_arg_mask = Py_None;
   __Pyx_GIVEREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults4, __pyx_t_3)->__pyx_arg_size = 1;
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_t_2);
   __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_3, __pyx_pf_5zplib_5image_15_sample_texture_28__defaults__);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_uint16_t, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_uint16_t, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_FusedFunction_NewEx(&__pyx_fuse_2__pyx_mdef_5zplib_5image_15_sample_texture_9sample_texture, 0, __pyx_n_s_sample_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_FusedFunction_NewEx(&__pyx_fuse_2__pyx_mdef_5zplib_5image_15_sample_texture_9sample_texture, 0, __pyx_n_s_sample_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_3, sizeof(__pyx_defaults5), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_3, sizeof(__pyx_defaults5), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_INCREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults5, __pyx_t_3)->__pyx_arg_mask = Py_None;
   __Pyx_GIVEREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults5, __pyx_t_3)->__pyx_arg_size = 1;
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_t_2);
   __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_3, __pyx_pf_5zplib_5image_15_sample_texture_30__defaults__);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_uint8_t, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_uint8_t, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_FusedFunction_NewEx(&__pyx_mdef_5zplib_5image_15_sample_texture_1sample_texture, 0, __pyx_n_s_sample_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_FusedFunction_NewEx(&__pyx_mdef_5zplib_5image_15_sample_texture_1sample_texture, 0, __pyx_n_s_sample_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_t_2);
   __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_3, __pyx_pf_5zplib_5image_15_sample_texture_26__defaults__);
   ((__pyx_FusedFunctionObject *) __pyx_t_3)->__signatures__ = __pyx_t_1;
   __Pyx_GIVEREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sample_texture, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sample_texture, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "zplib/image/_sample_texture.pyx":77
+  /* "zplib/image/_sample_texture.pyx":76
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def sample_ar_texture(ARR[:,:] image, mask=None, int size=4):             # <<<<<<<<<<<<<<
  *     """Return autoregressive texture samples of a given size from an image.
  * 
  */
-  __pyx_t_4 = __Pyx_PyInt_From_long(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_long(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(Py_None);
   __Pyx_GIVEREF(Py_None);
@@ -23615,53 +23615,53 @@ PyMODINIT_FUNC PyInit__sample_texture(void)
   __Pyx_INCREF(Py_None);
   __pyx_k__9 = Py_None;
   __Pyx_GIVEREF(Py_None);
-  __pyx_t_4 = __Pyx_PyInt_From_long(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_long(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_k__10 = __pyx_t_4;
   __Pyx_GIVEREF(__pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_fuse_0__pyx_mdef_5zplib_5image_15_sample_texture_13sample_ar_texture, 0, __pyx_n_s_sample_ar_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_fuse_0__pyx_mdef_5zplib_5image_15_sample_texture_13sample_ar_texture, 0, __pyx_n_s_sample_ar_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_6, sizeof(__pyx_defaults9), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_6, sizeof(__pyx_defaults9), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_INCREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults9, __pyx_t_6)->__pyx_arg_mask = Py_None;
   __Pyx_GIVEREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults9, __pyx_t_6)->__pyx_arg_size = 4;
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_6, __pyx_t_5);
   __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_6, __pyx_pf_5zplib_5image_15_sample_texture_38__defaults__);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_float32_t, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_float32_t, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_fuse_1__pyx_mdef_5zplib_5image_15_sample_texture_15sample_ar_texture, 0, __pyx_n_s_sample_ar_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_fuse_1__pyx_mdef_5zplib_5image_15_sample_texture_15sample_ar_texture, 0, __pyx_n_s_sample_ar_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_6, sizeof(__pyx_defaults10), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_6, sizeof(__pyx_defaults10), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_INCREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults10, __pyx_t_6)->__pyx_arg_mask = Py_None;
   __Pyx_GIVEREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults10, __pyx_t_6)->__pyx_arg_size = 4;
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_6, __pyx_t_5);
   __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_6, __pyx_pf_5zplib_5image_15_sample_texture_40__defaults__);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_uint16_t, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_uint16_t, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_fuse_2__pyx_mdef_5zplib_5image_15_sample_texture_17sample_ar_texture, 0, __pyx_n_s_sample_ar_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_fuse_2__pyx_mdef_5zplib_5image_15_sample_texture_17sample_ar_texture, 0, __pyx_n_s_sample_ar_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
-  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_6, sizeof(__pyx_defaults11), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_6, sizeof(__pyx_defaults11), 1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_INCREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults11, __pyx_t_6)->__pyx_arg_mask = Py_None;
   __Pyx_GIVEREF(Py_None);
   __Pyx_CyFunction_Defaults(__pyx_defaults11, __pyx_t_6)->__pyx_arg_size = 4;
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_6, __pyx_t_5);
   __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_6, __pyx_pf_5zplib_5image_15_sample_texture_42__defaults__);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_uint8_t, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_uint8_t, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_mdef_5zplib_5image_15_sample_texture_3sample_ar_texture, 0, __pyx_n_s_sample_ar_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_mdef_5zplib_5image_15_sample_texture_3sample_ar_texture, 0, __pyx_n_s_sample_ar_texture, NULL, __pyx_n_s_zplib_image__sample_texture, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_6, __pyx_t_5);
   __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_6, __pyx_pf_5zplib_5image_15_sample_texture_38__defaults__);
   ((__pyx_FusedFunctionObject *) __pyx_t_6)->__signatures__ = __pyx_t_4;
   __Pyx_GIVEREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sample_ar_texture, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sample_ar_texture, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
