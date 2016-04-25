@@ -3,20 +3,49 @@ from scipy import ndimage
 
 from . import neighborhood
 
-def canny(image, sigma, low_threshold, high_threshold):
-    smoothed, magnitude, sobel = prepare_canny(image, sigma)
+def canny(image, sigma, low_threshold, high_threshold, mask=None):
+    smoothed, magnitude, sobel = prepare_canny(image, sigma, mask)
     local_maxima = canny_local_maxima(magnitude, sobel)
     return canny_hysteresis(local_maxima, magnitude, low_threshold, high_threshold)
 
-def prepare_canny(image, sigma):
+def prepare_canny(image, sigma, mask=None):
     if sigma > 0:
-        smoothed = ndimage.gaussian_filter(image.astype(numpy.float32), sigma)
+        if mask is not None:
+            smoothed = masked_gaussian_filter(image, sigma, mask)
+        else:
+            smoothed = ndimage.gaussian_filter(image.astype(numpy.float32), sigma, mode='nearest')
     else:
         smoothed = image.astype(numpy.float32)
     xsobel = ndimage.sobel(smoothed, axis=0)
     ysobel = ndimage.sobel(smoothed, axis=1)
+    # if there is a mask, we need to zero the gradients outside the mask
+    # and also right at the border of the mask (because those gradients are
+    # calculated with pixels outside the mask)
+    if mask is not None:
+        s = numpy.ones((3,3), dtype=bool)
+        to_zero = ~ndimage.binary_erosion(mask, structure=s)
+        xsobel[to_zero] = 0
+        ysobel[to_zero] = 0
     magnitude = numpy.hypot(xsobel, ysobel)
     return smoothed, magnitude, (xsobel, ysobel)
+
+def masked_gaussian_filter(image, sigma, mask):
+    """Smooth an image with a gaussian function, ignoring masked pixels
+
+    This function calculates the fractional contribution of masked pixels
+    by smoothing the mask (which gets you the fraction of
+    the pixel data that's due to significant points). We then mask the image
+    and apply the function. The resulting values will be lower by the
+    bleed-over fraction, so you can recalibrate by dividing by the function
+    on the mask to recover the effect of smoothing from just the significant
+    pixels.
+    """
+    bleed_over = ndimage.gaussian_filter(mask.astype(numpy.float32), sigma, mode='nearest')
+    masked_image = numpy.zeros(image.shape, dtype=numpy.float32)
+    masked_image[mask] = image[mask]
+    smoothed_image = ndimage.gaussian_filter(masked_image, sigma, mode='nearest')
+    output_image = smoothed_image / (bleed_over + numpy.finfo(numpy.float32).eps)
+    return output_image
 
 def canny_hysteresis(local_maxima, magnitude, low_threshold, high_threshold):
     # Hysteresis threshold
