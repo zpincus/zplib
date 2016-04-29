@@ -11,8 +11,7 @@ def robust_mean_std(data, subset_fraction=0.7):
     Internally the univariate MCD estimator is used. To determine the exact data
     points that are judged to be outliers vs. inliers, use unimcd() directly.
     """
-    data = numpy.asarray(data)
-    assert len(data.shape) == 1
+    data = numpy.asarray(data).flatten()
     n = len(data)
     h = int(round(n * subset_fraction))
     subset_mask = unimcd(data, h)
@@ -44,7 +43,7 @@ def unimcd(y, h):
   This function based on UNIMCD from LIBRA: the Matlab Library for Robust
   Analysis, available at: http://wis.kuleuven.be/stat/robust.html
   """
-  y = numpy.asarray(y, dtype=float)
+  y = numpy.asarray(y, dtype=float).flatten()
   ncas = len(y)
   length = ncas-h+1
   if length <= 1:
@@ -66,7 +65,7 @@ def unimcd(y, h):
   Hopt = indices[ii[0]:ii[0]+h]
   ndup = len(ii)
   slutn = ay[ii]
-  initmean=slutn[numpy.floor((ndup+1)/2 - 1)]/h
+  initmean=slutn[int(numpy.floor((ndup+1)/2 - 1))]/h
   initcov=sqmin/(h-1)
   # calculating consistency factor
   res=(y-initmean)**2/initcov
