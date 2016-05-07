@@ -94,7 +94,7 @@ def lowess(x, y, f=2/3., iters=3):
             beta2 = (A11 * b2-A21 * b1) / determinant
             y_est.append(beta1 + beta2 * xv)
         y_est = numpy.array(y_est)
-        residuals = y - yest
+        residuals = y - y_est
         s = numpy.median(numpy.abs(residuals))
         if s > 0:
             delta = numpy.clip(residuals / (6 * s), -1, 1)
