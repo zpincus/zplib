@@ -69,6 +69,21 @@ def multi_screen(arrays, max_possible=255):
         b = screen(a, b, max_possible)
     return b
 
+def alpha_blend(top, bottom, alpha):
+    """Blend top image onto bottom image using the provided alpha value(s).
+
+    Parameters:
+        top, bottom: images, either of shape (x, y) or (x, y, c).
+        alpha: alpha value for blending, either scalar, or (x, y) mask. Must be
+            in the range [0, 1]
+    """
+    alpha = numpy.asarray(alpha)
+    assert top.shape == bottom.shape
+    if len(top.shape) == 3 and len(alpha.shape) == 2:
+        # RBG image with 2d mask
+        alpha = alpha[:, :, numpy.newaxis]
+    return (top * alpha + bottom * (1-alpha)).astype(bottom.dtype)
+
 def composite(bf, fl_images, fl_colors, bf_color=(255,255,255)):
     """Composite one or more fluorescence images on top of a brightfield image.
 

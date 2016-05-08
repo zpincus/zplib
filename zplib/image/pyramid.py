@@ -19,3 +19,12 @@ def pyr_up(image, upscale):
     # covers more than 99% of the Gaussian distribution
     resized = transform.resize(image.astype(numpy.float32), out_shape, order=1, mode='reflect', preserve_range=True)
     return ndimage.gaussian_filter(resized, sigma, mode='reflect')
+
+def downsample_sigma(scale_factor, nyquist_attenuation=0.95):
+    """Calculate sigma for gaussian blur that will attenuate the nyquist frequency
+    of an image (after down-scaling) to the specified fraction. Surprisingly,
+    attenuating by only 5-10% is generally sufficient (nyquist_attenuation=0.9
+    to 0.95).
+    See http://www.evoid.de/page/the-caveats-of-image-down-sampling/ .
+    """
+    return scale_factor * (-8*numpy.log(nyquist_attenuation))**0.5
