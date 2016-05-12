@@ -48,7 +48,7 @@ def write_video(frame_iterator, framerate, output, preset=None, lossless=False, 
         '-video_size', '{}x{}'.format(*first_frame.shape[:2]), # size of one frame
         '-pixel_format', pixel_format,
         '-framerate', str(framerate), # frames per second
-        '-i', '-', # The imput comes from a pipe
+        '-i', '-', # The input comes from a pipe
         '-an', # Tells FFMPEG not to expect any audio
         '-vcodec', 'libx264',
         '-pix_fmt', 'yuv420p',
