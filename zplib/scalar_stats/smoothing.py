@@ -47,7 +47,7 @@ def savitzky_golay(data, kernel=11, order=4):
     window_size = len(m)
     half_window = (window_size-1) // 2
     offsets = range(-half_window, half_window+1)
-    offset_data = zip(offsets, m)
+    offset_data = list(zip(offsets, m))
     smooth_data = list()
     data = numpy.concatenate((numpy.ones(half_window)*data[0], data, numpy.ones(half_window)*data[-1]))
     for i in range(half_window, len(data) - half_window):
