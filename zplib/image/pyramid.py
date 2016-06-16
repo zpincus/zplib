@@ -2,7 +2,7 @@ import numpy
 import scipy.ndimage as ndimage
 from skimage import transform
 
-def pyr_down(image, downscale, nyquist_attenuation=0.015):
+def pyr_down(image, downscale=2, nyquist_attenuation=0.015):
     """Return an image downsampled by the requested factor.
 
     Parameters:
@@ -19,7 +19,7 @@ def pyr_down(image, downscale, nyquist_attenuation=0.015):
     smoothed = ndimage.gaussian_filter(image.astype(numpy.float32), sigma, mode='reflect')
     return transform.resize(smoothed, out_shape, order=1, mode='reflect', preserve_range=True)
 
-def pyr_up(image, upscale, nyquist_attenuation=0.985):
+def pyr_up(image, upscale=2, nyquist_attenuation=0.985):
     """Return an image upsampled by the requested factor.
 
     Parameters:

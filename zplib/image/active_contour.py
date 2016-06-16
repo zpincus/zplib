@@ -767,6 +767,9 @@ class StoppingCondition:
         self.max_iterations = max_iterations
         self.sample_every = sample_every
         self.changed_min = changed_min
+        self.reset()
+
+    def reset(self):
         self.recent_changes = collections.deque(maxlen=cycle_max-1)
         self.i = 0
 
