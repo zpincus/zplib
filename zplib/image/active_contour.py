@@ -269,8 +269,7 @@ class ACWE(CurvatureMorphology):
         smooth_mask=None, max_region_mask=None):
         """Class for Active Contours Without Edges region-growing.
 
-        Relevant methods for region-growing are smooth(), balloon_force(),
-        and acwe_step().
+        Relevant methods for region-growing are smooth() and acwe_step().
 
         Parameters:
             mask: mask containing the initial state of the region to evolve
@@ -510,7 +509,10 @@ class GAC(BalloonForceMorphology):
             mask:  mask containing the initial state of the region to evolve
             advection_direction: list of two arrays providing the x- and y-
                 coordinates of the direction that the region edge should move
-                in at any given point.
+                in at any given point. (Only the sign of the direction matters.)
+                The gradient of an edge-magnitude image works nicely here, as
+                does the result of the edge_direction() function in this module
+                when applied to a thresholded edge-magnitude image.
             advection_mask: boolean mask specifying where edge advection should
                 be applied (versus balloon forces -- it makes no sense to try
                 to apply both in the same location). If no advection_mask is
@@ -573,21 +575,56 @@ class GAC(BalloonForceMorphology):
         move_operation(unmask_idx(idx_mask, to_move))
 
 class EdgeClaimingAdvection(CurvatureMorphology):
-    def __init__(self, mask, edge_mask, force_min=0.01, smooth_mask=None, max_region_mask=None):
-        """ """
+    def __init__(self, mask, edge_mask, distance_exponent=3, force_min=0.01, smooth_mask=None, max_region_mask=None):
+        """Class for growing a region toward edges, such that only the edges
+        that are not already at the region border influence further region
+        growth.
+
+        Given a set of image edges (ideally one pixel wide, as produced by
+        Canny filtering), a region is grown toward those edges. The direction
+        of growth at a region border pixel is determined by the sum of "forces",
+        where each edge pixel exerts a force in inverse proportion to its
+        distance from the region border pixel. This allows the region to move
+        over large distances to find an edge.
+
+        Only region border pixels that are not atop an edge pixel are free to
+        have move. Only edge pixels not "captured" by a region border are free
+        to exert forces on movable region border pixels. This capturing
+        mechaimsm means that gaps in the edges will not cause region borders to
+        "flow in" toward other edges in the image that already have a different
+        part of the border atop them. Instead, gaps in the edges will be bridged
+        smoothly.
+
+        Parameters:
+            mask:  mask containing the initial state of the region to evolve.
+            edge_mask: mask containing the positions of the edges to occupy.
+                Thinned edges (such as from Canny edge detection) are best.
+            distance_exponent: the "force" on any region border pixel exerted
+                by any edge pixel is 1/d**distance_exponent, where d is the
+                distance in pixels between the edge pixel and the region border
+                pixel. A larger value increases the influence of nearby
+                uncaptured edge pixels over more distant uncaptured edge pixels.
+            force_min: forces less than this minimum value will cause region
+                borders to move. Important to prevent a few distant, unclaimed
+                pixels from influencing borders that are bridging gaps.
+            smooth_mask: region in which smoothing may be applied.
+            max_region_mask: mask beyond which the region may not grow.
+        """
         super().__init__(mask, smooth_mask, max_region_mask)
         # do work in _setup rather than __init__ to allow for complex multiple
         # inheritance from this class that super() alone can't handle. See
         # ActiveContour class.
-        self._setup(edge_mask, force_min)
+        self._setup(edge_mask, distance_exponent, force_min)
 
-    def _setup(self, edge_mask, force_min):
+    def _setup(self, edge_mask, distance_exponent, force_min):
         # Edges are "captured" iff there is an inside-border pixel on the edge.
         # Non-captured edges can generate advection forces.
         # Inside border pixels are free to advect iff they are not atop an edge.
         # Outside border pixels are free to advect iff they are (atop an edge
         # OR not adjacent a captured edge).
         self.edge_mask = edge_mask > 0
+        # make an exponent to apply to the squared distance
+        self.inverse_squared_distance_exponent = -distance_exponent/2
         self.force_min = force_min
         self.inside_free = ~self.edge_mask
         self.outside_free_neighborhood = neighborhood.make_neighborhood_view(numpy.zeros_like(self.edge_mask),
@@ -627,7 +664,7 @@ class EdgeClaimingAdvection(CurvatureMorphology):
         dy = numpy.subtract.outer(edge_indices[:,1], border_indices[:,1])
         square_dist = dx**2 + dy**2
         square_dist[:,on_edge] = 1
-        weighting = square_dist**-1.5
+        weighting = square_dist**self.inverse_squared_distance_exponent
         fx = (dx * weighting).sum(axis=0) # shape (n,)
         fx[on_edge] = -mask_dx[on_edge]
         fx[numpy.absolute(fx) < self.force_min] = 0
@@ -637,8 +674,8 @@ class EdgeClaimingAdvection(CurvatureMorphology):
         return fx, fy
 
     def advect(self, iters=1):
-        """Apply 'iters' iterations of edge advection, whereby the region edges
-        are moved in the direction specified by advection_direction."""
+        """Apply 'iters' iterations of edge advection, whereby uncaptured
+        region edges are moved towrad uncaptured pixels in the edge_mask."""
         for _ in range(iters):
             self.update_captured()
             # Move pixels on the inside border to the outside if advection*gradient sum > 0 (see _advect for interpretation of sum)
@@ -688,17 +725,17 @@ class BinnedActiveContour(GAC, BinnedACWE):
 class ActiveClaimingContour(EdgeClaimingAdvection, ACWE):
     def __init__(self, mask, image, edge_mask, force_min=0.01, acwe_mask=None,
             lambda_in=1, lambda_out=1, smooth_mask=None, max_region_mask=None):
-        """See documentation for EdgeClaimingAdvectionand ACWE for parameters."""
+        """See documentation for EdgeClaimingAdvection and ACWE for parameters."""
         CurvatureMorphology.__init__(self, mask, smooth_mask, max_region_mask)
         EdgeClaimingAdvection._setup(self, edge_mask, force_min)
         ACWE._setup(self, image, acwe_mask, lambda_in, lambda_out)
 
 class BinnedActiveClaimingContour(EdgeClaimingAdvection, BinnedACWE):
-    def __init__(self, mask, image, edge_mask, force_min=0.01, acwe_mask=None,
+    def __init__(self, mask, image, edge_mask, distance_exponent=3, force_min=0.01, acwe_mask=None,
             smooth_mask=None, max_region_mask=None):
-        """See documentation for EdgeClaimingAdvectionand BinnedACWE for parameters."""
+        """See documentation for EdgeClaimingAdvection and BinnedACWE for parameters."""
         CurvatureMorphology.__init__(self, mask, smooth_mask, max_region_mask)
-        EdgeClaimingAdvection._setup(self, edge_mask, force_min)
+        EdgeClaimingAdvection._setup(self, edge_mask, distance_exponent, force_min)
         BinnedACWE._setup(self, image, acwe_mask)
 
 

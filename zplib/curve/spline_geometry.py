@@ -3,27 +3,6 @@ import numpy
 from . import geometry
 from . import interpolate
 
-def _get_points(tck, num_points=None, derivative=0):
-    """Evaluate a spline (or its derivative) at a given number of points.
-
-    If the number of points is not specified, make a sane guess such that the
-    resulting curve will be approximately as smooth as the spline.
-    Specifically, use the maximum parameter value of the spline or 100,
-    whichever is greater. The maximum parameter value makes sense only if the
-    curve is parameterized with something close to the 'natural parameter',
-    which interpolate.fit_spline() tries to guarantee."""
-    if num_points is None:
-        num_points = max(100, int(round(tck[0].max())))
-    points = interpolate.spline_interpolate(tck, num_points, derivative)
-    return points
-
-
-def _get_points_and_radii(tck, radius_tck, num_points):
-    points = _get_points(tck, num_points)
-    radii = interpolate.spline_interpolate(radius_tck, num_points=len(points))
-    return points, radii
-
-
 def arc_length(tck, num_points=None):
     """Approximate the arc-length of spline (t,c,k) by evaluating it at num_points
     positions and calculating the length of the resulting polyline.
@@ -124,3 +103,24 @@ def length_and_max_width(tck, radius_tck, num_points):
     """
     points, radii = _get_points_and_radii(tck, radius_tck, num_points)
     return numpy.sqrt(((spine[:-1] - spine[1:])**2).sum(axis=1)).sum(), widths.max()
+
+
+def _get_points(tck, num_points=None, derivative=0):
+    """Evaluate a spline (or its derivative) at a given number of points.
+
+    If the number of points is not specified, make a sane guess such that the
+    resulting curve will be approximately as smooth as the spline.
+    Specifically, use the maximum parameter value of the spline or 100,
+    whichever is greater. The maximum parameter value makes sense only if the
+    curve is parameterized with something close to the 'natural parameter',
+    which interpolate.fit_spline() tries to guarantee."""
+    if num_points is None:
+        num_points = max(100, int(round(tck[0].max())))
+    points = interpolate.spline_interpolate(tck, num_points, derivative)
+    return points
+
+
+def _get_points_and_radii(tck, radius_tck, num_points):
+    points = _get_points(tck, num_points)
+    radii = interpolate.spline_interpolate(radius_tck, num_points=len(points))
+    return points, radii

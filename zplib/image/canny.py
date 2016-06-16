@@ -84,6 +84,7 @@ def canny_local_maxima(magnitude, sobel):
     pts = diagonal & horizontal
     _interp_maxima(pts, (1, 0), (1, 1), magnitude_neighborhood, magnitude, local_maxima,
         abs_xsobel, abs_ysobel)
+
     # Normal is 45-90 degrees: interpolate magnitude between up and up-and-to-the-right
     # (and down/down-and-left)
     pts = diagonal & vertical

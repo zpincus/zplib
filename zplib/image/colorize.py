@@ -52,6 +52,14 @@ def color_map(array, spectrum_max=0.9):
     rgb = numpy.concatenate(rgb, axis=-1).clip(0, 1)
     return (255 * rgb).astype(numpy.uint8)
 
+def luminance(color_array):
+    """Return luminance of an RGB (or RGBA) array (shape (x, y, 3) or (x, y, 4),
+    respectively) using the formula for CIE 1931 linear luminance:
+    https://en.wikipedia.org/wiki/Grayscale#Converting_color_to_grayscale
+    """
+    R, G, B = color_array.transpose((2,0,1))[:3]
+    return 0.2126*R + 0.7152*G + 0.0722*B
+
 def screen(a, b, max_possible=255):
     """Blend two arrays together using the 'screen' mode.
 
