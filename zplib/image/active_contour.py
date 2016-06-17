@@ -28,7 +28,8 @@ Example GAC usage:
         advection_mask=strong_edges, balloon_direction=balloon_direction,
         max_region_mask=bounds)
 
-    for i in range(iterations):
+    stopper = StoppingCondition(gac, max_iterations=100)
+    while stopper.should_continue():
         gac.balloon_force() # apply balloon force
         gac.advect() # move region edges in advection_direction
         gac.smooth() # smooth region boundaries.
@@ -43,15 +44,34 @@ smoothness of the curve. With depth=1, only very small jaggies are smoothed, but
 with larger values, the curve is smoothed along larger spatial scales (rule of
 thumb: min radius of curvature after smoothing is on the order of depth*3 or so).
 
-Example ACWE usage (balloon force not generally needed with ACWE, but
-can be included):
+Another useful way to calculate the advection_direction parameter, instead of
+from the edge gradient (as above) is to use the edge_direction() function, which
+takes a thresholded edge mask (Canny edges work great), and returns the distance
+from each pixel to the nearest edge, as well as the direction from each pixel
+to the nearest edge. This latter can be passed directly as the advection_direction
+parameter, which will dramatically increase the capture radius for distant edges,
+so a balloon_force parameter may not be needed.
+
+Last, for Canny edge images especially, consider the EdgeClaimingAdvection
+active contour class. (See the documentation for that class.)
+
+Example ACWE usage:
     acwe = ACWEMorphology(mask=initial, image=image, max_region_mask=bounds)
 
     for i in range(iterations):
         acwe.acwe_step() # make inside and outside pixel means different.
         acwe.smooth() # smooth region boundaries
 
-Note: ActiveContour class allows for both GAC and ACWE steps, if that's useful.
+There is also a BinnedACWE class that uses a histogram of the image for the
+inside and outside regions, rather than just means. This can be useful if
+the region to segment has very distinct brightness values from the background,
+but is not overall brighter or darker on average. Note that it is best to
+reduce the input image to a small number of brightness values (16-64) before
+using this class. The discretize_image() function is useful for this.
+
+Last: the ActiveContour class allows for both GAC and ACWE steps, if that's
+useful. BinnedActiveContour, ActiveClaimingContour, and BinnedActiveClaimingContour
+similarly combine [Binned]ACWE and [EdgeClaiming]Advection functionality.
 """
 
 import numpy
@@ -101,7 +121,7 @@ class MaskNarrowBand:
         assert len(self.outside_border_indices) == outside_border_mask.sum()
         assert outside_border_mask[tuple(self.outside_border_indices.T)].sum() == len(self.outside_border_indices)
 
-    def move_to_outside(self, to_outside):
+    def _move_to_outside(self, to_outside):
         """to_outside must be a boolean mask on the inside border pixels
         (in the order defined by inside_border_indices)."""
         self.inside_border_indices, self.outside_border_indices, added_idx, removed_indices = self._change_pixels(
@@ -113,7 +133,7 @@ class MaskNarrowBand:
         )
         return added_idx, removed_indices
 
-    def move_to_inside(self, to_inside):
+    def _move_to_inside(self, to_inside):
         """to_inside must be a boolean mask on the outside border pixels
         (in the order defined by outside_border_indices)."""
         self.outside_border_indices, self.inside_border_indices, added_idx, removed_indices = self._change_pixels(
@@ -121,7 +141,7 @@ class MaskNarrowBand:
             old_border_indices=self.outside_border_indices,
             new_value=True,
             new_border_indices=self.inside_border_indices,
-            some_match_old_value=not_all
+            some_match_old_value=_not_all
         )
         return added_idx, removed_indices
 
@@ -173,10 +193,10 @@ class MaskNarrowBand:
             old_valued_neighbor_indices = old_valued_neighbor_indices[good_indices]
         # NB: many of the old_valued_neighbors are already in the old_border_indices...
         # If we kept a mask of the old_border pixels, we could look these up and
-        # exclude them, which would make unique_indices() below a bit faster. However,
+        # exclude them, which would make _unique_indices() below a bit faster. However,
         # that requires a lot of bookkeeping, so it doesn't speed things up in every case.
         old_border_indices = numpy.concatenate([old_border_indices, old_valued_neighbor_indices])
-        old_border_indices = unique_indices(old_border_indices)
+        old_border_indices = _unique_indices(old_border_indices)
 
         # (3) Remove all pixels from new_border_indices that no longer have any
         # old-valued neighbors left.
@@ -185,11 +205,11 @@ class MaskNarrowBand:
         # in the new_border already because they are next to a pixel that changed.
         new_valued_neighbors_indices = changed_neighborhood_indices[new_valued_neighbors]
         # need to unique-ify indices because neighborhoods overlap and may pick up the same pixels
-        new_valued_neighbors_indices = unique_indices(new_valued_neighbors_indices)
+        new_valued_neighbors_indices = _unique_indices(new_valued_neighbors_indices)
         neighbors_of_new_valued_neighbors = self.mask_neighborhood[tuple(new_valued_neighbors_indices.T)]
         no_old_valued_neighbors = ~some_match_old_value(neighbors_of_new_valued_neighbors, axis=(1,2))
         remove_from_new_border_indices = new_valued_neighbors_indices[no_old_valued_neighbors]
-        new_border_indices = diff_indices(new_border_indices, remove_from_new_border_indices)
+        new_border_indices = _diff_indices(new_border_indices, remove_from_new_border_indices)
 
         # (4) Add newly-changed pixels to new_border_indices if they have an old-valued neighbor.
         changed_with_old_neighbor = some_match_old_value(changed_neighborhood, axis=(1,2))
@@ -217,13 +237,13 @@ class CurvatureMorphology(MaskNarrowBand):
         for _ in range(iters):
             if border_mask is None:
                 border_mask = numpy.ones(len(self.outside_border_indices), dtype=bool)
-            self.move_to_inside(border_mask)
+            self._move_to_inside(border_mask)
 
     def erode(self, iters=1, border_mask=None):
         for _ in range(iters):
             if border_mask is None:
                 border_mask = numpy.ones(len(self.inside_border_indices), dtype=bool)
-            self.move_to_outside(border_mask)
+            self._move_to_outside(border_mask)
 
     def smooth(self, iters=1, depth=1):
         """Apply 'iters' iterations of edge-curvature smoothing.
@@ -235,22 +255,22 @@ class CurvatureMorphology(MaskNarrowBand):
             smoother(depth)
 
     def _SI(self):
-        idx, idx_mask = masked_idx(self.smooth_mask, self.inside_border_indices)
+        idx, idx_mask = _masked_idx(self.smooth_mask, self.inside_border_indices)
         inside_border = self.mask_neighborhood[idx]
         on_a_line = ((inside_border[:,0,0] & inside_border[:,2,2]) |
                      (inside_border[:,1,0] & inside_border[:,1,2]) |
                      (inside_border[:,0,1] & inside_border[:,2,1]) |
                      (inside_border[:,2,0] & inside_border[:,0,2]))
-        self.move_to_outside(unmask_idx(idx_mask, ~on_a_line))
+        self._move_to_outside(_unmask_idx(idx_mask, ~on_a_line))
 
     def _IS(self):
-        idx, idx_mask = masked_idx(self.smooth_mask, self.outside_border_indices)
+        idx, idx_mask = _masked_idx(self.smooth_mask, self.outside_border_indices)
         outside_border = ~self.mask_neighborhood[idx]
         on_a_line = ((outside_border[:,0,0] & outside_border[:,2,2]) |
                      (outside_border[:,1,0] & outside_border[:,1,2]) |
                      (outside_border[:,0,1] & outside_border[:,2,1]) |
                      (outside_border[:,2,0] & outside_border[:,0,2]))
-        self.move_to_inside(unmask_idx(idx_mask, ~on_a_line))
+        self._move_to_inside(_unmask_idx(idx_mask, ~on_a_line))
 
     def _SIoIS(self, depth=1):
         for i in range(depth):
@@ -265,7 +285,7 @@ class CurvatureMorphology(MaskNarrowBand):
             self._IS()
 
 class ACWE(CurvatureMorphology):
-    def __init__(self, mask, image, acwe_mask=None, lambda_in=1, lambda_out=1,
+    def __init__(self, mask, image, acwe_mask=None, inside_bias=1,
         smooth_mask=None, max_region_mask=None):
         """Class for Active Contours Without Edges region-growing.
 
@@ -278,25 +298,29 @@ class ACWE(CurvatureMorphology):
                 be maximized by acwe_step()
             acwe_mask: region where ACWE updates will be applied. (Inside /
                 outside values will still be computed outside this region.)
-            lambda_in, lambda_out: weights for comparing means of inside vs.
-                outside pixels. Generally 1 works properly.
+            inside_bias: weight for comparing means of inside vs. outside pixels.
+                Generally 1 works properly. Values < 1 make it "easier" to add
+                pixels to the region, and values > 1 make it "easier" to remove
+                pixels from the region. (Simplification of the "lambda"
+                parameters from the ACWE literature.)
             smooth_mask: region in which smoothing may be applied.
-            max_region_mask: mask beyond which the region may not grow.
+            max_region_mask: mask beyond which the region may not grow. If
+                provided, this mask will also represent the pixels over which
+                the ACWE inside/outside means are computed.
         """
         super().__init__(mask, smooth_mask, max_region_mask)
         # do work in _setup rather than __init__ to allow for complex multiple
         # inheritance from this class that super() alone can't handle. See
         # ActiveContour class.
-        self._setup(image, acwe_mask, lambda_in, lambda_out)
+        self._setup(image, acwe_mask, inside_bias)
 
-    def _setup(self, image, acwe_mask, lambda_in, lambda_out):
+    def _setup(self, image, acwe_mask, inside_bias):
         self.image = image
         assert self.image.shape == self.mask.shape
         self.acwe_mask = acwe_mask
         if acwe_mask is not None:
             assert self.image.shape == self.acwe_mask.shape
-        self.lambda_in = lambda_in
-        self.lambda_out = lambda_out
+        self.inside_bias = inside_bias
         # note: self.mask is clipped to self.max_region_mask so the below works.
         self.inside_count = self.mask.sum()
         self.outside_count = numpy.product(self.mask[self.max_region_mask].shape) - self.inside_count
@@ -320,10 +344,10 @@ class ACWE(CurvatureMorphology):
         image_sum = self.image[changed_idx].sum()
         return count, image_sum
 
-    def move_to_outside(self, to_outside):
+    def _move_to_outside(self, to_outside):
         """to_outside must be a boolean mask on the inside border pixels
         (in the order defined by inside_border_indices)."""
-        added_idx, removed_indices = super().move_to_outside(to_outside)
+        added_idx, removed_indices = super()._move_to_outside(to_outside)
         count, image_sum = self._image_sum_count(added_idx)
         self.inside_count -= count
         self.outside_count += count
@@ -331,10 +355,10 @@ class ACWE(CurvatureMorphology):
         self.outside_sum += image_sum
         return added_idx, removed_indices
 
-    def move_to_inside(self, to_inside):
+    def _move_to_inside(self, to_inside):
         """to_inside must be a boolean mask on the outside border pixels
         (in the order defined by outside_border_indices)."""
-        added_idx, removed_indices = super().move_to_inside(to_inside)
+        added_idx, removed_indices = super()._move_to_inside(to_inside)
         count, image_sum = self._image_sum_count(added_idx)
         self.outside_count -= count
         self.inside_count += count
@@ -351,26 +375,28 @@ class ACWE(CurvatureMorphology):
                 return
             inside_mean = self.inside_sum / self.inside_count
             outside_mean = self.outside_sum / self.outside_count
-            self._acwe_step(inside_mean, outside_mean, self.lambda_in, self.lambda_out,
-                self.inside_border_indices, self.move_to_outside)
-            self._acwe_step(outside_mean, inside_mean, self.lambda_out, self.lambda_in,
-                self.outside_border_indices, self.move_to_inside)
+            self._acwe_step(inside_mean, outside_mean, self.inside_bias,
+                self.inside_border_indices, self._move_to_outside)
+            self._acwe_step(outside_mean, inside_mean, 1/self.inside_bias,
+                self.outside_border_indices, self._move_to_inside)
 
-    def _acwe_step(self, mean_from, mean_to, lambda_from, lambda_to, border_indices, move_operation):
-        idx, idx_mask = masked_idx(self.acwe_mask, border_indices)
+    def _acwe_step(self, mean_from, mean_to, from_bias, border_indices, move_operation):
+        idx, idx_mask = _masked_idx(self.acwe_mask, border_indices)
         border_values = self.image[idx]
-        to_move = (lambda_from*(border_values - mean_from)**2 >
-            lambda_to*(border_values - mean_to)**2)
-        move_operation(unmask_idx(idx_mask, to_move))
+        to_move = from_bias*(border_values - mean_from)**2 > (border_values - mean_to)**2
+        move_operation(_unmask_idx(idx_mask, to_move))
 
 class BinnedACWE(CurvatureMorphology):
-    def __init__(self, mask, image, acwe_mask=None, lambda_in=1, lambda_out=1,
+    def __init__(self, mask, image, acwe_mask=None, inside_bias=1,
         smooth_mask=None, max_region_mask=None):
         """Class for Active Contours Without Edges region-growing, using image
         histograms rather than simply means.
 
-        Relevant methods for region-growing are smooth(), balloon_force(),
-        and acwe_step().
+        Relevant methods for region-growing are smooth(), and acwe_step().
+
+        Note that it is best to reduce the input image to a small number of
+        brightness values (e.g. 16-64) before using this class.
+        The discretize_image() function is useful for this.
 
         Parameters:
             mask: mask containing the initial state of the region to evolve
@@ -379,16 +405,23 @@ class BinnedACWE(CurvatureMorphology):
                 be maximized by acwe_step()
             acwe_mask: region where ACWE updates will be applied. (Inside /
                 outside values will still be computed outside this region.)
+            inside_bias: weight for comparing means of inside vs. outside pixels.
+                Generally 1 works properly. Values < 1 make it "easier" to add
+                pixels to the region, and values > 1 make it "easier" to remove
+                pixels from the region. (Simplification of the "lambda"
+                parameters from the ACWE literature.)
             smooth_mask: region in which smoothing may be applied.
-            max_region_mask: mask beyond which the region may not grow.
+            max_region_mask: mask beyond which the region may not grow. If
+                provided, this mask will also represent the pixels over which
+                the ACWE inside/outside means are computed.
         """
         super().__init__(mask, smooth_mask, max_region_mask)
         # do work in _setup rather than __init__ to allow for complex multiple
         # inheritance from this class that super() alone can't handle. See
         # ActiveContour class.
-        self._setup(image, acwe_mask)
+        self._setup(image, acwe_mask, inside_bias)
 
-    def _setup(self, image, acwe_mask):
+    def _setup(self, image, acwe_mask, inside_bias):
         if image.dtype == bool:
             image = image.astype(numpy.uint8)
         self.image = image
@@ -398,6 +431,7 @@ class BinnedACWE(CurvatureMorphology):
             assert self.image.shape == self.acwe_mask.shape
         # note: self.mask is clipped to self.max_region_mask so the below works.
         self.inside_count = self.mask.sum()
+        self.inside_bias = inside_bias
         self.outside_count = numpy.product(self.mask[self.max_region_mask].shape) - self.inside_count
         bincounts = numpy.bincount(self.image[self.max_region_mask].flat)
         self.bins = len(bincounts)
@@ -421,10 +455,10 @@ class BinnedACWE(CurvatureMorphology):
         bincounts = self._bincount(changed_idx)
         return count, bincounts
 
-    def move_to_outside(self, to_outside):
+    def _move_to_outside(self, to_outside):
         """to_outside must be a boolean mask on the inside border pixels
         (in the order defined by inside_border_indices)."""
-        added_idx, removed_indices = super().move_to_outside(to_outside)
+        added_idx, removed_indices = super()._move_to_outside(to_outside)
         count, bincounts = self._image_bincount_count(added_idx)
         self.inside_count -= count
         self.outside_count += count
@@ -432,10 +466,10 @@ class BinnedACWE(CurvatureMorphology):
         self.outside_bincounts += bincounts
         return added_idx, removed_indices
 
-    def move_to_inside(self, to_inside):
+    def _move_to_inside(self, to_inside):
         """to_inside must be a boolean mask on the outside border pixels
         (in the order defined by outside_border_indices)."""
-        added_idx, removed_indices = super().move_to_inside(to_inside)
+        added_idx, removed_indices = super()._move_to_inside(to_inside)
         count, bincounts = self._image_bincount_count(added_idx)
         self.outside_count -= count
         self.inside_count += count
@@ -452,16 +486,17 @@ class BinnedACWE(CurvatureMorphology):
                 return
             inside_rate = self.inside_bincounts / self.inside_count
             outside_rate = self.outside_bincounts / self.outside_count
-            self._acwe_step(outside_rate > inside_rate, self.inside_border_indices,
-                self.move_to_outside)
-            self._acwe_step(inside_rate > outside_rate, self.outside_border_indices,
-                self.move_to_inside)
+            # small values of inside bias mean it is easier to move/stay inside
+            self._acwe_step(self.inside_bias * outside_rate > inside_rate,
+                self.inside_border_indices, self._move_to_outside)
+            self._acwe_step(inside_rate > self.inside_bias * outside_rate,
+                self.outside_border_indices, self._move_to_inside)
 
     def _acwe_step(self, move_bins, border_indices, move_operation):
-        idx, idx_mask = masked_idx(self.acwe_mask, border_indices)
+        idx, idx_mask = _masked_idx(self.acwe_mask, border_indices)
         border_values = self.image[idx]
         to_move = move_bins[border_values]
-        move_operation(unmask_idx(idx_mask, to_move))
+        move_operation(_unmask_idx(idx_mask, to_move))
 
 class BalloonForceMorphology(CurvatureMorphology):
     """Basic morphology operations plus spatially-varying balloon-force operation.
@@ -553,12 +588,12 @@ class GAC(BalloonForceMorphology):
         are moved in the direction specified by advection_direction."""
         for _ in range(iters):
             # Move pixels on the inside border to the outside if advection*gradient sum > 0 (see _advect for interpretation of sum)
-            self._advect(self.inside_border_indices, numpy.greater, self.move_to_outside)
+            self._advect(self.inside_border_indices, numpy.greater, self._move_to_outside)
             # Move pixels on the outside border to the inside if advection*gradient sum < 0
-            self._advect(self.outside_border_indices, numpy.less, self.move_to_inside)
+            self._advect(self.outside_border_indices, numpy.less, self._move_to_inside)
 
     def _advect(self, border_indices, criterion, move_operation):
-        idx, idx_mask = masked_idx(self.advection_mask, border_indices)
+        idx, idx_mask = _masked_idx(self.advection_mask, border_indices)
         neighbors = self.mask_neighborhood[idx].astype(numpy.int8)
         dx = neighbors[:,2,1] - neighbors[:,0,1]
         dy = neighbors[:,1,2] - neighbors[:,1,0]
@@ -572,7 +607,7 @@ class GAC(BalloonForceMorphology):
         # To find this, see if sum of advection and gradient in each direction is > 0
         # (move pixels outside) or > 0 (move pixels inside).
         to_move = criterion(dx * adv_dx + dy * adv_dy, 0)
-        move_operation(unmask_idx(idx_mask, to_move))
+        move_operation(_unmask_idx(idx_mask, to_move))
 
 class EdgeClaimingAdvection(CurvatureMorphology):
     def __init__(self, mask, edge_mask, distance_exponent=3, force_min=0.01, smooth_mask=None, max_region_mask=None):
@@ -652,7 +687,7 @@ class EdgeClaimingAdvection(CurvatureMorphology):
         # positions, which are non-overlapping with inside_border_indices.
         # Now free outside pixels atop an edge:
         self.outside_free[tuple(self.edge_indices.T)] = True
-        self.noncaptured_indices = diff_indices(self.edge_indices, captured_indices)
+        self.noncaptured_indices = _diff_indices(self.edge_indices, captured_indices)
         self.noncaptured[:] = False
         self.noncaptured[tuple(self.noncaptured_indices.T)] = True
 
@@ -680,10 +715,10 @@ class EdgeClaimingAdvection(CurvatureMorphology):
             self.update_captured()
             # Move pixels on the inside border to the outside if advection*gradient sum > 0 (see _advect for interpretation of sum)
             # and if they are not on an edge
-            self._advect(self.inside_free, self.inside_border_indices, numpy.greater, self.move_to_outside)
+            self._advect(self.inside_free, self.inside_border_indices, numpy.greater, self._move_to_outside)
             # Move pixels on the outside border to the inside if advection*gradient sum < 0
             # and if they arte not adjacent to a captured edge
-            self._advect(self.outside_free, self.outside_border_indices, numpy.less, self.move_to_inside)
+            self._advect(self.outside_free, self.outside_border_indices, numpy.less, self._move_to_inside)
 
     def _advect(self, mask, border_indices, criterion, move_operation):
         idx_mask = mask[tuple(border_indices.T)]
@@ -701,42 +736,42 @@ class EdgeClaimingAdvection(CurvatureMorphology):
         # To find this, see if sum of advection and gradient in each direction is > 0
         # (move pixels outside) or > 0 (move pixels inside).
         to_move = criterion(dx * adv_dx + dy * adv_dy, 0)
-        move_operation(unmask_idx(idx_mask, to_move))
+        move_operation(_unmask_idx(idx_mask, to_move))
 
 
 class ActiveContour(GAC, ACWE):
     def __init__(self, mask, image, advection_direction, acwe_mask=None,
-            advection_mask=None,lambda_in=1, lambda_out=1, balloon_direction=0,
+            inside_bias=1, advection_mask=None, balloon_direction=0,
             smooth_mask=None, max_region_mask=None):
         """See documentation for GAC and ACWE for parameters."""
         CurvatureMorphology.__init__(self, mask, smooth_mask, max_region_mask)
         GAC._setup(self, balloon_direction, advection_direction, advection_mask)
-        ACWE._setup(self, image, acwe_mask, lambda_in, lambda_out)
+        ACWE._setup(self, image, acwe_mask, inside_bias)
 
 class BinnedActiveContour(GAC, BinnedACWE):
     def __init__(self, mask, image, advection_direction, acwe_mask=None,
-            advection_mask=None, balloon_direction=0,
+            inside_bias=1, advection_mask=None, balloon_direction=0,
             smooth_mask=None, max_region_mask=None):
         """See documentation for GAC and BinnedACWE for parameters."""
         CurvatureMorphology.__init__(self, mask, smooth_mask, max_region_mask)
         GAC._setup(self, balloon_direction, advection_direction, advection_mask)
-        BinnedACWE._setup(self, image, acwe_mask)
+        BinnedACWE._setup(self, image, acwe_mask, inside_bias)
 
 class ActiveClaimingContour(EdgeClaimingAdvection, ACWE):
     def __init__(self, mask, image, edge_mask, force_min=0.01, acwe_mask=None,
-            lambda_in=1, lambda_out=1, smooth_mask=None, max_region_mask=None):
+            inside_bias=1, smooth_mask=None, max_region_mask=None):
         """See documentation for EdgeClaimingAdvection and ACWE for parameters."""
         CurvatureMorphology.__init__(self, mask, smooth_mask, max_region_mask)
         EdgeClaimingAdvection._setup(self, edge_mask, force_min)
-        ACWE._setup(self, image, acwe_mask, lambda_in, lambda_out)
+        ACWE._setup(self, image, acwe_mask, inside_bias)
 
 class BinnedActiveClaimingContour(EdgeClaimingAdvection, BinnedACWE):
-    def __init__(self, mask, image, edge_mask, distance_exponent=3, force_min=0.01, acwe_mask=None,
-            smooth_mask=None, max_region_mask=None):
+    def __init__(self, mask, image, edge_mask, distance_exponent=3, force_min=0.01,
+            acwe_mask=None, inside_bias=1, smooth_mask=None, max_region_mask=None):
         """See documentation for EdgeClaimingAdvection and BinnedACWE for parameters."""
         CurvatureMorphology.__init__(self, mask, smooth_mask, max_region_mask)
         EdgeClaimingAdvection._setup(self, edge_mask, distance_exponent, force_min)
-        BinnedACWE._setup(self, image, acwe_mask)
+        BinnedACWE._setup(self, image, acwe_mask, inside_bias)
 
 
 class StoppingCondition:
@@ -789,20 +824,47 @@ class StoppingCondition:
         self.i += 1
         return True
 
-def edge_direction(thresholded_edges):
-    distances, nearest_edge = ndimage.distance_transform_cdt(~thresholded_edges,
+def edge_direction(edge_mask):
+    """Given an edge mask, return the distance from each pixel to the mask,
+    and the vector from each pixel to the nearest pixel in the mask.
+
+    Parameter:
+        edge_mask: boolean array that is True where image edges are.
+
+    Returns: distances, nearest_edge
+        distances: array same shape as edge_mask, containing the distance from
+            every non-edge-mask pixel to the nearest pixel in the edge mask.
+        nearest_edge: arary of shape (2,)+edge_mask.shape, containing the x and
+            y coordinates of the vector from each non-edge pixel to the nearest
+            edge pixel.
+    """
+    distances, nearest_edge = ndimage.distance_transform_cdt(~edge_mask,
         return_distances=True, return_indices=True)
-    nearest_edge = nearest_edge - numpy.indices(thresholded_edges.shape)
-    nearest_edge[:, thresholded_edges] = 0
+    nearest_edge = nearest_edge - numpy.indices(edge_mask.shape)
+    nearest_edge[:, edge_mask] = 0
     return distances, nearest_edge
 
-def discretize_image(image, n_bins):
+def discretize_image(image, n_levels):
+    """Given an image, reduce the number of distinct intensity levels.
+
+    Parameters:
+        image: ndarray of any type
+        n_levels: number of intensity levels in the output image. Must be < 2**16.
+    """
+    assert n_levels < 2**16
     max = image.max()
     min = image.min()
-    left_edges = numpy.linspace(min, max, n_bins)
-    return numpy.digitize(image, left_edges) - 1
+    left_edges = numpy.linspace(min, max, n_levels)
+    discretized = numpy.digitize(image, left_edges) - 1
+    if n_levels > 256:
+        return discretized.astype(numpy.uint8)
+    else:
+        return discretized.astype(numpy.uint16)
 
-def diff_indices(indices, to_remove):
+def _diff_indices(indices, to_remove):
+    """Given two arrays of shape (n,2) containing x,y indices, remove those in
+    the second array from the first array.
+    """
     assert indices.flags.c_contiguous
     assert to_remove.flags.c_contiguous
     assert indices.dtype == to_remove.dtype
@@ -810,16 +872,19 @@ def diff_indices(indices, to_remove):
     remaining = numpy.setdiff1d(indices.view(dtype), to_remove.view(dtype), assume_unique=True)
     return remaining.view(indices.dtype).reshape((-1, 2))
 
-def unique_indices(indices):
+def _unique_indices(indices):
+    """Given an array of shape (n,2) containing x,y indices, return only the
+    unique indices from that array.
+    """
     assert indices.flags.c_contiguous
     dtype = numpy.dtype('S'+str(indices.itemsize*2)) # treat (x,y) indices as binary data instead of pairs of ints
     unique = numpy.unique(indices.view(dtype))
     return unique.view(indices.dtype).reshape((-1, 2))
 
-def not_all(array, axis):
+def _not_all(array, axis):
     return ~numpy.all(array, axis)
 
-def masked_idx(mask, indices):
+def _masked_idx(mask, indices):
     """Return index expression for given indices, only if mask is also true there.
 
     Parameters:
@@ -838,13 +903,13 @@ def masked_idx(mask, indices):
     idx = tuple(indices.T)
     return idx, idx_mask
 
-def unmask_idx(idx_mask, to_change):
-    """Return mask over all indices originally passed to masked_idx, marked
+def _unmask_idx(idx_mask, to_change):
+    """Return mask over all indices originally passed to _masked_idx, marked
     False where indices were originally masked out or where to_change parameter
     is False.
 
     Parameters:
-        idx_mask: as returned by masked_idx
+        idx_mask: as returned by _masked_idx
         to_change: mask over True values in idx_mask
     """
     if idx_mask is None:
