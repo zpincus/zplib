@@ -527,9 +527,9 @@ class BalloonForceMorphology(CurvatureMorphology):
         if self.balloon_direction is None:
             return
         for _ in range(iters):
-                to_erode = self.balloon_direction[tuple(self.inside_border_indices.T)] <  0
+                to_erode = self.balloon_direction[tuple(self.inside_border_indices.T)] < 0
                 self.erode(border_mask=to_erode)
-                to_dilate = self.balloon_direction[tuple(self.outside_border_indices.T)] >  0
+                to_dilate = self.balloon_direction[tuple(self.outside_border_indices.T)] > 0
                 self.dilate(border_mask=to_dilate)
 
 class GAC(BalloonForceMorphology):
