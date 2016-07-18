@@ -7,6 +7,46 @@ if platform.system() == 'Windows':
 else:
     FFMPEG_BIN = "ffmpeg"
 
+def read_video(input, force_grayscale=True):
+    """Return iterator over frames from an input video via ffmpeg.
+
+    Parameters:
+        input: filename to open
+        force_grayscale: if True, return uint8 grayscale frames, otherwise
+            returns rgb frames.
+    """
+    pix_fmt = 'gray' if force_grayscale else 'rgb24'
+    command = [FFMPEG_BIN,
+        '-nostdin', # do not expect interaction, do not fuss with tty settings
+        '-i', input,
+        '-f', 'rawvideo', # write raw image data
+        '-pix_fmt', pix_fmt,
+        '-' # pipe output to stdout
+    ]
+
+    ffmpeg = subprocess.Popen(command, stdin=subprocess.DEVNULL,
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    sterr = []
+    while True:
+        line = ffmpeg.stderr.readline().decode()
+        if len(line) == 0 or line.startswith('Stream mapping:'):
+            raise RuntimeError('Could not read video data:\n'+''.join(sterr))
+        if line.startswith('    Stream #0'):
+            video_data = line
+            break
+        else:
+            sterr.append(line)
+
+    header, fmt, size, *rest = video_data.split(', ')
+    x, y = map(int, size.split('x'))
+    shape = (x, y) if force_grayscale else (x, y, 3)
+    size = numpy.product(shape)
+    while True:
+        frame = ffmpeg.stdout.read(size)
+        if len(frame) == 0:
+            break
+        yield _get_arr(frame, shape)
+
 def write_video(frame_iterator, framerate, output, preset=None, lossless=False, verbose=True, **h264_opts):
     """Write image frames from an iterator to a h264-encoded video file using ffmpeg.
 
@@ -21,7 +61,9 @@ def write_video(frame_iterator, framerate, output, preset=None, lossless=False, 
             lossless is 'veryslow', to get as good compression as possible.
             For lossy compression, 'faster', 'fast', 'medium', 'slow', and 'slower'
             is a reasonable range.
-        lossless: if True, use lossless compression.
+        lossless: if True, use lossless compression. Note: may not be truly
+            lossless: 10-20% of pixels may have differences of +/- 1 vs. the
+            source.
         verbose: if True, print status message while compressing.
         **h264_opts: options to be passed to the h264 encoder, from:
            https://www.ffmpeg.org/ffmpeg-codecs.html#Options-23
@@ -42,7 +84,7 @@ def write_video(frame_iterator, framerate, output, preset=None, lossless=False, 
             preset = 'ultrafast'
         else:
             preset = 'medium'
-    command = [FFMPEG,
+    command = [FFMPEG_BIN,
         '-y', # (optional) overwrite output file if it exists
         '-f', 'rawvideo',
         '-video_size', '{}x{}'.format(*first_frame.shape[:2]), # size of one frame
@@ -73,8 +115,16 @@ def write_video(frame_iterator, framerate, output, preset=None, lossless=False, 
     if ffmpeg.returncode != 0:
         raise RuntimeError('ffmpeg encoding failed')
 
+
 def _get_bytes(image_arr):
     if image_arr.ndim == 2:
         return image_arr.tobytes(order='F')
     else:
         return image_arr.transpose((2,0,1)).tobytes(order='F')
+
+def _get_arr(image_bytes, shape):
+    if len(shape) == 2:
+        strides = (1, shape[0])
+    else:
+        strides = (3, shape[0]*3, 1)
+    return numpy.ndarray(shape=shape, buffer=image_bytes, dtype=numpy.uint8, strides=strides)
