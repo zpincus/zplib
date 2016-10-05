@@ -1,7 +1,8 @@
 import numpy
 from scipy.stats import kde
 
-def kd_distribution(data, x_min=None, x_max=None, num_points=200, CDF=False):
+def kd_distribution(data, x_min=None, x_max=None, num_points=200, CDF=False,
+    estimator_class=kde.gaussian_kde, **kws):
     """Use Kernel Density Estimation to estimate a density or CDF from data.
 
     Parameters:
@@ -21,7 +22,7 @@ def kd_distribution(data, x_min=None, x_max=None, num_points=200, CDF=False):
             estimate the density of the data (etc.) at additional points.
     """
     data = numpy.asarray(data, dtype=numpy.float32)
-    kd_estimator = kde.gaussian_kde(data)
+    kd_estimator = estimator_class(data, **kws)
     if x_min is None or x_max is None:
         data_min = data.min()
         data_max = data.max()
