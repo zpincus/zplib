@@ -90,11 +90,10 @@ class FilterBase:
                 be paid once.
         """
         assert precision in PRECISION.keys()
-        n = pyfftw.simd_alignment
-        self.image_arr = pyfftw.n_byte_align_empty(shape, n, dtype=PRECISION[precision], order='F')
+        self.image_arr = pyfftw.empty_aligned(shape, dtype=PRECISION[precision], order='F')
         fft_shape = list(shape)
         fft_shape[1] = fft_shape[1] // 2 + 1
-        self.fft_arr = pyfftw.n_byte_align_empty(fft_shape, n, dtype=PRECISION_FFT[precision], order='F')
+        self.fft_arr = pyfftw.empty_aligned(fft_shape, dtype=PRECISION_FFT[precision], order='F')
         effort = 'FFTW_PATIENT' if better_plan else 'FFTW_MEASURE'
         flags = (effort, 'FFTW_DESTROY_INPUT')
         self.fft = pyfftw.FFTW(self.image_arr, self.fft_arr, axes=(0,1), direction='FFTW_FORWARD', flags=flags, threads=threads)

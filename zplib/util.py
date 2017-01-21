@@ -1,3 +1,5 @@
+import json
+import numpy
 import pathlib
 import pickle
 
@@ -60,3 +62,36 @@ class Data:
         d.baz # AttributeError
         """
         self.__dict__.update(kwargs)
+
+class _NumpyEncoder(json.JSONEncoder):
+    """JSON encoder that is smart about converting iterators and numpy arrays to
+    lists, and converting numpy scalars to python scalars.
+    """
+    def default(self, o):
+        try:
+            return super().default(o)
+        except TypeError as x:
+            if isinstance(o, numpy.generic):
+                item = o.item()
+                if isinstance(item, numpy.generic):
+                    raise x
+                else:
+                    return item
+            try:
+                return list(o)
+            except:
+                raise x
+
+
+_COMPACT_ENCODER = _NumpyEncoder(separators=(',', ':'))
+_READABLE_ENCODER = _NumpyEncoder(indent=4, sort_keys=True)
+
+def json_encode_compact_to_bytes(data):
+    """Encode compact JSON for transfer over the network or similar."""
+    return _COMPACT_ENCODER.encode(data).encode('utf8')
+
+def json_encode_legible_to_file(data, f):
+    """Encode nicely-formatted JSON to a file."""
+    for chunk in _READABLE_ENCODER.iterencode(data):
+        f.write(chunk)
+
