@@ -177,13 +177,14 @@ def _write_video(first_frame, frame_iterator, framerate, output, codec, pixel_fo
     stderr = None if verbose else subprocess.DEVNULL
     ffmpeg = subprocess.Popen(command, stdin=subprocess.PIPE, stderr=stderr)
     ffmpeg.stdin.write(_get_bytes(first_frame))
-    for i, frame in enumerate(frame_iterator):
-        if frame.shape != first_frame.shape or frame.dtype != first_frame.dtype:
-            raise ValueError('Frame {} has unexpected shape/dtype'.format(i+1))
-        ffmpeg.stdin.write(_get_bytes(frame))
-
-    ffmpeg.stdin.close()
-    ffmpeg.wait()
+    try:
+        for i, frame in enumerate(frame_iterator):
+            if frame.shape != first_frame.shape or frame.dtype != first_frame.dtype:
+                raise ValueError('Frame {} has unexpected shape/dtype'.format(i+1))
+            ffmpeg.stdin.write(_get_bytes(frame))
+    finally:
+        ffmpeg.stdin.close()
+        ffmpeg.wait()
     if ffmpeg.returncode != 0:
         raise RuntimeError('ffmpeg encoding failed')
 

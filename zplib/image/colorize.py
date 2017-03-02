@@ -67,6 +67,8 @@ def screen(a, b, max_possible=255):
     Parameter 'max_possible' refers to the brightest-possible value in the array.
     E.g. 1 for images scaled from 0 to 1, or 255 for images scaled from 0 to 255.
     """
+    a = a.astype(float)
+    b = b.astype(float)
     return max_possible - (((max_possible - a)*(max_possible - b))/max_possible)
 
 def multi_screen(arrays, max_possible=255):
