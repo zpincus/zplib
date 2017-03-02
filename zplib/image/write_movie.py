@@ -4,6 +4,7 @@ import freeimage
 
 from . import ffmpeg
 from . import colorize
+from . import pyramid
 
 def write_movie(image_generator, output_file, framerate=15):
     """Write a movie from images.
@@ -41,6 +42,13 @@ def write_movie(image_generator, output_file, framerate=15):
             gfp_generator = generate_images_from_files(gfp_files, upper_left, lower_right, min=350, max=1020, gamma=0.7, color=(0,255,0))
             image_generator = screen_images(bf_generator, gfp_generator)
             write_movie(image_generator, 'movie.mp4', framerate=10)
+
+        4) Downsample (shrink) images to make a smaller movie:
+            image_dir = pathlib.Path('/path/to/images')
+            image_files = sorted(image_dir.glob('*.png'))
+            image_generator = generate_images_from_files(image_files)
+            image_shrinker = shrink(image_generator, factor=4)
+            write_movie(image_shrinker, 'movie.mp4', framerate=10)
     """
     output_file = str(output_file)
     if not output_file.endswith('.mp4'):
@@ -92,3 +100,19 @@ def screen_images(*image_generators):
     for images in zip(*image_generators):
         yield colorize.multi_screen(images).astype(numpy.uint8)
 
+
+def shrink(image_generator, factor=2, fast=False):
+    """Shrink images produced by a generator by the specified factor.
+
+    Parameters:
+        factor: amount to shrink the image by (fold-change)
+        fast: if True and if factor is an integer, perform no smoothing.
+            If False, smooth the image before downsampling to avoid aliasing.
+    """
+    int_factor = int(factor)
+    go_fast = fast and int_factor == factor
+    for image in image_generator:
+        if go_fast:
+            yield image[::int_factor, ::int_factor]
+        else:
+            yield pyr_down(image, factor).astype(numpy.uint8)
