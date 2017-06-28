@@ -94,14 +94,14 @@ def json_encode_compact_to_bytes(data):
 
 def json_encode_legible_to_str(data):
     """Encode nicely-formatted JSON to a string."""
-    return _READABLE_ENCODER.ncode(data)
+    return _READABLE_ENCODER.encode(data)
 
 def json_encode_legible_to_file(data, f):
     """Encode nicely-formatted JSON to an open file handle."""
     for chunk in _READABLE_ENCODER.iterencode(data):
         f.write(chunk)
 
-def json_encode_atomic_legible_to_file(data, filename, suffix=None):
+def json_encode_atomic_legible_to_file(data, filename):
     """Encode nicely-formatted JSON and if there was no error, atomically write.
 
     Care is taken to never overwrite an existing file except in an atomic manner
@@ -112,24 +112,15 @@ def json_encode_atomic_legible_to_file(data, filename, suffix=None):
     Parameters:
         data: python objects to be JSON encoded
         filename: string or pathlib.Path object for destination file.
-        suffix: if provided, the temporary file will have the same name as
-            the original file, plus this suffix and then some arbitrary characters
-            to ensure uniqueness. If not provided, the suffix will be 'temp'.
-            If a suffix is provided, in the event of a file-write error, the
-            partially written temp file will be left for possible user-recovery.
-            Otherwise, the file will be removed if an error occurs.
     """
     s = json_encode_legible_to_str(data)
     filename = pathlib.Path(filename)
-    prefix = filename.name + '-{}.'.format('temp' if suffix is None else suffix)
+    prefix = filename.name + '-temp.'
     fd, tmp_path = tempfile.mkstemp(prefix=prefix, dir=str(filename.parent))
     try:
-        with os.fdopen(fd) as f:
+        with os.fdopen(fd, 'w') as f:
             f.write(s)
         os.replace(str(tmp_path), str(filename))
     except:
-        if not suffix:
-            # if no suffix provided, assume that there's no interest in user-recovery
-            # of half-written files.
-            os.remove(tmp_path)
+        os.remove(tmp_path)
         raise
