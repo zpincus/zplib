@@ -33,8 +33,9 @@ def moving_mean_std(xs, ys, points_out=300, smooth=0.2):
     # sometimes due to data sparsity and/or ringing artifacts in LOWESS, the
     # estimated variances can go to zero or below. Replace these with very tiny
     # positive values...
-    bad_var = var_est < numpy.absolute(y_est)/10000
-    var_est[bad_var] = numpy.absolute(y_est)/10000
+    small_compared_to_yest = numpy.absolute(y_est)/10000
+    bad_var = var_est < small_compared_to_yest
+    var_est[bad_var] = small_compared_to_yest[bad_var]
     x_out = numpy.linspace(xs[0], xs[-1], points_out)
     mean = numpy.interp(x_out, xs, y_est)
     std = numpy.interp(x_out, xs, numpy.sqrt(var_est))

@@ -74,13 +74,17 @@ def lowess(x, y, f=2/3., iters=3):
     x = numpy.asarray(x)
     y = numpy.asarray(y)
     r = max(4, int(numpy.ceil(f*(len(x)-1))))
-    h = [numpy.sort(numpy.abs(x - xv))[r] for xv in x]
-    w = numpy.clip(numpy.abs(numpy.subtract.outer(x, x) / h), 0, 1)
-    w = (1 - w**3)**3
+    # below hogs RAM for large input, without much speed gain.
+    # h = [numpy.sort(numpy.abs(x - xv))[r] for xv in x]
+    # w = numpy.clip(numpy.abs(numpy.subtract.outer(x, x) / h), 0, 1)
+    # w = (1 - w**3)**3
     delta = 1
     for _ in range(iters):
         y_est = []
-        for xv, wv in zip(x, w.T):
+        for xv in x: # for xv, wv in zip(x, w.T):
+            x_dists = numpy.abs(x - xv)
+            max_dist = numpy.sort(x_dists)[r]
+            wv = numpy.clip(x_dists/max_dist, 0, 1)
             weights = delta * wv
             weights_mul_x = weights * x
             b1 = numpy.dot(weights, y)
