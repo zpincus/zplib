@@ -25,11 +25,11 @@ def moving_mean_std(xs, ys, points_out=300, smooth=0.2):
     order = xs.argsort()
     xs = xs[order]
     ys = ys[order]
-    y_est = smoothing.lowess(xs, ys, f=smooth, iter=3)
+    y_est = smoothing.lowess(xs, ys, f=smooth, iters=3)
     y_dev = (ys - y_est)**2
     # do not want to robustify against outlier deviations -- this
     # gives bad std values. So iter=1.
-    var_est = smoothing.lowess(xs, y_dev, f=smooth, iter=1)
+    var_est = smoothing.lowess(xs, y_dev, f=smooth, iters=1)
     # sometimes due to data sparsity and/or ringing artifacts in LOWESS, the
     # estimated variances can go to zero or below. Replace these with very tiny
     # positive values...

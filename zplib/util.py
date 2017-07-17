@@ -72,17 +72,17 @@ class _NumpyEncoder(json.JSONEncoder):
     def default(self, o):
         try:
             return super().default(o)
-        except TypeError as x:
+        except TypeError:
             if isinstance(o, numpy.generic):
                 item = o.item()
                 if isinstance(item, numpy.generic):
-                    raise x
+                    raise
                 else:
                     return item
             try:
                 return list(o)
             except:
-                raise x
+                raise
 
 
 _COMPACT_ENCODER = _NumpyEncoder(separators=(',', ':'))
