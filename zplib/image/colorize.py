@@ -20,6 +20,10 @@ def scale(array, min=None, max=None, gamma=1, output_max=255):
     numpy.seterr(**err)
     return arr * output_max
 
+def write_scaled(array, filename, min, max, gamma=1):
+    import freeimage
+    freeimage.write(scale(array, min, max, gamma).astype(numpy.uint8), filename)
+
 def color_tint(array, target_color):
     """Given an array and an (R,G,B) color-tuple, return a color-tinted
     array, where the intensity ranges from (0,0,0) to (R,G,B), weighted by the

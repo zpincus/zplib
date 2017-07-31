@@ -109,6 +109,10 @@ def sample_image_rect(image, size, center, rotation=0, order=3, **kwargs):
     center: (x, y) position in the input image that the sampling region is
         centered on.
     rotation: rotation in degrees to apply to the sampling region.
+        NB: for images, the positive x axis goes downward on the screen. So
+        the rotation direction seems negated compared to conventional
+        coordinates. (That is, a slight negative rotation will cause the
+        sampling rect to be rotated a little counterclockwise.)
     order: image interpolation order for the resampling process.
         0 = nearest-neighbor interpolation
         1 = linear interpolation
@@ -122,11 +126,11 @@ def sample_image_rect(image, size, center, rotation=0, order=3, **kwargs):
 
     size = numpy.asarray(size)
     x, y = numpy.indices(size) - (size / 2).reshape((2,1,1))
-    theta = numpy.pi * degrees / 180
-    rx = x*numpy.cos(-theta)-y*numpy.sin(-theta)
-    ry = x*numpy.sin(-theta)+y*numpy.cos(-theta)
+    theta = numpy.pi * rotation / 180
+    rx = x*numpy.cos(theta)-y*numpy.sin(theta)
+    ry = x*numpy.sin(theta)+y*numpy.cos(theta)
     coords = numpy.array([rx, ry]) + numpy.reshape(center, (2,1,1))
-    sampled = nd.map_coordinates(image, coords, order=order, **kwargs)
+    sampled = ndimage.map_coordinates(image, coords, order=order, **kwargs)
     return sampled
 
 
