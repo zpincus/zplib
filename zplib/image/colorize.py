@@ -44,10 +44,12 @@ def color_map(array, spectrum_max=0.9):
         at which the colormap ends. A value of 1 is often too intensely yellow
         for good visualization.
 
-    Output: uint-8 array of shape array.shape + (3,)
+    Output: uint-8 array of shape array.shape + (3,), where color values are
+        RGB tuples in the range 0 to 255
     """
     # array scaled 0 to 1
     array = numpy.asarray(array)
+    assert array.min() >= 0 and array.max() <= 1
     x = array.astype(numpy.float32)*spectrum_max
     r = numpy.sqrt(x)
     g = x**3

@@ -1,7 +1,44 @@
 import numpy
 from . import smoothing
 
-def moving_mean_std(xs, ys, points_out=300, smooth=0.2):
+def _est_moving_mean(xs, ys, points_out, smooth, iters):
+    """sort xs and ys, fit a trendline, and return the sorted values, trendline,
+    resampled x-values and resampled mean"""
+    xs, ys = numpy.asarray(xs), numpy.asarray(ys)
+    order = xs.argsort()
+    xs = xs[order]
+    ys = ys[order]
+    y_est = smoothing.lowess(xs, ys, f=smooth, iters=iters)
+    x_out = numpy.linspace(xs[0], xs[-1], points_out)
+    mean = numpy.interp(x_out, xs, y_est)
+    return xs, ys, y_est, x_out, mean
+
+def moving_mean(xs, ys, points_out=300, smooth=0.2, iters=3):
+    """Calculate smooth trendlines for the mean and standard deviation of
+    a set of observations.
+
+    Internally, LOWESS regression is used to estimate a robust mean trend, and
+    then from that mean trend, the deviation of each data point is measured and
+    LOWESS is again used to estimate a smooth trendline for this deviation.
+
+    Parameters:
+        xs, ys: 1-d lists or arrays of data points. Note that xs need not be
+            sorted, nor unique. That is, the data need not describe a function:
+            a cloud of points is appropriate here.
+        points_out: number of points to evaluate the mean trendline along.
+        smooth: smoothing parameter 'f' for LOWESS. See smoothing.lowess().
+        iters: robustifying iterations for LOWESS for calculating the mean
+            trend. See smoothing.lowess().
+
+    Returns x_out, mean
+        x_out: 1-d array (of length points_out) containing the x-values at which
+            the smooth mean was calculated.
+        mean: mean trendlines evaluated at the x_out positions.
+    """
+    xs, ys, y_est, x_out, mean = _est_moving_mean(xs, ys, points_out, smooth, iters)
+    return x_out, mean
+
+def moving_mean_std(xs, ys, points_out=300, smooth=0.2, iters=3):
     """Calculate smooth trendlines for the mean and standard deviation of
     a set of observations.
 
@@ -14,18 +51,16 @@ def moving_mean_std(xs, ys, points_out=300, smooth=0.2):
             sorted, nor unique. That is, the data need not describe a function:
             a cloud of points is appropriate here.
         points_out: number of points to evaluate the mean and std trendlines along.
-        smooth: smoothing parameter 'f' for LOWESS. See smoothing1d.lowess()
+        smooth: smoothing parameter 'f' for LOWESS. See smoothing.lowess()
+        iters: robustifying iterations for LOWESS for calculating the mean
+            trend. See smoothing.lowess().
 
     Returns x_out, mean, std
         x_out: 1-d array of length points_out containing the x-values at which
             the mean and std outputs are evaluated.
         mean, std: y-values for the mean and std trendlines.
     """
-    xs, ys = numpy.asarray(xs), numpy.asarray(ys)
-    order = xs.argsort()
-    xs = xs[order]
-    ys = ys[order]
-    y_est = smoothing.lowess(xs, ys, f=smooth, iters=3)
+    xs, ys, y_est, x_out, mean = _est_moving_mean(xs, ys, points_out, smooth, iters)
     y_dev = (ys - y_est)**2
     # do not want to robustify against outlier deviations -- this
     # gives bad std values. So iter=1.
@@ -36,8 +71,6 @@ def moving_mean_std(xs, ys, points_out=300, smooth=0.2):
     small_compared_to_yest = numpy.absolute(y_est)/10000
     bad_var = var_est < small_compared_to_yest
     var_est[bad_var] = small_compared_to_yest[bad_var]
-    x_out = numpy.linspace(xs[0], xs[-1], points_out)
-    mean = numpy.interp(x_out, xs, y_est)
     std = numpy.interp(x_out, xs, numpy.sqrt(var_est))
     return x_out, mean, std
 
