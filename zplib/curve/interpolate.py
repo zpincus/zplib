@@ -1,5 +1,5 @@
 import numpy
-from scipy.interpolate import fitpack
+from scipy.interpolate import _fitpack_impl as fitpack
 
 from . import geometry
 
@@ -136,15 +136,22 @@ def spline_interpolate(tck, num_points, derivative=0):
 
     If derivative=0, then the points themselves will be given; if derivative>0
     then the derivatives at those points will be returned."""
+    # t[-1] gives the maximum value for the input position
+    output_positions = numpy.linspace(0, tck[0][-1], num_points)
+    return spline_evaluate(tck, output_positions, derivative)
+
+
+def spline_evaluate(tck, positions, derivative=0):
+    """Evaluate a spline at the given positions.
+
+    If derivative=0, then the points themselves will be given; if derivative>0
+    then the derivatives at those points will be returned."""
     t, c, k = tck
-    # t[-1] gives the maximum parameter value for the parametric curve
-    output_positions = numpy.linspace(0, t[-1], num_points)
     if c.ndim == 1:
         evaluate = splev # non-parametric
     else:
         evaluate = splpev # parametric
-    points = evaluate(output_positions, t, c, k, der=derivative)
-    return points
+    return evaluate(positions, t, c, k, der=derivative)
 
 
 def insert_control_points(tck, num_points):
@@ -289,10 +296,7 @@ def splprep(u, x, s, k):
 def splev(x, t, c, k, der=0):
     "Evaluate spline (t,c,k) or nth-order derivative thereof at position x."
     c = c.T
-    try:
-        out, ier = fitpack._fitpack._spl_(x, der, t, c, k, 0)
-    except:
-        out, ier = fitpack._fitpack._spl_(x, der, t, c, k)
+    out, ier = fitpack._fitpack._spl_(x, der, t, c, k, 0)
     if ier==10: raise ValueError("Invalid input data")
     if ier: raise TypeError("An error occurred")
     return out
@@ -304,10 +308,7 @@ def splpev(u, t, c, k, der=0):
     c = c.T
     out = numpy.empty((len(u), c.shape[0]))
     for i, cc in enumerate(c):
-        try:
-            out[:,i], ier = fitpack._fitpack._spl_(u, der, t, cc, k, 0)
-        except:
-            out[:,i], ier = fitpack._fitpack._spl_(u, der, t, cc, k)
+        out[:,i], ier = fitpack._fitpack._spl_(u, der, t, cc, k, 0)
         if ier==10: raise ValueError("Invalid input data")
         if ier: raise TypeError("An error occurred")
     return out

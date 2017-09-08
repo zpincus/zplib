@@ -47,8 +47,8 @@ def outline(tck, radius_tck, num_points=None):
     points, radii = _get_points_and_radii(tck, radius_tck, num_points)
     perps = perpendiculars(tck, num_points=len(points))
     offsets = perps * radii[:,numpy.newaxis]
-    left = spine + offsets
-    right = spine - offsets
+    left = points + offsets
+    right = points - offsets
     outline = numpy.concatenate([left, right[::-1]], axis=0)
     return left, right, outline
 
