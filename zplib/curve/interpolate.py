@@ -46,6 +46,9 @@ def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
         input points, at the cost of potentially high noise. Very large values
         will result in a low-order polynomial fit to the points. If None, an
         appropriate value based on the scale of the points will be selected.
+        Specifically, the fitting function guarantees that sum of the distances
+        between the input points and the spline will be less than or equal to
+        this smoothing parameter.
     order: The desired order of the spline. If None, will be 1 if there are
         three or fewer input points, and otherwise 3.
     force_endpoints: if True (default), the endpoints of the spline will be set
@@ -83,7 +86,7 @@ def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
         raise RuntimeError(msg)
     if force_endpoints:
         c[[0,-1]] = points[[0,-1]]
-    return t,c,k
+    return t, c, k
 
 def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=True):
     """Fit a non-parametric smoothing spline to x,y points. (Fits a function
@@ -96,6 +99,9 @@ def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=T
         input points, at the cost of potentially high noise. Very large values
         will result in a low-order polynomial fit to the points. If None, an
         appropriate value based on the scale of the points will be selected.
+        Specifically, the fitting function guarantees that sum of the distances
+        between the input y values and the spline at the same x values will be
+        less than or equal to this smoothing parameter.
     order: The desired order of the spline. If None, will be 1 if there are
         three or fewer input points, and otherwise 3.
     force_endpoints: if True (default), the endpoints of the spline will be set
@@ -110,8 +116,9 @@ def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=T
     between the original y values and the matching points on the smoothed
     spline representation."""
 
-    points = numpy.asarray(points)
-    l = len(points)
+    x = numpy.asarray(x)
+    y = numpy.asarray(y)
+    l = len(x)
     if order is None:
         if l < 4:
             k = 1
@@ -128,7 +135,7 @@ def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=T
         raise RuntimeError(msg)
     if force_endpoints:
         c[[0,-1]] = y[[0,-1]]
-    return t,c,k
+    return t, c, k
 
 
 def spline_interpolate(tck, num_points, derivative=0):
