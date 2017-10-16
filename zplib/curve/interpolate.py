@@ -216,10 +216,8 @@ def spline_to_bezier(tck):
             # add enough knots to bring the current multiplicity up to the desired multiplicity
             number_to_insert = desired_multiplicity - remainder
             t, c, k = pinsert(t, c, k, x, number_to_insert)
-    # strip off the last k+1 knots, as they are redundant after knot insertion
-    bezier_points = numpy.transpose(c)[:-desired_multiplicity]
     # group the points into the desired bezier curves
-    return numpy.split(bezier_points, len(bezier_points) / desired_multiplicity, axis=0)
+    return numpy.split(c, len(c) // desired_multiplicity)
 
 
 def pinsert(t, c, k, u, m=1):
