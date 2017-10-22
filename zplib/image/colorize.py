@@ -33,7 +33,7 @@ def color_tint(array, target_color):
     array = numpy.asarray(array)
     return array[..., numpy.newaxis] * target_color
 
-def color_map(array, spectrum_max=0.9):
+def color_map(array, spectrum_max=0.9, uint8=True):
     """Color-map the input array on a pleasing black-body-ish black-blue-red-orange-yellow
     spectrum (far superior to matlab's Jet, which introduces many "false contours"
     in image data).
@@ -41,11 +41,12 @@ def color_map(array, spectrum_max=0.9):
     Parameters:
         array: MUST be scaled [0, 1] with 'scale()' or similar.
         spectrum_max: controls the point along the spectrum (0 to 1)
-        at which the colormap ends. A value of 1 is often too intensely yellow
-        for good visualization.
+            at which the colormap ends. A value of 1 is often too intensely
+            yellow for good visualization.
+        uint8: if True, return uint RGB tuples in range [0, 255], otherwise
+            floats in [0, 1]
 
-    Output: uint-8 array of shape array.shape + (3,), where color values are
-        RGB tuples in the range 0 to 255
+    Output: array of shape array.shape + (3,), where color values are RGB tuples
     """
     # array scaled 0 to 1
     array = numpy.asarray(array)
@@ -56,7 +57,9 @@ def color_map(array, spectrum_max=0.9):
     b = numpy.sin(2*numpy.pi*x)
     rgb = [c[...,numpy.newaxis] for c in (r, g, b)] # make them all have a new axis along which to concatenate
     rgb = numpy.concatenate(rgb, axis=-1).clip(0, 1)
-    return (255 * rgb).astype(numpy.uint8)
+    if uint8:
+        rgb = (255 * rgb).astype(numpy.uint8)
+    return rgb
 
 def luminance(color_array):
     """Return luminance of an RGB (or RGBA) array (shape (x, y, 3) or (x, y, 4),
