@@ -1,7 +1,11 @@
+import collections
+
 import numpy
 from scipy.stats import kde
 from skimage import measure
 from scipy import optimize
+
+ContourResult = collections.namedtuple('ContourResult', ('density', 'extent', 'c_level', 'contours'))
 
 def contour(data, fraction, samples_x=100, samples_y=100):
     """Calculate contours that enclose a given fraction of the input data points.
@@ -130,4 +134,4 @@ def contour(data, fraction, samples_x=100, samples_y=100):
         contours = contours[0]
         c_levels = c_levels[0]
     extent = [xmin, xmax, ymin, ymax]
-    return density, extent, c_levels, contours
+    return ContourResult(density, extent, c_levels, contours)
