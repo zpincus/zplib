@@ -65,10 +65,10 @@ class CVRegress(base.BaseEstimator):
 
     Parameters:
         regressor: any sklearn-style regressor, including nonlinear methods.
-        cv: fold for K-fold cross-validation, or any other sklearn-style cross-
-            validation iterator, such as sklearn.model_selection.LeaveOneOut
+        cv: fold for K-fold cross-validation, or an sklearn-style cross-validation
+            iterator, such as sklearn.model_selection.LeaveOneOut
     """
-    def __init__(self, regressor, cv=3):
+    def __init__(self, regressor, cv=10):
         self.regressor = regressor
         self.cv = cv
 

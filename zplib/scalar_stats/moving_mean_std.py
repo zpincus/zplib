@@ -1,19 +1,19 @@
 import numpy
 from . import smoothing
 
-def _est_moving_mean(xs, ys, points_out, smooth, iters):
+def _est_moving_mean(xs, ys, points_out, smooth, iters, outlier_threshold):
     """sort xs and ys, fit a trendline, and return the sorted values, trendline,
     resampled x-values and resampled mean"""
     xs, ys = numpy.asarray(xs), numpy.asarray(ys)
     order = xs.argsort()
     xs = xs[order]
     ys = ys[order]
-    y_est = smoothing.lowess(xs, ys, f=smooth, iters=iters)
+    y_est = smoothing.lowess(xs, ys, smooth, iters, outlier_threshold)
     x_out = numpy.linspace(xs[0], xs[-1], points_out)
     mean = numpy.interp(x_out, xs, y_est)
     return xs, ys, y_est, x_out, mean
 
-def moving_mean(xs, ys, points_out=300, smooth=0.2, iters=3):
+def moving_mean(xs, ys, points_out=300, smooth=0.2, iters=3, outlier_threshold=6):
     """Calculate smooth trendlines for the mean and standard deviation of
     a set of observations.
 
@@ -35,7 +35,7 @@ def moving_mean(xs, ys, points_out=300, smooth=0.2, iters=3):
             the smooth mean was calculated.
         mean: mean trendlines evaluated at the x_out positions.
     """
-    xs, ys, y_est, x_out, mean = _est_moving_mean(xs, ys, points_out, smooth, iters)
+    xs, ys, y_est, x_out, mean = _est_moving_mean(xs, ys, points_out, smooth, iters, outlier_threshold)
     return x_out, mean
 
 def moving_mean_std(xs, ys, points_out=300, smooth=0.2, iters=3):

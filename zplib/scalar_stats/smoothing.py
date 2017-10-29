@@ -57,7 +57,7 @@ def savitzky_golay(data, kernel=11, order=4):
         smooth_data.append(value)
     return numpy.array(smooth_data)
 
-def lowess(x, y, f=2/3., iters=3):
+def lowess(x, y, f=2/3., iters=3, outlier_threshold=6, weights=None, degree=1):
     """Apply LOWESS to fit a nonparametric regression curve to a scatterplot.
 
     http://en.wikipedia.org/wiki/Local_regression
@@ -68,6 +68,11 @@ def lowess(x, y, f=2/3., iters=3):
         iter: number of robustifying iterations (after each of which outliers
             are detected and excluded). Larger numbers = more robustness, but
             slower run-time.
+        outlier_threshold: data points that are further from the lowess estimate
+            than outlier_threshold * numpy.median(numpy.abs(residuals)) are
+            declared outliers.
+        degree: degree of locally weighted fit. Generally 1 is fine, though for
+            data with local minima/maxima, degree=2 may fit better.
 
     Returns: array of smoothed y-values for the input x-values.
     """
@@ -80,6 +85,8 @@ def lowess(x, y, f=2/3., iters=3):
     # w = (1 - w**3)**3
     delta = 1
     max_dists = numpy.empty_like(x)
+    if weights is None:
+        weights = 1
     for it in range(iters):
         y_est = []
         for i, xv in enumerate(x): # for xv, wv in zip(x, w.T):
@@ -91,23 +98,28 @@ def lowess(x, y, f=2/3., iters=3):
                  max_dist = max_dists[i]
             wv = numpy.clip(x_dists/max_dist, 0, 1)
             wv = (1 - wv**3)**3
-            weights = delta * wv
-            weights_mul_x = weights * x
-            b1 = numpy.dot(weights, y)
-            b2 = numpy.dot(weights_mul_x, y)
-            A11 = numpy.sum(weights)
-            A12 = numpy.sum(weights_mul_x)
-            A21 = A12
-            A22 = numpy.dot(weights_mul_x, x)
-            determinant = A11 * A22 - A12 * A21
-            beta1 = (A22 * b1-A12 * b2) / determinant
-            beta2 = (A11 * b2-A21 * b1) / determinant
-            y_est.append(beta1 + beta2 * xv)
+            final_weights = delta * wv * weights
+            if degree > 1:
+                poly = numpy.poly1d(numpy.polyfit(x, y, degree, w=final_weights))
+                y_est.append(poly(xv))
+            else: # faster to hard-code weighted linear regression formula
+                weighted_x = final_weights * x
+                total_weighted_x = numpy.sum(weighted_x)
+                b1 = numpy.dot(final_weights, y)
+                b2 = numpy.dot(weighted_x, y)
+                A11 = numpy.sum(final_weights)
+                A12 = A21 = numpy.sum(weighted_x)
+                A22 = numpy.dot(weighted_x, x)
+                # solve linear system A*beta = b where A = [[A11, A12], [A21, A22]] and b = [b1, b2]
+                determinant = A11 * A22 - A12 * A21
+                beta1 = (A22*b1 - A12*b2) / determinant
+                beta2 = (A11*b2 - A21*b1) / determinant
+                y_est.append(beta1 + beta2 * xv)
         y_est = numpy.array(y_est)
         residuals = y - y_est
         s = numpy.median(numpy.abs(residuals))
         if s > 0:
-            delta = numpy.clip(residuals / (6 * s), -1, 1)
+            delta = numpy.clip(residuals / (outlier_threshold * s), -1, 1)
             delta = (1 - delta**2)**2
     return numpy.array(y_est)
 
