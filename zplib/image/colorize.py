@@ -1,4 +1,5 @@
 import numpy
+from matplotlib import cm
 
 def scale(array, min=None, max=None, gamma=1, output_max=255):
     """Return an array with values in the range [0, output_max].
@@ -33,10 +34,9 @@ def color_tint(array, target_color):
     array = numpy.asarray(array)
     return array[..., numpy.newaxis] * target_color
 
-def color_map(array, spectrum_max=0.9, uint8=True):
+def color_map(array, spectrum_max=0.925, uint8=True):
     """Color-map the input array on a pleasing black-body-ish black-blue-red-orange-yellow
-    spectrum (far superior to matlab's Jet, which introduces many "false contours"
-    in image data).
+    spectrum, using matplotlib's excellent and perceptually linear "inferno" colormap.
 
     Parameters:
         array: MUST be scaled [0, 1] with 'scale()' or similar.
@@ -49,16 +49,9 @@ def color_map(array, spectrum_max=0.9, uint8=True):
     Output: array of shape array.shape + (3,), where color values are RGB tuples
     """
     # array scaled 0 to 1
-    array = numpy.asarray(array)
+    array = numpy.asarray(array, dtype=float)
     assert array.min() >= 0 and array.max() <= 1
-    x = array.astype(numpy.float32)*spectrum_max
-    r = numpy.sqrt(x)
-    g = x**3
-    b = numpy.sin(2*numpy.pi*x)
-    rgb = [c[...,numpy.newaxis] for c in (r, g, b)] # make them all have a new axis along which to concatenate
-    rgb = numpy.concatenate(rgb, axis=-1).clip(0, 1)
-    if uint8:
-        rgb = (255 * rgb).astype(numpy.uint8)
+    rgb = cm.inferno(array, bytes=uint8)[...,:3]
     return rgb
 
 def luminance(color_array):

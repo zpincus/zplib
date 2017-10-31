@@ -5,16 +5,79 @@ import pathlib
 import pickle
 import tempfile
 
-def get_dir(path):
-    """Create a directory at path if it does not already exist. Return a
-    pathlib.Path object for that directory."""
+def write_delimited(path, data, delimiter='\t'):
+    """Write a list of lists to a delimited file."""
     path = pathlib.Path(path)
-    if path.exists():
-        if not path.is_dir():
-            raise RuntimeError('Path {} is not a directory.'.format(str(path)))
+    try:
+        with path.open('w') as f:
+            f.write('\n'.join(','.join(map(str, row)) for row in data))
+    except:
+        if path.exists():
+            path.remove()
+
+def read_delimited(path, header=True, coerce_float=True, empty_val=numpy.nan, delimiter='\t'):
+    """Iterate over the rows in a delimited file such as a csv or tsv.
+
+    Iterate a delimited file line by line, yielding each line's contents split
+    by the delimiter and optionally converted to floating-point values if possible.
+
+    Note: empty lines are skipped.
+
+    If more sophisticated control is required, consider numpy.genfromtext or
+    numpy.loadtxt.
+
+    Parameters:
+        path: path to input file
+        header: if True (default), return the header line and an iterator over
+            the remaining lines. If False, return an iterator over all lines.
+        coerce_float: if True (default), attempt to convert data values to
+            floating point. If that fails, return the original input string.
+        empty_val: if coerce_float is True, return this value when an input
+            value is empty. '' or numpy.nan (default) are the usual choices.
+        delimiter: symbol on which the file is delimited.
+
+    Returns:
+        (header, iterator) if coerce_float is True, else iterator
+        where header is a list of the strings on the first line, and iterator
+        yields a list of values for each subsequent line.
+
+    Example:
+        header, data = read_delimited('path/to/data.csv', delimiter=',')
+        name_i = header.index('name')
+        lifespan_i = header.index('lifespan')
+        lifespans = {}
+        for row in data:
+            lifespans[row[name_i]] = row[lifespan_i]
+    """
+    data_iter = _iter_delimited(path, header, coerce_float, empty_val, delimiter)
+    if header:
+        return next(data_iter), data_iter
     else:
-        path.mkdir(parents=True)
-    return path
+        return data_iter
+
+def _iter_delimited(path, header, coerce_float, empty_val, delimiter):
+    with open(path) as infile:
+        for line in infile:
+            vals = line.strip('\n').split(delimiter)
+            if not vals:
+                continue # skip blank lines
+            if header:
+                header = False # only read first (non-empty) line as the header
+                yield vals
+            elif not coerce_float:
+                yield vals # don't try to convert to float, just return strings
+            else:
+                new_vals = []
+                for val in vals:
+                    if val == '':
+                        val = empty_val
+                    else:
+                        try:
+                            val = float(val)
+                        except ValueError:
+                            pass
+                    new_vals.append(val)
+                yield new_vals
 
 def dump(path, **data_dict):
     """Dump the keyword arguments into a dictionary in a pickle file."""
@@ -33,25 +96,6 @@ def load(path):
     path = pathlib.Path(path)
     with path.open('rb') as f:
         return Data(_path=path, **pickle.load(f))
-
-def dump_csv(data, path):
-    """Write a list of lists to a csv file."""
-    path = pathlib.Path(path)
-    try:
-        with path.open('w') as f:
-            f.write('\n'.join(','.join(row) for row in data))
-    except:
-        if path.exists():
-            path.remove()
-
-def load_csv(path):
-    """Load a csv file to a list of lists."""
-    path = pathlib.Path(path)
-    data = []
-    with path.open('r') as f:
-        for line in f:
-            data.append(line.strip().split(','))
-    return data
 
 class Data:
     def __init__(self, **kwargs):
@@ -83,7 +127,6 @@ class _NumpyEncoder(json.JSONEncoder):
                 return list(o)
             except:
                 raise
-
 
 _COMPACT_ENCODER = _NumpyEncoder(separators=(',', ':'))
 _READABLE_ENCODER = _NumpyEncoder(indent=4, sort_keys=True)
