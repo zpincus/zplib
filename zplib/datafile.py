@@ -13,7 +13,10 @@ def write_delimited(path, data, delimiter='\t'):
             f.write('\n'.join(','.join(map(str, row)) for row in data))
     except:
         if path.exists():
+            # an error occured during writing the file. Remove the half-written
+            # file and re-raise the exception
             path.remove()
+        raise
 
 def read_delimited(path, header=True, coerce_float=True, empty_val=numpy.nan, delimiter='\t'):
     """Iterate over the rows in a delimited file such as a csv or tsv.
@@ -80,7 +83,17 @@ def _iter_delimited(path, header, coerce_float, empty_val, delimiter):
                 yield new_vals
 
 def dump(path, **data_dict):
-    """Dump the keyword arguments into a dictionary in a pickle file."""
+    """Dump keyword arguments into a file on disk.
+
+    dump() and load() can be used to easily save any arbitrary python objects
+    (or nested objects) to a datafile, organized by keyword. This function takes
+    arbitrary keyword arguments, and saves that to a file with the pickle module.
+
+    Example:
+        dump('path/to/datafile', vals=[1,2,3], date='2017-01-01', params={1:[2,3,4], 2:'a'})
+        data = load('path/to/datafile')
+        print(data.vals, data.date, data.params[2])
+    """
     path = pathlib.Path(path)
     try:
         with path.open('wb') as f:
@@ -90,9 +103,22 @@ def dump(path, **data_dict):
             path.remove()
 
 def load(path):
-    """Load a dictionary from a pickle file into a Data object for
-    attribute-style value lookup. The path to the original file
-    from which the data was loaded is stored in the '_path' attribute."""
+    """Load arguments previously dumped to a file on disk.
+
+    dump() and load() can be used to easily save any arbitrary python objects
+    (or nested objects) to a datafile, organized by keyword. This function takes
+    arbitrary keyword arguments, and saves that to a file with the pickle module.
+
+    Load returns a Data object, with the original keywords from dump() present
+    as attributes. In addition, the path to the original file is stored in the
+    '_path' attribute.
+
+    Example:
+        dump('path/to/datafile', vals=[1,2,3], date='2017-01-01', params={1:[2,3,4], 2:'a'})
+        data = load('path/to/datafile')
+        print(data.vals, data.date, data.params[2])
+        print(data._path)
+    """
     path = pathlib.Path(path)
     with path.open('rb') as f:
         return Data(_path=path, **pickle.load(f))
@@ -145,7 +171,7 @@ def json_encode_legible_to_file(data, f):
         f.write(chunk)
 
 def json_encode_atomic_legible_to_file(data, filename):
-    """Encode nicely-formatted JSON and if there was no error, atomically write.
+    """Encode nicely-formatted JSON, and if there was no error, atomically write.
 
     Care is taken to never overwrite an existing file except in an atomic manner
     after all other steps have occured. This prevents errors from causing a
