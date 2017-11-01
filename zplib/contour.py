@@ -134,7 +134,7 @@ def contour(data, fraction, fraction_of='density', samples_x=100, samples_y=100)
         # find density levels where a given fraction of the total density is above
         # the level.
         density_values = numpy.sort(density.flat)
-        density_below_value = ordered_density.cumsum()
+        density_below_value = density_values.cumsum()
         total_density = density_below_value[-1]
         # we now have a mapping between density values and the total amount of density
         # below that value. To find the desired density levels (where a given fraction

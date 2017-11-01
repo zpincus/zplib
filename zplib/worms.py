@@ -197,8 +197,52 @@ class Worm(object):
         return 'Worm("{}")'.format(self.name)
 
     def get_time_range(self, feature, age_min=-numpy.inf, age_max=numpy.inf, age_feature='age', match_closest=False):
-        """
+        """Get data from a timecourse feature in a specific time window.
 
+        Parameters:
+            feature: the name of a timecourse feature available in worm.td to
+                retrieve (such as "gfp_95th", say), or a function that will be
+                called as feature(worm) that will calculate a timecourse feature
+                (see examples).
+            age_min, age_max: the beginning and end of the window in which to
+                retrieve features. If not specified, features from the very
+                beginning and/or to the very end of the timecourse will be
+                retrieved.
+            age_feature: the name of the feature to use to determine the age
+                window. Defaults to 'age', but other monotonic features, such as
+                a time-left-alive 'ghost_age' could also be used. If this is a
+                function, it will be called as age_feature(worm) to generate
+                the ages to examine (see examples).
+            match_closest: If False (default), the age window is strictly
+                defined as age <= age_max and >= age_min. However, if
+                match_closest is True, the window will begin at the nearest age
+                to age_min, and end at the nearest age to age_max.
+
+        Returns:
+            ages: the ages within the window
+            data: the feature values corresponding to those ages
+
+        Examples:
+            # Assume that worm.td.gfp_95th and worm.td.gfp_background exist.
+
+            #Basic usage:
+            midlife_ages, midlife_gfp = worm.get_time_range('gfp_95th', 3, 7)
+            old_ages, old_gfp = worm.get_time_range('gfp_95th', age_min=7)
+
+            # Using a function as a feature:
+            def bg_subtracted_gfp(worm):
+                return worm.td.gfp_95th - worm.td.gfp_background
+            ages, gfp_minus_bg = worm.get_time_range(bg_subtracted_gfp, 3, 7)
+
+            # Alternately, if you want to store the feature for later use:
+            worm.td.gfp_minus_bg = worm.td.gfp_95th - worm.td.gfp_background
+            ages, gfp_minus_bg = worm.get_time_range('gfp_minus_bg', 3, 7)
+
+            # Using a function as an age feature:
+            def ghost_age(worm):
+                # zero means dead, more negative means longer to live
+                return worm.td.age - worm.lifespan
+            ghost_ages, near_death_gfp = worm.get_time_range('gfp_95th', age_min=-1, age_feature=ghost_age)
         """
         ages = age_feature(self) if callable(age_feature) else getattr(self.td, age_feature)
         data = feature(self) if callable(feature) else getattr(self.td, feature)
@@ -217,8 +261,34 @@ class Worm(object):
         r = numpy.arange(len(ages))
         return (r >= li) & (r <= ui)
 
-    def interp_feature(self, feature, age):
-        ages, value = self.get_time_range(feature)
+    def interpolate_feature(self, feature, age, age_feature='age'):
+        """Estimate timecourse feature values at arbitrary times.
+
+        Use linear interpolation to estimate the value of a given timecourse
+        feature at one or more arbitrary times. Useful for calculating feature
+        values across multiple worms on a uniform time-basis.
+
+        Parameters:
+            feature: the name of a timecourse feature available in worm.td to
+                retrieve (such as "gfp_95th", say), or a function that will be
+                called as feature(worm) that will calculate a timecourse feature
+                (see documentation/examples for get_age_range).
+            age: a single age or a list/array of ages at which to interpolate
+                the feature values.
+            age_feature: the name of the feature to use to determine the ages.
+                Defaults to 'age', but other monotonic features, such as
+                a time-left-alive 'ghost_age' could also be used. If this is a
+                function, it will be called as age_feature(worm) to generate
+                the ages to examine (see documentation/examples for
+                get_age_range).
+
+        Returns the level or levels of the feature at the specified age(s).
+
+        Example:
+            day7gfp = worm.interpolate_feature('gfp_95th', 7)
+            daily_gfp = worm.interpolate_feature('gfp_95th', numpy.arange(3, 7))
+        """
+        ages, value = self.get_time_range(feature, age_feature=age_feature)
         return numpy.interp(age, ages, value)
 
 class Worms(collections.UserList):
