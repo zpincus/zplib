@@ -6,7 +6,7 @@ import pickle
 import tempfile
 
 def write_delimited(path, data, delimiter='\t'):
-    """Write a list of lists to a delimited file."""
+    """Write a list of lists (or iterable of iterables) to a delimited file."""
     path = pathlib.Path(path)
     try:
         with path.open('w') as f:
@@ -65,8 +65,8 @@ def _iter_delimited(path, header, coerce_float, empty_val, delimiter):
             if not vals:
                 continue # skip blank lines
             if header:
-                header = False # only read first (non-empty) line as the header
                 yield vals
+                header = False # OK, we've already read the header, don't do it again
             elif not coerce_float:
                 yield vals # don't try to convert to float, just return strings
             else:
