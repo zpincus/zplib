@@ -94,6 +94,6 @@ def fill_small_area_holes(mask, max_area):
     holes = ~(mask | outside)
     labels, region_indices, areas = get_areas(holes)
     kill_labels = areas <= max_area
-    kill_labels = numpy.concatenate(([0], kill_labels))
+    kill_labels = numpy.concatenate(([False], kill_labels))
     small_holes = kill_labels[labels]
     return mask | small_holes

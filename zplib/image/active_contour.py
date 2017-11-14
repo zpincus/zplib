@@ -233,16 +233,14 @@ class CurvatureMorphology(MaskNarrowBand):
     def _reset_smoothing(self):
         self._smooth_funcs = itertools.cycle([self._SIoIS, self._ISoSI])
 
-    def dilate(self, iters=1, border_mask=None):
+    def dilate(self, iters=1):
         for _ in range(iters):
-            if border_mask is None:
-                border_mask = numpy.ones(len(self.outside_border_indices), dtype=bool)
+            border_mask = numpy.ones(len(self.outside_border_indices), dtype=bool)
             self._move_to_inside(border_mask)
 
-    def erode(self, iters=1, border_mask=None):
+    def erode(self, iters=1):
         for _ in range(iters):
-            if border_mask is None:
-                border_mask = numpy.ones(len(self.inside_border_indices), dtype=bool)
+            border_mask = numpy.ones(len(self.inside_border_indices), dtype=bool)
             self._move_to_outside(border_mask)
 
     def smooth(self, iters=1, depth=1):
@@ -528,9 +526,9 @@ class BalloonForceMorphology(CurvatureMorphology):
             return
         for _ in range(iters):
                 to_erode = self.balloon_direction[tuple(self.inside_border_indices.T)] < 0
-                self.erode(border_mask=to_erode)
+                self._move_to_outside(to_erode)
                 to_dilate = self.balloon_direction[tuple(self.outside_border_indices.T)] > 0
-                self.dilate(border_mask=to_dilate)
+                self._move_to_inside(to_dilate)
 
 class GAC(BalloonForceMorphology):
     def __init__(self, mask, advection_direction, advection_mask=None,
