@@ -29,7 +29,11 @@ def fill_small_radius_holes(mask, max_radius):
     """Fill holes in the mask that are up to max_radius (in terms of the number
     of dilation iterations required to fill them).
 
+    See also ndimage.binary_fill_holes if you want to fill all holes regardless
+    of size.
+
     Returns a new mask with the small holes filled."""
+    mask = mask.astype(bool)
     outside = ndimage.binary_propagation(numpy.zeros_like(mask), mask=~mask, border_value=1)
     holes = ~(mask | outside)
     large_hole_centers = ndimage.binary_erosion(holes, iterations=max_radius+1)
@@ -82,14 +86,18 @@ def remove_small_area_objects(mask, max_area, structure=None):
     Returns a new mask with the small objects removed."""
     labels, region_indices, areas = get_areas(mask, structure)
     keep_labels = areas > max_area
-    keep_labels = numpy.concatenate(([0], keep_labels))
-    return keep_labels[labels].astype(bool)
+    keep_labels = numpy.concatenate(([False], keep_labels))
+    return keep_labels[labels]
 
 def fill_small_area_holes(mask, max_area):
     """Fill holes in the mask that are up to 'max area' (in terms of pixel-wise
     area).
 
+    See also ndimage.binary_fill_holes if you want to fill all holes regardless
+    of size.
+
     Returns a new mask with the small holes filled."""
+    mask = mask.astype(bool)
     outside = ndimage.binary_propagation(numpy.zeros_like(mask), mask=~mask, border_value=1)
     holes = ~(mask | outside)
     labels, region_indices, areas = get_areas(holes)
