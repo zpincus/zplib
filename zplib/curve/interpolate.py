@@ -53,24 +53,21 @@ def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
         three or fewer input points, and otherwise 3.
     force_endpoints: if True (default), the endpoints of the spline will be set
         to match the positions of the input data, regardless of smoothing.
+        NB: With large smoothing, this can dramatically influence the position
+        of the entire curve. With smaller smoothing, changing the endpoints
+        will have a more local effect.
 
     Returns a spline tuple (t,c,k) consisting of:
         t: the knots of the spline curve
-        c: the x and y b-spline coefficients for each knot
+        c: the x and y b-spline coefficients for each knot (shape (m, 2))
         k: the order of the spline.
 
-    Note: the smoothing factor is an upper bound on the sum of all the distances
-    between the original x,y points and the matching points on the smoothed
-    spline representation."""
+    Note: the smoothing factor is an upper bound on the sum of all the squared
+    distances between the original x,y points and the matching points on the
+    smoothed spline representation."""
     points = numpy.asarray(points)
     l = len(points)
-    if order is None:
-        if l < 4:
-            k = 1
-        else:
-            k = 3
-    else:
-        k = order
+    w = numpy.ones(l, float)
     # choose input parameter values for the curve as the distances along the polyline:
     # this gives something close to the "natural parameterization" of the curve.
     # (i.e. a parametric curve with first-derivative close to unit magnitude: the curve
@@ -78,14 +75,26 @@ def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
     # don't "bunch up" with evenly-spaced parameter values.)
     distances = geometry.cumulative_distances(points, unit=False)
 
+    if order is None:
+        if l < 4:
+            k = 1
+        else:
+            k = 3
+    else:
+        k = order
     if smoothing is None:
         smoothing = l * distances[-1] / 600.
+    if force_endpoints:
+        w[[0,-1]] = l
 
-    t, c, ier, msg = splprep(distances, points, s=smoothing, k=k)
+    t, c, ier, msg = splprep(distances, points, s=smoothing, k=k, w=w)
+
     if ier > 3:
         raise RuntimeError(msg)
     if force_endpoints:
+        # endpoints should already be close, so this shouldn't distort the spline too much...
         c[[0,-1]] = points[[0,-1]]
+
     return t, c, k
 
 def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=True):
@@ -106,19 +115,24 @@ def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=T
         three or fewer input points, and otherwise 3.
     force_endpoints: if True (default), the endpoints of the spline will be set
         to match the positions of the input data, regardless of smoothing.
+        NB: With large smoothing, this can dramatically influence the position
+        of the entire curve. With smaller smoothing, changing the endpoints
+        will have a more local effect.
 
     Returns a spline tuple (t,c,k) consisting of:
         t: the knots of the spline curve
         c: the b-spline coefficient for each knot
         k: the order of the spline.
 
-    Note: the smoothing factor is an upper bound on the sum of all the distances
-    between the original y values and the matching points on the smoothed
-    spline representation."""
+    Note: the smoothing factor is an upper bound on the sum of all the squared
+    distances between the original y values and the matching points on the
+    smoothed spline representation."""
 
     x = numpy.asarray(x)
     y = numpy.asarray(y)
     l = len(x)
+    w = numpy.ones(l, float)
+
     if order is None:
         if l < 4:
             k = 1
@@ -126,15 +140,19 @@ def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=T
             k = 3
     else:
         k = order
-
     if smoothing is None:
         smoothing = l * abs(x[0] - x[-1]) / 600.
+    if force_endpoints:
+        w[[0,-1]] = l
 
-    t, c, ier, msg = splrep(x, y, s=smoothing, k=k)
+    t, c, ier, msg = splrep(x, y, s=smoothing, k=k, w=w)
+
     if ier > 3:
         raise RuntimeError(msg)
     if force_endpoints:
+        # endpoints should already be close, so this shouldn't distort the spline too much...
         c[[0,-1]] = y[[0,-1]]
+
     return t, c, k
 
 
@@ -242,29 +260,31 @@ def insert(t, c, k, x, m=1):
     return t, c, k
 
 
-def splrep(x, y, s, k):
-    """Return degree-k spline representation (t,c,k) of x,y points, with smoothing parameter s.
+def splrep(x, y, s, k, w=None):
+    """Return degree-k spline representation (t,c,k) of x, y points, with smoothing parameter s and weights w.
 
     Smoothing parameter guarantee:
-    numpy.absolute(splev(x, *tck) - y).sum() <= s"""
+    ((w * (splev(x, *tck) - y))**2).sum() <= s
+
+    """
     m = x.shape[0]
-    w = numpy.ones(m,float)
+    if w is None:
+        w = numpy.ones(m, float)
     xb, xe = x[[0, -1]]
-    if not (1<=k<=5): raise TypeError('1<=k=%d<=5 must hold'%(k))
+    if not (1 <= k <= 5): raise TypeError('1<=k=%d<=5 must hold'%(k))
     if (m != len(y)):
             raise TypeError('Lengths of the first two must be equal')
-    if m<=k: raise TypeError('m>k must hold')
-    nest=m+k+1
-    t = numpy.empty((nest,),float)
+    if m <= k: raise TypeError('m>k must hold')
+    nest = m + k + 1
+    t = numpy.empty((nest,), float)
     wrk = numpy.empty((m*(k+1)+nest*(7+3*k),), float)
     iwrk = numpy.empty((nest,), numpy.int32)
     task = 0
     n, c, fp, ier = fitpack.dfitpack.curfit(task, x, y, w, t, wrk, iwrk, xb, xe, k, s)
-    return t[:n], c[:n-k-1], ier, fitpack._iermess[ier][0]
 
 
-def splprep(u, x, s, k):
-    """Return spline representation (t,c,k) of parametric curve x(u), with smoothing parameter s.
+def splprep(u, x, s, k, w=None):
+    """Return spline representation (t,c,k) of parametric curve x(u), with smoothing parameter s and weights w.
 
     Parameters:
     u: array of shape (n) containing parametric positions
@@ -272,29 +292,30 @@ def splprep(u, x, s, k):
        curve x(u) at each parametric value in the array u.
     s: smoothing parameter (see below)
     k: degree of output spline
+    w: weights for each point.
 
     Returns spline tuple (t,c,k)
 
     Smoothing parameter guarantee:
-    numpy.linalg.norm(splpev(u, *tck) - x).sum() <= s"""
+    ((w * (splpev(u, *tck) - x))**2).sum() <= s"""
 
     m, idim = x.shape
-    w = numpy.ones(m,float)
+    w = numpy.ones(m, float)
     ub, ue = u[[0, -1]]
-    if not (1<=k<=5): raise TypeError('1<=k=%d<=5 must hold'%(k))
-    if not len(u)==m:
+    if not (1 <= k <= 5): raise TypeError('1<=k=%d<=5 must hold'%(k))
+    if not len(u) == m:
             raise TypeError('Mismatch of input dimensions')
-    if m<=k: raise TypeError('m>k must hold')
-    nest=m+k+1
+    if m <= k: raise TypeError('m>k must hold')
+    nest = m + k + 1
 
     t = numpy.array([],float)
     wrk = numpy.array([],float)
     iwrk = numpy.array([],numpy.int32)
     task = per = 0
     ipar = True
-    t,c,o = fitpack._fitpack._parcur(x.ravel(),w,u,ub,ue,k,task,ipar,s,t,nest,wrk,iwrk,per)
+    t,c,o = fitpack._fitpack._parcur(x.ravel(), w, u, ub, ue, k, task, ipar, s, t, nest, wrk, iwrk, per)
     ier, fp, n = o['ier'], o['fp'], len(t)
-    c.shape=idim,n-k-1
+    c.shape = (idim, n-k-1)
     return t, c.T, ier, fitpack._iermess[ier][0]
 
 

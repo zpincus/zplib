@@ -121,6 +121,10 @@ def _get_points(tck, num_points=None, derivative=0):
 
 
 def _get_points_and_radii(tck, radius_tck, num_points):
+    if tck[1].ndim != 2 and tck[1].shape[1] != 2:
+        raise ValueError('tck must be a two-dimensional parametric spline')
+    if radius_tck[1].ndim != 1:
+        raise ValueError('radius_tck must be a non-parametric spline')
     points = _get_points(tck, num_points)
-    radii = interpolate.spline_interpolate(radius_tck, num_points=len(points))
+    radii = _get_points(radius_tck, num_points=len(points))
     return points, radii
