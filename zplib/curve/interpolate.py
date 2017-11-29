@@ -281,7 +281,7 @@ def splrep(x, y, s, k, w=None):
     iwrk = numpy.empty((nest,), numpy.int32)
     task = 0
     n, c, fp, ier = fitpack.dfitpack.curfit(task, x, y, w, t, wrk, iwrk, xb, xe, k, s)
-
+    return t[:n], c[:n-k-1], ier, fitpack._iermess[ier][0]
 
 def splprep(u, x, s, k, w=None):
     """Return spline representation (t,c,k) of parametric curve x(u), with smoothing parameter s and weights w.
@@ -300,14 +300,14 @@ def splprep(u, x, s, k, w=None):
     ((w * (splpev(u, *tck) - x))**2).sum() <= s"""
 
     m, idim = x.shape
-    w = numpy.ones(m, float)
+    if w is None:
+        w = numpy.ones(m, float)
     ub, ue = u[[0, -1]]
     if not (1 <= k <= 5): raise TypeError('1<=k=%d<=5 must hold'%(k))
     if not len(u) == m:
             raise TypeError('Mismatch of input dimensions')
     if m <= k: raise TypeError('m>k must hold')
     nest = m + k + 1
-
     t = numpy.array([],float)
     wrk = numpy.array([],float)
     iwrk = numpy.array([],numpy.int32)
