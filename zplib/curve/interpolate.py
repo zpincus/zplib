@@ -74,7 +74,8 @@ def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
     # doesn't accelerate/decelerate, so points along the curve in the x,y plane
     # don't "bunch up" with evenly-spaced parameter values.)
     distances = geometry.cumulative_distances(points, unit=False)
-
+    if numpy.any(numpy.isclose(distances, 0)):
+        raise ValueError("Repeated input points are not allowed.")
     if order is None:
         if l < 4:
             k = 1
@@ -308,9 +309,9 @@ def splprep(u, x, s, k, w=None):
             raise TypeError('Mismatch of input dimensions')
     if m <= k: raise TypeError('m>k must hold')
     nest = m + k + 1
-    t = numpy.array([],float)
-    wrk = numpy.array([],float)
-    iwrk = numpy.array([],numpy.int32)
+    t = numpy.array([], float)
+    wrk = numpy.array([], float)
+    iwrk = numpy.array([], numpy.int32)
     task = per = 0
     ipar = True
     t,c,o = fitpack._fitpack._parcur(x.ravel(), w, u, ub, ue, k, task, ipar, s, t, nest, wrk, iwrk, per)

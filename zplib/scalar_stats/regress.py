@@ -72,6 +72,10 @@ class CVRegress(base.BaseEstimator):
         self.regressor = regressor
         self.cv = cv
 
+    def fit(self, X, y):
+        # needed so that constructing a pipeline with CVRegress doesn't barf
+        raise RuntimeError('Only call fit_predict for CVRegress')
+
     def fit_predict(self, X, y):
         return model_selection.cross_val_predict(self.regressor, X, y=y, cv=self.cv)
 

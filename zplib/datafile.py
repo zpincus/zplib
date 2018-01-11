@@ -10,7 +10,7 @@ def write_delimited(path, data, delimiter='\t'):
     path = pathlib.Path(path)
     try:
         with path.open('w') as f:
-            f.write('\n'.join(','.join(map(str, row)) for row in data))
+            f.write('\n'.join(delimiter.join(map(str, row)) for row in data))
     except:
         if path.exists():
             # an error occured during writing the file. Remove the half-written
