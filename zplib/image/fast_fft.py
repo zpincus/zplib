@@ -64,14 +64,17 @@ def load_plan_hints(filename, locking=True):
             which can otherwise cause problems if multiple processes are
             attempting to write to the same plan hints file.
 
+    Returns True if plan hints were successfully loaded.
+
     """
     with open(filename, 'rb') as f:
         if locking:
             import fcntl
             fcntl.flock(f, fcntl.LOCK_EX)
-        pyfftw.import_wisdom(pickle.load(f))
+        loaded = pyfftw.import_wisdom(pickle.load(f))
         if locking:
             fcntl.flock(f, fcntl.LOCK_UN)
+        return all(loaded)
 
 
 class FilterBase:
