@@ -74,7 +74,7 @@ def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
     # doesn't accelerate/decelerate, so points along the curve in the x,y plane
     # don't "bunch up" with evenly-spaced parameter values.)
     distances = geometry.cumulative_distances(points, unit=False)
-    if numpy.any(numpy.isclose(distances, 0)):
+    if numpy.any(numpy.isclose(distances[1:] - distances[:-1], 0)):
         raise ValueError("Repeated input points are not allowed.")
     if order is None:
         if l < 4:
