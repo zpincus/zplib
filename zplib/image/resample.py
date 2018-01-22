@@ -28,7 +28,7 @@ def sample_image_along_spline(image, tck, width, length=None, width_distance=Non
         3 = cubic interpolation
     other keyword args are passed to ndimage.map_coordinates() to control the
         resampling. Useful arguments include 'mode' and 'cval' (see the
-        documentaiton for ndimage.map_coordinates() for details.)
+        documentation for ndimage.map_coordinates() for details.)
 
     Returns: array of shape (length, width) containing samples along the length
     of the spline, going perpendicular from the spline width_distance pixels

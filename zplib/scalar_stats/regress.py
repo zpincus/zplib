@@ -8,6 +8,11 @@ from sklearn import base
 
 RegressionResult = collections.namedtuple('RegressionResult', ('y_est', 'resid', 'R2', 'regressor', 'X'))
 
+def r_squared(y, y_est):
+    resid = y - y_est
+    R2 = 1 - (resid**2).mean(axis=0) / y.var(axis=0) # ratio is variance unexplained divided by total variance
+    return resid, R2
+
 def regress(X, y, C=None, regressor=None):
     """Perform a basic regression task with any of the scikit-learn regressors.
 
@@ -51,8 +56,7 @@ def regress(X, y, C=None, regressor=None):
         X -= _fit_predict(C, X, regressor)
 
     y_est = _fit_predict(X, y, regressor)
-    resid = y - y_est
-    R2 = 1 - (resid**2).mean(axis=0) / y.var(axis=0) # ratio is variance unexplained divided by total variance
+    resid, R2 = r_squared(y, y_est)
     return RegressionResult(y_est, resid, R2, regressor, numpy.squeeze(X))
 
 

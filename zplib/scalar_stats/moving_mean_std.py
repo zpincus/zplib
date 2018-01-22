@@ -9,8 +9,11 @@ def _est_moving_mean(xs, ys, points_out, smooth, iters, outlier_threshold):
     xs = xs[order]
     ys = ys[order]
     y_est = smoothing.lowess(xs, ys, smooth, iters, outlier_threshold)
-    x_out = numpy.linspace(xs[0], xs[-1], points_out)
-    mean = numpy.interp(x_out, xs, y_est)
+    if isinstance(points_out, int):
+        x_out = numpy.linspace(xs[0], xs[-1], points_out)
+    else:
+        x_out = points_out
+    mean = numpy.interp(x_out, xs, y_est, left=numpy.nan, right=numpy.nan)
     return xs, ys, y_est, x_out, mean
 
 def moving_mean(xs, ys, points_out=300, smooth=0.2, iters=3, outlier_threshold=6):
@@ -25,7 +28,10 @@ def moving_mean(xs, ys, points_out=300, smooth=0.2, iters=3, outlier_threshold=6
         xs, ys: 1-d lists or arrays of data points. Note that xs need not be
             sorted, nor unique. That is, the data need not describe a function:
             a cloud of points is appropriate here.
-        points_out: number of points to evaluate the mean trendline along.
+        points_out: number of points to evaluate the mean trendline along, or
+            array of points at which to evaluate the trendline. Points outside
+            the range of the input x-values will evaluate to nan: no extrapolation
+            will be attempted.
         smooth: smoothing parameter 'f' for LOWESS. See smoothing.lowess().
         iters: robustifying iterations for LOWESS for calculating the mean
             trend. See smoothing.lowess().

@@ -34,9 +34,9 @@ def color_tint(array, target_color):
     array = numpy.asarray(array)
     return array[..., numpy.newaxis] * target_color
 
-def color_map(array, spectrum_max=0.925, uint8=True):
+def color_map(array, spectrum_max=0.925, uint8=True, cmap='plasma'):
     """Color-map the input array on a pleasing black-body-ish black-blue-red-orange-yellow
-    spectrum, using matplotlib's excellent and perceptually linear "inferno" colormap.
+    spectrum, using matplotlib's excellent and perceptually linear "plasma" or "inferno" colormap.
 
     Parameters:
         array: MUST be scaled [0, 1] with 'scale()' or similar.
@@ -45,13 +45,14 @@ def color_map(array, spectrum_max=0.925, uint8=True):
             yellow for good visualization.
         uint8: if True, return uint RGB tuples in range [0, 255], otherwise
             floats in [0, 1]
+        cmap: matplotlib color map to use. Should be 'plasma' or 'inferno'...
 
     Output: array of shape array.shape + (3,), where color values are RGB tuples
     """
     # array scaled 0 to 1
     array = numpy.asarray(array, dtype=float)
     assert array.min() >= 0 and array.max() <= 1
-    rgb = cm.inferno(array, bytes=uint8)[...,:3]
+    rgb = cm.get_cmap(cmap)(array, bytes=uint8)[...,:3]
     return rgb
 
 def luminance(color_array):
