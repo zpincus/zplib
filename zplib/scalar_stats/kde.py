@@ -15,11 +15,16 @@ def kd_distribution(data, x_min=None, x_max=None, num_points=200, CDF=False,
             function is larger.
         CDF: if True, return the cumulative distribution function of the data.
             Otherwise return the estimated density function.
+        estimator_class: class of KDE estimator to use. Defaults to
+            scipy.stas.kde.gaussian_kde, but FixedBandwidthKDE from this module
+            may be useful at times (e.g. when a specified bandwidth has been
+            found via cross-validation).
+        **kws: keyword arguments passed to the estimator_class constructor.
 
     Returns: xs, ys, kd_estimator
-        xs, ys are 1-d arrays containing the x and y values of the estimated density.
-        kd_estimator is a scipy.stats.kde.gaussian_kde object that can be used to
-            estimate the density of the data (etc.) at additional points.
+        xs, ys: 1-d arrays containing the x and y values of the estimated density.
+        kd_estimator: an object that can be used to estimate the density of the
+            data at additional points.
     """
     data = numpy.asarray(data, dtype=numpy.float32)
     kd_estimator = estimator_class(data, **kws)
@@ -48,6 +53,19 @@ def kd_distribution(data, x_min=None, x_max=None, num_points=200, CDF=False,
         else:
             ys = kd_estimator(xs)
     return xs, ys, kd_estimator
+
+
+def density_plot(data, **kws):
+    """Plot a KDE estimate of the density of a set of data using matplotlib.
+
+    Parameters:
+        data: list or 1-d array of data points
+        **kws: keywords to pass to matplotlib's plot function
+    """
+    import matplotlib.pyplot as plt
+    x, y, _ = kd_distribution(data)
+    plt.plot(x, y, **kws)
+
 
 class FixedBandwidthKDE(kde.gaussian_kde):
     """Gaussian KDE class that allows for a specified, data-independent bandwidth.
