@@ -8,13 +8,28 @@ def _est_moving_mean(xs, ys, points_out, smooth, iters, outlier_threshold):
     order = xs.argsort()
     xs = xs[order]
     ys = ys[order]
-    y_est = smoothing.lowess(xs, ys, smooth, iters, outlier_threshold)
+    mean_est = smoothing.lowess(xs, ys, smooth, iters, outlier_threshold)
     if isinstance(points_out, int):
-        x_out = numpy.linspace(xs[0], xs[-1], points_out)
+        trend_x = numpy.linspace(xs[0], xs[-1], points_out)
     else:
-        x_out = points_out
-    mean = numpy.interp(x_out, xs, y_est, left=numpy.nan, right=numpy.nan)
-    return xs, ys, y_est, x_out, mean
+        trend_x = points_out
+    mean_trend = numpy.interp(trend_x, xs, mean_est, left=numpy.nan, right=numpy.nan)
+    return xs, ys, mean_est, trend_x, mean_trend
+
+
+def _est_moving_std(xs, ys, mean_est, smooth):
+    y_dev = (ys - mean_est)**2
+    # do not want to robustify against outlier deviations -- this
+    # gives bad std values. So iter=1.
+    var_est = smoothing.lowess(xs, y_dev, f=smooth, iters=1)
+    # sometimes due to data sparsity and/or ringing artifacts in LOWESS, the
+    # estimated variances can go to zero or below. Replace these with very tiny
+    # positive values...
+    small_compared_to_mean = numpy.absolute(mean_est)/10000
+    bad_var = var_est < small_compared_to_mean
+    var_est[bad_var] = small_compared_to_mean[bad_var]
+    std_est = numpy.sqrt(var_est)
+    return std_est
 
 def moving_mean(xs, ys, points_out=300, smooth=0.2, iters=3, outlier_threshold=6):
     """Calculate smooth trendlines for the mean and standard deviation of
@@ -35,16 +50,19 @@ def moving_mean(xs, ys, points_out=300, smooth=0.2, iters=3, outlier_threshold=6
         smooth: smoothing parameter 'f' for LOWESS. See smoothing.lowess().
         iters: robustifying iterations for LOWESS for calculating the mean
             trend. See smoothing.lowess().
+        outlier_threshold: threshold for outlier exclusion in LOWESS. See
+            smoothing.lowess().
 
-    Returns x_out, mean
-        x_out: 1-d array (of length points_out) containing the x-values at which
+    Returns trend_x, mean_trend
+        trend_x: 1-d array (of length points_out) containing the x-values at which
             the smooth mean was calculated.
-        mean: mean trendlines evaluated at the x_out positions.
+        mean_trend: mean trendlines evaluated at the trend_x positions.
     """
-    xs, ys, y_est, x_out, mean = _est_moving_mean(xs, ys, points_out, smooth, iters, outlier_threshold)
-    return x_out, mean
+    xs, ys, mean_est, trend_x, mean_trend = _est_moving_mean(xs, ys, points_out, smooth, iters, outlier_threshold)
+    return trend_x, mean_trend
 
-def moving_mean_std(xs, ys, points_out=300, smooth=0.2, iters=3):
+
+def moving_mean_std(xs, ys, points_out=300, smooth=0.2, iters=3, outlier_threshold=6):
     """Calculate smooth trendlines for the mean and standard deviation of
     a set of observations.
 
@@ -60,25 +78,50 @@ def moving_mean_std(xs, ys, points_out=300, smooth=0.2, iters=3):
         smooth: smoothing parameter 'f' for LOWESS. See smoothing.lowess()
         iters: robustifying iterations for LOWESS for calculating the mean
             trend. See smoothing.lowess().
+        outlier_threshold: threshold for outlier exclusion in LOWESS. See
+            smoothing.lowess().
 
-    Returns x_out, mean, std
-        x_out: 1-d array of length points_out containing the x-values at which
+    Returns trend_x, mean_trend, std_trend
+        trend_x: 1-d array of length points_out containing the x-values at which
             the mean and std outputs are evaluated.
-        mean, std: y-values for the mean and std trendlines.
+        mean_trend, std_trend: y-values for the mean and std trendlines.
     """
-    xs, ys, y_est, x_out, mean = _est_moving_mean(xs, ys, points_out, smooth, iters)
-    y_dev = (ys - y_est)**2
-    # do not want to robustify against outlier deviations -- this
-    # gives bad std values. So iter=1.
-    var_est = smoothing.lowess(xs, y_dev, f=smooth, iters=1)
-    # sometimes due to data sparsity and/or ringing artifacts in LOWESS, the
-    # estimated variances can go to zero or below. Replace these with very tiny
-    # positive values...
-    small_compared_to_yest = numpy.absolute(y_est)/10000
-    bad_var = var_est < small_compared_to_yest
-    var_est[bad_var] = small_compared_to_yest[bad_var]
-    std = numpy.interp(x_out, xs, numpy.sqrt(var_est))
-    return x_out, mean, std
+    xs, ys, mean_est, trend_x, mean_trend = _est_moving_mean(xs, ys, points_out, smooth, iters, outlier_threshold)
+    std_est = _est_moving_std(xs, ys, mean_est, smooth)
+    std_trend = numpy.interp(trend_x, xs, std_est)
+    return trend_x, mean_trend, std_trend
+
+
+def z_transform(xs, ys, smooth=0.2, iters=3, outlier_threshold=6):
+    """Calculate the z-scores of a set of observations.
+
+    Internally, LOWESS regression is used to estimate a robust mean trend, and
+    then from that mean trend, the deviation of each data point is measured and
+    LOWESS is again used to estimate a smoothed standard deviation.
+
+    The z-values returned are the number of standard deviations that each original
+    observation is from the mean.
+
+    Parameters:
+        xs, ys: 1-d lists or arrays of data points. Note that xs need not be
+            sorted, nor unique. That is, the data need not describe a function:
+            a cloud of points is appropriate here.
+        smooth: smoothing parameter 'f' for LOWESS. See smoothing.lowess()
+        iters: robustifying iterations for LOWESS for calculating the mean
+            trend. See smoothing.lowess().
+        outlier_threshold: threshold for outlier exclusion in LOWESS. See
+            smoothing.lowess().
+
+    Returns mean_est, std_est, z_est
+        mean_est, std_est: the smoothed value of the mean and standard deviation
+            at each of the input data positions
+        z_est: the number of standard deviations from the mean of each y-value.
+    """
+    xs, ys = numpy.asarray(xs), numpy.asarray(ys)
+    mean_est = smoothing.lowess(xs, ys, smooth, iters, outlier_threshold)
+    std_est = _est_moving_std(xs, ys, mean_est, smooth)
+    return mean_est, std_est, (ys-mean_est)/std_est
+
 
 class MovingMeanSTD(object):
     """Given x_out, mean, and std calculated by moving_mean_std(), construct an

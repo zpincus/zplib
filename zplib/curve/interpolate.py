@@ -180,6 +180,15 @@ def spline_evaluate(tck, positions, derivative=0):
     return evaluate(positions, t, c, k, der=derivative)
 
 
+def reverse_spline(tck):
+    """Reverse the direction of a spline (parametric or nonparametric),
+    without changing the range of the t (parametric) or x (nonparametric) values."""
+    t, c, k = tck
+    rt = t[-1] - t[::-1]
+    rc = c[::-1]
+    return rt, tc, k
+
+
 def insert_control_points(tck, num_points):
     """Return an equivalent spline with additional control points added for
     improved editability.

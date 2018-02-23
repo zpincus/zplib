@@ -30,7 +30,7 @@ def survival_curve_from_lifespans(lifespans, uncertainty_interval=0):
         timepoints = [0]
         fraction_alive = [1]
         step = 1/len(lifespans)
-        for lifespan in lifespans:
+        for lifespan in sorted(lifespans):
             last_frac = fraction_alive[-1]
             timepoints.extend([lifespan, lifespan])
             fraction_alive.extend([last_frac, last_frac-step])
