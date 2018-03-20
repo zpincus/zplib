@@ -186,7 +186,7 @@ def reverse_spline(tck):
     t, c, k = tck
     rt = t[-1] - t[::-1]
     rc = c[::-1]
-    return rt, tc, k
+    return rt, rc, k
 
 
 def insert_control_points(tck, num_points):
