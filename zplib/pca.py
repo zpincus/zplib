@@ -89,7 +89,7 @@ def pca_decompose(data, pcs, mean):
     Returns: shape (n, p) projection of the data into the principal components
       basis.
     """
-    if (pcs**2).sum() == len(pcs):
+    if numpy.allclose((pcs**2).sum(axis=1), numpy.ones(len(pcs))):
         # pcs are of unit length, so we assume that they form an orthonormal basis
         inv_pcs = pcs.T
     else:
