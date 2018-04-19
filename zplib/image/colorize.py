@@ -50,7 +50,7 @@ def color_map(array, spectrum_max=0.925, uint8=True, cmap='plasma'):
     Output: array of shape array.shape + (3,), where color values are RGB tuples
     """
     # array scaled 0 to 1
-    array = numpy.asarray(array, dtype=float)
+    array = numpy.asarray(array, dtype=float) * spectrum_max
     assert array.min() >= 0 and array.max() <= 1
     rgb = cm.get_cmap(cmap)(array, bytes=numpy.uint8)[...,:3]
     return rgb

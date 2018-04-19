@@ -97,7 +97,11 @@ def write_video(frame_iterator, framerate, output, preset=None, lossless=False, 
            'threads', 'tune', and 'profile' may be especially useful.
     """
     frame_iterator = iter(frame_iterator)
-    first_frame = next(frame_iterator)
+    try:
+        first_frame = next(frame_iterator)
+    except StopIteration:
+        raise ValueError('No image files provided.')
+
     assert first_frame.dtype == numpy.uint8
     assert first_frame.ndim in (2,3)
     if first_frame.ndim == 3:
@@ -137,7 +141,11 @@ def write_lossless_video(frame_iterator, framerate, output, threads=None, verbos
         verbose: if True, print status message while compressing.
     """
     frame_iterator = iter(frame_iterator)
-    first_frame = next(frame_iterator)
+    try:
+        first_frame = next(frame_iterator)
+    except StopIteration:
+        raise ValueError('No image files provided.')
+
     assert first_frame.dtype in (numpy.uint8, numpy.uint16)
     assert first_frame.ndim in (2,3)
     if first_frame.ndim == 3:
