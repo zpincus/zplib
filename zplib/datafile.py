@@ -101,6 +101,7 @@ def dump(path, **data_dict):
     except:
         if path.exists():
             path.remove()
+        raise
 
 def load(path):
     """Load arguments previously dumped to a file on disk.
