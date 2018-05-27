@@ -51,7 +51,7 @@ def pca_dimensionality_reduce(data, required_variance_explained):
         explained by the retained principal components. Must be in the range
         (0,1]
 
-    Returns: (mean, pcs, norm_pcs, variances, positions, norm_positions)
+    Returns: (mean, pcs, norm_pcs, variances, total_variance, positions, norm_positions)
       mean: array of shape m, representing the mean of the input data.
       pcs: array of shape (p, m) containing the p principal components. Each
         component is normalized to euclidian distance of 1. The number of
