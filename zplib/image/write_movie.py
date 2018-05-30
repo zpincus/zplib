@@ -98,8 +98,10 @@ def screen_images(*image_generators):
     blending to stack them on top of eachother. This is useful with one brightfield
     image as the first (bottom) layer, and then colorized fluorescence images atop."""
     for images in zip(*image_generators):
-        yield colorize.multi_screen(images).astype(numpy.uint8)
-
+        top = images[-1]
+        for bottom in images[-2::-1]:
+            top = colorize.blend(top, bottom, mode='screen', input_max=255)
+        yield top
 
 def shrink(image_generator, factor=2, fast=False):
     """Shrink images produced by a generator by the specified factor.
@@ -109,10 +111,11 @@ def shrink(image_generator, factor=2, fast=False):
         fast: if True and if factor is an integer, perform no smoothing.
             If False, smooth the image before downsampling to avoid aliasing.
     """
-    int_factor = int(factor)
+    if fast:
+        fast = factor = int(factor)
     go_fast = fast and int_factor == factor
     for image in image_generator:
         if go_fast:
-            yield image[::int_factor, ::int_factor]
+            yield image[::int(factor), ::int(factor)]
         else:
-            yield pyr_down(image, factor).astype(numpy.uint8)
+            yield pyramid.pyr_down(image, factor).astype(numpy.uint8)
