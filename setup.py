@@ -20,4 +20,6 @@ setuptools.setup(
     version = '1.5',
     description = 'basic zplab tools',
     packages = setuptools.find_packages(),
+    package_data = {'zplab.image': ['_label_colors.npy']},
+    ext_modules = extensions
 )

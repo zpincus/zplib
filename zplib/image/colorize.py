@@ -1,4 +1,6 @@
+import sys
 import numpy
+import pkg_resources
 from matplotlib import cm
 
 def scale(array, min=None, max=None, gamma=1, output_max=255):
@@ -185,8 +187,53 @@ def color_map(array, spectrum_max=0.925, uint8=True, cmap='plasma', input_max=1)
     """
     array = numpy.asarray(array, dtype=numpy.float32) / input_max * spectrum_max
     assert array.min() >= 0 and array.max() <= 1
-    rgb = cm.get_cmap(cmap)(array, bytes=uint8)[...,:3]
-    return rgb
+    return cm.get_cmap(cmap)(array, bytes=uint8)[...,:3]
+
+def _gen_label_colors(seed=0):
+    colors = [[0, 0, 0]]
+    rs = numpy.random.RandomState(seed=seed)
+    while len(colors) < 2**16:
+        rgb = rs.randint(256, size=3)
+        r, g, b = rgb
+        luma = 0.2126*r + 0.7152*g + 0.0722*b # use CIE 1931 linear luminance
+        if luma < 75:
+            continue
+        mr = (rgb[0] + colors[-1][0])/2
+        dr, dg, db = (rgb - colors[-1])**2
+        dc = 2*dr + 4*dg + 3*db + mr*(dr - db)/256
+        if dc > 10000:
+            colors.append(rgb)
+    colors = numpy.array(colors, dtype=numpy.uint8)
+    import pathlib
+    numpy.save(str(pathlib.Path(__file__).parent/'_label_colors.npy'), colors)
+
+_label_colors = None
+def colorize_label_image(array, cmap=None):
+    """Color-map an image consisting of labeled regions (each with different
+    integer-valued label).
+
+    Parameters:
+        array: integer-valued array
+        cmap: if None, use a default mapping of integers to colors; otherwise
+            use the named matplotlib colormap. A qualitative colormap like 'tab20'
+            is a good idea.
+
+    Example of making a label image from a set of masks:
+    label_image = numpy.zeros_like(masks[0])
+    for i, mask in enumerate(masks):
+        label_image[mask] = i + 1
+    colorized = colorize_label_image(label_image)
+    """
+    if cmap is None:
+        global _label_colors
+        if _label_colors is None:
+            _label_colors = numpy.load(pkg_resources.resource_stream(__name__, '_label_colors.npy'))
+        colorized = _label_colors[array]
+    else:
+        colormap = cm.get_cmap(cmap)
+        colorized = colormap(array%colormap.N, bytes=uint8)[...,:3]
+        colorized[image == 0] = 0
+    return colorized
 
 def luminance(color_array):
     """Return luminance of an RGB (or RGBA) array (shape (x, y, 3) or (x, y, 4),

@@ -8,8 +8,7 @@ def arc_length(tck, num_points=None):
     positions and calculating the length of the resulting polyline.
     If num_points is None, try to guess a sane default."""
     points = _get_points(tck, num_points)
-    distances = geometry.cumulative_distances(points, unit=False)
-    return distances[-1]
+    return numpy.sqrt(((points[:-1] - points[1:])**2).sum(axis=1)).sum()
 
 
 def perpendiculars(tck, num_points=None, unit=True):
@@ -53,7 +52,7 @@ def outline(tck, radius_tck, num_points=None):
     return left, right, outline
 
 
-def area(tck, radius_tck, num_points):
+def area(tck, radius_tck, num_points=None):
     """Given a shape defined by a centerline spline and a radial profile spline,
     estimate its area by converting to a polygon at num_points along the centerline
     and applying the standard polygon area formula.
@@ -61,14 +60,14 @@ def area(tck, radius_tck, num_points):
     If num_points is None, try to guess a sane default.
     """
     polygon = outline(tck, radius_tck, num_points)
-    xs = points[:,0]
-    ys = points[:,1]
+    xs = polygon[:,0]
+    ys = polygon[:,1]
     y_forward = numpy.roll(ys, -1, axis = 0)
     y_backward = numpy.roll(ys, 1, axis = 0)
     return numpy.absolute(numpy.sum(xs * (y_backward - y_forward)) / 2.0)
 
 
-def volume_and_surface_area(tck, radius_tck, num_points):
+def volume_and_surface_area(tck, radius_tck, num_points=None):
     """Given a shape defined by a centerline spline and a radial profile spline,
     estimate the volume and surface area of a 3D form constructed by revolution
     around the centerline, by sampling the positions and radii at num_points
@@ -87,12 +86,12 @@ def volume_and_surface_area(tck, radius_tck, num_points):
     r12 = r1**2
     r22 = r2**2
     h = lengths
-    v = numpy.pi/3 * (h * (r12 + r22 + r1*r2)).sum()
-    a = numpy.pi * (numpy.sqrt((r12-r22)**2 + (h*(r1+r2))**2).sum() + r12[0] + r22[-1])
-    return v, a
+    volume = numpy.pi/3 * (h * (r12 + r22 + r1*r2)).sum()
+    surface_area = numpy.pi * (numpy.sqrt((r12-r22)**2 + (h*(r1+r2))**2).sum() + r12[0] + r22[-1])
+    return volume, surface_area
 
 
-def length_and_max_width(tck, radius_tck, num_points):
+def length_and_max_width(tck, radius_tck, num_points=None):
     """Given a shape defined by a centerline spline and a radial profile spline,
     estimate its length and maximum width by sampling at num_points along the
     spline.
@@ -102,7 +101,7 @@ def length_and_max_width(tck, radius_tck, num_points):
     Returns: length, max_width
     """
     points, radii = _get_points_and_radii(tck, radius_tck, num_points)
-    return numpy.sqrt(((spine[:-1] - spine[1:])**2).sum(axis=1)).sum(), widths.max()
+    return numpy.sqrt(((points[:-1] - points[1:])**2).sum(axis=1)).sum(), radii.max()
 
 
 def _get_points(tck, num_points=None, derivative=0):
@@ -120,7 +119,7 @@ def _get_points(tck, num_points=None, derivative=0):
     return points
 
 
-def _get_points_and_radii(tck, radius_tck, num_points):
+def _get_points_and_radii(tck, radius_tck, num_points=None):
     if tck[1].ndim != 2 and tck[1].shape[1] != 2:
         raise ValueError('tck must be a two-dimensional parametric spline')
     if radius_tck[1].ndim != 1:
