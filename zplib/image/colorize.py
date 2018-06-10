@@ -208,6 +208,12 @@ def _gen_label_colors(seed=0):
     numpy.save(str(pathlib.Path(__file__).parent/'_label_colors.npy'), colors)
 
 _label_colors = None
+def _get_label_colors():
+    global _label_colors
+    if _label_colors is None:
+        _label_colors = numpy.load(pkg_resources.resource_stream(__name__, '_label_colors.npy'))
+    return _label_colors
+
 def colorize_label_image(array, cmap=None):
     """Color-map an image consisting of labeled regions (each with different
     integer-valued label).
@@ -219,16 +225,13 @@ def colorize_label_image(array, cmap=None):
             is a good idea.
 
     Example of making a label image from a set of masks:
-    label_image = numpy.zeros_like(masks[0])
+    label_image = numpy.zeros(masks[0].shape, dtype=numpy.uint16)
     for i, mask in enumerate(masks):
         label_image[mask] = i + 1
     colorized = colorize_label_image(label_image)
     """
     if cmap is None:
-        global _label_colors
-        if _label_colors is None:
-            _label_colors = numpy.load(pkg_resources.resource_stream(__name__, '_label_colors.npy'))
-        colorized = _label_colors[array]
+        colorized = _get_label_colors()[array]
     else:
         colormap = cm.get_cmap(cmap)
         colorized = colormap(array%colormap.N, bytes=uint8)[...,:3]

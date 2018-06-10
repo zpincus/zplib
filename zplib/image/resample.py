@@ -60,8 +60,10 @@ def warp_image_to_standard_width(image, tck, src_radius_tck, dst_radius_tck, wid
     length = points.shape[1]
     src_widths = interpolate.spline_interpolate(src_radius_tck, num_points=length)
     dst_widths = interpolate.spline_interpolate(dst_radius_tck, num_points=length)
-    dst_widths[dst_widths == 0] = 1
+    zero_width = dst_widths == 0
+    dst_widths[zero_width] = 1 # don't want to divide by zero below
     width_ratios = src_widths / dst_widths # shape = (length,)
+    width_ratios[zero_width] = 0 # this will enforce dest width of zero at these points
     sample_coordinates = points + offset_directions * width_ratios[:, numpy.newaxis]
     warped = ndimage.map_coordinates(image, sample_coordinates, order=order, **kwargs)
     return warped
