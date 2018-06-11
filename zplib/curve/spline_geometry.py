@@ -59,7 +59,7 @@ def area(tck, radius_tck, num_points=None):
 
     If num_points is None, try to guess a sane default.
     """
-    polygon = outline(tck, radius_tck, num_points)
+    polygon = outline(tck, radius_tck, num_points)[2]
     xs = polygon[:,0]
     ys = polygon[:,1]
     y_forward = numpy.roll(ys, -1, axis = 0)
