@@ -180,6 +180,35 @@ def spline_evaluate(tck, positions, derivative=0):
     return evaluate(positions, t, c, k, der=derivative)
 
 
+def reparameterize_spline(tck, num_points=None, smoothing=None):
+    """Produce a spline where parameter values represent distance along the spline.
+
+    Get as close as possible to the "natural parameterization" of the curve,
+    where the parameter value represents the arc-length along the curve up to
+    that point.
+
+    Parameters:
+        tck: parametric spline
+        num_points: to compute the arc lengths for re-parameterization, the
+            spline is first resampled. More points will produce a better
+            reparameterization. If None, use a default that makes sense in the
+            common case that 1 unit in space is on the order of the input error.
+        smoothing: lower smoothing values give better reparameterizations, at
+            the cost of more spline knots. Smoothing controls the total error
+            of the reparameterization summed across all the points -- so if
+            a smoothing is specified, make sure to scale it relative num_points.
+            If None, use a sensible default.
+
+    Returns: new tck spline.
+    """
+    if num_points is None:
+        t_max = tck[0].max()
+        num_points = int(t_max * 2)
+    if smoothing is None:
+        smoothing = num_points / 5000
+    return fit_spline(spline_interpolate(tck, num_points), smoothing=smoothing)
+
+
 def reverse_spline(tck):
     """Reverse the direction of a spline (parametric or nonparametric),
     without changing the range of the t (parametric) or x (nonparametric) values."""
