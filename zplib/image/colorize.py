@@ -117,8 +117,8 @@ def multi_blend(arrays, colors, alphas=None, modes=None, input_max=1, color_max=
     Parameters:
         arrays: list of input images of shape (x, y).
         colors: list of RGB or RGBA tuples, one for each input array.
-        alphas: opacity value for each image (if not None, overrides the alpha
-            channel for each image, if present.
+        alphas: opacity value for each image (if not None, overrides any alpha
+            channel information each image may have).
         modes: None, or list of 'normal', 'screen', 'multiply', or 'overlay'. If
             None, use 'normal' blend mode. Blend mode ignored for bottom-most
             image.
@@ -127,9 +127,10 @@ def multi_blend(arrays, colors, alphas=None, modes=None, input_max=1, color_max=
 
     Returns: image, alpha
         image: array of shape (x, y, 3) with dtype matching arrays[0]
-        alpha: scalar (if RGB arrays or top_alpha and bottom_alpha are specified)
-            or array of shape (x, y, 1). To make a RGBA image from the latter,
-            just do: numpy.concatenate([image, alpha], axis=-1)
+        alpha: scalar (if RGB arrays or 'alpha' parameterers are specified)
+            or array of shape (x, y, 1) if RGBA images were provided.
+            To make a RGBA image from the latter, just do:
+                numpy.concatenate([image, alpha], axis=-1)
     """
     if alphas is None:
         alphas = [None] * len(arrays)

@@ -190,7 +190,8 @@ def json_encode_atomic_legible_to_file(data, filename):
     try:
         with os.fdopen(fd, 'w') as f:
             f.write(s)
-        os.replace(str(tmp_path), str(filename))
+        os.replace(tmp_path, filename)
     except:
-        os.remove(tmp_path)
+        if tmp_path.exists():
+            os.remove(tmp_path)
         raise
