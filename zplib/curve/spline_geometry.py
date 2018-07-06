@@ -10,7 +10,6 @@ def arc_length(tck, num_points=None):
     points = _get_points(tck, num_points)
     return numpy.sqrt(((points[:-1] - points[1:])**2).sum(axis=1)).sum()
 
-
 def perpendiculars(tck, num_points=None, unit=True):
     """Return vectors perpendicular to a 2D parametric spline.
 
@@ -31,7 +30,6 @@ def perpendiculars(tck, num_points=None, unit=True):
         perpendiculars /= numpy.sqrt((perpendiculars**2).sum(axis=1))[:,numpy.newaxis]
     return perpendiculars
 
-
 def outline(tck, radius_tck, num_points=None):
     """Given a shape defined by a centerline spline and a radial profile spline,
     return a polygonal outline defined by sampling the centerline num_points
@@ -51,7 +49,6 @@ def outline(tck, radius_tck, num_points=None):
     outline = numpy.concatenate([left, right[::-1]], axis=0)
     return left, right, outline
 
-
 def area(tck, radius_tck, num_points=None):
     """Given a shape defined by a centerline spline and a radial profile spline,
     estimate its area by converting to a polygon at num_points along the centerline
@@ -65,7 +62,6 @@ def area(tck, radius_tck, num_points=None):
     y_forward = numpy.roll(ys, -1, axis = 0)
     y_backward = numpy.roll(ys, 1, axis = 0)
     return numpy.absolute(numpy.sum(xs * (y_backward - y_forward)) / 2.0)
-
 
 def volume_and_surface_area(tck, radius_tck, num_points=None):
     """Given a shape defined by a centerline spline and a radial profile spline,
@@ -90,7 +86,6 @@ def volume_and_surface_area(tck, radius_tck, num_points=None):
     surface_area = numpy.pi * (numpy.sqrt((r12-r22)**2 + (h*(r1+r2))**2).sum() + r12[0] + r22[-1])
     return volume, surface_area
 
-
 def length_and_max_width(tck, radius_tck, num_points=None):
     """Given a shape defined by a centerline spline and a radial profile spline,
     estimate its length and maximum width by sampling at num_points along the
@@ -103,6 +98,26 @@ def length_and_max_width(tck, radius_tck, num_points=None):
     points, radii = _get_points_and_radii(tck, radius_tck, num_points)
     return numpy.sqrt(((points[:-1] - points[1:])**2).sum(axis=1)).sum(), radii.max()
 
+def rmsd(tck1, tck2, num_points=None):
+    """Calculate the root mean squared distance between two parametric splines
+    evaluated at a given number of points.
+
+    If num_points is None, try to guess a sane default.
+    """
+    p1 = _get_points(tck1, num_points)
+    p2 = _get_points(tck2, num_points)
+    squared_distances = ((p1 - p2)**2).sum(axis=1)
+    return numpy.sqrt(numpy.mean(squared_distances))
+
+def centroid_distance(tck1, tck2, num_points=None):
+    """Calculate the distance between the centroids of two parametric splines
+    evaluated at a given number of points.
+
+    If num_points is None, try to guess a sane default.
+    """
+    c1 = _get_points(tck1, num_points).mean(axis=0)
+    c2 = _get_points(tck2, num_points).mean(axis=0)
+    return numpy.linalg.norm(c1 - c2)
 
 def _get_points(tck, num_points=None, derivative=0):
     """Evaluate a spline (or its derivative) at a given number of points.
@@ -117,7 +132,6 @@ def _get_points(tck, num_points=None, derivative=0):
         num_points = max(100, int(round(tck[0].max())))
     points = interpolate.spline_interpolate(tck, num_points, derivative)
     return points
-
 
 def _get_points_and_radii(tck, radius_tck, num_points=None):
     if tck[1].ndim != 2 and tck[1].shape[1] != 2:
