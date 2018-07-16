@@ -19,7 +19,6 @@ def linear_resample_polyline(points, num_points):
     y = numpy.interp(sample_positions, distances, points[:,1])
     return numpy.transpose([x,y])
 
-
 def spline_resample_polyline(points, num_points):
     """Resample a piecewise linear curve to contain a given number of
     equally-spaced points, using spline interpolation with automatically calculated
@@ -34,7 +33,6 @@ def spline_resample_polyline(points, num_points):
     tck = fit_splines(points)
     points_out = spline_interpolate(tck, num_points)
     return points_out, tck
-
 
 def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
     """Fit a parametric smoothing spline to a given set of x,y points. (Fits
@@ -156,7 +154,6 @@ def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=T
 
     return t, c, k
 
-
 def spline_interpolate(tck, num_points, derivative=0):
     """Return num_points equally spaced along the given spline.
 
@@ -165,7 +162,6 @@ def spline_interpolate(tck, num_points, derivative=0):
     # t[-1] gives the maximum value for the input position
     output_positions = numpy.linspace(0, tck[0][-1], num_points)
     return spline_evaluate(tck, output_positions, derivative)
-
 
 def spline_evaluate(tck, positions, derivative=0):
     """Evaluate a spline at the given positions.
@@ -179,6 +175,27 @@ def spline_evaluate(tck, positions, derivative=0):
         evaluate = splpev # parametric
     return evaluate(positions, t, c, k, der=derivative)
 
+def smooth_spline(tck, num_points, smoothing=1):
+    """Smooth a spline by interpolating and then re-fitting with smoothing.
+
+    Parameters:
+        tck: parametric or nonparametric spline
+        num_points: number of points to interpolate spline to.
+        smoothing: the average distance between the original and smoothed splines
+            will be less than this factor. Larger values generate smoother splines.
+
+    Returns: smoothed tck
+    """
+    t, c, k = tck
+    points = spline_interpolate(tck, num_points)
+    smoothing *= num_points
+    if c.ndim == 1:
+        # non-parametric
+        x = numpy.linspace(t[0], t[-1], num_points)
+        return fit_nonparametric_spline(x, points, smoothing=smoothing)
+    else:
+        # parametric
+        return fit_spline(points, smoothing=smoothing)
 
 def reparameterize_spline(tck, num_points=None, smoothing=None):
     """Produce a spline where parameter values represent distance along the spline.
@@ -208,7 +225,6 @@ def reparameterize_spline(tck, num_points=None, smoothing=None):
         smoothing = num_points / 5000
     return fit_spline(spline_interpolate(tck, num_points), smoothing=smoothing)
 
-
 def reverse_spline(tck):
     """Reverse the direction of a spline (parametric or nonparametric),
     without changing the range of the t (parametric) or x (nonparametric) values."""
@@ -216,7 +232,6 @@ def reverse_spline(tck):
     rt = t[-1] - t[::-1]
     rc = c[::-1]
     return rt, rc, k
-
 
 def insert_control_points(tck, num_points):
     """Return an equivalent spline with additional control points added for
@@ -240,7 +255,6 @@ def insert_control_points(tck, num_points):
         new_t = t[p:p+2].mean()
         t, c, k = insert_func(t, c, k, new_t)
     return t, c, k
-
 
 def spline_to_bezier(tck):
     """Convert a parametric spline into a sequence of Bezier curves of the same degree.
@@ -276,7 +290,6 @@ def spline_to_bezier(tck):
     # group the points into the desired bezier curves
     return numpy.split(c, len(c) // desired_multiplicity)
 
-
 def pinsert(t, c, k, u, m=1):
     """Insert m control points in spline (t,c,k) at parametric position u."""
     c = c.T
@@ -289,7 +302,6 @@ def pinsert(t, c, k, u, m=1):
         if ier: raise TypeError("An error occurred")
     return tt, out, k
 
-
 def insert(t, c, k, x, m=1):
     """Insert m control points in spline (t,c,k) at parametric position x."""
     per=False
@@ -297,7 +309,6 @@ def insert(t, c, k, x, m=1):
     if ier==10: raise ValueError("Invalid input data")
     if ier: raise TypeError("An error occurred")
     return t, c, k
-
 
 def splrep(x, y, s, k, w=None):
     """Return degree-k spline representation (t,c,k) of x, y points, with smoothing parameter s and weights w.
@@ -357,7 +368,6 @@ def splprep(u, x, s, k, w=None):
     c.shape = (idim, n-k-1)
     return t, c.T, ier, fitpack._iermess[ier][0]
 
-
 def splev(x, t, c, k, der=0):
     "Evaluate spline (t,c,k) or nth-order derivative thereof at position x."
     c = c.T
@@ -365,7 +375,6 @@ def splev(x, t, c, k, der=0):
     if ier==10: raise ValueError("Invalid input data")
     if ier: raise TypeError("An error occurred")
     return out
-
 
 def splpev(u, t, c, k, der=0):
     "Evaluate parametric spline (t,c,k) or nth-order derivative thereof at position u."
