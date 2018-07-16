@@ -22,10 +22,28 @@ def perpendiculars(tck, num_points=None, unit=True):
     Returns: array of shape (num_points, 2), containing num_points different
         2D vectors describing each perpendicular.
     """
-    der = _get_points(tck, num_points, derivative=1) # shape = (length, 2)
-    perpendiculars = numpy.empty_like(der)
-    perpendiculars[:,0] = -der[:,1]
-    perpendiculars[:,1] = der[:,0]
+    der = _get_points(tck, num_points, derivative=1)
+    return _make_perps(der, unit)
+
+def perpendiculars_at(tck, points, unit=True):
+    """Return vectors perpendicular to a 2D parametric spline.
+
+    Parameters:
+    tck: parametric spline tuple
+    points: set of parameter values for the spline at which to return the
+        perpendiculars.
+    unit: normalize prependiculars to unit length.
+
+    Returns: array of shape (len(points), 2), containing the 2D vectors
+        describing each perpendicular.
+    """
+    der = interpolate.spline_evaluate(tck, points, derivative=1)
+    return _make_perps(der, unit)
+
+def _make_perps(vectors, unit):
+    perpendiculars = numpy.empty_like(vectors)
+    perpendiculars[:,0] = -vectors[:,1]
+    perpendiculars[:,1] = vectors[:,0]
     if unit:
         perpendiculars /= numpy.sqrt((perpendiculars**2).sum(axis=1))[:,numpy.newaxis]
     return perpendiculars
