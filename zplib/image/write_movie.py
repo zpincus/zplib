@@ -9,6 +9,10 @@ from . import pyramid
 def write_movie(image_generator, output_file, framerate=15):
     """Write a movie from images.
 
+    NB: This works when you have a set of pre-existing images (either in memory
+    or on disk). If you want/need to stream images to a movie as they are created,
+    then use the VideoWriter class from zplib.image.ffmpeg.
+
     Parameters:
         image_generator: a generator that will produce images for movie frames.
         output_file: filename to write movie file. Must end with '.mp4'
@@ -98,10 +102,10 @@ def screen_images(*image_generators):
     blending to stack them on top of eachother. This is useful with one brightfield
     image as the first (bottom) layer, and then colorized fluorescence images atop."""
     for images in zip(*image_generators):
-        top = images[-1]
-        for bottom in images[-2::-1]:
-            top = colorize.blend(top, bottom, mode='screen', input_max=255)
-        yield top
+        bottom = images[0]
+        for top in images[1:]:
+            bottom, alpha = colorize.blend(top, bottom, mode='screen', input_max=255)
+        yield bottom
 
 def shrink(image_generator, factor=2, fast=False):
     """Shrink images produced by a generator by the specified factor.
@@ -111,11 +115,10 @@ def shrink(image_generator, factor=2, fast=False):
         fast: if True and if factor is an integer, perform no smoothing.
             If False, smooth the image before downsampling to avoid aliasing.
     """
-    if fast:
-        fast = factor = int(factor)
-    go_fast = fast and int_factor == factor
+    # can only do fast downsampling if fast was requested AND the factor is integral
+    fast = fast and int(factor) == factor
     for image in image_generator:
-        if go_fast:
+        if fast:
             yield image[::int(factor), ::int(factor)]
         else:
             yield pyramid.pyr_down(image, factor).astype(numpy.uint8)
