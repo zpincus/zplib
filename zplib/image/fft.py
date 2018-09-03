@@ -37,7 +37,7 @@ def make_spatial_filter(shape, period_range, spacing=1.0, order=2, keep_dc=False
     if high_cutoff_period is not None and low_cutoff_period is not None and high_cutoff_period <= low_cutoff_period:
         raise ValueError('the high cutoff period for a bandpass filter must be larger than the low cutoff period')
     if (high_cutoff_period is not None and high_cutoff_period < nyquist) or (low_cutoff_period is not None and low_cutoff_period < nyquist):
-        raise ValueError('Period cutoffs must be either None, or values greater than {} (the Nyquist period).'.format(nyquist))
+        raise ValueError(f'Period cutoffs must be either None, or values greater than {nyquist} (the Nyquist period).')
     if low_cutoff_period is None and high_cutoff_period is None:
         return array
     elif low_cutoff_period is None:
@@ -60,7 +60,7 @@ def lowpass_butterworth_nd(cutoff, shape, d=1.0, order=2):
     cutoff = float(cutoff)
     nyquist = 1/(2*d)
     if cutoff > nyquist:
-        raise ValueError('Filter cutoff frequency must be <= {} (the nyquist frequency for d={}).'.format(nyquist, d))
+        raise ValueError(f'Filter cutoff frequency must be <= {nyquist} (the nyquist frequency for d={d}).')
     return 1.0 / (1.0 + (rfftfreq_nd(shape, d) / cutoff)**(2*order))
 
 def highpass_butterworth_nd(cutoff, shape, d=1.0, order=2):

@@ -84,7 +84,7 @@ def _fork_carefully():
     try:
         return os.fork()
     except OSError as e:
-        raise RuntimeError('Fork failed: [{}] {}'.format(e.errno, e.strerror))
+        raise RuntimeError(f'Fork failed: [{e.errno}] {e.strerror}')
 
 def _redirect_stream(src, dst):
     if dst is None:
