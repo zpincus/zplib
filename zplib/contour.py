@@ -117,7 +117,7 @@ def contour(data, fraction, fraction_of='density', samples_x=100, samples_y=100)
     # evaluate the function a little ways away from the extremal data points.
     maxes = data.max(axis=0)
     mins = data.min(axis=0)
-    extra = 0.2*(maxes - mins)
+    extra = 0.2 * (maxes - mins)
     maxes += extra
     mins -= extra
     xmax, ymax = maxes

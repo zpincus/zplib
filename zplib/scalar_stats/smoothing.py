@@ -20,7 +20,7 @@ def weighted_mean(x, w):
     return (w*x).sum()
 
 def _gaussian(x, mu=0, sigma=1):
-  return ( (1/numpy.sqrt(2 * numpy.pi * sigma**2) * numpy.exp(-0.5 * ((numpy.asarray(x)-mu)/sigma)**2)) )
+    return (1/numpy.sqrt(2 * numpy.pi * sigma**2) * numpy.exp(-0.5 * ((numpy.asarray(x)-mu)/sigma)**2))
 
 def gaussian_mean(x, y, p, std=1):
     """Given a set of positions x where values y were observed, calculate
@@ -95,7 +95,7 @@ def lowess(x, y, f=2/3., iters=3, outlier_threshold=6, weights=None, degree=1):
                 max_dist = numpy.partition(x_dists, r)[r]
                 max_dists[i] = max_dist
             else:
-                 max_dist = max_dists[i]
+                max_dist = max_dists[i]
             wv = numpy.clip(x_dists/max_dist, 0, 1)
             wv = (1 - wv**3)**3
             final_weights = delta * wv * weights
@@ -104,7 +104,6 @@ def lowess(x, y, f=2/3., iters=3, outlier_threshold=6, weights=None, degree=1):
                 y_est.append(poly(xv))
             else: # faster to hard-code weighted linear regression formula
                 weighted_x = final_weights * x
-                total_weighted_x = numpy.sum(weighted_x)
                 b1 = numpy.dot(final_weights, y)
                 b2 = numpy.dot(weighted_x, y)
                 A11 = numpy.sum(final_weights)

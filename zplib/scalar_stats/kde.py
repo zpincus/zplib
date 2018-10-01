@@ -113,4 +113,3 @@ class FixedBandwidthKDE(kde.gaussian_kde):
             raise ValueError("'covariance' must be a square 2d array of shape (d, d).")
         self.inv_cov = numpy.linalg.inv(self.covariance)
         self._norm_factor = numpy.sqrt(numpy.linalg.det(2*numpy.pi*self.covariance)) * self.n
-

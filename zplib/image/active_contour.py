@@ -148,7 +148,7 @@ class MaskNarrowBand:
     def _change_pixels(self, to_change, old_border_indices, new_value, new_border_indices, some_match_old_value):
         change_indices = old_border_indices[to_change]
         # prevent changes outside of the max_region_mask
-        if new_value == True and self.max_region_mask is not None:
+        if new_value is True and self.max_region_mask is not None:
             in_region_mask = self.max_region_mask[tuple(change_indices.T)]
             change_indices = change_indices[in_region_mask]
             to_change[to_change] = in_region_mask
@@ -159,7 +159,7 @@ class MaskNarrowBand:
         # Find out which neighbors of changing pixels have the new value.
         # If we did the below after changing the mask, we would also pick up the
         # center pixels, which have the new value.
-        if new_value == True:
+        if new_value is True:
             new_valued_neighbors = self.mask_neighborhood[change_idx]
         else:
             new_valued_neighbors = ~self.mask_neighborhood[change_idx]
@@ -178,12 +178,12 @@ class MaskNarrowBand:
         # Find out which neighbors of changing pixels have the old value.
         # If we did the below before changing the mask, we would also pick up the
         # center pixels, which had the old value
-        if new_value == True:
+        if new_value is True:
             old_valued_neighbors = ~changed_neighborhood
         else:
             old_valued_neighbors = changed_neighborhood
         old_valued_neighbor_indices = changed_neighborhood_indices[old_valued_neighbors]
-        if new_value == True:
+        if new_value is True:
             # Exclude neighbors that are actually out-of-bounds "padding" pixels.
             # Only relevant for changing values to True (i.e. moving pixels inside)
             # because the out-of-bounds mask area is "False" and will thus otherwise

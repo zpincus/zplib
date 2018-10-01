@@ -1,4 +1,3 @@
-import sys
 import numpy
 import pkg_resources
 from matplotlib import cm
@@ -215,7 +214,7 @@ def _get_label_colors():
         _label_colors = numpy.load(pkg_resources.resource_stream(__name__, '_label_colors.npy'))
     return _label_colors
 
-def colorize_label_image(array, cmap=None):
+def colorize_label_image(array, cmap=None, uint8=True):
     """Color-map an image consisting of labeled regions (each with different
     integer-valued label).
 
@@ -224,6 +223,8 @@ def colorize_label_image(array, cmap=None):
         cmap: if None, use a default mapping of integers to colors; otherwise
             use the named matplotlib colormap. A qualitative colormap like 'tab20'
             is a good idea.
+        uint8: if True, return uint RGB tuples in range [0, 255], otherwise
+            floats in [0, 1]
 
     Example of making a label image from a set of masks:
     label_image = numpy.zeros(masks[0].shape, dtype=numpy.uint16)
@@ -235,8 +236,8 @@ def colorize_label_image(array, cmap=None):
         colorized = _get_label_colors()[array]
     else:
         colormap = cm.get_cmap(cmap)
-        colorized = colormap(array%colormap.N, bytes=uint8)[...,:3]
-        colorized[image == 0] = 0
+        colorized = colormap(array % colormap.N, bytes=uint8)[...,:3]
+        colorized[array == 0] = 0
     return colorized
 
 def luminance(color_array):
@@ -258,7 +259,7 @@ def interpolate_color(array, zero_color, max_color, input_max=1):
 
     """
     array = numpy.asarray(array, dtype=numpy.float32) / input_max
-    return (color_tint(array, zero_color) + color_tint(array, one_color)) * input_max
+    return (color_tint(array, zero_color) + color_tint(array, max_color)) * input_max
 
 def neg_pos_color_tint(array, zero_color=(0,0,0), neg_color=(255,0,76), pos_color=(0,50,255)):
     """Tint a signed array with two different sets of colors, one for negative numbers

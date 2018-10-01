@@ -38,7 +38,7 @@ def closest_point_to_line_segments(point, lines_start, lines_end):
     c2 = (v*v).sum(axis=1)
     fractional_positions = c1 / c2
     fractional_positions = fractional_positions.clip(0, 1)
-    closest_points = lines_start + fractional_positions[:,numpy.newaxis]*v
+    closest_points = lines_start + fractional_positions[:, numpy.newaxis]*v
     return closest_points, fractional_positions
 
 def closest_point_on_polyline(point, points, parameters=None):
@@ -51,7 +51,7 @@ def closest_point_on_polyline(point, points, parameters=None):
     point_idx = distances.argmin()
     closest_point = closest_points[point_idx]
     if parameters is None:
-        parameters = cumulative_distances(spine)
+        parameters = cumulative_distances(points)
     start_u, stop_u = parameters[point_idx:point_idx+2]
     u_val = start_u + fractions[point_idx]*(stop_u - start_u)
     return closest_point, u_val

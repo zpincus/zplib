@@ -116,7 +116,7 @@ class ObservationProbabilityEstimator:
             self.state_distributions = [kde.gaussian_kde(so) for so in state_observations]
         else:
             max_val = max(so.max() for so in state_observations)
-            state_counts = [numpy.bincount(so, minlength=max_val) + pseudocount]
+            state_counts = [numpy.bincount(so, minlength=max_val) + pseudocount for so in state_observations]
             self.state_distributions = [sc / sc.sum() for sc in state_counts]
 
     def __call__(self, observations):

@@ -72,7 +72,7 @@ def canny_local_maxima(magnitude, sobel):
 
     magnitude_neighborhood = neighborhood.make_neighborhood_view(magnitude)
 
-    #--------- Find local maxima --------------
+    # --------- Find local maxima --------------
     #
     # Assign each point to have a normal of 0-45 degrees, 45-90 degrees,
     # 90-135 degrees and 135-180 degrees.

@@ -174,11 +174,10 @@ def _pca_svd(data):
     """Perform PCA on a dataset using the singular value decomposition."""
     u, s, vt = numpy.linalg.svd(data, full_matrices=0)
     pcs = vt
-    v = numpy.transpose(vt)
     data_count = len(data)
     variances = s**2 / data_count
     root_data_count = numpy.sqrt(data_count)
     stds = s / root_data_count
-    positions =    u * s
+    positions = u * s
     norm_positions = u * root_data_count
     return pcs, variances, stds, positions, norm_positions

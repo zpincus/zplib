@@ -91,9 +91,9 @@ def tile_images(*image_generators, axis='x'):
     Parameters:
         axis: either 'x' or 'y' to indicate the direction the images should be tiled in.
     """
-    axes = {'x':0, 'y':1}
+    axes = {'x': 0, 'y': 1}
     if axis not in axes:
-         raise ValueError('Axis for laying out images side by side must be "x" or "y".')
+        raise ValueError('Axis for laying out images side by side must be "x" or "y".')
     for images in zip(*image_generators):
         yield numpy.concatenate(images, axis=axes[axis])
 

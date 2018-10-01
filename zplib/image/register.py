@@ -4,7 +4,7 @@ import scipy.optimize as optimize
 
 from . import pyramid
 
-## Image comparison metrics
+# Image comparison metrics
 def abs_diff(i1, i2):
     '''Return the absolute differences between two images.'''
     return numpy.abs(i1 - i2)
@@ -35,10 +35,10 @@ def pyr_register(fixed_image, moving_image, levels=3, initial_shift=(0,0), diff_
         shifted = ndimage.shift(moving_image, shift, order=1)
     '''
     pf, pm = [fixed_image], [moving_image]
-    for i in range(levels-1):
+    for i in range(levels - 1):
         pf.append(pyramid.pyr_down(pf[-1]))
         pm.append(pyramid.pyr_down(pm[-1]))
-    initial_shift = numpy.asarray(initial_shift) / 2**(steps - 1)
+    initial_shift = numpy.asarray(initial_shift) / 2**(levels - 1)
     for f, m in reversed(list(zip(pf, pm))):
         if iterate:
             func = iterate_register
@@ -73,7 +73,7 @@ def iterate_register(fixed_image, moving_image, initial_shift=(0,0), search_boun
     '''
     cache = {}
     for i in range(max_iters):
-        shift = register_images(fixed_image, moving_image, initial_shift, search_bounds, diff_function, tol=0.5, eps=eps, cache=cache)
+        shift = register(fixed_image, moving_image, initial_shift, search_bounds, diff_function, tol=0.5, eps=eps, cache=cache)
         shift = numpy.round(shift, 2)
         if numpy.abs(shift - initial_shift).max() < tol:
             break
@@ -105,7 +105,7 @@ def register(fixed_image, moving_image, initial_shift=(0,0), search_bounds=5, di
     args = fixed_image, moving_image, diff_function, cache
     bounds = numpy.array([-search_bounds, search_bounds]) + initial_shift
     bounds = [bounds, bounds] # one for x and one for y
-    result = optimize.minimize(compare_images, initial_shift, args=args, method='TNC', options={'xtol':xtol, 'eps':eps}, bounds=bounds)
+    result = optimize.minimize(compare_images, initial_shift, args=args, method='TNC', options={'xtol':tol, 'eps':eps}, bounds=bounds)
     return result.x
 
 def compare_images(shift, fixed_image, moving_image, diff_function, cache=None):

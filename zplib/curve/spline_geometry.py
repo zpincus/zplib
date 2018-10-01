@@ -1,6 +1,5 @@
 import numpy
 
-from . import geometry
 from . import interpolate
 
 def arc_length(tck, num_points=None):
@@ -77,8 +76,8 @@ def area(tck, radius_tck, num_points=None):
     polygon = outline(tck, radius_tck, num_points)[2]
     xs = polygon[:,0]
     ys = polygon[:,1]
-    y_forward = numpy.roll(ys, -1, axis = 0)
-    y_backward = numpy.roll(ys, 1, axis = 0)
+    y_forward = numpy.roll(ys, -1, axis=0)
+    y_backward = numpy.roll(ys, 1, axis=0)
     return numpy.absolute(numpy.sum(xs * (y_backward - y_forward)) / 2.0)
 
 def volume_and_surface_area(tck, radius_tck, num_points=None):

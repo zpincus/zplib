@@ -188,4 +188,3 @@ class MultiFilter(FilterBase):
             self.ifft()
             images_out.append(self.image_arr.copy())
         return images_out
-

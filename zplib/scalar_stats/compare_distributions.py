@@ -112,4 +112,4 @@ def _kl_divergence(xs, p1, p2):
     with numpy.errstate(divide='ignore', invalid='ignore'):
         kl = p1 * (numpy.log(p1) - numpy.log(p2))
     kl[~numpy.isfinite(kl)] = 0 # small numbers in p1 or p2 can cause NaN/-inf, etc.
-    return numpy.trapz(kl, x=xs) #integrate curve
+    return numpy.trapz(kl, x=xs) # integrate curve

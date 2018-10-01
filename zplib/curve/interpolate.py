@@ -30,7 +30,7 @@ def spline_resample_polyline(points, num_points):
 
     Returns a resampled array, of shape (num_points,2), and the spline parameters
     used for the resampling"""
-    tck = fit_splines(points)
+    tck = fit_spline(points)
     points_out = spline_interpolate(tck, num_points)
     return points_out, tck
 
@@ -298,7 +298,7 @@ def pinsert(t, c, k, u, m=1):
     for i, cc in enumerate(c):
         tt, ccc, ier = fitpack._fitpack._insert(per, t, cc, k, u, m)
         out[:,i] = ccc[:-k-1]
-        if ier==10: raise ValueError("Invalid input data")
+        if ier == 10: raise ValueError("Invalid input data")
         if ier: raise TypeError("An error occurred")
     return tt, out, k
 
@@ -306,7 +306,7 @@ def insert(t, c, k, x, m=1):
     """Insert m control points in spline (t,c,k) at parametric position x."""
     per=False
     t, c, ier = fitpack._fitpack._insert(per, t, c, k, x, m)
-    if ier==10: raise ValueError("Invalid input data")
+    if ier == 10: raise ValueError("Invalid input data")
     if ier: raise TypeError("An error occurred")
     return t, c, k
 
@@ -386,4 +386,3 @@ def splpev(u, t, c, k, der=0):
         if ier==10: raise ValueError("Invalid input data")
         if ier: raise TypeError("An error occurred")
     return out
-

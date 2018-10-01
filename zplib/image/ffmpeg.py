@@ -11,6 +11,8 @@ else:
     FFMPEG_BIN = 'ffmpeg'
     FFPROBE_BIN = 'ffprobe'
 
+BYTEORDERS = {'<': 'le', '>': 'be', '=': 'le' if sys.byteorder == 'little' else 'be'}
+
 def read_video(input, force_grayscale=False):
     """Return iterator over frames from an input video via ffmpeg.
 
@@ -133,7 +135,6 @@ def write_lossless_video(frames, framerate, output, threads=None, verbose=True):
             writer.encode_frame(frame)
 
 class _VideoWriter:
-    BYTEORDERS = {'<':'le', '>':'be', '=':'le' if sys.byteorder == 'little' else 'be'}
     def __init__(self, framerate, output, verbose, codec_options, codec, pixel_format_out):
         self.ffmpeg = None
         self.framerate = framerate
@@ -172,7 +173,7 @@ class _VideoWriter:
         elif frame.dtype == numpy.uint16:
             if frame.ndim == 3:
                 raise ValueError('Cannot encode RGB uint16 movies.')
-            pixel_format_in = 'gray16' + self.BYTEORDERS[dtype.byteorder]
+            pixel_format_in = 'gray16' + BYTEORDERS[frame.dtype.byteorder]
         if self.pixel_format_out is None:
             self.pixel_format_out = pixel_format_in
         command = [FFMPEG_BIN,
