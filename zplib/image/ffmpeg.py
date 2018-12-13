@@ -209,9 +209,9 @@ class VideoWriter(_VideoWriter):
         This function can be used to send new frames to ffmpeg as they are produced,
         unlike write_video, which requires an iterator of all the existing frames.
 
-        To use, create a and then use the encode_frame() method to provide new frames.
-        When finished, call the close() method. Alternately, use as a context manager
-        and close will be called automatically.
+        To use, create a VideoWriter and then use the encode_frame() method to
+        provide new frames. When finished, call the close() method. Alternately,
+        use as a context manager and close will be called automatically.
 
         writer = VideoWriter(...)
         writer.encode_frame(frame1)
@@ -273,9 +273,9 @@ class LosslessVideoWriter(_VideoWriter):
         """Write uint8 (color/gray) or uint16 (gray) image frames to a lossless
         FFV1-encoded video file using ffmpeg.
 
-        To use, create a and then use the encode_frame() method to provide new frames.
-        When finished, call the close() method. Alternately, use as a context manager
-        and close will be called automatically.
+        To use, create a LosslessVideoWriter and then use the encode_frame()
+        method to provide new frames. When finished, call the close() method.
+        Alternately, use as a context manager and close will be called automatically.
 
         writer = LosslessVideoWriter(...)
         writer.encode_frame(frame1)

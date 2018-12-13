@@ -104,6 +104,6 @@ def rfftfreq_nd(shape, d=1.0):
     for i in range(nd):
         axis_slice = [numpy.newaxis]*nd
         axis_slice[i] = all_slice
-        slices.append(axis_slice)
+        slices.append(tuple(axis_slice))
     sum_squared_freqs = sum(f[sl] for f, sl in zip(freqs2, slices))
     return numpy.sqrt(sum_squared_freqs)
