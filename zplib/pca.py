@@ -11,7 +11,8 @@ def pca(data):
       mean: array of shape m, representing the mean of the input data.
       pcs: array of shape (p, m) containing the p principal components. Each
         component is normalized to euclidian distance of 1. The number of
-        components p is min(n - 1, m).
+        components p is <= min(n - 1, m). The relationship is exact if no data
+        points are duplicate, otherwise fewer PCs may be returned.
       norm_pcs: same as the array pcs, except that each component is scaled by
       the standard deviation along each component.
       variances: length-p array containing the amount of variance explained by
@@ -22,7 +23,6 @@ def pca(data):
         normalized principal components. Positions in this basis are in terms
         of standard deviations away from the mean, rather than at the original
         scale of the data points; shape = (n, p).
-
 
     Example:
       mean, pcs, norm_pcs, variances, positions, norm_positions = pca(data)
@@ -36,6 +36,12 @@ def pca(data):
     centered = data - mean
     # could use _pca_svd below, but that appears empirically slower...
     pcs, variances, stds, positions, norm_positions = _pca_eig(centered)
+    good_pcs = len(pcs) - numpy.isclose(variances, 0).sum()
+    pcs = pcs[:good_pcs]
+    variances = variances[:good_pcs]
+    stds = stds[:good_pcs]
+    positions = positions[:, :good_pcs]
+    norm_positions = norm_positions[:, :good_pcs]
     norm_pcs = pcs * stds[:, numpy.newaxis]
     return mean, pcs, norm_pcs, variances, positions, norm_positions
 
@@ -121,13 +127,6 @@ def pca_reconstruct(positions, pcs, mean):
 def _pca_eig(data):
     """Perform PCA on a dataset using a symmetric eigenvalue decomposition."""
     values, vectors = _symm_eig(data)
-    n, m = data.shape
-    if n <= m:
-        # in this case we can have at most n-1 PCs, because n points can span
-        # at most an n-1-dimensional subspace. So we need to ditch the last PC,
-        # which will just be noise.
-        values = values[:-1]
-        vectors = vectors[:, :-1]
     pcs = vectors.T
     variances = values / len(data)
     stds = numpy.sqrt(variances)
@@ -153,10 +152,10 @@ def _symm_eig(a):
     m, n = a.shape
     if m >= n:
         # just return the eigenvalues and eigenvectors of a'a
-        vecs, vals = _eigh(numpy.dot(a.T, a))
+        vals, vecs = _eigh(numpy.dot(a.T, a))
         # if elements are < 0 due to numerical instabilities, set to 0
-        vecs[vecs < 0] = 0
-        return vecs, vals
+        vals[vals < 0] = 0
+        return vals, vecs
     else:
         # figure out the eigenvalues and vectors based on aa', which is smaller
         sst_diag, u = _eigh(numpy.dot(a, a.T))
@@ -183,14 +182,6 @@ def _eigh(m):
 def _pca_svd(data):
     """Perform PCA on a dataset using the singular value decomposition."""
     u, s, vt = numpy.linalg.svd(data, full_matrices=0)
-    n, m = data.shape
-    if n <= m:
-        # in this case we can have at most n-1 PCs, because n points can span
-        # at most an n-1-dimensional subspace. So we need to ditch the last PC,
-        # which will just be noise.
-        u = u[:-1, :-1]
-        s = s[:-1]
-        vt = vt[:-1]
     pcs = vt
     data_count = len(data)
     variances = s**2 / data_count
