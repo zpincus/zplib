@@ -11,7 +11,7 @@ def pca(data):
       mean: array of shape m, representing the mean of the input data.
       pcs: array of shape (p, m) containing the p principal components. Each
         component is normalized to euclidian distance of 1. The number of
-        components p is min(n, m).
+        components p is min(n - 1, m).
       norm_pcs: same as the array pcs, except that each component is scaled by
       the standard deviation along each component.
       variances: length-p array containing the amount of variance explained by
@@ -89,13 +89,16 @@ def pca_decompose(data, pcs, mean):
     Returns: shape (n, p) projection of the data into the principal components
       basis.
     """
-    if numpy.allclose((pcs**2).sum(axis=1), numpy.ones(len(pcs))):
-        # pcs are of unit length, so we assume that they form an orthonormal basis
-        inv_pcs = pcs.T
-    else:
-        # assume pcs is invertible (e.g. we're using norm_pcs)
-        inv_pcs = numpy.linalg.inv(pcs)
-    projection = numpy.dot(data - mean, inv_pcs)
+    projection = numpy.dot(data - mean, pcs.T)
+    pc_lens = (pcs**2).sum(axis=1)
+    if not numpy.allclose(pc_lens, numpy.ones(len(pcs))):
+        # pcs are not of unit length; we must be using the normalized versions and
+        # thus desire the normalized positions.
+        # The normalized position is numpy.dot(data - mean, non_norm_pcs.T) / standard_deviations
+        # and norm_pcs = non_norm_pcs * standard_deviations, so
+        # we want numpy.dot(data - mean, norm_pcs.T) / standard_deviations**2
+        # Note that the squared length of the norm_pcs is exactly standard_deviations**2
+        projection /= pc_lens
     return projection
 
 def pca_reconstruct(positions, pcs, mean):
@@ -118,6 +121,13 @@ def pca_reconstruct(positions, pcs, mean):
 def _pca_eig(data):
     """Perform PCA on a dataset using a symmetric eigenvalue decomposition."""
     values, vectors = _symm_eig(data)
+    n, m = data.shape
+    if n <= m:
+        # in this case we can have at most n-1 PCs, because n points can span
+        # at most an n-1-dimensional subspace. So we need to ditch the last PC,
+        # which will just be noise.
+        values = values[:-1]
+        vectors = vectors[:, :-1]
     pcs = vectors.T
     variances = values / len(data)
     stds = numpy.sqrt(variances)
@@ -173,6 +183,14 @@ def _eigh(m):
 def _pca_svd(data):
     """Perform PCA on a dataset using the singular value decomposition."""
     u, s, vt = numpy.linalg.svd(data, full_matrices=0)
+    n, m = data.shape
+    if n <= m:
+        # in this case we can have at most n-1 PCs, because n points can span
+        # at most an n-1-dimensional subspace. So we need to ditch the last PC,
+        # which will just be noise.
+        u = u[:-1, :-1]
+        s = s[:-1]
+        vt = vt[:-1]
     pcs = vt
     data_count = len(data)
     variances = s**2 / data_count
