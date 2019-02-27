@@ -18,41 +18,68 @@ class COMPRESSION:
 
 
 class _ThreadpoolBase:
-    def __init__(self, num_threads):
+    def __init__(self, num_threads, max_queued_jobs=None):
         self.threadpool = futures.ThreadPoolExecutor(num_threads)
+        self.futures = set()
+        self.done = set()
+        self.max_queued_jobs = max_queued_jobs
 
-    @staticmethod
-    def wait_all(futures_out):
-        """Wait until all the provided futures have completed; raise an error if
-        one or more error out."""
-        # wait until all have completed or errored out
-        futures.wait(futures_out)
-        # now get the result() from each future, which will raise any errors encountered
-        # during the execution.
-        # The futures.wait() call above makes sure that everything that doesn't
-        # error out has a chance to finish before we barf an exception.
-        [f.result() for f in futures_out]
+    def submit(self, fn, *args, **kws):
+        if self.max_queued_jobs is not None and len(self.futures) >= self.max_queued_jobs:
+            self._wait(1)
+        future = self.threadpool.submit(fn, *args, **kws)
+        self.futures.add(future)
 
-    @staticmethod
-    def wait_first_error(futures_out):
+    def _wait(self, n):
+        for i, future in enumerate(futures.as_completed(self.futures)):
+            if i == n:
+                break
+        done, self.futures = futures.wait(self.futures, timeout=0)
+        self.done.update(done)
+
+    def wait(self, n=None):
+        """Wait until the futures have completed, raising an error if one or
+        more error out.
+
+        Parameters:
+            n: number of futures to wait for, or None to wait for all.
+        """
+        if n is None:
+            n = len(self.futures)
+        if n == 0:
+            return
+        assert n > 0
+        # now get the result() from each completed future, which will raise any
+        # errors encountered during the execution.
+        try:
+            for future in self.done:
+                future.result()
+        finally:
+            self.done.clear()
+
+    def wait_first_error(self):
         """Wait until all the provided futures have completed or the first error
         arises. If an error is raised (or control-c is pressed), cancel the rest
         of the futures and return."""
+        all_futures = self.futures.union(self.done)
         try:
-            for future in futures.as_completed(futures_out):
+            for future in futures.as_completed(all_futures):
                 future.result() # if exception occured in the future, this will raise an error
         except:
             # errors were raised above
-            for future in futures_out:
+            for future in self.futures:
                 future.cancel()
             raise
+        finally:
+            self.futures.clear()
+            self.done.clear()
 
 class ThreadedIO(_ThreadpoolBase):
     def write(self, images, paths, flags=0):
         """Write out a list of images to the given paths.
         Returns a list of futures representing the jobs, which the user can wait on when desired.
         """
-        return [self.threadpool.submit(freeimage.write, image, str(path), flags) for image, path in zip(images, paths)]
+        return [self.submit(freeimage.write, image, str(path), flags) for image, path in zip(images, paths)]
 
     def read(self, paths):
         """Return an iterator over image arrays read from the given paths."""
@@ -68,7 +95,7 @@ class PNG_Compressor(_ThreadpoolBase):
         """Compress the provided PNG files to the level specified in the constructor.
         Returns a list of futures representing the jobs, which the user can wait on when desired.
         """
-        return [self.threadpool.submit(self._compress, image_path) for image_path in image_paths]
+        return [self.submit(self._compress, image_path) for image_path in image_paths]
 
     def _compress(self, image_path):
         image_path = pathlib.Path(image_path)
