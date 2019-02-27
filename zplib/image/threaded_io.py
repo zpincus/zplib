@@ -29,6 +29,7 @@ class _ThreadpoolBase:
             self._wait(1)
         future = self.threadpool.submit(fn, *args, **kws)
         self.futures.add(future)
+        return future
 
     def _wait(self, n):
         for i, future in enumerate(futures.as_completed(self.futures)):
@@ -49,6 +50,7 @@ class _ThreadpoolBase:
         if n == 0:
             return
         assert n > 0
+        self._wait(n)
         # now get the result() from each completed future, which will raise any
         # errors encountered during the execution.
         try:
