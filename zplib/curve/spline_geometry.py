@@ -66,6 +66,25 @@ def outline(tck, radius_tck, num_points=None):
     outline = numpy.concatenate([left, right[::-1]], axis=0)
     return left, right, outline
 
+def triangle_strip(tck, radius_tck, num_points=None):
+    """Given a shape defined by a centerline spline and a radial profile spline,
+    return its polygonal outline as a strip of connected triangles (suitable for
+    rendering with OpenGL or other triangle rasterizers).
+
+    returns: shape (num_points*2, 2) array of vertices describing a strip of
+        connected triangles (such that vertices (0,1,2) describe the first
+        triangle, vertices (1,2,3) describe the second, and so forth).
+        NB: vertices on the left side of the shape are at even indices
+        (i.e.[::2]) and those on the right side are at odd indices ([1::2]).
+    """
+    points, radii = _get_points_and_radii(tck, radius_tck, num_points)
+    triangle_strip = numpy.empty((2*len(points), 2), dtype=float)
+    perps = perpendiculars(tck, num_points=len(points))
+    offsets = perps * radii[:,numpy.newaxis]
+    triangle_strip[::2] = points + offsets
+    triangle_strip[1::2] = points - offsets
+    return triangle_strip
+
 def area(tck, radius_tck, num_points=None):
     """Given a shape defined by a centerline spline and a radial profile spline,
     estimate its area by converting to a polygon at num_points along the centerline
