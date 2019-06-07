@@ -4,6 +4,7 @@ from concurrent import futures
 import tempfile
 import pathlib
 import os
+import itertools
 
 import freeimage
 
@@ -32,9 +33,9 @@ class _ThreadpoolBase:
         return future
 
     def _wait(self, n):
-        for i, future in enumerate(futures.as_completed(self.futures)):
-            if i == n:
-                break
+        iterator = futures.as_completed(self.futures)
+        for i in range(n): # iterate through the first n futures to finish
+            next(iterator)
         done, self.futures = futures.wait(self.futures, timeout=0)
         self.done.update(done)
 

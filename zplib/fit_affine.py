@@ -18,18 +18,18 @@ def fit_affine(points, reference, weights=None, allow_reflection=False, find_sca
 
     Returns: (rotation, scale, translation, new_points)
         rotation: rotation matrix; shape (d, d)
-        scale: scale facto; scalar
+        scale: scale factor; scalar
         translation: translation vector; shape (d,)
         new_points: transformed input points; shape (n, d)
 
     To transform additional points:
-        points_out = c * numpy.dot(points_in, rotation) + translation
+        points_out = scale * numpy.dot(points_in, rotation) + translation
     """
     # notational conventions after "Generalized Procrustes Analysis and its Applications in Photogrammetry"
     # by Devrim Akca
     A = numpy.matrix(points)
     B = numpy.matrix(reference)
-    assert points.shape == reference.shape
+    assert A.shape == B.shape
     p = A.shape[0]
     k = A.shape[1]
     j = numpy.matrix(numpy.ones((p, 1)))

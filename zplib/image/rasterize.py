@@ -84,7 +84,7 @@ def gouraud_triangles(triangle_strip, vertex_vals, shape):
         vertices = triangle_strip[i:i+3]
         vals = vertex_vals[i:i+3]
         xmn, ymn = numpy.floor(vertices.min(axis=0)).astype(int)
-        xmx, ymx = numpy.floor(vertices.max(axis=0)).astype(int) + 1
+        xmx, ymx = numpy.ceil(vertices.max(axis=0)).astype(int) + 1
         xs, ys = slice(xmn, xmx), slice(ymn, ymx)
         b_coords = barycentric_coords(vertices, grid[:, xs, ys])
         m = (b_coords >= 0).all(axis=0)
@@ -95,3 +95,27 @@ def gouraud_triangles(triangle_strip, vertex_vals, shape):
     if unpack_out:
         outputs = outputs[0]
     return mask, outputs
+
+def accumulate_triangles(triangle_strip, shape):
+    """Return a triangle strip rasterized such that each pixel contains
+    a count of the number of triangles atop it.
+
+    Parameters:
+        triangle_strip: shape (n, 2) array of vertices describing a strip of
+            connected triangles (such that vertices (0,1,2) describe the first
+            triangle, vertices (1,2,3) describe the second, and so forth).
+        shape: shape of the output image.
+    """
+    triangle_strip = numpy.asarray(triangle_strip)
+    assert triangle_strip.ndim == 2 and triangle_strip.shape[1] == 2 and len(triangle_strip) > 2
+    grid = numpy.indices(shape) + 0.5 # pixel centers are at (0.5, 0.5 geometrically)
+    output = numpy.zeros(shape, dtype=int)
+    for i in range(len(triangle_strip) - 2):
+        vertices = triangle_strip[i:i+3]
+        xmn, ymn = numpy.floor(vertices.min(axis=0)).astype(int)
+        xmx, ymx = numpy.ceil(vertices.max(axis=0)).astype(int) + 1
+        xs, ys = slice(xmn, xmx), slice(ymn, ymx)
+        b_coords = barycentric_coords(vertices, grid[:, xs, ys])
+        m = (b_coords >= 0).all(axis=0)
+        output[xs, ys] += (b_coords >= 0).all(axis=0)
+    return output
