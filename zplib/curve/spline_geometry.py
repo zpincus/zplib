@@ -2,36 +2,65 @@ import numpy
 
 from . import interpolate
 
+def get_points(tck, num_points=None, derivative=0):
+    """Evaluate a spline (or its derivative) at a given number of points.
+
+    Parameters:
+        tck: parametric spline tuple
+        num_points: number of equally-spaced points to evaluate perpendiculars at,
+            or None, which causes the code to try to guess a good number of points.
+            Specifically, the code will use the maximum parameter value of the spline or 100,
+            whichever is greater. The maximum parameter value makes sense only if the
+            curve is parameterized with something close to the 'natural parameter',
+            which interpolate.fit_spline() tries to guarantee.
+        derivative: order of the derivative to evaluate.
+
+    Returns: array of shape (num_points, d), where d is the dimension of the
+        spline.
+    """
+    if num_points is None:
+        num_points = max(100, int(round(tck[0].max())))
+    return interpolate.spline_interpolate(tck, num_points, derivative)
+
+def _get_points_and_radii(tck, radius_tck, num_points=None):
+    if tck[1].ndim != 2 and tck[1].shape[1] != 2:
+        raise ValueError('tck must be a two-dimensional parametric spline')
+    if radius_tck[1].ndim != 1:
+        raise ValueError('radius_tck must be a non-parametric spline')
+    points = get_points(tck, num_points)
+    radii = get_points(radius_tck, num_points=len(points))
+    return points, radii
+
 def arc_length(tck, num_points=None):
-    """Approximate the arc-length of spline (t,c,k) by evaluating it at num_points
+    """Approximate the arc-length of spline by evaluating it at num_points
     positions and calculating the length of the resulting polyline.
     If num_points is None, try to guess a sane default."""
-    points = _get_points(tck, num_points)
+    points = get_points(tck, num_points)
     return numpy.sqrt(((points[:-1] - points[1:])**2).sum(axis=1)).sum()
 
 def perpendiculars(tck, num_points=None, unit=True):
     """Return vectors perpendicular to a 2D parametric spline.
 
     Parameters:
-    tck: parametric spline tuple
-    num_points: number of equally-spaced points to evaluate perpendiculars at,
-        or None, which causes the code to try to guess a good number of points.
-    unit: normalize prependiculars to unit length.
+        tck: parametric spline tuple
+        num_points: number of points to evaluate perpendiculars at, or None,
+            which causes the code to try to guess a good number of points.
+        unit: normalize prependiculars to unit length.
 
     Returns: array of shape (num_points, 2), containing num_points different
         2D vectors describing each perpendicular.
     """
-    der = _get_points(tck, num_points, derivative=1)
+    der = get_points(tck, num_points, derivative=1)
     return _make_perps(der, unit)
 
 def perpendiculars_at(tck, points, unit=True):
     """Return vectors perpendicular to a 2D parametric spline.
 
     Parameters:
-    tck: parametric spline tuple
-    points: set of parameter values for the spline at which to return the
-        perpendiculars.
-    unit: normalize prependiculars to unit length.
+        tck: parametric spline tuple
+        points: set of parameter values for the spline at which to return the
+            perpendiculars.
+        unit: normalize prependiculars to unit length.
 
     Returns: array of shape (len(points), 2), containing the 2D vectors
         describing each perpendicular.
@@ -140,8 +169,8 @@ def rmsd(tck1, tck2, num_points=None):
 
     If num_points is None, try to guess a sane default.
     """
-    p1 = _get_points(tck1, num_points)
-    p2 = _get_points(tck2, num_points)
+    p1 = get_points(tck1, num_points)
+    p2 = get_points(tck2, num_points)
     squared_distances = ((p1 - p2)**2).sum(axis=1)
     return numpy.sqrt(numpy.mean(squared_distances))
 
@@ -151,29 +180,6 @@ def centroid_distance(tck1, tck2, num_points=None):
 
     If num_points is None, try to guess a sane default.
     """
-    c1 = _get_points(tck1, num_points).mean(axis=0)
-    c2 = _get_points(tck2, num_points).mean(axis=0)
+    c1 = get_points(tck1, num_points).mean(axis=0)
+    c2 = get_points(tck2, num_points).mean(axis=0)
     return numpy.linalg.norm(c1 - c2)
-
-def _get_points(tck, num_points=None, derivative=0):
-    """Evaluate a spline (or its derivative) at a given number of points.
-
-    If the number of points is not specified, make a sane guess such that the
-    resulting curve will be approximately as smooth as the spline.
-    Specifically, use the maximum parameter value of the spline or 100,
-    whichever is greater. The maximum parameter value makes sense only if the
-    curve is parameterized with something close to the 'natural parameter',
-    which interpolate.fit_spline() tries to guarantee."""
-    if num_points is None:
-        num_points = max(100, int(round(tck[0].max())))
-    points = interpolate.spline_interpolate(tck, num_points, derivative)
-    return points
-
-def _get_points_and_radii(tck, radius_tck, num_points=None):
-    if tck[1].ndim != 2 and tck[1].shape[1] != 2:
-        raise ValueError('tck must be a two-dimensional parametric spline')
-    if radius_tck[1].ndim != 1:
-        raise ValueError('radius_tck must be a non-parametric spline')
-    points = _get_points(tck, num_points)
-    radii = _get_points(radius_tck, num_points=len(points))
-    return points, radii
