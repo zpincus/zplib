@@ -8,7 +8,7 @@ except ImportError:
     HAS_CYTHON = False
 
 extensions = [setuptools.Extension('zplib.image._sample_texture',
-                sources = ['zplib/image/_sample_texture.' + 'pyx' if HAS_CYTHON else 'c'],
+                sources = ['zplib/image/_sample_texture.' + ('pyx' if HAS_CYTHON else 'c')],
                 include_dirs = [numpy.get_include()])
 ]
 
