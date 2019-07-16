@@ -47,7 +47,8 @@ def draw_triangle(vertices, shape):
             Must be convertible to a shape (3, 2) array.
         shape: shape of output mask.
     """
-    barycenters = barycentric_coords(vertices, numpy.indices(shape))
+    # add 0.5 to account for fact that pixel centers are at (0.5, 0.5)
+    barycenters = barycentric_coords(vertices, numpy.indices(shape) + 0.5)
     return (barycenters >= 0).all(axis=0)
 
 def gouraud_triangles(triangle_strip, vertex_vals, shape):

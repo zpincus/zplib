@@ -34,7 +34,7 @@ def spline_resample_polyline(points, num_points):
     points_out = spline_interpolate(tck, num_points)
     return points_out, tck
 
-def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
+def fit_spline(points, smoothing=None, order=None, force_endpoints=True, periodic=False):
     """Fit a parametric smoothing spline to a given set of x,y points. (Fits
     x(p) and y(p) as functions for some parameter p.)
 
@@ -54,6 +54,10 @@ def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
         NB: With large smoothing, this can dramatically influence the position
         of the entire curve. With smaller smoothing, changing the endpoints
         will have a more local effect.
+    periodic: if True, create a periodic spline. This will implicitly add an
+        additional point at the end of the points list equal to the first point.
+        DO NOT manually add this point. If periodic is true, force_endpoints
+        will be disabled.
 
     Returns a spline tuple (t,c,k) consisting of:
         t: the knots of the spline curve
@@ -64,6 +68,9 @@ def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
     distances between the original x,y points and the matching points on the
     smoothed spline representation."""
     points = numpy.asarray(points)
+    if periodic:
+        points = numpy.concatenate([points, points[:1]], axis=0)
+        force_endpoints = False
     l = len(points)
     w = numpy.ones(l, float)
     # choose input parameter values for the curve as the distances along the polyline:
@@ -81,22 +88,24 @@ def fit_spline(points, smoothing=None, order=None, force_endpoints=True):
             k = 3
     else:
         k = order
+
     if smoothing is None:
         smoothing = l * distances[-1] / 600.
+
     if force_endpoints:
         w[[0,-1]] = l
 
-    t, c, ier, msg = splprep(distances, points, s=smoothing, k=k, w=w)
+    t, c, ier, msg = splprep(distances, points, s=smoothing, k=k, w=w, per=periodic)
 
     if ier > 3:
         raise RuntimeError(msg)
-    if force_endpoints:
+    if  force_endpoints:
         # endpoints should already be close, so this shouldn't distort the spline too much...
         c[[0,-1]] = points[[0,-1]]
 
     return t, c, k
 
-def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=True):
+def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=True, periodic=True):
     """Fit a non-parametric smoothing spline to x,y points. (Fits a function
     f(x) = y, or approximately so.)
 
@@ -132,6 +141,9 @@ def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=T
     l = len(x)
     w = numpy.ones(l, float)
 
+    if periodic:
+        force_endpoints = False
+
     if order is None:
         if l < 4:
             k = 1
@@ -144,7 +156,7 @@ def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=T
     if force_endpoints:
         w[[0,-1]] = l
 
-    t, c, ier, msg = splrep(x, y, s=smoothing, k=k, w=w)
+    t, c, ier, msg = splrep(x, y, s=smoothing, k=k, w=w, per=periodic)
 
     if ier > 3:
         raise RuntimeError(msg)
@@ -310,7 +322,7 @@ def insert(t, c, k, x, m=1):
     if ier: raise TypeError("An error occurred")
     return t, c, k
 
-def splrep(x, y, s, k, w=None):
+def splrep(x, y, s, k, w=None, per=False):
     """Return degree-k spline representation (t,c,k) of x, y points, with smoothing parameter s and weights w.
 
     Smoothing parameter guarantee:
@@ -325,15 +337,23 @@ def splrep(x, y, s, k, w=None):
     if (m != len(y)):
             raise TypeError('Lengths of the first two must be equal')
     if m <= k: raise TypeError('m>k must hold')
-    nest = m + k + 1
-    t = numpy.empty((nest,), float)
-    wrk = numpy.empty((m*(k+1)+nest*(7+3*k),), float)
-    iwrk = numpy.empty((nest,), numpy.int32)
+    if per:
+        nest = m + 2 * k
+        wrk = numpy.empty(m*(k + 1) + nest*(8 + 5*k), float)
+    else:
+        nest = m + k + 1
+        wrk = numpy.empty(m*(k+1)+nest*(7+3*k), float)
+
+    t = numpy.empty(nest, float)
+    iwrk = numpy.empty(nest, numpy.int32)
     task = 0
-    n, c, fp, ier = fitpack.dfitpack.curfit(task, x, y, w, t, wrk, iwrk, xb, xe, k, s)
+    if per:
+        n, c, fp, ier = fitpack.dfitpack.percur(task, x, y, w, t, wrk, iwrk, k, s)
+    else:
+        n, c, fp, ier = fitpack.dfitpack.curfit(task, x, y, w, t, wrk, iwrk, xb, xe, k, s)
     return t[:n], c[:n-k-1], ier, fitpack._iermess[ier][0]
 
-def splprep(u, x, s, k, w=None):
+def splprep(u, x, s, k, w=None, per=False):
     """Return spline representation (t,c,k) of parametric curve x(u), with smoothing parameter s and weights w.
 
     Parameters:
@@ -342,7 +362,8 @@ def splprep(u, x, s, k, w=None):
        curve x(u) at each parametric value in the array u.
     s: smoothing parameter (see below)
     k: degree of output spline
-    w: weights for each point.
+    w: weights for each point
+    per: construct a periodic spline
 
     Returns spline tuple (t,c,k)
 
@@ -357,11 +378,14 @@ def splprep(u, x, s, k, w=None):
     if not len(u) == m:
             raise TypeError('Mismatch of input dimensions')
     if m <= k: raise TypeError('m>k must hold')
-    nest = m + k + 1
+    if per:
+        nest = m + 2 * k
+    else:
+        nest = m + k + 1
     t = numpy.array([], float)
     wrk = numpy.array([], float)
     iwrk = numpy.array([], numpy.int32)
-    task = per = 0
+    task = 0
     ipar = True
     t,c,o = fitpack._fitpack._parcur(x.ravel(), w, u, ub, ue, k, task, ipar, s, t, nest, wrk, iwrk, per)
     ier, fp, n = o['ier'], o['fp'], len(t)
