@@ -39,8 +39,9 @@ def barycentric_coords(vertices, coordinates):
 def draw_triangle(vertices, shape):
     """Return a mask containing ones for pixels in a given triangle.
 
-    Very inefficient for a large image size and a small triangle, but provides
-    an example for using barycentric coordinates.
+    Very inefficient! Especially for a large image size and a small triangle.
+    Provided SOLELY an example for using barycentric coordinates. Use
+    zplib.image.draw.draw_mask() or mask_triangle_strip() for speed.
 
     Parameters:
         vertices: vertices of a triangle as a list (or array) of (x, y) pairs.
@@ -53,6 +54,9 @@ def draw_triangle(vertices, shape):
 
 def gouraud_triangles(triangle_strip, vertex_vals, shape):
     """Return a triangle strip Gouraud-shaded based on values at each vertex.
+
+    Very inefficient! Provided SOLELY an example for using barycentric
+    coordinates. Use zplib.image.draw.gouraud_triangle_strip() for speed.
 
     Parameters:
         triangle_strip: shape (n, 2) array of vertices describing a strip of
@@ -100,6 +104,9 @@ def gouraud_triangles(triangle_strip, vertex_vals, shape):
 def accumulate_triangles(triangle_strip, shape):
     """Return a triangle strip rasterized such that each pixel contains
     a count of the number of triangles atop it.
+
+    Very inefficient! Provided SOLELY an example for using barycentric
+    coordinates. Use zplib.image.draw.gouraud_triangle_strip() for speed.
 
     Parameters:
         triangle_strip: shape (n, 2) array of vertices describing a strip of

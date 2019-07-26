@@ -21,5 +21,9 @@ setuptools.setup(
     description = 'basic zplab tools',
     packages = setuptools.find_packages(),
     package_data = {'zplab.image': ['_label_colors.npy']},
-    ext_modules = extensions
+    ext_modules = extensions,
+    install_requires=['cffi>=1.0.0', 'numpy', 'scipy'],
+    setup_requires=['cffi>=1.0.0'],
+    cffi_modules=['zplib/image/build_gouraud_triangles.py:ffibuilder'],
+
 )
