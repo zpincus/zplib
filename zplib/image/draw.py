@@ -1,7 +1,7 @@
 import numpy
 import celiagg
-from _gouraud_triangles import lib as _gouraud
-from _gouraud_triangles import ffi as _ffi
+from ._gouraud_triangles import lib as _gouraud
+from ._gouraud_triangles import ffi as _ffi
 
 def _cast(ptype, array):
     return _ffi.cast(ptype, array.ctypes.data)
@@ -31,7 +31,7 @@ def draw_mask(image_shape, geometry, antialias=False):
     canvas.draw_shape(geometry, transform, state, fill=fill)
     return image
 
-def gouraud_triangle_strip(triangle_strip, vertex_vals, shape, accumulate=False):
+def gouraud_triangle_strip(triangle_strip, vertex_vals, shape, accumulate=False, background=0):
     """Return a triangle strip Gouraud-shaded based on values at each vertex.
 
     Parameters:
@@ -45,6 +45,7 @@ def gouraud_triangle_strip(triangle_strip, vertex_vals, shape, accumulate=False)
         shape: shape of the output image(s).
         accumulate: if True, output values will be added atop one another in
             in cases where triangles overlap. (Useful for finding such cases.)
+        background: value of output in non-drawn regions
 
     Returns: single image (if vertex_vals is 1-dim) or list of images (if
         vertex_vals is > 1-dim), where each image contains the interpolation
@@ -60,7 +61,8 @@ def gouraud_triangle_strip(triangle_strip, vertex_vals, shape, accumulate=False)
         unpack_out = True
     assert len(vertex_vals) == len(triangle_strip)
     num_vertices = len(triangle_strip)
-    out = numpy.zeros(tuple(shape)+vertex_vals.shape[1:], dtype=numpy.float32, order='F')
+    out = numpy.empty(tuple(shape)+vertex_vals.shape[1:], dtype=numpy.float32, order='F')
+    out.fill(background)
     _gouraud.gouraud_triangle_strip(num_vertices,
         _cast('float *', triangle_strip),
         _cast('float *', vertex_vals),
