@@ -105,7 +105,7 @@ def fit_spline(points, smoothing=None, order=None, force_endpoints=True, periodi
 
     return t, c, k
 
-def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=True, periodic=True):
+def fit_nonparametric_spline(x, y, smoothing=None, order=None, force_endpoints=True, periodic=False):
     """Fit a non-parametric smoothing spline to x,y points. (Fits a function
     f(x) = y, or approximately so.)
 

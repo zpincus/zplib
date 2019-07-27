@@ -13,21 +13,23 @@ def r_squared(y, y_est):
     R2 = 1 - (resid**2).mean(axis=0) / y.var(axis=0) # ratio is variance unexplained divided by total variance
     return resid, R2
 
-def regress(X, y, C=None, regressor=None):
+def regress(X, y, C=None, Cy=None, regressor=None):
     """Perform a basic regression task with any of the scikit-learn regressors.
 
     Parameters:
-        X: input data points. Shape must be either (n_data) or (n_data, n_features).
-        y: output data points. Shape must be either (n_data) or (n_data, n_targets),
+        X: input data points. Shape must be either (n_data,) or (n_data, n_features).
+        y: output data points. Shape must be either (n_data,) or (n_data, n_targets),
             for multi-target regression. (The latter is just a convenience over
             performing n_targets individual single-target regressions.)
-        C: data points to control the X values for. Shape must be either (n_data) or
-            (n_data, n_features). Controlling in this case means removing any
+        C: data points to control the X values for. Shape must be either (n_data,) or
+            (n_data, n_control_features). Controlling in this case means removing any
             relationship between the X values and the C values. Thus, we first
             use regression to determine how each feature in X relates to the C
             values. Then we subtract off this relationship (i.e. get the residuals),
             leaving the component of X that is unrelated to the trends in the C
             values.
+        Cy: data points to control the y values for. Shape must be either (n_data,)
+            or (n_data, n_y_control_features). 
         regressor: an instance of any sklearn regressor. If None, use
             sklearn.linear_model.LinearRegression()
 
