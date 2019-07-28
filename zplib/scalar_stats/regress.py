@@ -16,6 +16,21 @@ def r_squared(y, y_est):
 def regress(X, y, C=None, Cy=None, regressor=None):
     """Perform a basic regression task with any of the scikit-learn regressors.
 
+    Can perform controlled (i.e. partial or semi-partial) regression, where
+    the relationship between a set of control values is removed from the
+    dependent or independent values, or both.
+
+    To find out if some features predict a target variable independently of a
+    set of other (control) features, use the C parameter to control your features
+    X for the control features C (semi-partial regression). In this case, the
+    R^2 value represents the fraction of the total variance in y that is attributable
+    to the X values but *not* the C values.
+
+    For true partial regression, where both the X and y values are controlled for,
+    pass the same values for both C and Cy. In this case, the R^2 represents the
+    fraction of the not-attributable-to-C variance in y that is attributable to
+    the X but not the C values.
+
     Parameters:
         X: input data points. Shape must be either (n_data,) or (n_data, n_features).
         y: output data points. Shape must be either (n_data,) or (n_data, n_targets),
@@ -29,7 +44,10 @@ def regress(X, y, C=None, Cy=None, regressor=None):
             leaving the component of X that is unrelated to the trends in the C
             values.
         Cy: data points to control the y values for. Shape must be either (n_data,)
-            or (n_data, n_y_control_features). 
+            or (n_data, n_y_control_features). As above, if Cy values are provided,
+            the relationship between the Cy and y values will be removed with
+            regression and the final y values used will be the residuals of y
+            after regression on the Cy values.
         regressor: an instance of any sklearn regressor. If None, use
             sklearn.linear_model.LinearRegression()
 
@@ -55,7 +73,15 @@ def regress(X, y, C=None, Cy=None, regressor=None):
         # subtract off everything about the X values that can be predicted from the control data
         # note, most regressors can do multi-target prediction, so we can control for each of the
         # features in X simultaneously
-        X -= _fit_predict(C, X, regressor)
+        C = numpy.asarray(C)
+        if C.ndim == 1:
+            C = C[:, numpy.newaxis]
+        X = X - _fit_predict(C, X, regressor) # don't use inplace to not mess with input Xs...
+    if Cy is not None:
+        Cy = numpy.asarray(Cy)
+        if Cy.ndim == 1:
+            Cy = Cy[:, numpy.newaxis]
+        y = y - _fit_predict(Cy, y, regressor)
 
     y_est = _fit_predict(X, y, regressor)
     resid, R2 = r_squared(y, y_est)
