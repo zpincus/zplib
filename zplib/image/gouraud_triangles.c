@@ -2,6 +2,8 @@
 #include <inttypes.h>
 #include "gouraud_triangles.h"
 
+// Code adapted from the very useful tutorial http://www.hugi.scene.org/online/coding/hugi%2017%20-%20cotriang.htm
+
 typedef struct {
     float leftX;
     float rightX;
@@ -37,6 +39,7 @@ void mask_triangle_strip(unsigned int n_vertices, float *vertices, char *out, un
         vertices += 2;
     }
 }
+
 void gouraud_triangle(float *vertices, float *colors, float *out, unsigned int *shape, long *strides, unsigned char accumulate) {
     // vertices: v0x, v0y, v1x, v1y, v2x, v2y
     // colors: v0c0, ..., v0cn, v1c0, ..., v1cn, v2c0, ..., v2cn
