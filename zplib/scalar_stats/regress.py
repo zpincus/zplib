@@ -13,7 +13,7 @@ def r_squared(y, y_est):
     R2 = 1 - (resid**2).mean(axis=0) / y.var(axis=0) # ratio is variance unexplained divided by total variance
     return resid, R2
 
-def regress(X, y, C=None, Cy=None, regressor=None):
+def regress(X, y, C=None, control_y=False, regressor=None):
     """Perform a basic regression task with any of the scikit-learn regressors.
 
     Can perform controlled (i.e. partial or semi-partial) regression, where
@@ -27,9 +27,17 @@ def regress(X, y, C=None, Cy=None, regressor=None):
     to the X values but *not* the C values.
 
     For true partial regression, where both the X and y values are controlled for,
-    pass the same values for both C and Cy. In this case, the R^2 represents the
-    fraction of the not-attributable-to-C variance in y that is attributable to
-    the X but not the C values.
+    use control_y=True. In this case, the R^2 will represent the fraction of the
+    not-attributable-to-C variance in y that is attributable to the not-attributable-to-C
+    variance in the X values. (NB: this is not the same as the not-attributable-to-C
+    variance in y that is attributable to the variance in the raw X values. In the
+    case that X and C are truly independent, the results will be the same. However,
+    if X also depends on C, then the correlation between X-controlled-for-C and
+    y-controlled-for-C will be *higher* than between raw X and y-controlled-for-C.
+    This is because controlling X for C will remove extraneous signal that is
+    unrelated, by definition, to y-controlled-for-C. So X-controlled-for-C is a
+    better predictor than raw X. This is a special case of what's known as a
+    "suppressor" variable.)
 
     Parameters:
         X: input data points. Shape must be either (n_data,) or (n_data, n_features).
@@ -43,11 +51,8 @@ def regress(X, y, C=None, Cy=None, regressor=None):
             values. Then we subtract off this relationship (i.e. get the residuals),
             leaving the component of X that is unrelated to the trends in the C
             values.
-        Cy: data points to control the y values for. Shape must be either (n_data,)
-            or (n_data, n_y_control_features). As above, if Cy values are provided,
-            the relationship between the Cy and y values will be removed with
-            regression and the final y values used will be the residuals of y
-            after regression on the Cy values.
+        control_y: if C values are provided, also regress the y values against
+            them.
         regressor: an instance of any sklearn regressor. If None, use
             sklearn.linear_model.LinearRegression()
 
@@ -77,11 +82,8 @@ def regress(X, y, C=None, Cy=None, regressor=None):
         if C.ndim == 1:
             C = C[:, numpy.newaxis]
         X = X - _fit_predict(C, X, regressor) # don't use inplace to not mess with input Xs...
-    if Cy is not None:
-        Cy = numpy.asarray(Cy)
-        if Cy.ndim == 1:
-            Cy = Cy[:, numpy.newaxis]
-        y = y - _fit_predict(Cy, y, regressor)
+        if control_y:
+            y = y - _fit_predict(C, y, regressor)
 
     y_est = _fit_predict(X, y, regressor)
     resid, R2 = r_squared(y, y_est)
