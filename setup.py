@@ -24,6 +24,6 @@ setuptools.setup(
     ext_modules = extensions,
     install_requires=['cffi>=1.0.0', 'numpy', 'scipy'],
     setup_requires=['cffi>=1.0.0'],
-    cffi_modules=['zplib/image/build_gouraud_triangles.py:ffibuilder'],
-
+    cffi_modules=['zplib/image/build_gouraud_triangles.py:ffibuilder',
+                  'zplib/curve/build_pnpoly.py:ffibuilder'],
 )

@@ -1,5 +1,7 @@
 import numpy
 
+from . import _pnpoly
+
 def cumulative_distances(points, unit=True):
     """Return cumulative distances along a polyline.
 
@@ -101,3 +103,14 @@ def find_polyline_perpendiculars(points):
     dots = (bisectors * perps).sum(axis=1)
     perpendiculars[1:-1] = bisectors * numpy.sign(dots)[..., numpy.newaxis]
     return perpendiculars
+
+def point_in_polygon(point, points):
+    """Return whether the point (a 2-tuple) is inside the polygon specified by
+    points (of shape (n, 2)).
+    """
+    # need order=F below to get px and py to be contiguous
+    points = numpy.array(points, dtype=numpy.float32, order='F')
+    assert points.ndim == 2 and points.shape[1] == 2
+    px = _pnpoly.ffi.cast('float *', points[:, 0].ctypes.data)
+    py = _pnpoly.ffi.cast('float *', points[:, 1].ctypes.data)
+    return bool(_pnpoly.lib.pnpoly(len(points), px, py, point[0], point[1]))

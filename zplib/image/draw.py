@@ -97,3 +97,38 @@ def mask_triangle_strip(triangle_strip, shape):
         _cast('float *', out),
         out.shape, out.strides)
     return out
+
+def gourad_centerline_strip(left, center, right, left_v, center_v, right_v, shape, accumulate=False, background=0):
+    left = numpy.asarray(left, dtype=numpy.float32, order='C')
+    center = numpy.asarray(center, dtype=numpy.float32, order='C')
+    right = numpy.asarray(right, dtype=numpy.float32, order='C')
+    left_v = numpy.asarray(left_v, dtype=numpy.float32, order='C')
+    center_v = numpy.asarray(center_v, dtype=numpy.float32, order='C')
+    right_v = numpy.asarray(right_v, dtype=numpy.float32, order='C')
+    assert left.shape == center.shape and center.shape == right.shape
+    assert left_v.shape == center_v.shape and center_v.shape == right_v.shape
+    assert left.ndim == 2 and left.shape[1] == 2 and len(left) > 1
+    assert left_v.ndim in (1, 2)
+    assert len(left) == len(left_v)
+    unpack_out = False
+    if left_v.ndim == 1:
+        left_v = left_v[:, numpy.newaxis]
+        center_v = center_v[:, numpy.newaxis]
+        right_v = right_v[:, numpy.newaxis]
+        unpack_out = True
+    num_points = len(left)
+    out = numpy.empty(tuple(shape)+left_v.shape[1:], dtype=numpy.float32, order='F')
+    out.fill(background)
+    _gouraud.gourad_centerline_strip(num_points,
+        _cast('float *', left),
+        _cast('float *', center),
+        _cast('float *', right),
+        _cast('float *', left_v),
+        _cast('float *', center_v),
+        _cast('float *', right_v),
+        _cast('float *', out),
+        out.shape, out.strides, accumulate)
+    if unpack_out:
+        return out[:,:,0]
+    else:
+        return out.transpose((2,0,1))

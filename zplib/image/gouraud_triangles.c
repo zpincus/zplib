@@ -23,7 +23,7 @@ void init_rightX(float *vertex, float dXdY, DrawingState *state);
 void swap(float **a, float **b);
 void draw_gouraud_segment(long y0, long y1, float* out, DrawingState *state);
 void draw_mask_segment(long y0, long y1, char* out, DrawingState *state);
-
+void copy_v_c(unsigned int from_i, unsigned int to_i, float *from_v, float *to_v, unsigned int n_colors, float *from_c, float *to_c);
 
 void gouraud_triangle_strip(unsigned int n_vertices, float *vertices, float *colors, float *out, unsigned int *shape, long *strides, unsigned char accumulate) {
     for (unsigned int i = 0; i < n_vertices - 2; i++) {
@@ -37,6 +37,44 @@ void mask_triangle_strip(unsigned int n_vertices, float *vertices, char *out, un
     for (unsigned int i = 0; i < n_vertices - 2; i++) {
         mask_triangle(vertices, out, shape, strides);
         vertices += 2;
+    }
+}
+
+void gourad_centerline_strip(unsigned int n_points, float *left, float *center, float *right, float *left_colors, float *center_colors, float *right_colors,
+    float *out, unsigned int *shape, long *strides, unsigned char accumulate) {
+
+    // we're going to draw a number of 6-vertex triangle strips, each encompasing
+    // a four-triangle strip from the left to right side of the shape
+    unsigned int n_colors = shape[2];
+    float vertices[12];
+    float colors[n_colors * 6];
+    for (unsigned int i = 0; i < n_points-1; i++) {
+        copy_v_c(0, 0, left, vertices, n_colors, left_colors, colors);
+        copy_v_c(1, 1, left, vertices, n_colors, left_colors, colors);
+        copy_v_c(0, 2, center, vertices, n_colors, center_colors, colors);
+        copy_v_c(1, 3, center, vertices, n_colors, center_colors, colors);
+        copy_v_c(0, 4, right, vertices, n_colors, right_colors, colors);
+        copy_v_c(1, 5, right, vertices, n_colors, right_colors, colors);
+        gouraud_triangle_strip(6, vertices, colors, out, shape, strides, accumulate);
+        left += 2;
+        center += 2;
+        right += 2;
+        left_colors += n_colors;
+        center_colors += n_colors;
+        right_colors += n_colors;
+    }
+}
+
+inline void copy_v_c(unsigned int from_i, unsigned int to_i, float *from_v, float *to_v, unsigned int n_colors, float *from_c, float *to_c) {
+    from_v += from_i * 2;
+    to_v += to_i * 2;
+    for (unsigned int i = 0; i < 2; i++) {
+        *to_v++ = *from_v++;
+    }
+    from_c += from_i * n_colors;
+    to_c += to_i * n_colors;
+    for (unsigned int i = 0; i < n_colors; i++) {
+        *to_c++ = *from_c++;
     }
 }
 

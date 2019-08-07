@@ -22,7 +22,7 @@ def get_points(tck, num_points=None, derivative=0):
         num_points = max(100, int(round(tck[0].max())))
     return interpolate.spline_interpolate(tck, num_points, derivative)
 
-def _get_points_and_radii(tck, radius_tck, num_points=None):
+def get_points_and_radii(tck, radius_tck, num_points=None):
     if tck[1].ndim != 2 and tck[1].shape[1] != 2:
         raise ValueError('tck must be a two-dimensional parametric spline')
     if radius_tck[1].ndim != 1:
@@ -87,13 +87,28 @@ def outline(tck, radius_tck, num_points=None):
     Returns: left, right, outline, where left and right are the displaced points
     (shape=(num_points, 2)) and outline is the full polygon (shape=(2*num_points, 2))
     """
-    points, radii = _get_points_and_radii(tck, radius_tck, num_points)
-    perps = perpendiculars(tck, num_points=len(points))
-    offsets = perps * radii[:,numpy.newaxis]
-    left = points + offsets
-    right = points - offsets
+    left, points, right, radii = centerline_and_outline(tck, radius_tck, num_points)
     outline = numpy.concatenate([left, right[::-1]], axis=0)
     return left, right, outline
+
+def centerline_and_outline(tck, radius_tck, num_points=None):
+    """Given a shape defined by a centerline spline and a radial profile spline,
+    return a centerline and left/right side defined by sampling the centerline at
+    num_points along its profile and displacing it left and right of the centerline
+    by an amount defined by the radius_tck.
+
+    If num_points is None, try to guess a sane default.
+
+    Returns: (left, center, right, radii), where
+        left, center, and right have shape=(num_points, 2) and radii has
+        shape=(num_points,)
+    """
+    points, radii = get_points_and_radii(tck, radius_tck, num_points)
+    perps = perpendiculars(tck, num_points=len(points))
+    offsets = perps * radii[:, numpy.newaxis]
+    left = points + offsets
+    right = points - offsets
+    return left, points, right, radii
 
 def triangle_strip(tck, radius_tck, num_points=None):
     """Given a shape defined by a centerline spline and a radial profile spline,
@@ -106,7 +121,7 @@ def triangle_strip(tck, radius_tck, num_points=None):
         NB: vertices on the left side of the shape are at even indices
         (i.e.[::2]) and those on the right side are at odd indices ([1::2]).
     """
-    points, radii = _get_points_and_radii(tck, radius_tck, num_points)
+    points, radii = get_points_and_radii(tck, radius_tck, num_points)
     triangle_strip = numpy.empty((2*len(points), 2), dtype=float)
     perps = perpendiculars(tck, num_points=len(points))
     offsets = perps * radii[:,numpy.newaxis]
@@ -139,7 +154,7 @@ def volume_and_surface_area(tck, radius_tck, num_points=None):
     If num_points is None, try to guess a sane default.
 
     Returns: volume, surface_area"""
-    points, radii = _get_points_and_radii(tck, radius_tck, num_points)
+    points, radii = get_points_and_radii(tck, radius_tck, num_points)
     lengths = numpy.sqrt(((points[:-1] - points[1:])**2).sum(axis=1))
     # formulae from http://en.wikipedia.org/wiki/Frustum
     r1 = radii[:-1]
@@ -160,7 +175,7 @@ def length_and_max_width(tck, radius_tck, num_points=None):
 
     Returns: length, max_width
     """
-    points, radii = _get_points_and_radii(tck, radius_tck, num_points)
+    points, radii = get_points_and_radii(tck, radius_tck, num_points)
     return numpy.sqrt(((points[:-1] - points[1:])**2).sum(axis=1)).sum(), radii.max()
 
 def rmsd(tck1, tck2, num_points=None):
