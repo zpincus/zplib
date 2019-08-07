@@ -99,6 +99,24 @@ def mask_triangle_strip(triangle_strip, shape):
     return out
 
 def gourad_centerline_strip(left, center, right, left_v, center_v, right_v, shape, accumulate=False, background=0):
+    """Gouraud-shade a polygon defined by a centerline and left and right edges.
+
+    Parameters:
+        left, right, center: shape (n, 2) arrays of vertices describing a
+            polygon.
+        left_v, center_v, right_v: shape (n,) or (n, m) arrays of values associated
+            with each vertex. In case of shape (n, m) this indicates m distinct
+            sets of values for each vertex; as such m distinct output images will be
+            produced.
+        shape: shape of the output image(s).
+        accumulate: if True, output values will be added atop one another in
+            in cases where triangles overlap. (Useful for finding such cases.)
+        background: value of output in non-drawn regions
+
+    Returns: single image (if vertex_vals is 1-dim) or list of images (if
+        vertex_vals is > 1-dim), where each image contains the interpolation
+        of the values at each vertex.
+    """
     left = numpy.asarray(left, dtype=numpy.float32, order='C')
     center = numpy.asarray(center, dtype=numpy.float32, order='C')
     right = numpy.asarray(right, dtype=numpy.float32, order='C')

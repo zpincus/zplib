@@ -23,6 +23,16 @@ def get_points(tck, num_points=None, derivative=0):
     return interpolate.spline_interpolate(tck, num_points, derivative)
 
 def get_points_and_radii(tck, radius_tck, num_points=None):
+    """Given a shape defined by a centerline spline and a radial profile spline,
+    the centerline sampled at num_points evenly-spaced positions and the values
+    of the radius_tck spline at the same positions.
+
+    If num_points is None, try to guess a sane default.
+
+    Returns: (centerline, radii), where centerline has shape=(num_points, 2)
+    and radii has shape=(num_points,)
+    """
+
     if tck[1].ndim != 2 and tck[1].shape[1] != 2:
         raise ValueError('tck must be a two-dimensional parametric spline')
     if radius_tck[1].ndim != 1:
