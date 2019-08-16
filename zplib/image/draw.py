@@ -1,5 +1,4 @@
 import numpy
-import celiagg
 from ._gouraud_triangles import lib as _gouraud
 from ._gouraud_triangles import ffi as _ffi
 
@@ -7,7 +6,7 @@ def _cast(ptype, array):
     return _ffi.cast(ptype, array.ctypes.data)
 
 def draw_mask(image_shape, geometry, antialias=False):
-    """Draw a mask (0-255) from a given celiagg path.
+    """Draw a mask (0-255) from a given celiagg path. Requires celiagg installed.
 
     Note: to produce a True/False mask from the output, simply do the following:
         mask = draw_mask(image_shape, geometry)
@@ -22,6 +21,7 @@ def draw_mask(image_shape, geometry, antialias=False):
 
     Returns: mask array of dtype numpy.uint8
     """
+    import celiagg
     image = numpy.zeros(image_shape, dtype=numpy.uint8, order='F')
     # NB celiagg uses (h, w) C-order convention for image shapes, so give it the transpose
     canvas = celiagg.CanvasG8(image.T)
