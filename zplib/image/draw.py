@@ -94,7 +94,7 @@ def mask_triangle_strip(triangle_strip, shape):
     out = numpy.zeros(tuple(shape), dtype=bool, order='F')
     _gouraud.mask_triangle_strip(num_vertices,
         _cast('float *', triangle_strip),
-        _cast('float *', out),
+        _cast('char *', out),
         out.shape, out.strides)
     return out
 
