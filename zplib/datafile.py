@@ -100,7 +100,7 @@ def dump(path, **data_dict):
             pickle.dump(data_dict, f)
     except:
         if path.exists():
-            path.remove()
+            path.unlink()
         raise
 
 def load(path):

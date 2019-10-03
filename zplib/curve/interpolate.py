@@ -171,8 +171,9 @@ def spline_interpolate(tck, num_points, derivative=0):
 
     If derivative=0, then the points themselves will be given; if derivative>0
     then the derivatives at those points will be returned."""
-    # t[-1] gives the maximum value for the input position
-    output_positions = numpy.linspace(0, tck[0][-1], num_points)
+    # (t[0], t[-1]) gives the range of permissible values for the input position
+    t, c, k = tck
+    output_positions = numpy.linspace(t[0], t[-1], num_points)
     return spline_evaluate(tck, output_positions, derivative)
 
 def spline_evaluate(tck, positions, derivative=0):
