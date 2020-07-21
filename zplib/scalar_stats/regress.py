@@ -81,7 +81,7 @@ def regress(X, y, C=None, control_y=False, regressor=None):
         C = numpy.asarray(C)
         if C.ndim == 1:
             C = C[:, numpy.newaxis]
-        X = X - _fit_predict(C, X, regressor) # don't use inplace to not mess with input Xs...
+        X = X - _fit_predict(C, X, regressor) # don't use -= to not mess with input X array...
         if control_y:
             y = y - _fit_predict(C, y, regressor)
 

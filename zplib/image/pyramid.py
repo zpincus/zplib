@@ -2,7 +2,7 @@ import numpy
 import scipy.ndimage as ndimage
 from skimage import transform
 
-def pyr_down(image, downscale=2, nyquist_attenuation=0.015):
+def pyr_down(image, downscale=2, nyquist_attenuation=0.05):
     """Return an image downsampled by the requested factor.
 
     Parameters:
@@ -17,9 +17,9 @@ def pyr_down(image, downscale=2, nyquist_attenuation=0.015):
     out_shape = numpy.ceil(numpy.array(image.shape) / float(downscale)).astype(int)
     sigma = downsample_sigma(downscale, nyquist_attenuation)
     smoothed = ndimage.gaussian_filter(image.astype(numpy.float32), sigma, mode='reflect')
-    return transform.resize(smoothed, out_shape, order=1, mode='reflect', preserve_range=True)
+    return transform.resize(smoothed, out_shape, order=1, mode='reflect', preserve_range=True, anti_aliasing=False)
 
-def pyr_up(image, upscale=2, nyquist_attenuation=0.985):
+def pyr_up(image, upscale=2):
     """Return an image upsampled by the requested factor.
 
     Parameters:
@@ -33,8 +33,7 @@ def pyr_up(image, upscale=2, nyquist_attenuation=0.985):
     """
     out_shape = numpy.ceil(numpy.array(image.shape) * upscale).astype(int)
     sigma = downsample_sigma(upscale, nyquist_attenuation)
-    resized = transform.resize(image.astype(numpy.float32), out_shape, order=1, mode='reflect', preserve_range=True)
-    return ndimage.gaussian_filter(resized, sigma, mode='reflect')
+    return transform.resize(image.astype(numpy.float32), out_shape, order=1, mode='reflect', preserve_range=True, anti_aliasing=False)
 
 def downsample_sigma(scale_factor, nyquist_attenuation=0.05):
     """Calculate sigma for gaussian blur that will attenuate the nyquist frequency
