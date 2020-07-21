@@ -13,8 +13,9 @@ else:
 
 BYTEORDERS = {'<': 'le', '>': 'be', '=': 'le' if sys.byteorder == 'little' else 'be'}
 
-def read_video(input, force_grayscale=False):
-    """Return iterator over frames from an input video via ffmpeg.
+class VideoData:
+    def __init__(self, input, force_grayscale=False):
+    """Collect key video metadata.
 
     Parameters:
         input: filename to open
@@ -24,7 +25,7 @@ def read_video(input, force_grayscale=False):
     ffprobe_command = [FFPROBE_BIN,
         '-loglevel', 'fatal',
         '-select_streams', 'V:0',
-        '-show_entries', 'stream=pix_fmt,width,height',
+        '-show_entries', 'stream=pix_fmt,width,height,nb_frames,duration',
         '-print_format', 'json',
         input]
     probe = subprocess.run(ffprobe_command, stdin=subprocess.DEVNULL,
@@ -32,26 +33,92 @@ def read_video(input, force_grayscale=False):
     if probe.returncode != 0:
         raise RuntimeError('Could not read video metadata:\n'+probe.stderr.decode())
     metadata = json.loads(probe.stdout.decode())['streams'][0]
+    self.fps = int(metadata['nb_frames']) / float(metadata['duration'])
 
     pixel_format_in = metadata['pix_fmt']
-    shape = metadata['width'], metadata['height']
+    self.shape = metadata['width'], metadata['height']
     if pixel_format_in.startswith('gray16'):
-        pixel_format_out = 'gray16'+BYTEORDERS['='] # output system-native endian
+        self.pixel_format_out = 'gray16'+BYTEORDERS['='] # output system-native endian
         dtype = numpy.uint16
     elif pixel_format_in == 'gray' or force_grayscale:
-        pixel_format_out = 'gray'
+        self.pixel_format_out = 'gray'
         dtype = numpy.uint8
     else:
-        pixel_format_out = 'rgb24'
+        self.pixel_format_out = 'rgb24'
         dtype = numpy.uint8
-        shape += (3,)
+        self.shape += (3,)
 
-    if len(shape) == 2:
+    self.dtype = numpy.dtype(dtype)
+
+    if len(self.shape) == 2:
         # could be uint8 or uint16 -- need to account for itemsize
-        strides = (dtype.itemsize, shape[0]*dtype.itemsize)
+        self.strides = (self.dtype.itemsize, self.shape[0] * self.dtype.itemsize)
     else:
         # assume uint8 here
-        strides = (3, shape[0]*3, 1)
+        self.strides = (3, self.shape[0]*3, 1)
+
+    self.size = numpy.product(self.shape) * self.dtype.itemsize
+
+    def get_frame_array(reader):
+        frame_bytes = reader.read(self.size)
+        if len(frame_bytes) == 0:
+            return None
+        return numpy.ndarray(shape=self.shape, buffer=frame_bytes, dtype=self.dtype, strides=self.strides)
+
+def read_frame(input, frame_num=None, frame_time=None, video_data=None, force_grayscale=False):
+    """ Code taken and adapted from zplib.image.ffmpeg
+    Efficiently locates the desired frame and returns it, looping through every previous frame.
+    Return specific frame from an input video via ffmpeg.
+    Parameters:
+        input: filename to open
+        frame_num: frame number to retrieve (0-indexed)
+        frame_time:
+        video_data: VideoData instance, which contains results of ffprobe.
+            Best to precalculate this if you will be getting lots of frames.
+            If None, then a VideoData instance will be constructed.
+        force_grayscale: (default: False) if True, return uint8 grayscale frames, otherwise
+            returns rgb frames. Note: force_grayscale is only effective if video_data is None,
+            otherwise you must set this flag when constructing the VideoData instance.
+    """
+    assert (frame_time is None) ^ (frame_num is None)
+            'You must provide either a frame number or a time (as an int/float of seconds) \
+            from which to grab the frame. You cannot use both or neither.'
+    if video_data is None:
+        metadata = VideoData(input, force_grayscale)
+    if frame_time is None:
+        frame_time = frame_num / video_data.fps
+
+    command = [ FFMPEG_BIN,
+        '-loglevel', 'fatal',
+        '-nostdin', # do not expect interaction, do not fuss with tty settings
+        '-accurate_seek',
+        '-ss', str(frame_time), # seek to a specific time as a fraction of seconds
+        '-i', input,
+        '-map', '0:V:0', # grab video channel 0, just like ffprobe in get_metadata
+        '-frames:v', '1', # grab one frame
+        '-f', 'rawvideo', # write raw image data
+        '-pix_fmt', video_data.pixel_format_out,
+        '-' # pipe output to stdout
+    ]
+
+    ffmpeg = subprocess.Popen(command, stdin=subprocess.DEVNULL,
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    frame = video_data.get_frame_array(ffmpeg.stdout)
+    ffmpeg.stdout.close()
+    ffmpeg.wait()
+    if ffmpeg.returncode != 0:
+        raise RuntimeError('Could not read video data:\n'+ffmpeg.stderr.read().decode())
+    return frame
+
+def read_video(input, force_grayscale=False):
+    """Return iterator over frames from an input video via ffmpeg.
+
+    Parameters:
+        input: filename to open
+        force_grayscale: if True, return uint8 grayscale frames, otherwise
+            returns rgb frames.
+    """
+    video_data = VideoData(input, force_grayscale)
 
     command = [FFMPEG_BIN,
         '-loglevel', 'fatal',
@@ -59,24 +126,23 @@ def read_video(input, force_grayscale=False):
         '-i', input,
         '-map', '0:V:0', # grab video channel 0, just like ffprobe above
         '-f', 'rawvideo', # write raw image data
-        '-pix_fmt', pixel_format_out,
+        '-pix_fmt', video_data.pixel_format_out,
         '-' # pipe output to stdout
     ]
 
     ffmpeg = subprocess.Popen(command, stdin=subprocess.DEVNULL,
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    dtype = numpy.dtype(dtype)
-    size = numpy.product(shape) * dtype.itemsize
     while True:
-        frame_bytes = ffmpeg.stdout.read(size)
-        if len(frame_bytes) == 0:
+        frame = video_data.get_frame_array(ffmpeg.stdout)
+        if frame is None:
             break
-        yield numpy.ndarray(shape=shape, buffer=frame_bytes, dtype=dtype, strides=strides)
+        yield frame
     ffmpeg.stdout.close()
     ffmpeg.wait()
     if ffmpeg.returncode != 0:
         raise RuntimeError('Could not read video data:\n'+ffmpeg.stderr.read().decode())
+
 
 def write_video(frames, framerate, output, preset=None, lossless=False, verbose=True, **h264_opts):
     """Write uint8 RGB or grayscale image frames to a h264-encoded video file
