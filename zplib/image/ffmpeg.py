@@ -3,6 +3,7 @@ import platform
 import numpy
 import sys
 import json
+import functools
 
 if platform.system() == 'Windows':
     FFMPEG_BIN = 'ffmpeg.exe'
@@ -132,11 +133,7 @@ def read_video(input, force_grayscale=False):
     ffmpeg = subprocess.Popen(command, stdin=subprocess.DEVNULL,
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    while True:
-        frame = video_data.get_frame_array(ffmpeg.stdout)
-        if frame is None:
-            break
-        yield frame
+    yield from iter(functools.partial(video_data.get_frame_array, ffmpeg.stdout), None)
     ffmpeg.stdout.close()
     ffmpeg.wait()
     if ffmpeg.returncode != 0:
