@@ -15,55 +15,54 @@ BYTEORDERS = {'<': 'le', '>': 'be', '=': 'le' if sys.byteorder == 'little' else 
 
 class VideoData:
     def __init__(self, input, force_grayscale=False):
-    """Collect key video metadata.
+        """Collect key video metadata.
 
-    Parameters:
-        input: filename to open
-        force_grayscale: if True, return uint8 grayscale frames, otherwise
-            returns rgb frames.
-    """
-    ffprobe_command = [FFPROBE_BIN,
-        '-loglevel', 'fatal',
-        '-select_streams', 'V:0',
-        '-show_entries', 'stream=pix_fmt,width,height,nb_frames,duration',
-        '-print_format', 'json',
-        input]
-    probe = subprocess.run(ffprobe_command, stdin=subprocess.DEVNULL,
-        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    if probe.returncode != 0:
-        raise RuntimeError('Could not read video metadata:\n'+probe.stderr.decode())
-    metadata = json.loads(probe.stdout.decode())['streams'][0]
-    self.fps = int(metadata['nb_frames']) / float(metadata['duration'])
+        Parameters:
+            input: filename to open
+            force_grayscale: if True, return uint8 grayscale frames, otherwise
+                returns rgb frames.
+        """
+        ffprobe_command = [FFPROBE_BIN,
+            '-loglevel', 'fatal',
+            '-select_streams', 'V:0',
+            '-show_entries', 'stream=pix_fmt,width,height,nb_frames,duration',
+            '-print_format', 'json',
+            input]
+        probe = subprocess.run(ffprobe_command, stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        if probe.returncode != 0:
+            raise RuntimeError('Could not read video metadata:\n'+probe.stderr.decode())
 
-    pixel_format_in = metadata['pix_fmt']
-    self.shape = metadata['width'], metadata['height']
-    if pixel_format_in.startswith('gray16'):
-        self.pixel_format_out = 'gray16'+BYTEORDERS['='] # output system-native endian
-        dtype = numpy.uint16
-    elif pixel_format_in == 'gray' or force_grayscale:
-        self.pixel_format_out = 'gray'
-        dtype = numpy.uint8
-    else:
-        self.pixel_format_out = 'rgb24'
-        dtype = numpy.uint8
-        self.shape += (3,)
+        metadata = json.loads(probe.stdout.decode())['streams'][0]
+        self.fps = int(metadata['nb_frames']) / float(metadata['duration'])
+        self.shape = metadata['width'], metadata['height']
+        pixel_format_in = metadata['pix_fmt']
+        if pixel_format_in.startswith('gray16'):
+            self.pixel_format_out = 'gray16'+BYTEORDERS['='] # output system-native endian
+            dtype = numpy.uint16
+        elif pixel_format_in == 'gray' or force_grayscale:
+            self.pixel_format_out = 'gray'
+            dtype = numpy.uint8
+        else:
+            self.pixel_format_out = 'rgb24'
+            dtype = numpy.uint8
+            self.shape += (3,)
+        self.dtype = numpy.dtype(dtype)
+        self.size = numpy.product(self.shape) * self.dtype.itemsize
 
-    self.dtype = numpy.dtype(dtype)
+        if len(self.shape) == 2:
+            # could be uint8 or uint16 -- need to account for itemsize
+            self.strides = (self.dtype.itemsize, self.shape[0] * self.dtype.itemsize)
+        else:
+            # assume uint8 here
+            self.strides = (3, self.shape[0]*3, 1)
 
-    if len(self.shape) == 2:
-        # could be uint8 or uint16 -- need to account for itemsize
-        self.strides = (self.dtype.itemsize, self.shape[0] * self.dtype.itemsize)
-    else:
-        # assume uint8 here
-        self.strides = (3, self.shape[0]*3, 1)
-
-    self.size = numpy.product(self.shape) * self.dtype.itemsize
-
-    def get_frame_array(reader):
-        frame_bytes = reader.read(self.size)
+    def get_frame_array(io):
+        frame_bytes = io.read(self.size)
         if len(frame_bytes) == 0:
             return None
         return numpy.ndarray(shape=self.shape, buffer=frame_bytes, dtype=self.dtype, strides=self.strides)
+
 
 def read_frame(input, frame_num=None, frame_time=None, video_data=None, force_grayscale=False):
     """ Code taken and adapted from zplib.image.ffmpeg
