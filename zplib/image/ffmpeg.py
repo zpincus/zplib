@@ -58,7 +58,7 @@ class VideoData:
             # assume uint8 here
             self.strides = (3, self.shape[0]*3, 1)
 
-    def get_frame_array(io):
+    def get_frame_array(self, io):
         frame_bytes = io.read(self.size)
         if len(frame_bytes) == 0:
             return None
@@ -80,15 +80,15 @@ def read_frame(input, frame_num=None, frame_time=None, video_data=None, force_gr
             returns rgb frames. Note: force_grayscale is only effective if video_data is None,
             otherwise you must set this flag when constructing the VideoData instance.
     """
-    assert (frame_time is None) ^ (frame_num is None)
-            'You must provide either a frame number or a time (as an int/float of seconds) \
-            from which to grab the frame. You cannot use both or neither.'
+    assert (frame_time is None) ^ (frame_num is None), \
+        'You must provide either a frame number or a time in seconds from which to grab the frame.'
     if video_data is None:
-        metadata = VideoData(input, force_grayscale)
+        video_data = VideoData(input, force_grayscale)
     if frame_time is None:
         frame_time = frame_num / video_data.fps
 
-    command = [ FFMPEG_BIN,
+    command = [
+        FFMPEG_BIN,
         '-loglevel', 'fatal',
         '-nostdin', # do not expect interaction, do not fuss with tty settings
         '-accurate_seek',
@@ -120,7 +120,8 @@ def read_video(input, force_grayscale=False):
     """
     video_data = VideoData(input, force_grayscale)
 
-    command = [FFMPEG_BIN,
+    command = [
+        FFMPEG_BIN,
         '-loglevel', 'fatal',
         '-nostdin', # do not expect interaction, do not fuss with tty settings
         '-i', input,
@@ -220,7 +221,7 @@ class _VideoWriter:
         if frame.ndim == 2:
             frame_bytes = frame.tobytes(order='F')
         else:
-            frame_bytes = frame.transpose((2,0,1)).tobytes(order='F')
+            frame_bytes = frame.transpose((2, 0, 1)).tobytes(order='F')
         self.ffmpeg.stdin.write(frame_bytes)
 
     def _init_ffmpeg(self, frame):
@@ -238,7 +239,8 @@ class _VideoWriter:
             pixel_format_in = 'gray16' + BYTEORDERS[frame.dtype.byteorder]
         if self.pixel_format_out is None:
             self.pixel_format_out = pixel_format_in
-        command = [FFMPEG_BIN,
+        command = [
+            FFMPEG_BIN,
             '-y', # (optional) overwrite output file if it exists
             '-f', 'rawvideo',
             '-video_size', f'{frame.shape[0]}x{frame.shape[1]}', # size of one frame
@@ -247,7 +249,8 @@ class _VideoWriter:
             '-i', '-', # The input comes from a pipe
             '-an', # Tells FFMPEG not to expect any audio
             '-vcodec', self.codec,
-            '-pix_fmt', self.pixel_format_out]
+            '-pix_fmt', self.pixel_format_out
+        ]
         for option, value in self.codec_options.items():
             command += ['-'+option, str(value)]
         command.append(self.output)
