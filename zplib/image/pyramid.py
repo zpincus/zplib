@@ -32,7 +32,6 @@ def pyr_up(image, upscale=2):
     Returns: image of type float32
     """
     out_shape = numpy.ceil(numpy.array(image.shape) * upscale).astype(int)
-    sigma = downsample_sigma(upscale, nyquist_attenuation)
     return transform.resize(image.astype(numpy.float32), out_shape, order=1, mode='reflect', preserve_range=True, anti_aliasing=False)
 
 def downsample_sigma(scale_factor, nyquist_attenuation=0.05):
