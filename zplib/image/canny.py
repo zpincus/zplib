@@ -41,8 +41,8 @@ def masked_gaussian_filter(image, sigma, mask):
     pixels.
     """
     bleed_over = ndimage.gaussian_filter(mask.astype(numpy.float32), sigma, mode='nearest')
-    masked_image = numpy.zeros(image.shape, dtype=numpy.float32)
-    masked_image[mask] = image[mask]
+    masked_image = numpy.array(image, dtype=numpy.float32)
+    masked_image[~mask.astype(bool)] = 0
     smoothed_image = ndimage.gaussian_filter(masked_image, sigma, mode='nearest')
     output_image = smoothed_image / (bleed_over + numpy.finfo(numpy.float32).eps)
     return output_image
