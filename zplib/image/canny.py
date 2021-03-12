@@ -59,7 +59,7 @@ def canny_local_maxima(magnitude, sobel):
     xsobel, ysobel = sobel
     abs_xsobel = numpy.abs(xsobel)
     abs_ysobel = numpy.abs(ysobel)
-    has_grad = magnitude > 0
+    has_grad = magnitude != 0
     xpos = xsobel >= 0
     xneg = xsobel <= 0
     ypos = ysobel >= 0
